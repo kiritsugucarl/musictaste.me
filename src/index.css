@@ -1,0 +1,80 @@
+:root {
+    /* colors */
+    --clr-primary: #FB2576;
+    --clr-light: #F6F6F6;
+    --clr-dark: #141414;
+
+    /* sizes */
+    --size-xxs: 0.5rem; /* 8px */
+    --size-xs: 0.75rem; /* 12px */
+    --size-sm: 0.875rem; /* 14px */
+    --size-base: 1rem; /* 16px default */
+    --size-lg: 1.125rem; /* 18px*/
+    --size-xl: 1.25rem; /* 20px */
+    --size-2xl: 1.5rem; /* 24px */
+    --size-3xl: 1.875rem; /* 30px */
+    --size-4xl: 2.25rem; /* 36px */
+    --size-5xl: 3rem; /* 48px */
+    --size-6xl: 3.75rem; /* 60px */
+    --size-7xl: 4.5rem; /* 72px */
+    --size-8xl: 6rem; /* 96px */
+    --size-9xl: 8rem; /* 128px */
+    --size-10xl: 10rem; /* 160px */
+}
+
+* {
+    margin: 0;
+    line-height: calc(1em + 0.5rem);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    /* font-family: */
+    background-color: var(--clr-dark);
+}
+
+.page-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    user-select: none;
+}
+
+button {
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
