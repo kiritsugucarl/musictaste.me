@@ -1,0 +1,140 @@
+/* .header {
+    border-bottom: 3px solid var(--clr-light);
+} */
+
+.nav-wrapper {
+    display: flex;
+    /* justify-content: space-between; */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.desktop-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.desktop-nav-ul {
+    display: none;
+    list-style-type: none;
+}
+
+.desktop-nav-menuButton {
+    margin-left: auto;
+    color: var(--clr-light);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
+    display: block;
+}
+
+/* Mobile Navbar */
+.mobile-nav {
+    display: none;
+}
+
+.mobile-nav-ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-nav-link {
+    font-size: var(--size-sm);
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--clr-light);
+    letter-spacing: -0.05em;
+}
+
+.mobile-nav-link:hover {
+    color: var(--clr-primary);
+}
+
+.mobile-nav.show {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--clr-gray);
+    justify-content: center;
+    align-items: center;
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+@media (min-width: 768px) {
+    .desktop-nav {
+        flex: none;
+    }
+
+    .desktop-nav-ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .desktop-nav-li {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-left: 4rem;
+        text-transform: uppercase;
+    }
+
+    .desktop-nav-link {
+        font-size: var(--size-base);
+        position: relative;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .desktop-nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.1em;
+        background-color: var(--clr-primary);
+        opacity: 0;
+        transition:
+            opacity 300ms,
+            transform 300ms;
+    }
+
+    .desktop-nav-link:hover {
+        color: var(--clr-primary);
+    }
+
+    .desktop-nav-link:hover::after {
+        opacity: 1;
+        transform: translate3d(0, 0.2em, 0);
+    }
+
+    .desktop-nav-menuButton {
+        display: none;
+    }
+}
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

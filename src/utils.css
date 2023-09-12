@@ -4,10 +4,24 @@
     margin-right: auto;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    flex: 1;
 }
 
 .section {
     margin-top: 5rem;
+}
+
+.btn {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+.pink-btn {
+    background-color: var(--clr-primary);
 }
 
 /* xs */
