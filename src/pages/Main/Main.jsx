@@ -35,6 +35,9 @@ const Main = () => {
                             </button>
                         </li>
                     </ul>
+                    <button className="main__sidebar-getResultBtn">
+                        Get Result
+                    </button>
                 </div>
 
                 {/* main content */}
@@ -42,7 +45,7 @@ const Main = () => {
                     <h1 className="main__content-title">
                         Find your music taste.
                     </h1>
-                    <p>
+                    <p className="main__content-desc">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Vestibulum fringilla elit vel aliquet fringilla. Nunc
                         luctus sed orci ac sodales.
