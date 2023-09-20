@@ -10,6 +10,19 @@
     margin-top: 5rem;
 }
 
+.btn {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+.pink-btn {
+    background-color: var(--clr-primary);
+}
+
 /* xs */
 @media (min-width: 475px) {
     .container {
@@ -28,6 +41,7 @@
 @media (min-width: 768px) {
     .container {
         max-width: 768px;
+        flex: 1;
     }
 }
 

@@ -1,0 +1,243 @@
+/* .header {
+    border-bottom: 3px solid var(--clr-light);
+} */
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.nav-menuButton {
+    margin-left: auto;
+    color: var(--clr-light);
+    width: var(--size-5xl);
+    height: var(--size-5xl);
+    display: block;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-menuButton:hover {
+    color: var(--clr-primary);
+}
+
+.nav-logo {
+    width: var(--size-5xl);
+    height: var(--size-5xl);
+}
+
+.desktop-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.desktop-nav-ul {
+    display: none;
+    list-style-type: none;
+}
+
+/* Mobile Navbar */
+.mobile-nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+    height: 100%;
+    width: 50%;
+    padding: 2rem;
+    background-color: var(--clr-gray);
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    top: 0;
+    left: -18.75rem;
+    height: 100%;
+    z-index: 999;
+    transition: left 0.3s ease;
+}
+
+.mobile-nav.show {
+    /* justify-content: center; */
+    left: 0;
+}
+
+.mobile-nav-slide-enter {
+    transform: translateX(-100%);
+}
+
+.mobile-nav-slide-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms ease-in-out;
+}
+
+.mobile-nav-slide-exit {
+    transform: translateX(0%);
+}
+
+.mobile-nav-slide-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+}
+
+.mobile-nav-wrapper {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.mobile-nav-ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.mobile-nav-li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.mobile-nav-li:hover .mobile-nav-linkIcon,
+.mobile-nav-li:hover .mobile-nav-link {
+    color: var(--clr-primary);
+}
+
+.mobile-nav-li:hover .mobile-nav-link {
+    font-weight: 900;
+}
+
+.mobile-nav-li:hover .mobile-nav-link::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+}
+
+.mobile-nav-linkIcon {
+    display: block;
+    width: var(--size-4xl);
+    height: var(--size-4xl);
+    transition: color 0.3s ease-in-out;
+}
+
+.mobile-nav-link {
+    position: relative;
+    font-size: var(--size-base);
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--clr-light);
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out font-weight 0.3s ease-in-out;
+}
+
+.mobile-nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--clr-primary);
+    opacity: 0;
+    transition:
+        opacity 300ms,
+        transform 300ms;
+}
+
+.mobile-nav-returnButton {
+    align-self: flex-start;
+    transition: color 0.3s ease-in-out;
+}
+
+.mobile-nav-returnButton:hover {
+    color: var(--clr-primary);
+}
+
+.mobile-nav-returnButtonImg {
+    display: block;
+    width: var(--size-4xl);
+    height: var(--size-4xl);
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+@media (min-width: 768px) {
+    .desktop-nav {
+        flex: none;
+    }
+
+    .nav-logo {
+        width: var(--size-7xl);
+        height: var(--size-7xl);
+    }
+
+    .desktop-nav-ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .desktop-nav-li {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-left: 4rem;
+        text-transform: uppercase;
+    }
+
+    .desktop-nav-link {
+        font-size: var(--size-xl);
+        font-weight: 600;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .desktop-nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.1em;
+        background-color: var(--clr-primary);
+        opacity: 0;
+        transition:
+            opacity 300ms,
+            transform 300ms;
+    }
+
+    .desktop-nav-link:hover {
+        color: var(--clr-primary);
+    }
+
+    .desktop-nav-link:hover::after {
+        opacity: 1;
+        transform: translate3d(0, 0.2em, 0);
+    }
+
+    .nav-menuButton {
+        display: none;
+    }
+}
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */
