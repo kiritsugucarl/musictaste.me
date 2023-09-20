@@ -200,6 +200,7 @@
 
     .desktop-nav-link {
         font-size: var(--size-xl);
+        font-weight: 600;
         position: relative;
         transition: color 0.3s ease-in-out;
     }
