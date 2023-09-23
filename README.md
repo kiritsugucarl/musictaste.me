@@ -25,6 +25,10 @@ npm install react-router-dom
 ```
 
 ```bash
+npm install react-transition-group
+```
+
+```bash
 npm install axios
 ```
 
