@@ -28,6 +28,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                         />
                     </svg>
                 </button>
+
                 <img className="nav-logo" src={logo} />
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
