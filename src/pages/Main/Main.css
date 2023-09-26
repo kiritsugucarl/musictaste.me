@@ -325,18 +325,389 @@
 /* @media (min-width: 475px) {} */
 
 /* sm */
-/* @media (min-width: 640px) {} */
+@media (min-width: 640px) {
+    .main__title {
+        font-size: var(--size-5xl);
+    }
+
+    .main__titleDesc {
+        font-size: var(--size-lg);
+    }
+
+    .main__content-searchBarImg {
+        width: var(--size-3xl);
+    }
+
+    .main__content-searchBar {
+        font-size: var(--size-2xl);
+    }
+
+    .main__content-search-result-play {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .main__content-search-result-albumImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
+    }
+
+    .searchResult__closeButtonImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .searchResult__popup-title {
+        font-size: var(--size-4xl);
+    }
+
+    .searchResult__popup-subtitle {
+        font-size: var(--size-xl);
+    }
+
+    .searchResult__popup-addButtonImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
+    }
+
+    .searchResult__popup-songDetails-tip {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-title {
+        font-size: var(--size-3xl);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-2xl);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-lg);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSongs-getResultBtn {
+        font-size: var(--size-lg);
+    }
+}
 
 /* md */
 @media (min-width: 768px) {
 }
 
 /* lg */
-/* @media (min-width: 1024px) {} */
+@media (min-width: 1024px) {
+    .main-wrapper {
+        flex-direction: row-reverse;
+        margin-top: 4rem;
+        gap: 2rem;
+    }
+
+    .main__content-wrapper {
+        gap: 6rem;
+    }
+
+    .main__title-wrapper {
+        gap: 1.5rem;
+    }
+
+    .main__content-search {
+        gap: 2rem;
+    }
+
+    .main__content-searchBar-wrapper {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        gap: 1.5rem;
+    }
+
+    .main__content-search-result {
+        gap: 2rem;
+        padding-inline-start: 1rem;
+        padding-inline-end: 1rem;
+    }
+
+    .main__content-search-result-item {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        gap: 2rem;
+    }
+
+    .searchResult__popup-container {
+        padding: 2.5rem;
+        gap: 2.5rem;
+    }
+
+    .searchResult__popup-details {
+        gap: 2rem;
+    }
+
+    .searchResult__popup-img {
+        width: 15rem;
+    }
+
+    .searchResult__popup-songDetails-title-wrapper {
+        gap: 0.8rem;
+    }
+
+    .main__addedSongs-wrapper {
+        gap: 1.5rem;
+        padding: 1.5rem;
+        min-width: 40%;
+    }
+
+    .main__addedSong-songList {
+        gap: 1.5rem;
+    }
+
+    .main__addedSong-songList-item {
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .main__title {
+        font-size: var(--size-4xl);
+    }
+
+    .main__titleDesc {
+        font-size: var(--size-base);
+    }
+
+    .main__content-searchBarImg {
+        width: var(--size-2xl);
+    }
+
+    .main__content-searchBar {
+        font-size: var(--size-xl);
+    }
+
+    .main__content-search-result-play {
+        width: var(--size-3xl);
+        height: var(--size-3xl);
+    }
+
+    .main__content-search-result-albumImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .searchResult__closeButtonImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .searchResult__popup-title {
+        font-size: var(--size-3xl);
+    }
+
+    .searchResult__popup-subtitle {
+        font-size: var(--size-lg);
+    }
+
+    .searchResult__popup-addButtonImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .searchResult__popup-songDetails-tip {
+        font-size: var(--size-sm);
+    }
+
+    .main__addedSong-title {
+        font-size: var(--size-2xl);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-xl);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-sm);
+    }
+
+    .main__addedSongs-getResultBtn {
+        font-size: var(--size-base);
+    }
+}
 
 /* xl */
-/* @media (min-width: 1280px) {} */
+@media (min-width: 1280px) {
+    .main__title {
+        font-size: var(--size-5xl);
+    }
+
+    .main__titleDesc {
+        font-size: var(--size-lg);
+    }
+
+    .main__content-searchBarImg {
+        width: var(--size-3xl);
+    }
+
+    .main__content-searchBarImg {
+        width: var(--size-3xl);
+    }
+
+    .main__content-searchBar {
+        font-size: var(--size-2xl);
+    }
+
+    .main__content-search-result-play {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .main__content-search-result-albumImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
+    }
+
+    .searchResult__closeButtonImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .searchResult__popup-title {
+        font-size: var(--size-4xl);
+    }
+
+    .searchResult__popup-subtitle {
+        font-size: var(--size-xl);
+    }
+
+    .searchResult__popup-addButtonImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .searchResult__popup-songDetails-tip {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-title {
+        font-size: var(--size-3xl);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-2xl);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-lg);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSongs-getResultBtn {
+        font-size: var(--size-lg);
+    }
+}
 
 /* 2xl */
 @media (min-width: 1536px) {
+    .main__title {
+        font-size: var(--size-6xl);
+    }
+
+    .main__titleDesc {
+        font-size: var(--size-xl);
+    }
+
+    .main__content-searchBarImg {
+        width: var(--size-4xl);
+    }
+
+    .main__content-searchBarImg {
+        width: var(--size-4xl);
+    }
+
+    .main__content-searchBar {
+        font-size: var(--size-3xl);
+    }
+
+    .main__content-search-result-play {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .main__content-search-result-albumImg {
+        width: var(--size-7xl);
+        height: var(--size-7xl);
+    }
+
+    .searchResult__closeButtonImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
+    }
+
+    .searchResult__popup-title {
+        font-size: var(--size-5xl);
+    }
+
+    .searchResult__popup-subtitle {
+        font-size: var(--size-2xl);
+    }
+
+    .searchResult__popup-addButtonImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .searchResult__popup-songDetails-tip {
+        font-size: var(--size-lg);
+    }
+
+    .main__addedSong-title {
+        font-size: var(--size-4xl);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-3xl);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-7xl);
+        height: var(--size-7xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-xl);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-lg);
+    }
+
+    .main__addedSongs-getResultBtn {
+        font-size: var(--size-xl);
+    }
 }

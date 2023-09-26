@@ -20,7 +20,7 @@ const Main = () => {
     };
 
     return (
-        <main className="container">
+        <main className="container content-container section">
             <div className="main-wrapper">
                 <div className="main__content-wrapper">
                     <div className="main__title-wrapper">
