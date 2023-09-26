@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBox from "./components/SearchBox";
 import "./Main.css";
 import testData from "./testData.json";
+import { useToken } from "../../config/TokenContext";
 
 const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
@@ -14,6 +15,8 @@ const Main = () => {
     // const removeSongFromAddedList = (songId) => {
     //     setAddedSongs(addedSongs.filter((song) => song.id !== songId));
     // };
+
+    const { token } = useToken();
 
     const getSongDetails = (songId) => {
         return testData.find((song) => song.id === songId);
