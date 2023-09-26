@@ -1,15 +1,11 @@
-import { Link } from "react-router-dom";
-import "./Home.css";
+import './Home.css'
 
 const Home = () => {
-    return (
+    return(
         <main className="container section">
-            <h1>musictaste.me</h1>
-            <Link className="home__getStarted btn pink-btn" to="/main">
-                GET STARTED
-            </Link>
+            <h1>Home Page</h1>
         </main>
-    );
-};
+    )
+}
 
 export default Home;
