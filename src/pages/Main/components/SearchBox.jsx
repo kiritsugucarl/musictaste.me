@@ -1,5 +1,6 @@
 import { useState } from "react";
 import testData from "../testData.json";
+import "./SearchBox.css";
 
 const SearchBox = ({ addSongToAddedList }) => {
     const [searchInput, setSearchInput] = useState("");
