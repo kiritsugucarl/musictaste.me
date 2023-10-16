@@ -23,7 +23,7 @@
     width: 100%;
     background: none;
     border: none;
-    font-size: var(--size-xl);
+    font-size: var(--size-lg);
     color: var(--clr-primary);
 }
 
@@ -57,8 +57,8 @@
 }
 
 .main__content-search-result-play {
-    width: var(--size-3xl);
-    height: var(--size-3xl);
+    width: var(--size-2xl);
+    height: var(--size-2xl);
     transition: color 0.3s ease-in;
 }
 
@@ -67,8 +67,8 @@
 }
 
 .main__content-search-result-albumImg {
-    width: var(--size-5xl);
-    height: var(--size-5xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
 }
 
 .main__content-search-result-songName {
@@ -128,8 +128,8 @@
 }
 
 .searchResult__closeButtonImg {
-    width: var(--size-4xl);
-    height: var(--size-4xl);
+    width: var(--size-3xl);
+    height: var(--size-3xl);
     margin-left: auto;
 }
 
@@ -160,12 +160,12 @@
 
 .searchResult__popup-title {
     color: var(--clr-primary);
-    font-size: var(--size-3xl);
+    font-size: var(--size-2xl);
     font-weight: 900;
 }
 
 .searchResult__popup-subtitle {
-    font-size: var(--size-lg);
+    font-size: var(--size-base);
 }
 
 .searchResult__popup-addButton {
@@ -179,12 +179,12 @@
 
 .searchResult__popup-addButtonImg {
     display: block;
-    width: var(--size-5xl);
-    height: var(--size-5xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
 }
 
 .searchResult__popup-songDetails-tip {
-    font-size: var(--size-sm);
+    font-size: var(--size-xs);
     max-width: 40ch;
 }
 
@@ -194,43 +194,43 @@
 /* sm */
 @media (min-width: 640px) {
     .main__content-searchBarImg {
-        width: var(--size-3xl);
+        width: var(--size-2xl);
     }
 
     .main__content-searchBar {
-        font-size: var(--size-2xl);
+        font-size: var(--size-xl);
     }
 
     .main__content-search-result-play {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
+        width: var(--size-3xl);
+        height: var(--size-3xl);
     }
 
     .main__content-search-result-albumImg {
-        width: var(--size-6xl);
-        height: var(--size-6xl);
-    }
-
-    .searchResult__closeButtonImg {
         width: var(--size-5xl);
         height: var(--size-5xl);
     }
 
+    .searchResult__closeButtonImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
     .searchResult__popup-title {
-        font-size: var(--size-4xl);
+        font-size: var(--size-3xl);
     }
 
     .searchResult__popup-subtitle {
-        font-size: var(--size-xl);
+        font-size: var(--size-lg);
     }
 
     .searchResult__popup-addButtonImg {
-        width: var(--size-6xl);
-        height: var(--size-6xl);
+        width: var(--size-5xl);
+        height: var(--size-5xl);
     }
 
     .searchResult__popup-songDetails-tip {
-        font-size: var(--size-base);
+        font-size: var(--size-sm);
     }
 }
 
@@ -283,6 +283,49 @@
     }
 
     .main__content-searchBarImg {
+        width: var(--size-xl);
+    }
+
+    .main__content-searchBar {
+        font-size: var(--size-lg);
+    }
+
+    .main__content-search-result-play {
+        width: var(--size-2xl);
+        height: var(--size-2xl);
+    }
+
+    .main__content-search-result-albumImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .searchResult__closeButtonImg {
+        width: var(--size-3xl);
+        height: var(--size-3xl);
+    }
+
+    .searchResult__popup-title {
+        font-size: var(--size-2xl);
+    }
+
+    .searchResult__popup-subtitle {
+        font-size: var(--size-base);
+    }
+
+    .searchResult__popup-addButtonImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .searchResult__popup-songDetails-tip {
+        font-size: var(--size-xs);
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .main__content-searchBarImg {
         width: var(--size-2xl);
     }
 
@@ -314,17 +357,17 @@
     }
 
     .searchResult__popup-addButtonImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
+        width: var(--size-3xl);
+        height: var(--size-3xl);
     }
 
     .searchResult__popup-songDetails-tip {
-        font-size: var(--size-sm);
+        font-size: var(--size-xs);
     }
 }
 
-/* xl */
-@media (min-width: 1280px) {
+/* 2xl */
+@media (min-width: 1536px) {
     .main__content-searchBarImg {
         width: var(--size-3xl);
     }
@@ -363,48 +406,5 @@
 
     .searchResult__popup-songDetails-tip {
         font-size: var(--size-base);
-    }
-}
-
-/* 2xl */
-@media (min-width: 1536px) {
-    .main__content-searchBarImg {
-        width: var(--size-4xl);
-    }
-
-    .main__content-searchBar {
-        font-size: var(--size-3xl);
-    }
-
-    .main__content-search-result-play {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    }
-
-    .main__content-search-result-albumImg {
-        width: var(--size-7xl);
-        height: var(--size-7xl);
-    }
-
-    .searchResult__closeButtonImg {
-        width: var(--size-6xl);
-        height: var(--size-6xl);
-    }
-
-    .searchResult__popup-title {
-        font-size: var(--size-5xl);
-    }
-
-    .searchResult__popup-subtitle {
-        font-size: var(--size-2xl);
-    }
-
-    .searchResult__popup-addButtonImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    }
-
-    .searchResult__popup-songDetails-tip {
-        font-size: var(--size-lg);
     }
 }

@@ -1,22 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import testData from "../testData.json";
+import { TokenProvider, useToken } from "../../../config/TokenContext";
 import "./SearchBox.css";
 
 const SearchBox = ({ addSongToAddedList }) => {
-    const [searchInput, setSearchInput] = useState("");
+    const [searchKey, setSearchKey] = useState("");
+    // const [artists, setArtists] = useState("");
     const [filteredData, setFilteredData] = useState(testData);
     const [selectedSongData, setSelectedSongData] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
 
+    // const { token } = useToken();
+
+    // useEffect(() => {
+    //     const searchArtists = async () => {
+    //         if (searchKey) {
+    //             const { data } = await axios.get(
+    //                 "https://api.spotify.com/v1/search",
+    //                 {
+    //                     headers: {
+    //                         Authorization: `Bearer ${token}`,
+    //                     },
+    //                     params: {
+    //                         q: searchKey,
+    //                         type: "artist",
+    //                     },
+    //                 }
+    //             );
+    //             setArtists(data.artists.items);
+    //         } else {
+    //             setArtists([]);
+    //         }
+    //     };
+
+    //     searchArtists();
+    // }, [searchKey, token]);
+
     const handleInputChange = (e) => {
         const { value } = e.target;
-        setSearchInput(value);
+        setSearchKey(value);
         filterData(value);
     };
 
-    const filterData = (searchInput) => {
+    const filterData = (searchKey) => {
         const filteredData = testData.filter((item) =>
-            item.songName.toLowerCase().includes(searchInput.toLowerCase())
+            item.songName.toLowerCase().includes(searchKey.toLowerCase())
         );
         setFilteredData(filteredData);
     };
@@ -61,7 +90,7 @@ const SearchBox = ({ addSongToAddedList }) => {
                     className="main__content-searchBar"
                     type="text"
                     placeholder="Search..."
-                    value={searchInput}
+                    value={searchKey}
                     onChange={handleInputChange}
                 />
             </div>
