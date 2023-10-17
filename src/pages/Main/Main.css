@@ -20,7 +20,7 @@
 }
 
 .main__title {
-    font-size: var(--size-4xl);
+    font-size: var(--size-3xl);
     font-weight: 900;
     color: var(--clr-primary);
 }
@@ -37,7 +37,7 @@
 
 .main__addedSong-title {
     color: var(--clr-primary);
-    font-size: var(--size-2xl);
+    font-size: var(--size-xl);
 }
 
 .main__addedSong-songList {
@@ -73,24 +73,24 @@
 }
 
 .main__addedSong-songList-iteration {
-    font-size: var(--size-xl);
+    font-size: var(--size-2xl);
     font-weight: 900;
     transition: color 0.3s ease-in-out;
 }
 
 .main__addedSong-songList-songAlbumImg {
-    width: var(--size-5xl);
-    height: var(--size-5xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
 }
 
 .main__addedSong-songList-songName {
     font-weight: 900;
-    font-size: var(--size-base);
+    font-size: var(--size-sm);
     transition: color 0.3s ease-in-out;
 }
 
 .main__addedSong-songList-songDetails {
-    font-size: var(--size-sm);
+    font-size: var(--size-xs);
     transition: color 0.3s ease-in-out;
 }
 
@@ -137,36 +137,36 @@
 /* sm */
 @media (min-width: 640px) {
     .main__title {
-        font-size: var(--size-5xl);
+        font-size: var(--size-4xl);
     }
 
     .main__titleDesc {
-        font-size: var(--size-lg);
-    }
-
-    .main__addedSong-title {
-        font-size: var(--size-3xl);
-    }
-
-    .main__addedSong-songList-iteration {
-        font-size: var(--size-2xl);
-    }
-
-    .main__addedSong-songList-songAlbumImg {
-        width: var(--size-6xl);
-        height: var(--size-6xl);
-    }
-
-    .main__addedSong-songList-songName {
-        font-size: var(--size-lg);
-    }
-
-    .main__addedSong-songList-songDetails {
         font-size: var(--size-base);
     }
 
+    .main__addedSong-title {
+        font-size: var(--size-2xl);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-xl);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-sm);
+    }
+
     .main__addedSongs-getResultBtn {
-        font-size: var(--size-lg);
+        font-size: var(--size-base);
     }
 }
 
@@ -205,13 +205,48 @@
     }
 
     .main__title {
+        font-size: var(--size-3xl);
+    }
+
+    .main__titleDesc {
+        font-size: var(--size-sm);
+    }
+
+    .main__addedSong-title {
+        font-size: var(--size-xl);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-lg);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-sm);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-xs);
+    }
+
+    .main__addedSongs-getResultBtn {
+        font-size: var(--size-xs);
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .main__title {
         font-size: var(--size-4xl);
     }
 
     .main__titleDesc {
         font-size: var(--size-base);
     }
-
 
     .main__addedSong-title {
         font-size: var(--size-2xl);
@@ -231,7 +266,7 @@
     }
 
     .main__addedSong-songList-songDetails {
-        font-size: var(--size-sm);
+        font-size: var(--size-xs);
     }
 
     .main__addedSongs-getResultBtn {
@@ -239,8 +274,8 @@
     }
 }
 
-/* xl */
-@media (min-width: 1280px) {
+/* 2xl */
+@media (min-width: 1536px) {
     .main__title {
         font-size: var(--size-5xl);
     }
@@ -272,41 +307,5 @@
 
     .main__addedSongs-getResultBtn {
         font-size: var(--size-lg);
-    }
-}
-
-/* 2xl */
-@media (min-width: 1536px) {
-    .main__title {
-        font-size: var(--size-6xl);
-    }
-
-    .main__titleDesc {
-        font-size: var(--size-xl);
-    }
-
-    .main__addedSong-title {
-        font-size: var(--size-4xl);
-    }
-
-    .main__addedSong-songList-iteration {
-        font-size: var(--size-3xl);
-    }
-
-    .main__addedSong-songList-songAlbumImg {
-        width: var(--size-7xl);
-        height: var(--size-7xl);
-    }
-
-    .main__addedSong-songList-songName {
-        font-size: var(--size-xl);
-    }
-
-    .main__addedSong-songList-songDetails {
-        font-size: var(--size-lg);
-    }
-
-    .main__addedSongs-getResultBtn {
-        font-size: var(--size-xl);
     }
 }

@@ -6,6 +6,18 @@ import { useToken } from "../../config/TokenContext";
 
 const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const handlePopupOpen = () => {
+        setIsPopupOpen(!isPopupOpen);
+
+        // Toggle
+        if (!isPopupOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    };
 
     const addSongToAddedList = (songId) => {
         const songToAdd = testData.find((song) => song.id === songId);
@@ -31,7 +43,7 @@ const Main = () => {
                         <p className="main__titleDesc">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Vestibulum fringilla elit vel aliquet
-                            fringilla. Nunc luctus sed orci ac sodales.npm
+                            fringilla. Nunc luctus sed orci ac sodales.
                         </p>
                     </div>
                     <SearchBox addSongToAddedList={addSongToAddedList} />
