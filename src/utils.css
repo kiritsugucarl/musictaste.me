@@ -2,8 +2,8 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .content-container {
@@ -12,6 +12,19 @@
 
 .section {
     margin-top: 5rem;
+}
+
+.btn {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+.pink-btn {
+    background-color: var(--clr-primary);
 }
 
 /* xs */
@@ -32,6 +45,8 @@
 @media (min-width: 768px) {
     .container {
         max-width: 768px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 }
 
@@ -40,16 +55,14 @@
     .container {
         max-width: 1024px;
     }
-
-    .section {
-        margin-top: 10rem;
-    }
 }
 
 /* xl */
 @media (min-width: 1280px) {
     .container {
         max-width: 1280px;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 }
 
