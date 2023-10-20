@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home.jsx";
 import Main from "./pages/Main/Main.jsx";
 import Result from "./pages/Result/Result.jsx";
 import { TokenProvider } from "./config/TokenContext.jsx";
+import Result from "./pages/Result/Result.jsx";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: "/result",
                 element: <Result />,
-            }
+            },
         ],
     },
 ]);
