@@ -5,6 +5,7 @@
 .main__result-titleDesc {
     text-align: center;
     color: var(--clr-primary);
+    padding-top: 1em;
 }
 
 .main__resultBtn-wrapper {
