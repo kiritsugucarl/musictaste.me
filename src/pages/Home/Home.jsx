@@ -10,7 +10,6 @@ import "./Home.css";
 
 //Temporary
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 const Home = () => {
     const { token } = useToken();
