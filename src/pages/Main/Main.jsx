@@ -6,33 +6,27 @@ import { useToken } from "../../config/TokenContext";
 
 const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [counter, setCounter] = useState(0);
 
-    const handlePopupOpen = () => {
-        setIsPopupOpen(!isPopupOpen);
-
-        // Toggle
-        if (!isPopupOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
+    // add songs to added list
+    const addSongToAddedList = (song) => {
+        if (!addedSongs.some((addedSong) => addedSong.id === song.id)) {
+            if (counter < 5) {
+                setAddedSongs((prevSongs) => [...prevSongs, song]);
+                setCounter((prevCounter) => prevCounter + 1);
+            }
         }
     };
 
-    const addSongToAddedList = (songId) => {
-        const songToAdd = testData.find((song) => song.id === songId);
-        setAddedSongs([...addedSongs, songId]);
+    // remove songs from added list
+    const removeSongFromAddedList = (song) => {
+        setAddedSongs((prevSongs) =>
+            prevSongs.filter((addedSong) => addedSong.id != song.id)
+        );
+        setCounter((prevCounter) => prevCounter - 1);
     };
-
-    // const removeSongFromAddedList = (songId) => {
-    //     setAddedSongs(addedSongs.filter((song) => song.id !== songId));
-    // };
 
     const { token } = useToken();
-
-    const getSongDetails = (songId) => {
-        return testData.find((song) => song.id === songId);
-    };
 
     return (
         <main className="container content-container section">
@@ -46,41 +40,51 @@ const Main = () => {
                             fringilla. Nunc luctus sed orci ac sodales.
                         </p>
                     </div>
-                    <SearchBox addSongToAddedList={addSongToAddedList} />
+                    <SearchBox
+                        addSongToAddedList={addSongToAddedList}
+                        removeSongFromAddedList={removeSongFromAddedList}
+                        addedSongs={addedSongs}
+                    />
                 </div>
                 <div className="main__addedSongs-wrapper">
                     <h2 className="main__addedSong-title">ADDED SONGS</h2>
                     <ul className="main__addedSong-songList">
-                        {addedSongs.map((songId) => (
+                        {addedSongs.map((song, index) => (
                             <li
-                                key={songId}
+                                key={song.id}
                                 className="main__addedSong-songList-item"
                             >
                                 <p className="main__addedSong-songList-iteration">
-                                    {songId}
+                                    {index + 1}
                                 </p>
                                 <img
                                     className="main__addedSong-songList-songAlbumImg"
-                                    src={getSongDetails(songId)?.songAlbumImg}
+                                    src={song.album.images[0].url}
                                 />
                                 <div className="main__addedSong-songList-details-wrapper">
                                     <p className="main__addedSong-songList-songName">
-                                        {getSongDetails(songId)?.songName}
+                                        {song.name}
                                     </p>
                                     <p className="main__addedSong-songList-songDetails">
-                                        {getSongDetails(songId)?.songArtist} -{" "}
-                                        {getSongDetails(songId)?.songAlbum} (
-                                        {getSongDetails(songId)?.songReleased})
+                                        {song.artists.map(
+                                            (artist) => artist.name
+                                        )}{" "}
+                                        -{song.album.name} (
+                                        {song.album.release_date.substring(
+                                            0,
+                                            4
+                                        )}
+                                        )
                                     </p>
                                 </div>
                                 <button
                                     className="main__addedSong-songList-removeButton"
-                                    // onClick={() =>
-                                    //     removeSongFromAddedList(songId)
-                                    // }
+                                    onClick={() =>
+                                        removeSongFromAddedList(song)
+                                    }
                                 >
                                     <svg
-                                        className="searchResult__closeButtonImg"
+                                        className="main__addedSong-songList-removeButtonImg"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
