@@ -16,15 +16,20 @@
 }
 
 .main__content-searchBarImg {
-    width: var(--size-2xl);
+    width: var(--size-xl);
 }
 
 .main__content-searchBar {
     width: 100%;
     background: none;
     border: none;
-    font-size: var(--size-lg);
+    font-size: var(--size-base);
     color: var(--clr-primary);
+}
+
+.main__content-search-result-prompt {
+    text-align: center;
+    font-size: var(--size-xs);
 }
 
 .main__content-search-result {
@@ -56,19 +61,31 @@
     border-radius: 1rem;
 }
 
-.main__content-search-result-play {
-    width: var(--size-2xl);
-    height: var(--size-2xl);
+.main__content-search-result-play,
+.main__content-search-result-pause {
+    width: var(--size-xl);
+    height: var(--size-xl);
     transition: color 0.3s ease-in;
 }
 
-.main__content-search-result-item:hover .main__content-search-result-play {
+.main__content-search-result-play:hover {
+    color: var(--clr-primary) !important;
+}
+
+.main__content-search-result-item:hover .main__content-search-result-play,
+.main__content-search-result-item:hover .main__content-search-result-pause {
+    color: var(--clr-dark);
+}
+
+.main__content-search-result-item:hover .main__content-search-result-addButton,
+.main__content-search-result-item:hover
+    .main__content-search-result-addedPrompt {
     color: var(--clr-primary);
 }
 
 .main__content-search-result-albumImg {
-    width: var(--size-4xl);
-    height: var(--size-4xl);
+    width: var(--size-3xl);
+    height: var(--size-3xl);
 }
 
 .main__content-search-result-songName {
@@ -89,103 +106,42 @@
     color: var(--clr-dark);
 }
 
-.searchResult__popup {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--clr-t-dark);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchResult__closeSection {
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-}
-
-.searchResult__popup-container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--clr-gray);
-    border-radius: 1rem;
-    padding: 2rem;
-    z-index: 999;
-    gap: 2rem;
-}
-
-.searchResult__closeButton {
-    transition: color 0.3s ease-in-out;
-}
-
-.searchResult__closeButton:hover {
-    color: var(--clr-primary);
-}
-
-.searchResult__closeButtonImg {
-    width: var(--size-3xl);
-    height: var(--size-3xl);
-    margin-left: auto;
-}
-
-.searchResult__popup-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.searchResult__popup-img {
-    width: 12.5rem;
-    border-radius: 50%;
-}
-
-.searchResult__popup-songDetails-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.searchResult__popup-songDetails-title-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.searchResult__popup-title {
-    color: var(--clr-primary);
-    font-size: var(--size-2xl);
-    font-weight: 900;
-}
-
-.searchResult__popup-subtitle {
-    font-size: var(--size-base);
-}
-
-.searchResult__popup-addButton {
-    color: var(--clr-dark);
-    transition: color 0.3s ease-in-out;
-}
-
-.searchResult__popup-addButton:hover {
-    color: var(--clr-primary);
-}
-
-.searchResult__popup-addButtonImg {
-    display: block;
-    width: var(--size-4xl);
-    height: var(--size-4xl);
-}
-
-.searchResult__popup-songDetails-tip {
+.main__content-search-result-songName {
     font-size: var(--size-xs);
-    max-width: 40ch;
+}
+
+.main__content-search-result-songDetails {
+    font-size: var(--size-xxs);
+}
+
+.main__content-search-result-addButton {
+    margin-left: auto;
+    color: var(--clr-light);
+    transition: color 0.3s ease-in-out;
+}
+
+.main__content-search-result-addedPrompt {
+    font-size: var(--size-xs);
+    margin-left: auto;
+    color: var(--clr-light);
+    transition: color 0.3s ease-in-out;
+}
+
+.main__content-search-result-addButton:hover svg {
+    fill: var(--clr-primary);
+}
+
+.main__content-search-result-addButtonImg {
+    display: block;
+    width: var(--size-xl);
+    height: var(--size-xl);
+}
+
+.main__content-search-result-audio {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
 }
 
 /* xs */
@@ -194,43 +150,41 @@
 /* sm */
 @media (min-width: 640px) {
     .main__content-searchBarImg {
-        width: var(--size-2xl);
+        width: var(--size-xl);
     }
 
     .main__content-searchBar {
-        font-size: var(--size-xl);
+        font-size: var(--size-lg);
+    }
+
+    .main__content-search-result-prompt {
+        font-size: var(--size-sm);
     }
 
     .main__content-search-result-play {
-        width: var(--size-3xl);
-        height: var(--size-3xl);
+        width: var(--size-2xl);
+        height: var(--size-2xl);
     }
 
     .main__content-search-result-albumImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    }
-
-    .searchResult__closeButtonImg {
         width: var(--size-4xl);
         height: var(--size-4xl);
     }
 
-    .searchResult__popup-title {
-        font-size: var(--size-3xl);
-    }
-
-    .searchResult__popup-subtitle {
-        font-size: var(--size-lg);
-    }
-
-    .searchResult__popup-addButtonImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    }
-
-    .searchResult__popup-songDetails-tip {
+    .main__content-search-result-songName {
         font-size: var(--size-sm);
+    }
+
+    .main__content-search-result-songDetails {
+        font-size: var(--size-xs);
+    }
+    .main__content-search-result-addedPrompt {
+        font-size: var(--size-sm);
+    }
+
+    .main__content-search-result-addButtonImg {
+        width: var(--size-2xl);
+        height: var(--size-2xl);
     }
 }
 
@@ -265,72 +219,17 @@
         gap: 2rem;
     }
 
-    .searchResult__popup-container {
-        padding: 2.5rem;
-        gap: 2.5rem;
-    }
-
-    .searchResult__popup-details {
-        gap: 2rem;
-    }
-
-    .searchResult__popup-img {
-        width: 15rem;
-    }
-
-    .searchResult__popup-songDetails-title-wrapper {
-        gap: 0.8rem;
-    }
-
-    .main__content-searchBarImg {
-        width: var(--size-xl);
-    }
-
-    .main__content-searchBar {
-        font-size: var(--size-lg);
-    }
-
-    .main__content-search-result-play {
-        width: var(--size-2xl);
-        height: var(--size-2xl);
-    }
-
-    .main__content-search-result-albumImg {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
-    }
-
-    .searchResult__closeButtonImg {
-        width: var(--size-3xl);
-        height: var(--size-3xl);
-    }
-
-    .searchResult__popup-title {
-        font-size: var(--size-2xl);
-    }
-
-    .searchResult__popup-subtitle {
-        font-size: var(--size-base);
-    }
-
-    .searchResult__popup-addButtonImg {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
-    }
-
-    .searchResult__popup-songDetails-tip {
-        font-size: var(--size-xs);
-    }
-}
-
-/* xl */
-@media (min-width: 1280px) {
     .main__content-searchBarImg {
         width: var(--size-2xl);
     }
 
     .main__content-searchBar {
         font-size: var(--size-xl);
+    }
+
+    .main__content-search-result-prompt {
+        text-align: left;
+        font-size: var(--size-base);
     }
 
     .main__content-search-result-play {
@@ -343,37 +242,36 @@
         height: var(--size-5xl);
     }
 
-    .searchResult__closeButtonImg {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
+    .main__content-search-result-songName {
+        font-size: var(--size-base);
     }
 
-    .searchResult__popup-title {
-        font-size: var(--size-3xl);
+    .main__content-search-result-songDetails {
+        font-size: var(--size-sm);
     }
 
-    .searchResult__popup-subtitle {
-        font-size: var(--size-lg);
+    .main__content-search-result-addedPrompt {
+        font-size: var(--size-base);
     }
 
-    .searchResult__popup-addButtonImg {
+    .main__content-search-result-addButtonImg {
         width: var(--size-3xl);
         height: var(--size-3xl);
     }
-
-    .searchResult__popup-songDetails-tip {
-        font-size: var(--size-xs);
-    }
 }
 
-/* 2xl */
-@media (min-width: 1536px) {
+/* xl */
+@media (min-width: 1280px) {
     .main__content-searchBarImg {
         width: var(--size-3xl);
     }
 
     .main__content-searchBar {
         font-size: var(--size-2xl);
+    }
+
+    .main__content-search-result-prompt {
+        font-size: var(--size-lg);
     }
 
     .main__content-search-result-play {
@@ -386,25 +284,62 @@
         height: var(--size-6xl);
     }
 
-    .searchResult__closeButtonImg {
+    .main__content-search-result-songName {
+        font-size: var(--size-lg);
+    }
+
+    .main__content-search-result-songDetails {
+        font-size: var(--size-base);
+    }
+
+    .main__content-search-result-addedPrompt {
+        font-size: var(--size-lg);
+    }
+
+    .main__content-search-result-addButtonImg {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .main__content-searchBarImg {
+        width: var(--size-4xl);
+    }
+
+    .main__content-searchBar {
+        font-size: var(--size-3xl);
+    }
+
+    .main__content-search-result-prompt {
+        font-size: var(--size-xl);
+    }
+
+    .main__content-search-result-play {
         width: var(--size-5xl);
         height: var(--size-5xl);
     }
 
-    .searchResult__popup-title {
-        font-size: var(--size-4xl);
+    .main__content-search-result-albumImg {
+        width: var(--size-7xl);
+        height: var(--size-7xl);
     }
 
-    .searchResult__popup-subtitle {
+    .main__content-search-result-songName {
         font-size: var(--size-xl);
     }
 
-    .searchResult__popup-addButtonImg {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
+    .main__content-search-result-songDetails {
+        font-size: var(--size-lg);
     }
 
-    .searchResult__popup-songDetails-tip {
-        font-size: var(--size-base);
+    .main__content-search-result-addedPrompt {
+        font-size: var(--size-xl);
+    }
+
+    .main__content-search-result-addButtonImg {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
     }
 }
