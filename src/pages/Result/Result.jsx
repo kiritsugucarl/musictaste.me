@@ -1,3 +1,4 @@
+import resultImg from '/collage.jpg'
 import "./Result.css";
 
 const Result = () => {
@@ -9,7 +10,9 @@ const Result = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla elit vel aliquet fringilla. Nunc luctus sed orci ac sodales.
                 </p>
             </div>
+
             <div className="main__resultBtn-wrapper">
+                <img className="main__result-collage" src={resultImg}/>
                 <div className="main__resultBtn">
                     <button className="main__result-downloadBtn">
                         DOWNLOAD
