@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import './Home.css'
-
-const Home = () => {
-    return(
-        <main className="container section">
-            <h1>Home Page</h1>
-=======
 // import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -35,7 +27,6 @@ const Home = () => {
             ) : (
                 navigate("/main")
             )}
->>>>>>> b4d8cc4548f4af10424d692ea436d214575996e0
         </main>
     )
 }

@@ -5,6 +5,7 @@
 .main__result-titleDesc {
     text-align: center;
     color: var(--clr-primary);
+    padding-top: 1em;
 }
 
 .main__resultBtn-wrapper {
@@ -56,13 +57,11 @@
     color: var(--clr-primary);
 }
 
-
 /* xs */
 /* @media (min-width: 475px) {} */
 
 /* sm */
 @media (min-width: 640px) {
-
 }
 
 /* md */

@@ -10,12 +10,42 @@ import {
 import { useToken } from "../../config/TokenContext";
 
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
+    const { token, setToken } = useToken();
+
+    const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+
     const handleMobileMenuClick = () => {
         onMobileMenuToggle(false);
     };
 
+    const logout = () => {
+        setToken("");
+        window.localStorage.removeItem("token");
+        console.log(window.localStorage.getItem("token"));
+    };
+
+    return (
+        <div className="header container">
             {/* Desktop nav */}
             <div className="nav-wrapper">
+                <button
+                    className="nav-menuButton"
+                    onClick={() => onMobileMenuToggle(!isMobileNavOpen)}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                </button>
+
+                <img className="nav-logo" src={logo} />
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
                         <li className="desktop-nav-li">
@@ -32,6 +62,23 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                             <Link to="/" className="desktop-nav-link">
                                 Contact
                             </Link>
+                        </li>
+                        <li className="desktop-nav-li">
+                            {!token ? (
+                                <a
+                                    className="desktop-nav-link"
+                                    href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+                                >
+                                    LOGIN
+                                </a>
+                            ) : (
+                                <button
+                                    className="desktop-nav-link"
+                                    onClick={logout}
+                                >
+                                    LOGOUT
+                                </button>
+                            )}
                         </li>
                     </ul>
                 </nav>
@@ -143,6 +190,24 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                             Contact Us
                                         </Link>
                                     </li>
+
+                                    <li className="mobile-nav-li">
+                                        {!token ? (
+                                            <a
+                                                className="mobile-nav-link"
+                                                href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+                                            >
+                                                LOGIN
+                                            </a>
+                                        ) : (
+                                            <button
+                                                className="mobile-nav-link"
+                                                onClick={logout}
+                                            >
+                                                LOGOUT
+                                            </button>
+                                        )}
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -150,7 +215,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                 </>
             </CSSTransition>
         </div>
-    )
-}
+    );
+};
 
 export default Navbar;
