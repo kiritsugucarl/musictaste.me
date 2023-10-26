@@ -148,17 +148,6 @@
 /* sm */
 @media (min-width: 640px) {
     .main__title {
-<<<<<<< HEAD
-        font-size: var(--size-5xl);
-    }
-
-    .main__titleDesc {
-        font-size: var(--size-lg);
-    }
-
-    .main__addedSong-title {
-=======
->>>>>>> f5723d67e87dcefa9d3e385d8adbb11c59761e34
         font-size: var(--size-3xl);
     }
 
@@ -234,14 +223,8 @@
         font-size: var(--size-base);
     }
 
-<<<<<<< HEAD
-
-    .main__addedSong-title {
-        font-size: var(--size-2xl);
-=======
     .main__addedSong-title {
         font-size: var(--size-3xl);
->>>>>>> f5723d67e87dcefa9d3e385d8adbb11c59761e34
     }
 
     .main__addedSong-songList-iteration {
@@ -277,11 +260,7 @@
     }
 
     .main__addedSong-title {
-<<<<<<< HEAD
-        font-size: var(--size-3xl);
-=======
         font-size: var(--size-4xl);
->>>>>>> f5723d67e87dcefa9d3e385d8adbb11c59761e34
     }
 
     .main__addedSong-songList-iteration {
@@ -312,13 +291,6 @@
         font-size: var(--size-xl);
     }
 
-<<<<<<< HEAD
-    .main__addedSong-title {
-        font-size: var(--size-4xl);
-    }
-
-=======
->>>>>>> f5723d67e87dcefa9d3e385d8adbb11c59761e34
     .main__addedSong-songList-iteration {
         font-size: var(--size-3xl);
     }
