@@ -6,9 +6,6 @@ import Main from "./pages/Main/Main.jsx";
 import Result from "./pages/Result/Result.jsx";
 import { TokenProvider } from "./config/TokenContext.jsx";
 
-
-
-
 const router = createBrowserRouter([
     {
         path: "/",
@@ -18,7 +15,6 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
             },
-
 
             {
                 path: "/main",
@@ -41,5 +37,3 @@ const App = () => {
 };
 
 export default App;
-
-

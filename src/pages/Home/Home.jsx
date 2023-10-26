@@ -1,4 +1,3 @@
-// import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
     CLIENT_ID,
@@ -20,15 +19,14 @@ const Home = () => {
     return (
         <section id="home">
             <div className="home-content">
-                <h1>MUSICTASTE.ME</h1>
+                <h1>musictaste.me</h1>
             </div>
 
             <div className="home-paragraph">
                 <p className="homeParagraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.Vestibulum fringilla <br /> elit vel aliquet fringilla.
-                    Nunc luctus sed orci ac sodales. Donec tincidunt venenatis,{" "}
-                    <br /> pulvinar mattis sem blandit vitae
+                    musictaste.me is a Web Application that aims to identify
+                    your music taste. Get started now and identify your music
+                    taste!
                 </p>
             </div>
             {!token ? (
@@ -36,12 +34,17 @@ const Home = () => {
                     <a
                         href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
                     >
-                        {" "}
                         GET STARTED
                     </a>
                 </div>
             ) : (
                 navigate("/main")
+            )}
+
+            {token && (
+                <div className="btn-start">
+                    <Link to="/main">PROCEED</Link>
+                </div>
             )}
 
             <div className="powered">
