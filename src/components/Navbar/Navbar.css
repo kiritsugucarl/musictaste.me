@@ -181,6 +181,7 @@
         width: var(--size-4xl);
         height: var(--size-4xl);
     }
+
     .mobile-nav-link {
         font-size: var(--size-base);
     }
@@ -215,7 +216,7 @@
     }
 
     .desktop-nav-link {
-        font-size: var(--size-xl);
+        font-size: var(--size-lg);
         font-weight: 600;
         position: relative;
         transition: color 0.3s ease-in-out;
@@ -257,13 +258,9 @@
     }
 
     .desktop-nav-link {
-        font-size: var(--size-2xl);
+        font-size: var(--size-xl);
     }
 }
 
 /* 2xl */
-@media (min-width: 1536px) {
-    .desktop-nav-link {
-        font-size: var(--size-3xl);
-    }
-}
+/* @media (min-width: 1536px) {} */
