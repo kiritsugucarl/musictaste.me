@@ -54,12 +54,12 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                             </Link>
                         </li>
                         <li className="desktop-nav-li">
-                            <Link to="/" className="desktop-nav-link">
+                            <Link to="/about" className="desktop-nav-link">
                                 About
                             </Link>
                         </li>
                         <li className="desktop-nav-li">
-                            <Link to="/" className="desktop-nav-link">
+                            <Link to="/contact" className="desktop-nav-link">
                                 Contact
                             </Link>
                         </li>
@@ -158,7 +158,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                         </svg>
 
                                         <Link
-                                            to="/"
+                                            to="/about"
                                             className="mobile-nav-link"
                                             onClick={handleMobileMenuClick}
                                         >
@@ -183,7 +183,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                         </svg>
 
                                         <Link
-                                            to="/"
+                                            to="/contact"
                                             className="mobile-nav-link"
                                             onClick={handleMobileMenuClick}
                                         >
