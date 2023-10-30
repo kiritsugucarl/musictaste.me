@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchBox from "./components/SearchBox";
 import "./Main.css";
-import testData from "./testData.json";
-import { useToken } from "../../config/TokenContext";
 
 const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
     const [counter, setCounter] = useState(0);
+
+    const navigate = useNavigate();
 
     // add songs to added list
     const addSongToAddedList = (song) => {
@@ -26,7 +27,14 @@ const Main = () => {
         setCounter((prevCounter) => prevCounter - 1);
     };
 
-    const { token } = useToken();
+    // get results
+    const getResults = () => {
+        {
+            counter === 5
+                ? navigate("/result")
+                : console.log("Need five inputs!");
+        }
+    };
 
     return (
         <main className="container content-container section">
@@ -35,9 +43,9 @@ const Main = () => {
                     <div className="main__title-wrapper">
                         <h2 className="main__title">Find your music taste.</h2>
                         <p className="main__titleDesc">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Vestibulum fringilla elit vel aliquet
-                            fringilla. Nunc luctus sed orci ac sodales.
+                            Pick five (5) songs that you absolutely love to
+                            evaluate and identify your music taste! (Song
+                            library comes from Spotify)
                         </p>
                     </div>
                     <SearchBox
@@ -101,7 +109,10 @@ const Main = () => {
                             </li>
                         ))}
                     </ul>
-                    <button className="main__addedSongs-getResultBtn">
+                    <button
+                        onClick={getResults}
+                        className="main__addedSongs-getResultBtn"
+                    >
                         Get Result
                     </button>
                 </div>

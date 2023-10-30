@@ -304,7 +304,7 @@
 
 /* 2xl */
 @media (min-width: 1536px) {
-    .main__content-searchBarImg {
+    /* .main__content-searchBarImg {
         width: var(--size-4xl);
     }
 
@@ -341,5 +341,5 @@
     .main__content-search-result-addButtonImg {
         width: var(--size-5xl);
         height: var(--size-5xl);
-    }
+    } */
 }

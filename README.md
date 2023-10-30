@@ -28,6 +28,14 @@ npm install react-router-dom
 npm install axios
 ```
 
+```bash
+npm install react-transition-group
+```
+
+```bash
+npm install emailjs-com
+```
+
 To run the dev server:
 ```bash
 npm run dev

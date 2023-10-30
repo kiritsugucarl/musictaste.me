@@ -1,0 +1,136 @@
+/* xs */
+@media (min-width: 475px) {
+    .home-content {
+        max-width: 475px;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+    }
+
+    .home-paragraph {
+        font-size: 16px;
+    }
+}
+
+/*.Circles {
+    display: flex;
+    justify-content: flex-end;  
+    position: absolute;
+    padding-top: -10rem;
+}
+
+.circle { 
+    width: 25rem;
+    height: 25rem; 
+    background-color: #4ECCA3; 
+    border-radius: 15rem;
+    margin-left: 43rem;
+    top: -20rem;
+}
+
+.circle2 {
+    width: 15rem; 
+    height: 15rem;
+    background-color: #4ECCA3; 
+    border-radius: 10rem; 
+    margin-left: 30rem; 
+    position: relative;
+    top: -2rem;
+}
+*/
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+@media (min-width: 1024px) {
+    #home {
+        height: 100vh;
+        width: 100vw;
+        max-width: 70rem;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .home-content {
+        display: flex;
+        height: 4.5rem;
+        width: 100%;
+        margin-bottom: 2rem;
+        padding-top: 8rem;
+        margin-left: 4.375rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 6.5625rem;
+        color: #4ecca3;
+        letter-spacing: 0.1rem;
+        font-family: "Inter";
+        text-align: auto;
+    }
+
+    .home-paragraph {
+        display: flex;
+        height: 6.6875rem;
+        width: 100%; /* Use 100% width for mobile */
+        margin-top: 2.5rem;
+        padding-top: 1rem;
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+        font-family: "Inter";
+        margin-left: 4.375rem;
+        max-width: 60ch;
+    }
+
+    .btn-start {
+        display: inline-block;
+        background-color: var(--clr-light);
+        color: var(--clr-dark);
+        height: 2.5rem;
+        font-weight: 900;
+        font-family: "Inter";
+        font-size: 1rem;
+        padding: 0.5rem 2.3rem;
+        border-radius: 1.5rem;
+        justify-content: center;
+        margin-left: 4.375rem;
+    }
+
+    .powered {
+        display: inline-block;
+        margin-left: 2.3rem;
+        color: #4ecca3;
+        font-weight: 800;
+        font-family: "Inter";
+        margin-bottom: -0.5rem;
+    }
+
+    .logoImg {
+        display: inline-block;
+        height: 2.5rem;
+        margin-left: 1rem;
+        vertical-align: middle;
+    }
+
+    .modelImg {
+        height: 33rem;
+        display: inline-block;
+        top: 0;
+        justify-content: right;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        position: absolute;
+        top: 0.4rem;
+        left: 50%;
+    }
+}
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */
