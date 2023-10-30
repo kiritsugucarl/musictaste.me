@@ -7,6 +7,8 @@ A web app to idenfity your music taste. Created for the completion in Fourth Yea
 - Javascript (ES6+)
 - SpotifyAPI
 - Axios
+- Flask
+- Python
 
 ## How to use (dev):
 To access the directory:
