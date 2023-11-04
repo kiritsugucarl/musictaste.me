@@ -47,13 +47,14 @@ const [popupVisible, setPopupVisible] = useState(false);
       });
   };
   return (
-<div className="contact-container">
+ <div className="container">
+     <div className="contact-page-container">
     <h1>CONTACT US</h1>
     <p>Whether you're curious about the free trial, the prices, or the new features, we're ready to answer any of your questions. Please fill out the form below.</p>
-    <hr className="section-divider" /> 
+    <hr className="contact__line" /> 
     <h2>We’d love to hear from you</h2>
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="contact__form-group">
         <input
           placeholder=" Your name"
           type="text"
@@ -61,9 +62,10 @@ const [popupVisible, setPopupVisible] = useState(false);
           value={formData.name}
           onChange={handleChange}
           required
+          className="contact__form-input"
         />
       </div>
-      <div className="form-group">
+      <div className="contact__form-group">
         <input
         placeholder=" Your email"
           type="email"
@@ -71,9 +73,11 @@ const [popupVisible, setPopupVisible] = useState(false);
           value={formData.email}
           onChange={handleChange}
           required
+          className="contact__form-input"
+
         />
       </div>
-      <div className="form-group">
+      <div className="contact__form-group">
         
         <textarea
         placeholder=" Messages"
@@ -81,18 +85,22 @@ const [popupVisible, setPopupVisible] = useState(false);
           value={formData.message}
           onChange={handleChange}
           required
+          className="contact__form-input"
+
         ></textarea>
       </div>
-      <div className="button">
+      <div className="contact__submit-Btn">
           <button type="submit">SUBMIT</button>
+          
         </div>
     </form>
     {popupVisible && (
-        <div className="message-popup">
+        <div className="contact__message-popup">
           {emailSent ? 'Email sent successfully!' : 'An error occurred. Please try again later.'}
         </div>
       )}
     </div>
+ </div>
   );
 };
 

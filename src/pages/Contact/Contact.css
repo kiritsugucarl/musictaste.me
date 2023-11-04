@@ -1,4 +1,4 @@
-.contact-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,25 +7,26 @@
   text-align: center;
 }
 
-.contact-container h1 {
+.contact-page-container h1  {
   letter-spacing: 0.18rem;
   margin-bottom: 0.63rem;
 }
 
-.contact-container h2 {
+.contact-page-container h2 {
   margin-bottom: 1rem;
   margin-top: 0.875rem;
   font-size: var(--size-lg);
   color: var(--clr-primary);
 }
-.contact-container p {
+.contact-page-container p {
+  max-width: 100%;
   color: var(--clr-primary);
 }
-.section-divider {
-  width:60%;
-  background-color: var(--clr-light);
-  border-top: 0.13rem solid  var(--clr-light); 
-  margin-top: 3rem;
+.contact__line {
+  width: 80%;
+  border-top: 0.125em solid var(--clr-primary);
+  background-color: var(--clr-primary);
+  margin: 3rem auto;
 }
 form {
   margin: 2rem auto; 
@@ -33,16 +34,18 @@ form {
   padding: 1.25rem;
   border-radius: 1.875rem;
   background-color: var(--clr-gray);
-  /*max-width: 100%;*/
 }
-.form-group {
+.contact__form-group {
   margin: 0.63rem 0;
   margin-top: 1.75rem;
 }
+.contact__form-input {
+  font-size: var(--size-xs);
+}
+
 input,
 textarea {
   width: 100%;
-  font-size: var(--size-xs);
   padding: 0.63rem;
   border: 0.13rem  solid var(--clr-light);
   border-radius: 0.63rem;
@@ -51,7 +54,7 @@ textarea {
 textarea[name="message"] {
   height: 8rem; 
 }
-.button {
+.contact__submit-Btn {
   display: flex;
   justify-content: center; 
   padding: 0.63rem  1.25rem;
@@ -65,14 +68,14 @@ textarea[name="message"] {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.button:hover {
+.contact__submit-Btn:hover {
   color: var(--clr-dark);
   background-color: var(--clr-primary);
 }
-.button:active {
+.contact__submit-Btn:active {
   transform: translateY(0.25rem);
 }
-.message-popup {
+.contact__message-popup {
   position: fixed;
   top: 0.63rem;
   left: 50%;
@@ -86,177 +89,177 @@ textarea[name="message"] {
 }
 
 @media (min-width: 475px) {
-  .contact-container {
+  .container {
     max-width: 475px;
   }
-  .contact-container h1 {
+  .contact-page-container h1{
     font-size: var(--size-2xl);
   }
-  .contact-container p {
+  .contact-page-container p {
     font-size: var(--size-xs);
     max-width:50ch;
   }
-  .contact-container h2 {
+  .contact-page-container h2 {
     font-size: var(--size-lg);
   }
-  .section-divider {
-    width: 90%;
+ .contact__line {
+    width: 80%;
   }
   form {
-    max-width: 350px
+    max-width: 34.375rem;
   }
-  .button {
+  .contact__form-input{
+    font-size: var(--size-sm)  
+  }
+  .contact__submit-Btn {
     margin-top: 2rem;
     margin-bottom: 1.75rem;
     width: 12rem;
-
   }
   textarea[name="message"] {
     height: 8rem; 
   }
-  
-  input::placeholder,
-  textarea::placeholder {
+  .contact__form-input   {
     font-size: var(--size-xs);
   }
-  .message-popup {
-    width: 170px;
+  .contact__message-popup {
+    width: 10.625rem;
     font-size: var(--size-xs);
   }
 }
 
-/* sm */
 @media (min-width: 640px) {
-  .contact-container {
+  .container {
     max-width: 640px;
   }
-  .contact-container h1 {
+  .contact-page-container h1{
     font-size: var(--size-2xl);
   }
 
-  .section-divider {
-    width: 70%;
-  }
   form {
-    max-width: 400px;
+    max-width: 25rem;
   }
-  .button {
-    width: 12rem;
-  }
-  input::placeholder,
-  textarea::placeholder {
+  .contact__form-input {
     font-size: var(--size-sm);
   }
+  .contact__submit-Btn {
+    width: 12rem;
+  }
+ 
   }
 
 @media (min-width: 768px) {
-  .contact-container {
+  .container {
     max-width: 768px;
     width: 100%;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  .contact-container h1 {
+  .contact-page-container h1{
     font-size: var(--size-3xl);
   }
-  .contact-container p {
+  .contact-page-container p {
     font-size: var(--size-sm);
     max-width: 50ch;
   }
-  .contact-container h2 {
+  .contact-page-container h2 {
     font-size: var(--size-base);
   }
-  .section-divider {
-    max-width: 70%;
+  .contact__line {
+    max-width: 85%;
+  }
+  .contact__form-input {
+    font-size: var(--size-sm);
   }
   form {
-    max-width:550px;
+    max-width:34.375rem;
   }
-  .button {
+  .contact__submit-Btn {
     width: 14rem;
   }
-  input::placeholder,
-  textarea::placeholder {
-    font-size: var(--size-base);
-  }
+ 
   textarea[name="message"] {
     height: 10rem; 
   } 
-  .message-popup {
-    width: 200px;
+  .contact__message-popup {
+    width: 12.5rem;
     font-size: var(--size-sm);
   }
 }
 
 @media (min-width: 1024px) {
-  .contact-container {
-    max-width: 1024px;
-  }
-  .contact-container p {
+  .container   {
+  max-width: 1024px;
+}
+  
+  .contact-page-container p {
     margin-top: 1rem;
     max-width: 70ch;
   }
-  .section-divider {
-    width: 50%;
-  }
-  .button {
+ 
+  .contact__submit-Btn {
     width: 12rem;
-  
   }
-  .message-popup {
-    width: 230px;
+
+  .contact__message-popup {
+    width: 14.375rem;
     font-size: var(--size-base);
   }
 }
 
 @media (min-width: 1280px) {
-  .contact-container {
+  .container {
     max-width: 1280px;
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  .contact-container h1 {
+  .contact-page-container h1{
     font-size: var(--size-3xl);
   }
-  .contact-container p {
+  .contact-page-container p {
     font-size: var(--size-base);
     max-width: 75ch;
   }
-  .contact-container h2 {
+  .contact-page-container h2 {
     font-size: var(--size-base);
   }
-  .section-divider {
-    width: 50%;
+  .contact__line {
+    width: 90%;
   }
   form {
-    max-width:600px;
+    max-width:37.5rem;
   }
-  .button {
+  .contact__form-input {
+    font-size: var(--size-base);
+  }
+  .contact__submit-Btn {
     width: 12rem;
   
   }
   textarea[name="message"] {
     height: 12rem; 
   }
-  .message-popup {
+  .contact__message-popup {
     padding: 0.75rem;
-    width: 260px;
+    width: 16.25rem;
     font-size: var(--size-xl);
   }
 }
 
-/* 2xl */
 @media (min-width: 1536px) {
-  .contact-container {
+  .container {
     max-width: 1536px;
   }
-  .contact-container p {
+  .contact-page-container p {
     max-width: 80ch;
   }
   form {
-    max-width:700px;
+    max-width:43.75rem;
   }
-  .button {
+  .contact__form-input {
+    font-size: var(--size-base);
+  }
+  .contact__submit-Btn {
     width: 14rem;
   }
  

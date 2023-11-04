@@ -1,4 +1,4 @@
-.about-page {
+.about-page.container  {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 
 .about-image img {
-  max-height: 15rem;
+   max-height: 10rem;
   margin-bottom: 2rem;
 }
 
@@ -22,44 +22,45 @@
   color: var(--clr-light);
 }
 
-.section-divider {
-  border: 0.75rem;
-  background-color: var(--clr-primary);
+.about__line {
+  width: 50%;
   border-top: 0.125em solid var(--clr-primary);
-  margin: 2rem 0;
+  background-color: var(--clr-primary);
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
-.desc-team p {
+.about__desc-team p {
   margin: 1rem;
   line-height: 2;
   color: var(--clr-primary);
   max-width: 85ch;
 }
-.team {
+
+.about__team {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 20rem; 
+  width: 8rem; 
   flex: 0 0 calc(20% - 1.25rem);
 }
 
-.meet-the-team {
-  display: flex;
+.about__meet-the-team {
   justify-content: center;
-  max-width: 1024px;
-  gap: 6rem;
+  max-width: 100%;
+  max-width: 43.75rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.team img {
+.about__team img {
    border-radius: 80%;
 }
-.name .NLine {
+.about__name .NLine {
   display: none; 
 }
-.name {
+.about__name {
   color: var(--clr-primary);
   font-weight: bold;
   letter-spacing: 0.02rem;
@@ -67,14 +68,15 @@
   margin: 0.625rem 0;
 }
 
-.role {
-  margin-bottom: 0.10rem;
+.about__role {
+  font-size: var(--size-sm);
+  margin-bottom: 2rem;
+  white-space: nowrap;
 }
 
 /**************************************************/
  
-/* lg */
-@media (min-width: 475px) {
+  @media (min-width: 475px) {
   .about-page {
       max-width: 475px;
       
@@ -91,57 +93,58 @@
     font-size: var(--size-xs);
     max-width: 50ch;
   }
-  .section-divider{
-   width: 40% ;
+  .about__line {
+    width: 60%;
   }
-  .meet-the-team {
+  
+  .about__meet-the-team {
     flex-direction: column;
-    max-width: 700px;
+    max-width: 43.75rem;
     gap: 1rem;
     margin-top: 2rem;
 
   }
-  .team {
+  .about__team {
     justify-content: center; 
     align-items: center; 
     width: 8rem;
-
     }
   
-  .the-team-container h2 {
+  .about__the-team-container h2 {
     font-size: var(--size-lg);
     letter-spacing: 0.2rem;
     }
-    .desc-team p{
+    .about__desc-team p{
     font-size: var(--size-xs);
     max-width: 45ch;
     }
-    .name .NLine{
+    .about__name .NLine{
       display: none; 
     }
-  .name {
+    .about__name {
     font-size: var(--size-sm);
-  }
-  .role {
-    font-size: var(--size-sm);
+    }
+    .about__role {
     white-space: nowrap;
 
+   }
   }
-}
 
-/* sm */
-@media (min-width: 640px) {
+  @media (min-width: 640px) {
   .about-page {
       max-width: 640px;
   }
   .about-description{
     max-width: 65ch;}
-  .desc-team p{
+  .about__desc-team p{
       max-width:60ch;
   }
-}
+  .about__line {
+    width: 60%;
+  }
+} 
 
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
   .about-page {
       max-width: 768px;
       padding-left: 1.5rem;
@@ -159,37 +162,40 @@
     font-size: var(--size-sm);
     max-width: 70ch;
   }
-  .section-divider{
-   width: 90% ;
+  .about__line{
+   width: 75% ;
   }
-  .meet-the-team {
+  .about__meet-the-team {
     display: flex;
     flex-direction: row;
-    max-width: 690px;
+    max-width: 43.125rem;
     gap: 1rem;
 
   }
-   .team img{
+   .about__team img{
     width: 6rem; 
      max-width: 100%;
   }
-  .the-team-container h2 {
+  .about__the-team-container h2 {
     font-size: var(--size-xl);
     letter-spacing: 0.2rem;
     }
-    .desc-team p{
+    .about__desc-team p{
     font-size: var(--size-sm);/**/
     max-width: 70ch;
     }
-  .name, .NLine {
+  .about__name, .NLine {
     font-size: var(--size-xs);
     white-space: normal;
   }
-  .role {
+  .about__role {
     font-size: var(--size-xs);
     white-space: nowrap;
+
   }
-}
+  }
+
+
   @media (min-width: 1024px) {
     .about-page {
         max-width: 1024px;
@@ -199,32 +205,34 @@
     }
     .about-description{
       max-width: 90ch;}
-    .desc-team p{
+    .about__desc-team p{
         max-width:90ch;
     }
-    .team {
+    .about__team {
       width: 11rem;
           }
-    .meet-the-team {
+    .about__meet-the-team {
       display: flex;
-      max-width: 900px;
+      max-width: 56.25rem;
       gap: 1rem;
     }
+    .about__line {
+      width: 75%;
+    }
       
-    .name, .NLine {
+    .about__name, .NLine {
       font-size: var(--size-sm);
       letter-spacing: 0.04rem;
       white-space: normal;
     }
-    .role {
+    .about__role {
       font-size: var(--size-sm);
     }
     
 
   }
   
-/* xl */
-@media (min-width: 1280px) {
+  @media (min-width: 1280px) {
   .about-page {
       max-width: 1280px;
       padding-left: 2rem;
@@ -243,36 +251,35 @@
     line-height: 2rem;
     max-width: 100ch;
   }
-  .section-divider{
-   width: 100% ;
+  .about__line{
+   width: 80% ;
   }
-  .meet-the-team {
+  .about__meet-the-team {
     display: flex;
-    max-width: 900px;
+    max-width: 56.25rem;
     gap: 3rem;
   }
-  .the-team-container h2 {
+  .about__the-team-container h2 {
     font-size: var(--size-2xl);
     letter-spacing: 0.2rem;
     }
-    .desc-team p{
+    .about__desc-team p{
     font-size: var(--size-base);
     max-width: 90ch;
     }
-    .team img {
+    .about__team img {
       width: 9rem;
-  
       }
-  .name .NLine {
+  .about__name .NLine {
     font-size: var(--size-base);
     white-space: normal;
   }
-  .role {
+  .about__role {
     font-size: var(--size-base);
   }
 
 }
-/* 2xl */
+
 @media (min-width: 1536px) {
   .about-page {
       max-width: 1536px;
@@ -283,22 +290,24 @@
   .about-description{
     max-width: 105ch;
   }
-  .meet-the-team {
+  .about__meet-the-team {
     display: flex;
-    max-width: 1000px;
+    max-width: 62.5rem;
     gap: 2.5rem;
   }
-  .desc-team{
+  .about__desc-team{
     max-width: 105ch;
   }
-  .team img {
+  .about__team img {
     width: 8rem;  
     }
-
-  .name .NLine {
+    .about__line {
+      width: 80%;
+    }
+  .about__name .NLine {
       display: none; 
     }
-  .name {
+  .about__name {
     font-size: var(--size-base);
     white-space: normal;
     letter-spacing: 0.03rem;
@@ -322,9 +331,3 @@
 
 
 
-
-
-
-
-
-  
