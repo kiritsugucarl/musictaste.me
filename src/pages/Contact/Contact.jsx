@@ -53,7 +53,7 @@ const Contact = () => {
     return (
         <div className="container content-container section">
             <div className="contact-page-container">
-                <h1>CONTACT US</h1>
+                <h1 className="contact-title">CONTACT US</h1>
                 <p>
                     Whether you're curious about the free trial, the prices, or
                     the new features, we're ready to answer any of your

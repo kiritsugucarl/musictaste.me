@@ -1,11 +1,3 @@
-/* .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  text-align: center;
-} */
 
 .contact-page-container {
     display: flex;
@@ -14,18 +6,20 @@
     gap: 1rem;
 }
 
-.contact-page-container h1 {
+.contact-title {
+    font-size: var(--size-xl);
     letter-spacing: 0.18rem;
     margin-bottom: 0.63rem;
 }
 
 .contact-page-container h2 {
     margin-bottom: 1rem;
-    margin-top: 0.875rem;
-    font-size: var(--size-lg);
+    font-size: var(--size-base);
     color: var(--clr-primary);
 }
-.contact-page-container p {
+.contact-page-container p {  
+    font-size: var(--size-sm);
+    text-align: center;
     max-width: 100%;
     color: var(--clr-primary);
 }
@@ -33,7 +27,7 @@
     width: 80%;
     border-top: 0.125em solid var(--clr-primary);
     background-color: var(--clr-primary);
-    margin: 3rem auto;
+    margin: 2rem auto;
 }
 
 form {
@@ -49,6 +43,7 @@ form {
 }
 .contact__form-input {
     font-size: var(--size-xs);
+
 }
 
 input,
@@ -98,9 +93,7 @@ textarea[name="message"] {
 }
 
 @media (min-width: 475px) {
-    /* .container {
-        max-width: 475px;
-    } */
+    
     .contact-page-container h1 {
         font-size: var(--size-2xl);
     }
@@ -112,7 +105,7 @@ textarea[name="message"] {
         font-size: var(--size-lg);
     }
     .contact__line {
-        width: 80%;
+        width: 70%;
     }
     form {
         max-width: 34.375rem;
@@ -138,9 +131,7 @@ textarea[name="message"] {
 }
 
 @media (min-width: 640px) {
-    /* .container {
-        max-width: 640px;
-    } */
+    
     .contact-page-container h1 {
         font-size: var(--size-2xl);
     }
@@ -148,6 +139,7 @@ textarea[name="message"] {
     form {
         max-width: 25rem;
     }
+    
     .contact__form-input {
         font-size: var(--size-sm);
     }
@@ -157,12 +149,7 @@ textarea[name="message"] {
 }
 
 @media (min-width: 768px) {
-    /* .container {
-        max-width: 768px;
-        width: 100%;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    } */
+    
     .contact-page-container h1 {
         font-size: var(--size-3xl);
     }
@@ -171,10 +158,10 @@ textarea[name="message"] {
         max-width: 50ch;
     }
     .contact-page-container h2 {
-        font-size: var(--size-base);
+        font-size: var(--size-lg);
     }
     .contact__line {
-        max-width: 85%;
+        width: 75%;
     }
     .contact__form-input {
         font-size: var(--size-sm);
@@ -196,9 +183,7 @@ textarea[name="message"] {
 }
 
 @media (min-width: 1024px) {
-    /* .container {
-        max-width: 1024px;
-    } */
+   
 
     .contact-page-container p {
         margin-top: 1rem;
@@ -216,11 +201,7 @@ textarea[name="message"] {
 }
 
 @media (min-width: 1280px) {
-    /* .container {
-        max-width: 1280px;
-        padding-left: 2rem;
-        padding-right: 2rem;
-    } */
+   
     .contact-page-container h1 {
         font-size: var(--size-3xl);
     }
@@ -229,11 +210,9 @@ textarea[name="message"] {
         max-width: 75ch;
     }
     .contact-page-container h2 {
-        font-size: var(--size-base);
+        font-size: var(--size-xl);
     }
-    .contact__line {
-        width: 90%;
-    }
+   
     form {
         max-width: 37.5rem;
     }
@@ -254,11 +233,12 @@ textarea[name="message"] {
 }
 
 @media (min-width: 1536px) {
-    /* .container {
-        max-width: 1536px;
-    } */
+    
     .contact-page-container p {
         max-width: 80ch;
+    }
+    .contact__line {
+        width: 78%;
     }
     form {
         max-width: 43.75rem;
