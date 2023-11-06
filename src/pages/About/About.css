@@ -1,330 +1,304 @@
-.about-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
+.about-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.about-page h1 {
-  letter-spacing: 0.2rem;
-  padding: 1.25rem;
-  padding-bottom: 1.875rem;
+.about-title {
+    font-size: var(--size-xl);
+    letter-spacing: 0.2rem;
+    padding: 1.25rem;
+    padding-bottom: 1.875rem;
 }
 
-.about-image img {
-  max-height: 15rem;
-  margin-bottom: 2rem;
+.about-top-image {
+    width: 20rem;
+    height: 10rem;
+    margin-bottom: 2rem;
 }
 
-.about-description p {
-  line-height: 1.5rem;
-  color: var(--clr-light);
+.about-description {
+    font-size: var(--size-xs);
+    line-height: 1.5rem;
+    color: var(--clr-light);
+    text-align: center;
+
 }
 
-.section-divider {
-  border: 0.75rem;
-  background-color: var(--clr-primary);
-  border-top: 0.125em solid var(--clr-primary);
-  margin: 2rem 0;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+.about__line {
+    width: 60%;
+    border-top: 0.125em solid var(--clr-primary);
+    background-color: var(--clr-primary);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.about__the-team-title {
+  font-size: var(--size-lg);
+
+}
+.about__desc-team p {
+    font-size: var(--size-xs);
+    margin: 1rem;
+    line-height: 2;
+    color: var(--clr-primary);
+    max-width: 85ch;
+    text-align: center;
+
 }
 
-.desc-team p {
-  margin: 1rem;
-  line-height: 2;
-  color: var(--clr-primary);
-  max-width: 85ch;
-}
-.team {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 20rem; 
-  flex: 0 0 calc(20% - 1.25rem);
+.about__team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 8rem;
+    flex: 0 0 calc(20% - 1.25rem);
 }
 
-.meet-the-team {
-  display: flex;
-  justify-content: center;
-  max-width: 1024px;
-  gap: 6rem;
+.about__meet-the-team {
+    justify-content: center;
+    max-width: 100%;
+    max-width: 43.75rem;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-.team img {
-   border-radius: 80%;
-}
-.name .NLine {
-  display: none; 
-}
-.name {
-  color: var(--clr-primary);
-  font-weight: bold;
-  letter-spacing: 0.02rem;
-  white-space: nowrap; 
-  margin: 0.625rem 0;
+.about__team img {
+    border-radius: 80%;
 }
 
-.role {
-  margin-bottom: 0.10rem;
+.about__name .NLine {
+  display: none;
+}
+.about__name {
+    font-size: var(--size-base);
+    color: var(--clr-primary);
+    font-weight: bold;
+    letter-spacing: 0.03rem;
+    white-space: nowrap;
+    margin: 0.625rem 0;
+    
+}
+
+.about__role {
+    font-size: var(--size-sm);
+    margin-bottom: 2rem;
+    white-space: nowrap;
 }
 
 /**************************************************/
- 
-/* lg */
+
 @media (min-width: 475px) {
-  .about-page {
-      max-width: 475px;
-      
-  }
-  .about-page h1 {
-    font-size: var(--size-2xl);
-  }
+    .about-title {
+        font-size: var(--size-2xl);
+    }
 
-  .about-image{
-    max-width: 18rem;
-    align-items: center;
-  }
-  .about-description{
-    font-size: var(--size-xs);
-    max-width: 50ch;
-  }
-  .section-divider{
-   width: 40% ;
-  }
-  .meet-the-team {
-    flex-direction: column;
-    max-width: 700px;
-    gap: 1rem;
-    margin-top: 2rem;
+       .about-description {
+        font-size: var(--size-xs);
+        max-width: 50ch;
+    }
+    .about__line {
+        width: 60%;
+    }
 
-  }
-  .team {
-    justify-content: center; 
-    align-items: center; 
-    width: 8rem;
+    .about__meet-the-team {
+        flex-direction: column;
+        max-width: 43.75rem;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .about__team {
+        justify-content: center;
+        align-items: center;
+        width: 8rem;
+    }
+
+    .about__the-team-title {
+        font-size: var(--size-lg);
+        letter-spacing: 0.2rem;
+    }
+    .about__desc-team p {
+        font-size: var(--size-xs);
+        max-width: 45ch;
+    }
+    .about__name .NLine {
+        display: none;
+    }
+    .about__name {
+        font-size: var(--size-sm);
 
     }
-  
-  .the-team-container h2 {
-    font-size: var(--size-lg);
-    letter-spacing: 0.2rem;
+    .about__role {
+        white-space: nowrap;
     }
-    .desc-team p{
-    font-size: var(--size-xs);
-    max-width: 45ch;
-    }
-    .name .NLine{
-      display: none; 
-    }
-  .name {
-    font-size: var(--size-sm);
-  }
-  .role {
-    font-size: var(--size-sm);
-    white-space: nowrap;
-
-  }
 }
 
-/* sm */
 @media (min-width: 640px) {
-  .about-page {
-      max-width: 640px;
-  }
-  .about-description{
-    max-width: 65ch;}
-  .desc-team p{
-      max-width:60ch;
-  }
+   
+    .about-description {
+        max-width: 65ch;
+    }
+    .about__desc-team p {
+        max-width: 60ch;
+    }
+    .about__line {
+        width: 60%;
+    }
 }
 
 @media (min-width: 768px) {
-  .about-page {
-      max-width: 768px;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-  }
-  .about-page h1 {
-    font-size: var(--size-3xl);
-  }
-
-  .about-image{
-    max-width: 20rem;
-    align-items: center;
-  }
-  .about-description{
-    font-size: var(--size-sm);
-    max-width: 70ch;
-  }
-  .section-divider{
-   width: 90% ;
-  }
-  .meet-the-team {
-    display: flex;
-    flex-direction: row;
-    max-width: 690px;
-    gap: 1rem;
-
-  }
-   .team img{
-    width: 6rem; 
-     max-width: 100%;
-  }
-  .the-team-container h2 {
-    font-size: var(--size-xl);
-    letter-spacing: 0.2rem;
-    }
-    .desc-team p{
-    font-size: var(--size-sm);/**/
-    max-width: 70ch;
-    }
-  .name, .NLine {
-    font-size: var(--size-xs);
-    white-space: normal;
-  }
-  .role {
-    font-size: var(--size-xs);
-    white-space: nowrap;
-  }
-}
-  @media (min-width: 1024px) {
-    .about-page {
-        max-width: 1024px;
-    }
-    .about-image{
-      max-width: 24rem;
-    }
-    .about-description{
-      max-width: 90ch;}
-    .desc-team p{
-        max-width:90ch;
-    }
-    .team {
-      width: 11rem;
-          }
-    .meet-the-team {
-      display: flex;
-      max-width: 900px;
-      gap: 1rem;
-    }
-      
-    .name, .NLine {
-      font-size: var(--size-sm);
-      letter-spacing: 0.04rem;
-      white-space: normal;
-    }
-    .role {
-      font-size: var(--size-sm);
+    
+    .about-title {
+        font-size: var(--size-3xl);
     }
     
+    .about-description {
+        font-size: var(--size-sm);
+        max-width: 70ch;
+    }
+    .about__line {
+        width: 75%;
+    }
+    .about__meet-the-team {
+        display: flex;
+        flex-direction: row;
+        max-width: 43.125rem;
+        gap: 1rem;
+    }
+    .about__team img {
+        width: 6rem;
+        max-width: 100%;
+    }
+    .about__the-team-title {
+        font-size: var(--size-xl);
+        letter-spacing: 0.2rem;
+    }
+    .about__desc-team p {
+        font-size: var(--size-sm); /**/
+        max-width: 70ch;
+    }
+    .about__name,
+    .NLine {
+        font-size: var(--size-xs);
+        white-space: normal;
+    }
+    .about__role {
+        font-size: var(--size-xs);
+        white-space: nowrap;
+    }
+}
 
-  }
-  
-/* xl */
+@media (min-width: 1024px) {
+    
+  .about-top-image {
+    width: 22rem;
+    height: 12rem;
+}
+    .about-description {
+        max-width: 90ch;
+    }
+    .about__desc-team p {
+        max-width: 90ch;
+    }
+    .about__team {
+        width: 11rem;
+    }
+    .about__meet-the-team {
+        display: flex;
+        max-width: 56.25rem;
+        gap: 1rem;
+    }
+    .about__line {
+        width: 75%;
+    }
+
+    .about__name,
+    .NLine {
+        font-size: var(--size-sm);
+        letter-spacing: 0.04rem;
+        white-space: normal;
+    }
+    .about__role {
+        font-size: var(--size-sm);
+    }
+}
+
 @media (min-width: 1280px) {
-  .about-page {
-      max-width: 1280px;
-      padding-left: 2rem;
-      padding-right: 2rem;
-  }
-  .about-page h1 {
-    font-size: var(--size-4xl);
-  }
-
-  .about-image{
-    max-width: 30rem;
-    align-items: center;
-  }
-  .about-description{
-    font-size: var(--size-lg);
-    line-height: 2rem;
-    max-width: 100ch;
-  }
-  .section-divider{
-   width: 100% ;
-  }
-  .meet-the-team {
-    display: flex;
-    max-width: 900px;
-    gap: 3rem;
-  }
-  .the-team-container h2 {
-    font-size: var(--size-2xl);
-    letter-spacing: 0.2rem;
+    .about-wrapper {
+        gap: 1.5rem;
     }
-    .desc-team p{
-    font-size: var(--size-base);
-    max-width: 90ch;
+   
+    .about-title {
+        font-size: var(--size-4xl);
     }
-    .team img {
-      width: 9rem;
-  
-      }
-  .name .NLine {
-    font-size: var(--size-base);
-    white-space: normal;
-  }
-  .role {
-    font-size: var(--size-base);
-  }
 
+    .about-top-image {
+        max-width: 30rem;
+        align-items: center;
+    }
+    .about-description {
+        font-size: var(--size-lg);
+        line-height: 2rem;
+        max-width: 100ch;
+    }
+    .about__line {
+        width: 80%;
+    }
+    .about__meet-the-team {
+        display: flex;
+        max-width: 56.25rem;
+        gap: 3rem;
+    }
+    .about__the-team-title {
+        font-size: var(--size-2xl);
+        letter-spacing: 0.2rem;
+    }
+    .about__desc-team p {
+        font-size: var(--size-base);
+        max-width: 90ch;
+    }
+    .about__team img {
+        width: 9rem;
+    }
+    .about__name .NLine {
+        font-size: var(--size-base);
+        white-space: normal;
+    }
+    .about__role {
+        font-size: var(--size-base);
+    }
 }
-/* 2xl */
+
 @media (min-width: 1536px) {
-  .about-page {
-      max-width: 1536px;
-  }
-  .about-image{
-    max-width: 28rem;
-  }
-  .about-description{
-    max-width: 105ch;
-  }
-  .meet-the-team {
-    display: flex;
-    max-width: 1000px;
-    gap: 2.5rem;
-  }
-  .desc-team{
-    max-width: 105ch;
-  }
-  .team img {
-    width: 8rem;  
-    }
-
-  .name .NLine {
-      display: none; 
-    }
-  .name {
-    font-size: var(--size-base);
-    white-space: normal;
-    letter-spacing: 0.03rem;
-
-  }
+   
+    .about-top-image {
+      width: 26rem;
+      height: 14rem;
 }
-
-
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+    .about-description {
+        max-width: 105ch;
+    }
+    .about__meet-the-team {
+        display: flex;
+        max-width: 62.5rem;
+        gap: 2.5rem;
+    }
+    .about__desc-team {
+        max-width: 105ch;
+    }
+    .about__team img {
+        width: 8rem;
+    }
+    .about__line {
+        width: 80%;
+    }
+    
+    .about__name {
+        font-size: var(--size-base);
+        white-space: normal;
+        max-width: 14ch;
+        letter-spacing: 0.03rem;
+    }
+}
