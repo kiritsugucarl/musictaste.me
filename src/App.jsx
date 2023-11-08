@@ -4,8 +4,8 @@ import Home from "./pages/Home/Home.jsx";
 
 import Main from "./pages/Main/Main.jsx";
 import Result from "./pages/Result/Result.jsx";
-import Collage from "./musicCollage/musicCollage.jsx"
-import Splashscreen from "./pages/SplashScreen/Splashscreen.jsx";
+import Collage from "./musicCollege/musicCollage.jsx"
+import Splashscreen from "./musicCollege/musicCollage.jsx";
 import { TokenProvider } from "./config/TokenContext.jsx";
 
 
@@ -44,10 +44,10 @@ const router = createBrowserRouter([
             }
         ],
     },
-    // {
-    //     path: "/collage",
-    //     element: isLoading ? <Splashscreen/> : <Collage />,
-    // },
+    {
+        path: "/collage",
+        element: <Collage />,
+    },
     // {
     //     path: "/splashscreen",
     //     element: <Splashscreen />,
