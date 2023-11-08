@@ -38,6 +38,18 @@ npm install react-transition-group
 npm install emailjs-com
 ```
 
+```bash
+pip install pillow
+```
+
+```bash
+pip install requests
+```
+
+```bash
+pip install flask
+```
+
 To run the dev server:
 ```bash
 npm run dev
