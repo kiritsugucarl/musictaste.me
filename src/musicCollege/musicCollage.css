@@ -1,0 +1,10 @@
+.container-collage {
+    color: #fff;
+}
+
+.main-container-collage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
