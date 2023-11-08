@@ -1,37 +1,39 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchBox from "./components/SearchBox";
 import "./Main.css";
-import testData from "./testData.json";
-import { useToken } from "../../config/TokenContext";
 
 const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [counter, setCounter] = useState(0);
 
-    const handlePopupOpen = () => {
-        setIsPopupOpen(!isPopupOpen);
+    const navigate = useNavigate();
 
-        // Toggle
-        if (!isPopupOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
+    // add songs to added list
+    const addSongToAddedList = (song) => {
+        if (!addedSongs.some((addedSong) => addedSong.id === song.id)) {
+            if (counter < 5) {
+                setAddedSongs((prevSongs) => [...prevSongs, song]);
+                setCounter((prevCounter) => prevCounter + 1);
+            }
         }
-    };
-
-    const addSongToAddedList = (songId) => {
-        const songToAdd = testData.find((song) => song.id === songId);
-        setAddedSongs([...addedSongs, songId]);
     };
 
     // const removeSongFromAddedList = (songId) => {
     //     setAddedSongs(addedSongs.filter((song) => song.id !== songId));
     // };
 
-    const { token } = useToken();
+    const removeSongFromAddedList = (songId) => {
+        setAddedSongs((prevSongs) => prevSongs.filter((song) => song !== songId));
+      };
 
-    const getSongDetails = (songId) => {
-        return testData.find((song) => song.id === songId);
+    // get results
+    const getResults = () => {
+        {
+            counter === 5
+                ? navigate("/result")
+                : console.log("Need five inputs!");
+        }
     };
 
     return (
@@ -41,36 +43,46 @@ const Main = () => {
                     <div className="main__title-wrapper">
                         <h2 className="main__title">Find your music taste.</h2>
                         <p className="main__titleDesc">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Vestibulum fringilla elit vel aliquet
-                            fringilla. Nunc luctus sed orci ac sodales.
+                            Pick five (5) songs that you absolutely love to
+                            evaluate and identify your music taste! (Song
+                            library comes from Spotify)
                         </p>
                     </div>
-                    <SearchBox addSongToAddedList={addSongToAddedList} />
+                    <SearchBox
+                        addSongToAddedList={addSongToAddedList}
+                        removeSongFromAddedList={removeSongFromAddedList}
+                        addedSongs={addedSongs}
+                    />
                 </div>
                 <div className="main__addedSongs-wrapper">
                     <h2 className="main__addedSong-title">ADDED SONGS</h2>
                     <ul className="main__addedSong-songList">
-                        {addedSongs.map((songId) => (
+                        {addedSongs.map((song, index) => (
                             <li
-                                key={songId}
+                                key={song.id}
                                 className="main__addedSong-songList-item"
                             >
                                 <p className="main__addedSong-songList-iteration">
-                                    {songId}
+                                    {index + 1}
                                 </p>
                                 <img
                                     className="main__addedSong-songList-songAlbumImg"
-                                    src={getSongDetails(songId)?.songAlbumImg}
+                                    src={song.album.images[0].url}
                                 />
                                 <div className="main__addedSong-songList-details-wrapper">
                                     <p className="main__addedSong-songList-songName">
-                                        {getSongDetails(songId)?.songName}
+                                        {song.name}
                                     </p>
                                     <p className="main__addedSong-songList-songDetails">
-                                        {getSongDetails(songId)?.songArtist} -{" "}
-                                        {getSongDetails(songId)?.songAlbum} (
-                                        {getSongDetails(songId)?.songReleased})
+                                        {song.artists.map(
+                                            (artist) => artist.name
+                                        )}{" "}
+                                        -{song.album.name} (
+                                        {song.album.release_date.substring(
+                                            0,
+                                            4
+                                        )}
+                                        )
                                     </p>
                                 </div>
                                 <button
@@ -80,7 +92,7 @@ const Main = () => {
                                     // }
                                 >
                                     <svg
-                                        className="searchResult__closeButtonImg"
+                                        className="main__addedSong-songList-removeButtonImg"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -97,7 +109,10 @@ const Main = () => {
                             </li>
                         ))}
                     </ul>
-                    <button className="main__addedSongs-getResultBtn">
+                    <button
+                        onClick={getResults}
+                        className="main__addedSongs-getResultBtn"
+                    >
                         Get Result
                     </button>
                 </div>

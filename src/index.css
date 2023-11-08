@@ -62,6 +62,7 @@ button {
     background: none;
     cursor: pointer;
     color: inherit;
+    line-height: calc(1em + 0.5rem);
 }
 
 a {
