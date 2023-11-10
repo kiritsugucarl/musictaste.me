@@ -24,6 +24,9 @@ import Contact from "./pages/Contact/Contact.jsx";
 //     stopLoading();
 // };
 
+
+
+
 const router = createBrowserRouter([
     {
         path: "/",
