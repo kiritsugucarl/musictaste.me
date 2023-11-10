@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../config/TokenContext";
-import resultImg from "/collage.jpg";
+// import resultImg from "/collage.jpg";
 import "./Result.css";
 
 const Result = () => {

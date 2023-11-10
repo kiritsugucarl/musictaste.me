@@ -44,10 +44,10 @@ const router = createBrowserRouter([
             }
         ],
     },
-    // {
-    //     path: "/collage",
-    //     element: isLoading ? <Splashscreen/> : <Collage />,
-    // },
+    {
+        path: "/collage",
+        element: <Collage />,
+    },
     // {
     //     path: "/splashscreen",
     //     element: <Splashscreen />,
