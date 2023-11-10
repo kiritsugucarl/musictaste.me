@@ -204,6 +204,7 @@
         gap: 1.5rem;
         padding: 1.5rem;
         min-width: 40%;
+        max-width: 40%;
     }
 
     .main__addedSong-songList {
@@ -252,24 +253,52 @@
 /* xl */
 @media (min-width: 1280px) {
     .main__title {
-        font-size: var(--size-5xl);
-    }
-
-    .main__titleDesc {
-        font-size: var(--size-lg);
-    }
-
-    .main__addedSong-title {
         font-size: var(--size-4xl);
     }
 
+    .main__titleDesc {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-title {
+        font-size: var(--size-3xl);
+    }
+
     .main__addedSong-songList-iteration {
-        font-size: var(--size-lg);
+        font-size: var(--size-base);
     }
 
     .main__addedSong-songList-songAlbumImg {
         width: var(--size-5xl);
         height: var(--size-5xl);
+    }
+
+    .main__addedSong-songList-songName {
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-songList-songDetails {
+        font-size: var(--size-sm);
+    }
+
+    .main__addedSongs-getResultBtn {
+        font-size: var(--size-lg);
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    /* .main__titleDesc {
+        font-size: var(--size-lg);
+    }
+
+    .main__addedSong-songList-iteration {
+        font-size: var(--size-2xl);
+    }
+
+    .main__addedSong-songList-songAlbumImg {
+        width: var(--size-6xl);
+        height: var(--size-6xl);
     }
 
     .main__addedSong-songList-songName {
@@ -282,33 +311,5 @@
 
     .main__addedSongs-getResultBtn {
         font-size: var(--size-xl);
-    }
-}
-
-/* 2xl */
-@media (min-width: 1536px) {
-    .main__titleDesc {
-        font-size: var(--size-xl);
-    }
-
-    .main__addedSong-songList-iteration {
-        font-size: var(--size-3xl);
-    }
-
-    .main__addedSong-songList-songAlbumImg {
-        width: var(--size-6xl);
-        height: var(--size-6xl);
-    }
-
-    .main__addedSong-songList-songName {
-        font-size: var(--size-xl);
-    }
-
-    .main__addedSong-songList-songDetails {
-        font-size: var(--size-lg);
-    }
-
-    .main__addedSongs-getResultBtn {
-        font-size: var(--size-2xl);
-    }
+    } */
 }

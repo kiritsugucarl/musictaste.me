@@ -19,7 +19,6 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
 
-
             {
                 path: "/main",
                 element: <Main />,
@@ -41,5 +40,3 @@ const App = () => {
 };
 
 export default App;
-
-
