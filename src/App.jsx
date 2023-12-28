@@ -9,6 +9,8 @@ import Splashscreen from "./musicCollege/musicCollage.jsx";
 import { TokenProvider } from "./config/TokenContext.jsx";
 import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
+import MusicTaste from "./pages/MusicTaste/MusicTaste.jsx";
+import MusicPersonality from "./pages/MusicPersonality/MusicPersonality.jsx";
 
 // const [isLoading, setIsLoading] = useState(false);
 // useEffect(() => {
@@ -24,9 +26,6 @@ import Contact from "./pages/Contact/Contact.jsx";
 //     stopLoading();
 // };
 
-
-
-
 const router = createBrowserRouter([
     {
         path: "/",
@@ -41,6 +40,14 @@ const router = createBrowserRouter([
             {
                 path: "/main",
                 element: <Main />,
+            },
+            {
+                path: "/music-taste",
+                element: <MusicTaste />,
+            },
+            {
+                path: "/music-personality",
+                element: <MusicPersonality />,
             },
             {
                 path: "/result",
