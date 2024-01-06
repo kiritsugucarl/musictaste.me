@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchBox from "./components/SearchBox";
+import SearchBox from "../../components/SearchBox/SearchBox";
 import "./MusicTaste.css";
 
 const MusicTaste = () => {
@@ -56,7 +56,6 @@ const MusicTaste = () => {
                         addedSongs={addedSongs}
                     />
                 </div>
-  
                 <div className="musicTaste__addedSongs-wrapper">
                     <h2 className="musicTaste__addedSong-title">ADDED SONGS</h2>
                     <ul className="musicTaste__addedSong-songList">

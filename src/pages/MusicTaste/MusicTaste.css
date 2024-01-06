@@ -1,5 +1,4 @@
 .musicTaste-wrapper {
-
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
@@ -7,13 +6,11 @@
     gap: 1.5rem;
 }
 
-
 .musicTaste__content-wrapper {
     display: flex;
     flex-direction: column;
     gap: 4rem;
 }
-
 
 .musicTaste__title-wrapper {
     display: flex;
@@ -21,7 +18,6 @@
     text-align: center;
     gap: 1rem;
 }
-
 
 .musicTaste__title {
     font-size: var(--size-2xl);
@@ -48,7 +44,6 @@
     font-size: var(--size-xl);
 }
 
-
 .musicTaste__addedSong-songList {
     list-style: none;
     display: flex;
@@ -57,7 +52,7 @@
     padding-inline-start: 1rem;
 }
 
-.main__addedSong-songList-item {
+.musicTaste__addedSong-songList-item {
     display: flex;
     align-items: center;
     width: 100%;
@@ -111,7 +106,6 @@
     margin-left: auto;
     transition: color 0.3s ease-in-out;
 }
-
 
 .musicTaste__addedSong-songList-removeButtonImg {
     display: block;
