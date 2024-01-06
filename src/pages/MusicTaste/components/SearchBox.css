@@ -1,10 +1,11 @@
-.main__content-search {
+.searchBox__content-search {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.main__content-searchBar-wrapper {
+
+.searchBox__content-searchBar-wrapper {
     display: flex;
     background-color: var(--clr-gray);
     border-radius: 1rem;
@@ -15,11 +16,11 @@
     gap: 1rem;
 }
 
-.main__content-searchBarImg {
+.searchBox__content-searchBarImg {
     width: var(--size-xl);
 }
 
-.main__content-searchBar {
+.searchBox__content-searchBar {
     width: 100%;
     background: none;
     border: none;
@@ -27,12 +28,12 @@
     color: var(--clr-primary);
 }
 
-.main__content-search-result-prompt {
+.searchBox__content-search-result-prompt {
     text-align: center;
     font-size: var(--size-xs);
 }
 
-.main__content-search-result {
+.searchBox__content-search-result {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -41,7 +42,7 @@
     padding-inline-end: 0.5rem;
 }
 
-.main__content-search-result-item {
+.searchBox__content-search-result-item {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--clr-light);
@@ -56,88 +57,92 @@
     cursor: pointer;
 }
 
-.main__content-search-result-item:hover {
+.searchBox__content-search-result-item:hover {
     background-color: var(--clr-light);
     border-radius: 1rem;
 }
 
-.main__content-search-result-play,
-.main__content-search-result-pause {
+.searchBox__content-search-result-play,
+.searchBox__content-search-result-pause {
     width: var(--size-xl);
     height: var(--size-xl);
     transition: color 0.3s ease-in;
 }
 
-.main__content-search-result-play:hover {
+.searchBox__content-search-result-play:hover {
     color: var(--clr-primary) !important;
 }
 
-.main__content-search-result-item:hover .main__content-search-result-play,
-.main__content-search-result-item:hover .main__content-search-result-pause {
+.searchBox__content-search-result-item:hover
+    .searchBox__content-search-result-play,
+.searchBox__content-search-result-item:hover
+    .searchBox__content-search-result-pause {
     color: var(--clr-dark);
 }
 
-.main__content-search-result-item:hover .main__content-search-result-addButton,
-.main__content-search-result-item:hover
-    .main__content-search-result-addedPrompt {
+.searchBox__content-search-result-item:hover
+    .searchBox__content-search-result-addButton,
+.searchBox__content-search-result-item:hover
+    .searchBox__content-search-result-addedPrompt {
     color: var(--clr-primary);
 }
 
-.main__content-search-result-albumImg {
+.searchBox__content-search-result-albumImg {
     width: var(--size-3xl);
     height: var(--size-3xl);
 }
 
-.main__content-search-result-songName {
+.searchBox__content-search-result-songName {
     font-weight: bold;
     transition: color 0.3s ease-in;
 }
 
-.main__content-search-result-item:hover .main__content-search-result-songName {
+.searchBox__content-search-result-item:hover
+    .searchBox__content-search-result-songName {
     color: var(--clr-primary);
 }
 
-.main__content-search-result-songDetails {
+.searchBox__content-search-result-songDetails {
     transition: color 0.3s ease-in;
 }
 
-.main__content-search-result-item:hover
-    .main__content-search-result-songDetails {
+.searchBox__content-search-result-item:hover
+    .searchBox__content-search-result-songDetails {
     color: var(--clr-dark);
 }
 
-.main__content-search-result-songName {
+.searchBox__content-search-result-songName {
     font-size: var(--size-xs);
 }
 
-.main__content-search-result-songDetails {
+.searchBox__content-search-result-songDetails {
     font-size: var(--size-xxs);
 }
 
-.main__content-search-result-addButton {
+.searchBox__content-search-result-addButton {
     margin-left: auto;
     color: var(--clr-light);
     transition: color 0.3s ease-in-out;
 }
 
-.main__content-search-result-addedPrompt {
+.searchBox__content-search-result-addedPrompt {
     font-size: var(--size-xs);
     margin-left: auto;
     color: var(--clr-light);
     transition: color 0.3s ease-in-out;
 }
 
-.main__content-search-result-addButton:hover svg {
+.searchBox__content-search-result-addButton:hover svg {
     fill: var(--clr-primary);
 }
 
-.main__content-search-result-addButtonImg {
+.searchBox__content-search-result-addButtonImg {
     display: block;
     width: var(--size-xl);
     height: var(--size-xl);
 }
 
-.main__content-search-result-audio {
+.searchBox__content-search-result-audio {
     width: 0;
     height: 0;
     visibility: hidden;
@@ -149,40 +154,40 @@
 
 /* sm */
 @media (min-width: 640px) {
-    .main__content-searchBarImg {
+    .searchBox__content-searchBarImg {
         width: var(--size-xl);
     }
 
-    .main__content-searchBar {
+    .searchBox__content-searchBar {
         font-size: var(--size-lg);
     }
 
-    .main__content-search-result-prompt {
+    .searchBox__content-search-result-prompt {
         font-size: var(--size-sm);
     }
 
-    .main__content-search-result-play {
+    .searchBox__content-search-result-play {
         width: var(--size-2xl);
         height: var(--size-2xl);
     }
 
-    .main__content-search-result-albumImg {
+    .searchBox__content-search-result-albumImg {
         width: var(--size-4xl);
         height: var(--size-4xl);
     }
 
-    .main__content-search-result-songName {
+    .searchBox__content-search-result-songName {
         font-size: var(--size-sm);
     }
 
-    .main__content-search-result-songDetails {
+    .searchBox__content-search-result-songDetails {
         font-size: var(--size-xs);
     }
-    .main__content-search-result-addedPrompt {
+    .searchBox__content-search-result-addedPrompt {
         font-size: var(--size-sm);
     }
 
-    .main__content-search-result-addButtonImg {
+    .searchBox__content-search-result-addButtonImg {
         width: var(--size-2xl);
         height: var(--size-2xl);
     }
@@ -193,11 +198,11 @@
 
 /* lg */
 @media (min-width: 1024px) {
-    .main__content-search {
+    .searchBox__content-search {
         gap: 2rem;
     }
 
-    .main__content-searchBar-wrapper {
+    .searchBox__content-searchBar-wrapper {
         padding-top: 1rem;
         padding-bottom: 1rem;
         padding-left: 2rem;
@@ -205,13 +210,13 @@
         gap: 1.5rem;
     }
 
-    .main__content-search-result {
+    .searchBox__content-search-result {
         gap: 2rem;
         padding-inline-start: 1rem;
         padding-inline-end: 1rem;
     }
 
-    .main__content-search-result-item {
+    .searchBox__content-search-result-item {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         padding-top: 1rem;
@@ -219,42 +224,42 @@
         gap: 2rem;
     }
 
-    .main__content-searchBarImg {
+    .searchBox__content-searchBarImg {
         width: var(--size-2xl);
     }
 
-    .main__content-searchBar {
+    .searchBox__content-searchBar {
         font-size: var(--size-xl);
     }
 
-    .main__content-search-result-prompt {
+    .searchBox__content-search-result-prompt {
         text-align: left;
         font-size: var(--size-base);
     }
 
-    .main__content-search-result-play {
+    .searchBox__content-search-result-play {
         width: var(--size-3xl);
         height: var(--size-3xl);
     }
 
-    .main__content-search-result-albumImg {
+    .searchBox__content-search-result-albumImg {
         width: var(--size-5xl);
         height: var(--size-5xl);
     }
 
-    .main__content-search-result-songName {
+    .searchBox__content-search-result-songName {
         font-size: var(--size-base);
     }
 
-    .main__content-search-result-songDetails {
+    .searchBox__content-search-result-songDetails {
         font-size: var(--size-sm);
     }
 
-    .main__content-search-result-addedPrompt {
+    .searchBox__content-search-result-addedPrompt {
         font-size: var(--size-base);
     }
 
-    .main__content-search-result-addButtonImg {
+    .searchBox__content-search-result-addButtonImg {
         width: var(--size-3xl);
         height: var(--size-3xl);
     }
@@ -262,41 +267,41 @@
 
 /* xl */
 @media (min-width: 1280px) {
-    .main__content-searchBarImg {
+    .searchBox__content-searchBarImg {
         width: var(--size-3xl);
     }
 
-    .main__content-searchBar {
+    .searchBox__content-searchBar {
         font-size: var(--size-2xl);
     }
 
-    .main__content-search-result-prompt {
+    .searchBox__content-search-result-prompt {
         font-size: var(--size-lg);
     }
 
-    .main__content-search-result-play {
+    .searchBox__content-search-result-play {
         width: var(--size-4xl);
         height: var(--size-4xl);
     }
 
-    .main__content-search-result-albumImg {
+    .searchBox__content-search-result-albumImg {
         width: var(--size-6xl);
         height: var(--size-6xl);
     }
 
-    .main__content-search-result-songName {
+    .searchBox__content-search-result-songName {
         font-size: var(--size-lg);
     }
 
-    .main__content-search-result-songDetails {
+    .searchBox__content-search-result-songDetails {
         font-size: var(--size-base);
     }
 
-    .main__content-search-result-addedPrompt {
+    .searchBox__content-search-result-addedPrompt {
         font-size: var(--size-lg);
     }
 
-    .main__content-search-result-addButtonImg {
+    .searchBox__content-search-result-addButtonImg {
         width: var(--size-4xl);
         height: var(--size-4xl);
     }
@@ -304,42 +309,4 @@
 
 /* 2xl */
 @media (min-width: 1536px) {
-    /* .main__content-searchBarImg {
-        width: var(--size-4xl);
-    }
-
-    .main__content-searchBar {
-        font-size: var(--size-3xl);
-    }
-
-    .main__content-search-result-prompt {
-        font-size: var(--size-xl);
-    }
-
-    .main__content-search-result-play {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    }
-
-    .main__content-search-result-albumImg {
-        width: var(--size-7xl);
-        height: var(--size-7xl);
-    }
-
-    .main__content-search-result-songName {
-        font-size: var(--size-xl);
-    }
-
-    .main__content-search-result-songDetails {
-        font-size: var(--size-lg);
-    }
-
-    .main__content-search-result-addedPrompt {
-        font-size: var(--size-xl);
-    }
-
-    .main__content-search-result-addButtonImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    } */
 }

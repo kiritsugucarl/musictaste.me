@@ -38,11 +38,13 @@ const MusicTaste = () => {
 
     return (
         <main className="container content-container section">
-            <div className="main-wrapper">
-                <div className="main__content-wrapper">
-                    <div className="main__title-wrapper">
-                        <h2 className="main__title">Find your music taste.</h2>
-                        <p className="main__titleDesc">
+            <div className="musicTaste-wrapper">
+                <div className="musicTaste__content-wrapper">
+                    <div className="musicTaste__title-wrapper">
+                        <h2 className="musicTaste__title">
+                            Find your music taste.
+                        </h2>
+                        <p className="musicTaste__titleDesc">
                             Pick five (5) songs that you absolutely love to
                             evaluate and identify your music taste! (Song
                             library comes from Spotify)
@@ -54,26 +56,27 @@ const MusicTaste = () => {
                         addedSongs={addedSongs}
                     />
                 </div>
-                <div className="main__addedSongs-wrapper">
-                    <h2 className="main__addedSong-title">ADDED SONGS</h2>
-                    <ul className="main__addedSong-songList">
+  
+                <div className="musicTaste__addedSongs-wrapper">
+                    <h2 className="musicTaste__addedSong-title">ADDED SONGS</h2>
+                    <ul className="musicTaste__addedSong-songList">
                         {addedSongs.map((song, index) => (
                             <li
                                 key={song.id}
-                                className="main__addedSong-songList-item"
+                                className="musicTaste__addedSong-songList-item"
                             >
-                                <p className="main__addedSong-songList-iteration">
+                                <p className="musicTaste__addedSong-songList-iteration">
                                     {index + 1}
                                 </p>
                                 <img
-                                    className="main__addedSong-songList-songAlbumImg"
+                                    className="musicTaste__addedSong-songList-songAlbumImg"
                                     src={song.album.images[0].url}
                                 />
-                                <div className="main__addedSong-songList-details-wrapper">
-                                    <p className="main__addedSong-songList-songName">
+                                <div className="musicTaste__addedSong-songList-details-wrapper">
+                                    <p className="musicTaste__addedSong-songList-songName">
                                         {song.name}
                                     </p>
-                                    <p className="main__addedSong-songList-songDetails">
+                                    <p className="musicTaste__addedSong-songList-songDetails">
                                         {song.artists.map(
                                             (artist) => artist.name
                                         )}{" "}
@@ -86,13 +89,13 @@ const MusicTaste = () => {
                                     </p>
                                 </div>
                                 <button
-                                    className="main__addedSong-songList-removeButton"
+                                    className="musicTaste__addedSong-songList-removeButton"
                                     onClick={() =>
                                         removeSongFromAddedList(song)
                                     }
                                 >
                                     <svg
-                                        className="main__addedSong-songList-removeButtonImg"
+                                        className="musicTaste__addedSong-songList-removeButtonImg"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -111,7 +114,7 @@ const MusicTaste = () => {
                     </ul>
                     <button
                         onClick={getResults}
-                        className="main__addedSongs-getResultBtn"
+                        className="musicTaste__addedSongs-getResultBtn"
                     >
                         Get Result
                     </button>
