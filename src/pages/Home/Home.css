@@ -1,22 +1,22 @@
-.home-container{
+.home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.home-wrapper{
+.home-wrapper {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     position: relative;
 }
 
-.home_main-title{
-    color: #4ECCA3;
+.home_main-title {
+    color: #4ecca3;
 }
 
-.login-container{
+.login-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -30,19 +30,18 @@
     border-radius: 1rem;
 }
 
-.home__spotify-ack-container{
+.home__spotify-ack-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    color: #4ECCA3;
+    color: #4ecca3;
     font-weight: bold;
 }
 
-.home__login-spotify-img{
+.home__login-spotify-img {
     width: 10rem;
 }
-
 
 /* xs */
 @media (min-width: 475px) {
@@ -52,8 +51,8 @@
 
     .home-wrapper {
         display: flex;
-        justify-content: center; 
-        align-items: center; 
+        justify-content: center;
+        align-items: center;
     }
 
     .home-wrapper h1 {
@@ -62,7 +61,7 @@
 
     .home_main-description {
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         text-align: center;
     }
 
@@ -82,24 +81,21 @@
 
     .home_main-description {
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         text-align: center;
     }
-
-    
-    
-} 
+}
 
 /* md */
 @media (min-width: 768px) {
-     .home-container {
+    .home-container {
         flex-direction: column;
     }
 
     .home-wrapper {
         display: flex;
-        justify-content: center; 
-        align-items: center; 
+        justify-content: center;
+        align-items: center;
     }
 
     .home-wrapper h1 {
@@ -108,7 +104,7 @@
 
     .home_main-description {
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         text-align: center;
     }
 
@@ -127,15 +123,16 @@
     .home-wrapper {
         display: flex;
         align-items: start;
+        flex: 1;
     }
 
     .home-wrapper h1 {
-        padding-top: 8rem;
+        /* padding-top: 8rem; */
     }
 
     .home_main-description {
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         text-align: start;
     }
 
@@ -145,11 +142,14 @@
         align-items: center;
     }
 
-    .model_home-container {
-        display: flex;
+    /* .model_home-container {
+        flex: 1;
+    } */
+
+    .model_img {
+        width: 45rem;
     }
 }
-
 
 /* xl */
 /* @media (min-width: 1280px) {} */
