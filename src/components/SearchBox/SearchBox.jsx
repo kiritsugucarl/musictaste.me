@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useToken } from "../../../config/TokenContext";
+import { useToken } from "../../config/TokenContext";
 import "./SearchBox.css";
 
 const SearchBox = ({

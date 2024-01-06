@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchBox from "./components/SearchBox";
+import SearchBox from "../../components/SearchBox/SearchBox";
 import "./MusicTaste.css";
 
 const MusicTaste = () => {
@@ -37,7 +37,7 @@ const MusicTaste = () => {
     };
 
     return (
-        <musicTaste className="container content-container section">
+        <main className="container content-container section">
             <div className="musicTaste-wrapper">
                 <div className="musicTaste__content-wrapper">
                     <div className="musicTaste__title-wrapper">
@@ -119,7 +119,7 @@ const MusicTaste = () => {
                     </button>
                 </div>
             </div>
-        </musicTaste>
+        </main>
     );
 };
 
