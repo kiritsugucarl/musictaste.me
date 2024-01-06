@@ -4,6 +4,7 @@
     gap: 1.5rem;
 }
 
+
 .searchBox__content-searchBar-wrapper {
     display: flex;
     background-color: var(--clr-gray);
@@ -308,42 +309,4 @@
 
 /* 2xl */
 @media (min-width: 1536px) {
-    /* .searchBox__content-searchBarImg {
-        width: var(--size-4xl);
-    }
-
-    .searchBox__content-searchBar {
-        font-size: var(--size-3xl);
-    }
-
-    .searchBox__content-search-result-prompt {
-        font-size: var(--size-xl);
-    }
-
-    .searchBox__content-search-result-play {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    }
-
-    .searchBox__content-search-result-albumImg {
-        width: var(--size-7xl);
-        height: var(--size-7xl);
-    }
-
-    .searchBox__content-search-result-songName {
-        font-size: var(--size-xl);
-    }
-
-    .searchBox__content-search-result-songDetails {
-        font-size: var(--size-lg);
-    }
-
-    .searchBox__content-search-result-addedPrompt {
-        font-size: var(--size-xl);
-    }
-
-    .searchBox__content-search-result-addButtonImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
-    } */
 }

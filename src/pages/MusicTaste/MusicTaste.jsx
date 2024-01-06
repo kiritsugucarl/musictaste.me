@@ -37,7 +37,7 @@ const MusicTaste = () => {
     };
 
     return (
-        <musicTaste className="container content-container section">
+        <main className="container content-container section">
             <div className="musicTaste-wrapper">
                 <div className="musicTaste__content-wrapper">
                     <div className="musicTaste__title-wrapper">
@@ -56,6 +56,7 @@ const MusicTaste = () => {
                         addedSongs={addedSongs}
                     />
                 </div>
+  
                 <div className="musicTaste__addedSongs-wrapper">
                     <h2 className="musicTaste__addedSong-title">ADDED SONGS</h2>
                     <ul className="musicTaste__addedSong-songList">
@@ -119,7 +120,7 @@ const MusicTaste = () => {
                     </button>
                 </div>
             </div>
-        </musicTaste>
+        </main>
     );
 };
 
