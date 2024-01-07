@@ -37,6 +37,7 @@
     background-color: var(--clr-gray);
     border-radius: 1rem;
     flex: 1;
+    margin-bottom: 2rem;
 }
 
 .musicPersonality__addedSong-title {
