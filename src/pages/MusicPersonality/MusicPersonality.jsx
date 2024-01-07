@@ -42,12 +42,12 @@ const MusicPersonality = () => {
                 <div className="musicPersonality__content-wrapper">
                     <div className="musicPersonality__title-wrapper">
                         <h2 className="musicPersonality__title">
-                            Find your music taste.
+                            Find your music personality.
                         </h2>
                         <p className="musicPersonality__titleDesc">
                             Pick five (5) songs that you absolutely love to
-                            evaluate and identify your music taste! (Song
-                            library comes from Spotify)
+                            evaluate and identify your music personality! (Song
+                            library is powered by Spotify)
                         </p>
                     </div>
                     <SearchBox
