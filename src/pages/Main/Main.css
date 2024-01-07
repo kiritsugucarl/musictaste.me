@@ -60,7 +60,7 @@
     .main-wrapper {
         flex-direction: row;
         gap: 10rem;
-        margin-top: 7rem;
+        margin-top: 4rem;
     }
 
     .main__link {
