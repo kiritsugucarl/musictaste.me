@@ -10,10 +10,18 @@
     flex-direction: column;
     gap: 2rem;
     position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .home_main-title {
-    color: #4ecca3;
+    color: var(--clr-primary);
+    font-size: var(--size-2xl);
+}
+
+.home_main-description {
+    font-size: var(--size-sm);
 }
 
 .login-container {
@@ -28,6 +36,7 @@
     font-weight: bold;
     padding: 0.5rem 1.5rem;
     border-radius: 1rem;
+    font-size: var(--size-base);
 }
 
 .home__spotify-ack-container {
