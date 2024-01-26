@@ -15,23 +15,23 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
+    // const handleLogin = () => {
+    //     const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
 
-        const authWindow = window.open(
-            authUrl,
-            "_blank",
-            "height=600,width=400"
-        );
+    //     const authWindow = window.open(
+    //         authUrl,
+    //         "_blank",
+    //         "height=600,width=400"
+    //     );
 
-        window.addEventListener("message", (event) => {
-            if (event.origin === window.location.origin) {
-                if (event.data === "authentication_success") {
-                    authWindow.close();
-                }
-            }
-        });
-    };
+    //     window.addEventListener("message", (event) => {
+    //         if (event.origin === window.location.origin) {
+    //             if (event.data === "authentication_success") {
+    //                 authWindow.close();
+    //             }
+    //         }
+    //     });
+    // };
 
     return (
         <main className="container">
@@ -47,7 +47,11 @@ const Home = () => {
                     <div className="login-container">
                         {!token ? (
                             <div className="login-button">
-                                <Link onClick={handleLogin}>GET STARTED</Link>
+                                <a
+                                    href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+                                >
+                                    GET STARTED
+                                </a>
                             </div>
                         ) : (
                             <div className="login-button">
