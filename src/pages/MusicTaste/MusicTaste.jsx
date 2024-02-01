@@ -1,11 +1,16 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import { TokenProvider, useToken } from "../../config/TokenContext";
 import "./MusicTaste.css";
 
 const MusicTaste = () => {
+    const { token } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [counter, setCounter] = useState(0);
+
+    const resultUri = "http://localhost:5000/musicTasteRecommend";
 
     const navigate = useNavigate();
 
@@ -28,11 +33,35 @@ const MusicTaste = () => {
     };
 
     // get results
-    const getResults = () => {
+    const getResults = async () => {
         {
-            counter === 5
-                ? navigate("/result")
-                : console.log("Need five inputs!");
+            if (counter === 5) {
+                try {
+                    console.log(
+                        "Sending song IDs:",
+                        addedSongs.map((song) => song.id)
+                    );
+                    const response = await axios.post(
+                        `${resultUri}`,
+                        {
+                            user_input: addedSongs.map((song) => song.id),
+                        },
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`,
+                            },
+                            // withCredentials: true,
+                        }
+                    );
+
+                    console.log("Received data from Flask:", response.data);
+                } catch (error) {
+                    console.error("Error:", error.message);
+                }
+            } else {
+                console.log("Need five inputs!");
+            }
         }
     };
 

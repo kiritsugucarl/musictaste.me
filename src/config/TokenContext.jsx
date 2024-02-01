@@ -18,6 +18,8 @@ export const TokenProvider = ({ children }) => {
 
             window.location.hash = "";
             window.localStorage.setItem("token", token);
+
+            // window.opener.postMessage("authentication_success");
         }
 
         setToken(token);
