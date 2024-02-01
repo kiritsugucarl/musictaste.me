@@ -37,6 +37,10 @@ const MusicTaste = () => {
         {
             if (counter === 5) {
                 try {
+                    console.log(
+                        "Sending song IDs:",
+                        addedSongs.map((song) => song.id)
+                    );
                     const response = await axios.post(
                         `${resultUri}`,
                         {
@@ -47,11 +51,11 @@ const MusicTaste = () => {
                                 "Content-Type": "application/json",
                                 Authorization: `Bearer ${token}`,
                             },
-                            withCredentials: true,
+                            // withCredentials: true,
                         }
                     );
 
-                    console.log("Receive reco");
+                    console.log("Received data from Flask:", response.data);
                 } catch (error) {
                     console.error("Error:", error.message);
                 }
