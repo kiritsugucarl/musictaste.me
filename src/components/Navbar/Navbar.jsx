@@ -45,7 +45,12 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                     </svg>
                 </button>
 
-                <img className="nav-logo" src={logo} />
+                <div className="nav__logo-wrapper">
+                    <img className="nav-logo" src={logo} />
+                    <h2 className="nav-title">
+                        mt<span className="title-mustard">.</span>me
+                    </h2>
+                </div>
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
                         <li className="desktop-nav-li">
