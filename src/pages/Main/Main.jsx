@@ -41,7 +41,10 @@ const Main = () => {
             <div className="main-wrapper">
                 <div className="main__content-wrapper">
                     <div className="main__title-wrapper">
-                        <h2 className="main__title">Find your music taste.</h2>
+                        <h2 className="main__title">
+                            Find your{" "}
+                            <span className="title-mustard"> music taste </span>
+                        </h2>
                         <p className="main__titleDesc">
                             Pick five (5) songs that you absolutely love to
                             evaluate and identify your music personality! (Song
@@ -55,7 +58,7 @@ const Main = () => {
                     />
                 </div>
                 <div className="main__addedSongs-wrapper">
-                    <h2 className="main__addedSong-title">ADDED SONGS</h2>
+                    <h3 className="main__addedSong-title">ADDED SONGS</h3>
                     <ul className="main__addedSong-songList">
                         {addedSongs.map((song, index) => (
                             <li
