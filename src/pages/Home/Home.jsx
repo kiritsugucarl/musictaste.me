@@ -15,38 +15,24 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    // const handleLogin = () => {
-    //     const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
-
-    //     const authWindow = window.open(
-    //         authUrl,
-    //         "_blank",
-    //         "height=600,width=400"
-    //     );
-
-    //     window.addEventListener("message", (event) => {
-    //         if (event.origin === window.location.origin) {
-    //             if (event.data === "authentication_success") {
-    //                 authWindow.close();
-    //             }
-    //         }
-    //     });
-    // };
-
     return (
         <main className="container">
             <div className="home-container">
                 <div className="home-wrapper">
-                    <h1 className="home_main-title">musictaste.me</h1>
-                    <p className="home_main-description">
-                        musictaste.me is a Web Application that aims to identify
-                        your music taste. Get started now and identify your
-                        music taste!
-                    </p>
+                    <div className="home__title-wrapper">
+                        <h2 className="home__main-title">
+                            musictaste<span className="title-mustard">.</span>me
+                        </h2>
+                        <p className="home__main-description">
+                            musictaste.me is a Web Application that aims to
+                            identify your music taste. Get started now and
+                            identify your music taste!
+                        </p>
+                    </div>
 
-                    <div className="login-container">
+                    <div className="home__login-container">
                         {!token ? (
-                            <div className="login-button">
+                            <div className="home__login-button">
                                 <a
                                     href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
                                 >
@@ -54,7 +40,7 @@ const Home = () => {
                                 </a>
                             </div>
                         ) : (
-                            <div className="login-button">
+                            <div className="home__login-button">
                                 <Link to="/main">PROCEED</Link>
                             </div>
                         )}

@@ -4,7 +4,6 @@
     gap: 1.5rem;
 }
 
-
 .searchBox__content-searchBar-wrapper {
     display: flex;
     background-color: var(--clr-gray);
@@ -27,6 +26,10 @@
     font-size: var(--size-base);
     color: var(--clr-primary);
 }
+
+/* .searchBox__content-searchBar:focus .searchBox__content-searchBar-wrapper {
+    background-color: var(--clr-mustard);
+} */
 
 .searchBox__content-search-result-prompt {
     text-align: center;

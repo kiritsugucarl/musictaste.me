@@ -1,11 +1,12 @@
 :root {
     /* colors */
-    --clr-primary: #4ecca3;
+    --clr-primary: #45a083;
     --clr-blue-green: #3f9176;
     --clr-light: #eeeeee;
     --clr-dark: #232931;
     --clr-t-dark: #292b2a8a;
     --clr-gray: #393e46;
+    --clr-mustard: #fde767;
 
     /* sizes */
     --size-xxs: 0.5rem; /* 8px */
@@ -35,7 +36,7 @@ html {
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: var(--clr-dark);
 }
 
@@ -44,6 +45,10 @@ body {
     display: flex;
     flex-direction: column;
     color: var(--clr-light);
+}
+
+h2 {
+    font-family: "MuseoModerno", sans-serif;
 }
 
 img,
