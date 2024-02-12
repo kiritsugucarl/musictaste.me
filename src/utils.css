@@ -27,6 +27,10 @@
     background-color: var(--clr-primary);
 }
 
+.title-mustard {
+    color: var(--clr-mustard);
+}
+
 /* xs */
 @media (min-width: 475px) {
     .container {

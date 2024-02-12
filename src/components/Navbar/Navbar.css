@@ -1,13 +1,14 @@
 .nav-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     gap: 1rem;
 }
 
 .nav-menuButton {
+    align-self: center;
     margin-left: auto;
     color: var(--clr-light);
     width: var(--size-4xl);
@@ -21,13 +22,25 @@
     color: var(--clr-primary);
 }
 
+.nav__logo-wrapper {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
 .nav-logo {
-    width: var(--size-8xl);
-    height: var(--size-4xl);
+    width: var(--size-5xl);
+    height: var(--size-5xl);
+}
+
+.nav-title {
+    color: var(--clr-primary);
+    padding-bottom: 0.05rem;
 }
 
 .desktop-nav {
     flex: 1;
+    padding-bottom: 0.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,7 +118,7 @@
 
 .mobile-nav-li:hover .mobile-nav-linkIcon,
 .mobile-nav-li:hover .mobile-nav-link {
-    color: var(--clr-primary);
+    color: var(--clr-mustard);
 }
 
 .mobile-nav-li:hover .mobile-nav-link {
@@ -142,7 +155,7 @@
     left: 0;
     width: 100%;
     height: 0.1em;
-    background-color: var(--clr-primary);
+    background-color: var(--clr-mustard);
     opacity: 0;
     transition:
         opacity 300ms,
@@ -155,7 +168,7 @@
 }
 
 .mobile-nav-returnButton:hover {
-    color: var(--clr-primary);
+    color: var(--clr-mustard);
 }
 
 .mobile-nav-returnButtonImg {
@@ -174,7 +187,7 @@
         height: var(--size-5xl);
     }
     .nav-logo {
-        width: var(--size-9xl);
+        width: var(--size-5xl);
         height: var(--size-5xl);
     }
     .mobile-nav-linkIcon {
@@ -198,6 +211,10 @@
 
 /* lg */
 @media (min-width: 1024px) {
+    .nav-title {
+        padding-bottom: 0.05rem;
+    }
+
     .desktop-nav {
         flex: none;
     }
@@ -229,7 +246,7 @@
         left: 0;
         width: 100%;
         height: 0.1em;
-        background-color: var(--clr-primary);
+        background-color: var(--clr-mustard);
         opacity: 0;
         transition:
             opacity 300ms,
@@ -237,7 +254,7 @@
     }
 
     .desktop-nav-link:hover {
-        color: var(--clr-primary);
+        color: var(--clr-mustard);
     }
 
     .desktop-nav-link:hover::after {
@@ -253,12 +270,21 @@
 /* xl */
 @media (min-width: 1280px) {
     .nav-logo {
-        width: var(--size-10xl);
+        width: var(--size-6xl);
         height: var(--size-6xl);
     }
 
+    .nav-title {
+        font-size: var(--size-4xl);
+        padding-bottom: 0.2rem;
+    }
+
+    .desktop-nav {
+        padding-bottom: 0.4rem;
+    }
+
     .desktop-nav-link {
-        font-size: var(--size-xl);
+        font-size: var(--size-2xl);
     }
 }
 
