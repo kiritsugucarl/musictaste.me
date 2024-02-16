@@ -10,8 +10,21 @@ const Main = () => {
     const { token } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [counter, setCounter] = useState(0);
+    const [data, setData] = useState('');
+    const [response, setResponse] = useState('');
 
     const navigate = useNavigate();
+
+    // send links to python
+    const sendData = async () => {
+        try {
+          const res = await axios.post('/api/data', { data });
+          setResponse(res.data.message);
+        } catch (error) {
+          console.error('Error:', error);
+          setResponse('Error sending data');
+        }
+      };
 
     // add songs to added list
     const addSongToAddedList = (song) => {
@@ -64,7 +77,7 @@ const Main = () => {
         };
 
         const response = await axios.get(recommendationsEndpoint, config);
-        return response.data.tracks;
+        return response.data.tracks; // i will get the links from this line
     };
 
     return (
@@ -144,6 +157,7 @@ const Main = () => {
                         ))}
                     </ul>
                     <button
+                        // onClick={() => {getResults; sendData();}} this line will send the results images to python
                         onClick={getResults}
                         className="main__addedSongs-getResultBtn"
                     >
