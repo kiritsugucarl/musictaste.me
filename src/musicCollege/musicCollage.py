@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, jsonify
 from PIL import Image
 import requests
 from io import BytesIO
@@ -6,6 +6,15 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route('/api/data', methods=['POST'])
+def receive_data():
+    data = request.json  # Assuming data is sent in JSON format
+    # Do something with the received data
+    processed_data = {'message': 'Data received successfully', 'data': data}
+    return jsonify(processed_data)
+
 
 @app.route('/music_collage', methods=['GET'])
 def generate_collage():
