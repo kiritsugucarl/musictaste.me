@@ -8,12 +8,13 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/api/data', methods=['POST'])
-def receive_data():
-    data = request.json  # Assuming data is sent in JSON format
-    # Do something with the received data
-    processed_data = {'message': 'Data received successfully', 'data': data}
-    return jsonify(processed_data)
+# @app.route('/upload_image_link', methods=['POST'])
+# def upload_image_link():
+#     data = request.json
+#     image_link = data.get('imageLink')
+#     # Process the image link as needed
+#     print(f"Received image link: {image_link}")
+#     return 'Image link received successfully'
 
 
 @app.route('/music_collage', methods=['GET'])

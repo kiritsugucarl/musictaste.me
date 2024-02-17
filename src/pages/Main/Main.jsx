@@ -10,21 +10,19 @@ const Main = () => {
     const { token } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [data, setData] = useState('');
-    const [response, setResponse] = useState('');
+    const [imageLink, setImageLink] = useState('');
 
     const navigate = useNavigate();
 
     // send links to python
-    const sendData = async () => {
+    const handleImageLinkSubmit = async () => {
         try {
-          const res = await axios.post('/api/data', { data });
-          setResponse(res.data.message);
+            await axios.post('/upload_image_link', { imageLink });
+            console.log('Image link sent successfully');
         } catch (error) {
-          console.error('Error:', error);
-          setResponse('Error sending data');
+            console.error('Error sending image link:', error);
         }
-      };
+    };
 
     // add songs to added list
     const addSongToAddedList = (song) => {
@@ -78,7 +76,24 @@ const Main = () => {
 
         const response = await axios.get(recommendationsEndpoint, config);
         return response.data.tracks; // i will get the links from this line
+        // const tracksData = response.data.tracks;
+        // await sendTracksDataToBackend(tracksData);
     };
+
+    // async function sendTracksDataToBackend(tracksData) {
+    //     const backendEndpoint = 'http://localhost:5000//upload_image_link';
+    //     const requestData = {
+    //         tracksData: tracksData
+    //     };
+    
+    //     try {
+    //         const response = await axios.post(backendEndpoint, requestData);
+    //         console.log('Response from backend:', response.data);
+    //     } catch (error) {
+    //         console.error('Error sending data to backend:', error);
+    //         // Handle the error appropriately
+    //     }
+    // }
 
     return (
         <main className="container content-container section">
@@ -157,7 +172,7 @@ const Main = () => {
                         ))}
                     </ul>
                     <button
-                        // onClick={() => {getResults; sendData();}} this line will send the results images to python
+                        // onClick={() => {getResults; handleImageLinkSubmit();}} this line will send the results images to python
                         onClick={getResults}
                         className="main__addedSongs-getResultBtn"
                     >
