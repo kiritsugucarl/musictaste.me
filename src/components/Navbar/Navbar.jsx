@@ -10,7 +10,7 @@ import {
 import { useToken } from "../../config/TokenContext";
 
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
-    const { token, setToken } = useToken();
+    const { token, setToken, clearToken } = useToken();
 
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 
@@ -19,9 +19,8 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
     };
 
     const logout = () => {
-        setToken("");
-        window.localStorage.removeItem("token");
-        console.log(window.localStorage.getItem("token"));
+        clearToken();
+        console.log(window.localStorage.getItem("musictaste.me-token"));
     };
 
     return (
