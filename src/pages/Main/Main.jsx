@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchBox from "./components/SearchBox";
+import { useToken } from "../../config/TokenContext";
+import axios from "axios";
+import SearchBox from "./components/SearchBox/SearchBox.jsx";
+import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
 
 const Main = () => {
+    const { token } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [counter, setCounter] = useState(0);
 
@@ -28,12 +32,39 @@ const Main = () => {
     };
 
     // get results
-    const getResults = () => {
-        {
-            counter === 5
-                ? navigate("/result")
-                : console.log("Need five inputs!");
+    const getResults = async () => {
+        if (counter === 5) {
+            try {
+                const trackIds = addedSongs.map((song) => song.id);
+
+                // Fetch recommendations from Spotify API
+                const recommendations = await fetchRecommendations(
+                    trackIds,
+                    token
+                );
+
+                console.log("Recommended songs:", recommendations);
+            } catch (error) {
+                console.error("Error: ", error.message);
+            }
+        } else {
+            console.log("Need five inputs!");
         }
+    };
+    // Fetch recommendations from Spotify API
+    const fetchRecommendations = async (trackIds, token) => {
+        const recommendationsEndpoint = `https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=${trackIds.join(
+            ","
+        )}`;
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        const response = await axios.get(recommendationsEndpoint, config);
+        return response.data.tracks;
     };
 
     return (
@@ -120,6 +151,7 @@ const Main = () => {
                     </button>
                 </div>
             </div>
+            <Recommendation />
         </main>
     );
 };

@@ -7,7 +7,7 @@ export const TokenProvider = ({ children }) => {
 
     useEffect(() => {
         const hash = window.location.hash;
-        let token = window.localStorage.getItem("token");
+        let token = window.localStorage.getItem("musictaste.me-token");
 
         if (!token && hash) {
             token = hash
@@ -17,16 +17,31 @@ export const TokenProvider = ({ children }) => {
                 .split("=")[1];
 
             window.location.hash = "";
-            window.localStorage.setItem("token", token);
+            window.localStorage.setItem("musictaste.me-token", token);
 
             // window.opener.postMessage("authentication_success");
         }
 
         setToken(token);
+
+        window.addEventListener("beforeunload", handleBeforeTabClose);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeTabClose);
+        };
     }, []);
 
+    const handleBeforeTabClose = () => {
+        window.localStorage.removeItem("musictaste.me-token");
+    };
+
+    const clearToken = () => {
+        window.localStorage.removeItem("musictaste.me-token");
+        setToken("");
+    };
+
     return (
-        <TokenContext.Provider value={{ token, setToken }}>
+        <TokenContext.Provider value={{ token, setToken, clearToken }}>
             {children}
         </TokenContext.Provider>
     );
