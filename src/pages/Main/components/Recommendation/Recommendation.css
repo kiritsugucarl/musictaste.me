@@ -11,6 +11,15 @@
     text-align: center;
 }
 
+.collage-image {
+    height: var(--size-5xl);
+    width: var(--size-5xl);
+}
+
+.inactive {
+    display: none;
+}
+
 /* xs */
 /* @media (min-width: 475px) {} */
 

@@ -10,19 +10,9 @@ const Main = () => {
     const { token } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [imageLink, setImageLink] = useState('');
+    const [isRecommendationActive, setRecommendationActive] = useState(false);
 
     const navigate = useNavigate();
-
-    // send links to python
-    const handleImageLinkSubmit = async () => {
-        try {
-            await axios.post('/upload_image_link', { imageLink });
-            console.log('Image link sent successfully');
-        } catch (error) {
-            console.error('Error sending image link:', error);
-        }
-    };
 
     // add songs to added list
     const addSongToAddedList = (song) => {
@@ -55,6 +45,23 @@ const Main = () => {
                 );
 
                 console.log("Recommended songs:", recommendations);
+
+                const recommendationImageLinks = recommendations.map(
+                    (song) => song.album.images[0].url
+                );
+
+                const selectedSongsImageLinks = addedSongs.map(
+                    (song) => song.album.images[0].url
+                );
+
+                const allImageLinks = [
+                    ...recommendationImageLinks,
+                    ...selectedSongsImageLinks,
+                ];
+
+                await sendImageLinksToBackend(allImageLinks);
+
+                setRecommendationActive(true);
             } catch (error) {
                 console.error("Error: ", error.message);
             }
@@ -62,6 +69,7 @@ const Main = () => {
             console.log("Need five inputs!");
         }
     };
+
     // Fetch recommendations from Spotify API
     const fetchRecommendations = async (trackIds, token) => {
         const recommendationsEndpoint = `https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=${trackIds.join(
@@ -76,24 +84,18 @@ const Main = () => {
 
         const response = await axios.get(recommendationsEndpoint, config);
         return response.data.tracks; // i will get the links from this line
-        // const tracksData = response.data.tracks;
-        // await sendTracksDataToBackend(tracksData);
     };
 
-    // async function sendTracksDataToBackend(tracksData) {
-    //     const backendEndpoint = 'http://localhost:5000//upload_image_link';
-    //     const requestData = {
-    //         tracksData: tracksData
-    //     };
-    
-    //     try {
-    //         const response = await axios.post(backendEndpoint, requestData);
-    //         console.log('Response from backend:', response.data);
-    //     } catch (error) {
-    //         console.error('Error sending data to backend:', error);
-    //         // Handle the error appropriately
-    //     }
-    // }
+    const sendImageLinksToBackend = async (imageLinks) => {
+        try {
+            await axios.post("http://localhost:5000/recommendationCollage", {
+                imageLinks,
+            });
+            console.log("Image links sent successfully");
+        } catch (error) {
+            console.error("Error sending image links: ", error);
+        }
+    };
 
     return (
         <main className="container content-container section">
@@ -180,7 +182,7 @@ const Main = () => {
                     </button>
                 </div>
             </div>
-            <Recommendation />
+            <Recommendation isActive={isRecommendationActive} />
         </main>
     );
 };
