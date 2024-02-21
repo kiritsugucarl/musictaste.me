@@ -23,7 +23,17 @@ export const TokenProvider = ({ children }) => {
         }
 
         setToken(token);
+
+        window.addEventListener("beforeunload", handleBeforeTabClose);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeTabClose);
+        };
     }, []);
+
+    const handleBeforeTabClose = () => {
+        window.localStorage.removeItem("musictaste.me-token");
+    };
 
     const clearToken = () => {
         window.localStorage.removeItem("musictaste.me-token");
