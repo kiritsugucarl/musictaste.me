@@ -23,7 +23,6 @@ export const TokenProvider = ({ children }) => {
         }
 
         setToken(token);
-
         window.addEventListener("beforeunload", handleBeforeTabClose);
 
         return () => {
