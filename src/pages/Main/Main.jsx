@@ -45,7 +45,7 @@ const Main = () => {
                 );
 
                 console.log("Recommended songs:", recommendations);
-
+              
                 const recommendationImageLinks = recommendations.map(
                     (song) => song.album.images[0].url
                 );
