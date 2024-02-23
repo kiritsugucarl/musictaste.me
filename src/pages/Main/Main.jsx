@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
@@ -209,7 +209,9 @@ const Main = () => {
                     </ul>
                     <button
                         // onClick={() => {getResults; handleImageLinkSubmit();}} this line will send the results images to python
-                        onClick={getResults}
+                        onClick={() => {
+                            getResults();
+                        }}
                         className="main__addedSongs-getResultBtn"
                     >
                         Get Result

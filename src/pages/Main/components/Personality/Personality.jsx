@@ -42,14 +42,28 @@ const determineMusicPersonality = (averageFeatures) => {
     } = averageFeatures;
 
     const thresholds = {
-        danceability: 0.5,
-        energy: 0.5,
-        speechiness: 0.5,
-        valence: 0.5,
-        tempo: 0.5,
-        loudness: 0.5,
-        liveness: 0.5,
-        acousticness: 0.5,
+        partyMan: 0.7,
+        extrovert: 0.65,
+        introvert: 0.5,
+        liveEnthusiast: 0.6,
+        emotional: 0.45,
+        thePartyMan: 0.75,
+        theExtrovert: 0.7,
+        theThinker: 0.55,
+        theWarrior: 0.8,
+        theHeartbroken: 0.4,
+        theShredhead: 0.75,
+    };
+
+    const weights = {
+        danceability: 1,
+        energy: 1,
+        speechiness: 1,
+        valence: 1,
+        tempo: 1,
+        loudness: 1,
+        liveness: 1,
+        acousticness: 1,
     };
 
     // Reduce louness scores between 0 - 1
@@ -57,60 +71,52 @@ const determineMusicPersonality = (averageFeatures) => {
 
     const normalizedTempo = normalize(tempo, 60, 200);
 
-    // Comparison
-    if (danceability > thresholds.danceability && energy > thresholds.energy) {
+    // Calculate the weighted sum of scores
+    const weightedSum =
+        weights.danceability * danceability +
+        weights.energy * energy +
+        weights.speechiness * speechiness +
+        weights.valence * valence +
+        weights.tempo * normalizedTempo +
+        weights.loudness * normalizedLoudness +
+        weights.liveness * liveness +
+        weights.acousticness * acousticness;
+
+    const overallWeight = Object.values(weights).reduce(
+        (sum, weight) => sum + weight,
+        0
+    );
+
+    const normalizedScore = weightedSum / overallWeight;
+
+    if (normalizedScore > thresholds.partyMan) {
         return "Party Man";
-    } else if (
-        danceability < thresholds.danceability &&
-        energy > thresholds.energy &&
-        speechiness > thresholds.speechiness
-    ) {
+    } else if (normalizedScore > thresholds.extrovert) {
         return "Extrovert";
-    } else if (
-        danceability < thresholds.danceability &&
-        normalizedLoudness < thresholds.loudness
-    ) {
+    } else if (normalizedScore > thresholds.introvert) {
         return "Introvert";
-    } else if (
-        liveness > thresholds.liveness &&
-        acousticness > thresholds.acousticness
-    ) {
+    } else if (normalizedScore > thresholds.liveEnthusiast) {
         return "Live Enthusiast";
-    } else if (
-        danceability < thresholds.danceability &&
-        normalizedLoudness < thresholds.loudness &&
-        (valence > thresholds.valence || valence < 1 - thresholds.valence)
-    ) {
+    } else if (normalizedScore > thresholds.emotional) {
         return "Emotional";
-    } else if (
-        danceability > thresholds.danceability &&
-        energy > thresholds.energy &&
-        normalizedLoudness > thresholds.loudness &&
-        normalizedTempo > thresholds.tempo &&
-        valence > thresholds.valence
-    ) {
+    } else if (normalizedScore > thresholds.thePartyMan) {
         return "The Party Man";
-    } else if (
-        danceability > thresholds.danceability &&
-        energy > thresholds.energy &&
-        speechiness > thresholds.speechiness &&
-        normalizedTempo > thresholds.tempo
-    ) {
+    } else if (normalizedScore > thresholds.theExtrovert) {
         return "The Extrovert";
-    } else if (
-        danceability < thresholds.danceability &&
-        normalizedLoudness < thresholds.loudness &&
-        normalizedTempo < thresholds.tempo &&
-        acousticness > thresholds.acousticness &&
-        instrumentalness > thresholds.instrumentalness
-    ) {
+    } else if (normalizedScore > thresholds.theThinker) {
         return "The Thinker";
+    } else if (normalizedScore > thresholds.theWarrior) {
+        return "The Warrior";
+    } else if (normalizedScore > thresholds.theHeartbroken) {
+        return "The Heartbroken";
+    } else if (normalizedScore > thresholds.theShredhead) {
+        return "The Shredhead";
     } else {
-        return "Error obtaining your personality.";
+        return "Undefined Personality";
     }
 };
 
-const Personality = ({ audioFeatures }) => {
+const Personality = ({ audioFeatures, logDebug }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
 
     useEffect(() => {
