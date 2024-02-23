@@ -44,7 +44,6 @@ const SearchBox = ({
 
         try {
             const response = await axios.get(SEARCH_ENDPOINT, config);
-            console.log(response.data);
             setSearchResults(response.data);
             setTotalResults(response.data.total);
         } catch (error) {
@@ -55,16 +54,12 @@ const SearchBox = ({
     const handleInputChange = (e) => {
         const { value } = e.target;
         setSearchKey(value);
-
-        console.log(searchKey);
-
         clearTimeout(searchTimeout); // Clear the previous timeout
         searchTimeout = setTimeout(() => searchItems(e), 1000); // Pass the event object to searchItems
     };
 
     const addSong = (item) => {
         addSongToAddedList(item);
-        console.log(item);
     };
 
     const playSong = (previewUrl, trackId) => {
@@ -107,7 +102,7 @@ const SearchBox = ({
                     const album = track.album; // Extract album information
                     const previewUrl = track.preview_url;
                     {
-                        console.log(`ID: ${track.id}`);
+                        // console.log(`ID: ${track.id}`);
                     }
                     const isSongAdded = addedSongs.some(
                         (addedSong) => addedSong.id === track.id
@@ -222,7 +217,7 @@ const SearchBox = ({
                         d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                     />
                 </svg>
-                {console.log(token)}
+                {/* {console.log(token)} */}
                 {token ? (
                     <input
                         className="searchBox__content-searchBar"

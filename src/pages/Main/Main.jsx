@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
 import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
+import Personality from "./components/Personality/Personality";
 
 const Main = () => {
     const { token } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
+    const [audioFeatures, setAudioFeatures] = useState([]);
     const [counter, setCounter] = useState(0);
     const [isRecommendationActive, setRecommendationActive] = useState(false);
 
@@ -45,7 +47,7 @@ const Main = () => {
                 );
 
                 console.log("Recommended songs:", recommendations);
-              
+
                 const recommendationImageLinks = recommendations.map(
                     (song) => song.album.images[0].url
                 );
@@ -60,6 +62,23 @@ const Main = () => {
                 ];
 
                 await sendImageLinksToBackend(allImageLinks);
+
+                const selectedSongsFeatures = await fetchAudioFeatures(
+                    trackIds,
+                    token
+                );
+
+                const recommendedSongsFeatures = await fetchAudioFeatures(
+                    recommendations.map((song) => song.id),
+                    token
+                );
+
+                const allFeatures = [
+                    ...selectedSongsFeatures,
+                    ...recommendedSongsFeatures,
+                ];
+
+                setAudioFeatures(allFeatures);
 
                 setRecommendationActive(true);
             } catch (error) {
@@ -84,6 +103,21 @@ const Main = () => {
 
         const response = await axios.get(recommendationsEndpoint, config);
         return response.data.tracks; // i will get the links from this line
+    };
+
+    const fetchAudioFeatures = async (trackIds, token) => {
+        const audioFeaturesEndpoint = `https://api.spotify.com/v1/audio-features?ids=${trackIds.join(
+            ","
+        )}`;
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        const response = await axios.get(audioFeaturesEndpoint, config);
+        return response.data.audio_features;
     };
 
     const sendImageLinksToBackend = async (imageLinks) => {
@@ -175,7 +209,9 @@ const Main = () => {
                     </ul>
                     <button
                         // onClick={() => {getResults; handleImageLinkSubmit();}} this line will send the results images to python
-                        onClick={getResults}
+                        onClick={() => {
+                            getResults();
+                        }}
                         className="main__addedSongs-getResultBtn"
                     >
                         Get Result
@@ -183,6 +219,7 @@ const Main = () => {
                 </div>
             </div>
             <Recommendation isActive={isRecommendationActive} />
+            <Personality audioFeatures={audioFeatures} />
         </main>
     );
 };
