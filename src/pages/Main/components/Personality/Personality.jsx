@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
+import personalityDescription from "./data/personalityDescription.json";
 import "./Personality.css";
+
+const imageBasePath = "/personalities/";
 
 const cleanUpAudioFeatures = (audioFeatures) => {
     const featuresToKeep = [
@@ -41,14 +44,15 @@ const determineMusicPersonality = (averageFeatures) => {
         acousticness,
     } = averageFeatures;
 
+    console.log("Features:" + averageFeatures);
+
     const thresholds = {
         partyMan: 0.7,
         extrovert: 0.65,
         introvert: 0.5,
+        instrumetalist: 0.35,
         liveEnthusiast: 0.6,
         emotional: 0.45,
-        thePartyMan: 0.75,
-        theExtrovert: 0.7,
         theThinker: 0.55,
         theWarrior: 0.8,
         theHeartbroken: 0.4,
@@ -87,7 +91,10 @@ const determineMusicPersonality = (averageFeatures) => {
         0
     );
 
+    console.log("Overall Weight: " + overallWeight);
+
     const normalizedScore = weightedSum / overallWeight;
+    console.log("Normalized Score: " + normalizedScore);
 
     if (normalizedScore > thresholds.partyMan) {
         return "Party Man";
@@ -99,10 +106,8 @@ const determineMusicPersonality = (averageFeatures) => {
         return "Live Enthusiast";
     } else if (normalizedScore > thresholds.emotional) {
         return "Emotional";
-    } else if (normalizedScore > thresholds.thePartyMan) {
-        return "The Party Man";
-    } else if (normalizedScore > thresholds.theExtrovert) {
-        return "The Extrovert";
+    } else if (normalizedScore > thresholds.instrumetalist) {
+        return "Instrumentalist";
     } else if (normalizedScore > thresholds.theThinker) {
         return "The Thinker";
     } else if (normalizedScore > thresholds.theWarrior) {
@@ -154,22 +159,33 @@ const Personality = ({ audioFeatures, logDebug }) => {
         ? determineMusicPersonality(overallAverageFeatures)
         : null;
 
+    const imagePath = musicPersonality
+        ? `${imageBasePath}${musicPersonality}.png`
+        : null;
+
     return (
         <div className="personality">
-            <h2 className="personality-title">Your music personality is</h2>
-            <h2>Overall Average Audio Features</h2>
+            <h2 className="personality__title">
+                Your{" "}
+                <span className="title-mustard"> music personality is </span>
+            </h2>
             {overallAverageFeatures ? (
                 <>
-                    <ul>
-                        {Object.entries(overallAverageFeatures).map(
-                            ([feature, value]) => (
-                                <li key={feature}>
-                                    {feature}: {value.toFixed(2)}
-                                </li>
-                            )
+                    {imagePath && (
+                        <img
+                            src={imagePath}
+                            className="personality__result-img"
+                        />
+                    )}
+                    <p className="personality__result-title">
+                        {musicPersonality}
+                    </p>
+                    {musicPersonality &&
+                        personalityDescription[musicPersonality] && (
+                            <p className="personality__description">
+                                {personalityDescription[musicPersonality]}
+                            </p>
                         )}
-                    </ul>
-                    <p>Result: {musicPersonality}</p>
                 </>
             ) : (
                 <p>No data available</p>

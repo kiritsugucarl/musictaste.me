@@ -41,7 +41,7 @@ body {
 }
 
 .page-wrapper {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     color: var(--clr-light);

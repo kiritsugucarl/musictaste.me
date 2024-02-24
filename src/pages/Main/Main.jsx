@@ -12,7 +12,7 @@ const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
     const [audioFeatures, setAudioFeatures] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [isRecommendationActive, setRecommendationActive] = useState(false);
+    const [resultActive, setResultActive] = useState(false);
 
     const navigate = useNavigate();
 
@@ -80,7 +80,7 @@ const Main = () => {
 
                 setAudioFeatures(allFeatures);
 
-                setRecommendationActive(true);
+                setResultActive(true);
             } catch (error) {
                 console.error("Error: ", error.message);
             }
@@ -218,8 +218,13 @@ const Main = () => {
                     </button>
                 </div>
             </div>
-            <Recommendation isActive={isRecommendationActive} />
-            <Personality audioFeatures={audioFeatures} />
+            {resultActive && (
+                <div className="main__results-container">
+                    <Recommendation />
+                    <hr className="main__results-line" />
+                    <Personality audioFeatures={audioFeatures} />
+                </div>
+            )}
         </main>
     );
 };
