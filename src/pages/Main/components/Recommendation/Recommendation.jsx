@@ -2,34 +2,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Recommendation.css";
 
-const Recommendation = ({}) => {
-    const [collage, setCollage] = useState(null);
-
-    useEffect(() => {
-        axios
-            .post(
-                "http://localhost:5000/recommendationCollage",
-                {
-                    imageLinks: [],
-                },
-                { responseType: "blob" }
-            )
-            .then((response) => {
-                const collageUrl = URL.createObjectURL(response.data);
-                setCollage(collageUrl);
-            })
-            .catch((error) => {
-                console.error("Error fetching collage: ", error);
-            });
-    }, []);
-
+const Recommendation = ({ collage }) => {
     return (
         <div className="recommendation">
             <h2 className="recommendation__title">
                 Your <span className="title-mustard"> music taste result</span>
             </h2>
             {collage ? (
-                <img src={collage} className="personality__collage" />
+                <img
+                    src={`data:image/jpeg;base64,${collage}`}
+                    className="personality__collage"
+                />
             ) : (
                 <p>Loading...</p>
             )}
