@@ -3,6 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-self: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 5rem;
 }
 
 .recommendation__title {
@@ -11,14 +14,11 @@
     text-align: center;
 }
 
-.collage-image {
-    height: var(--size-5xl);
-    width: var(--size-5xl);
+.personality__collage {
+    height: 30rem;
+    width: 20rem;
 }
 
-.inactive {
-    display: none;
-}
 /* xs */
 /* @media (min-width: 475px) {} */
 

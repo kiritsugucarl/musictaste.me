@@ -1,0 +1,50 @@
+.personality {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.personality__title {
+    color: var(--clr-primary);
+    font-size: var(--size-2xl);
+    text-align: center;
+}
+
+.personality__result-img {
+    height: 30rem;
+    width: 20rem;
+}
+
+.personality__result-title {
+    font-size: var(--size-2xl);
+    font-weight: 600;
+}
+
+.personality__description {
+    max-width: 80%;
+    text-align: center;
+    font-size: var(--size-lg);
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+@media (min-width: 1280px) {
+    .personality__title {
+        font-size: var(--size-4xl);
+    }
+}
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

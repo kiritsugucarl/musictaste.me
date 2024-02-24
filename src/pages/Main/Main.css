@@ -144,6 +144,19 @@
     transform: translate3d(0, 0.2em, 0);
 }
 
+.main__results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.main__results-line {
+    width: 85%;
+    border: 3px solid var(--clr-mustard);
+}
+
 /* xs */
 /* @media (min-width: 475px) {} */
 
