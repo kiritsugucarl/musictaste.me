@@ -50,23 +50,21 @@ const Main = () => {
 
                 console.log("Recommended songs:", recommendations);
 
-                const recommendationImageLinks = recommendations.map(
-                    (song) => song.album.images[0].url
+                const recommendationTrackIds = recommendations.map(
+                    (song) => song.id
                 );
 
-                const selectedSongsImageLinks = addedSongs.map(
-                    (song) => song.album.images[0].url
-                );
+                const selectedSongsTrackIds = addedSongs.map((song) => song.id);
 
-                const allImageLinks = [
-                    ...recommendationImageLinks,
-                    ...selectedSongsImageLinks,
+                const allTrackIds = [
+                    ...recommendationTrackIds,
+                    ...selectedSongsTrackIds,
                 ];
 
-                await sendImageLinksToBackend(allImageLinks);
+                // await sendImageLinksToBackend(allImageLinks);
 
                 // Set collage state when getting results
-                setCollage(await fetchCollage(allImageLinks));
+                setCollage(await fetchCollage(allTrackIds));
 
                 const selectedSongsFeatures = await fetchAudioFeatures(
                     trackIds,
@@ -125,34 +123,12 @@ const Main = () => {
         return response.data.audio_features;
     };
 
-    const sendImageLinksToBackend = async (imageLinks) => {
+    const fetchCollage = async (trackIds) => {
         try {
             const response = await axios.post(
                 "http://localhost:5000/recommendationCollage",
                 {
-                    imageLinks,
-                }
-            );
-
-            if (response.status === 200) {
-                console.log("Image links sent successfully");
-            } else {
-                console.error(
-                    "Error sending image links: ",
-                    response.statusText
-                );
-            }
-        } catch (error) {
-            console.error("Error sending image links: ", error);
-        }
-    };
-
-    const fetchCollage = async (imageLinks) => {
-        try {
-            const response = await axios.post(
-                "http://localhost:5000/recommendationCollage",
-                {
-                    imageLinks,
+                    trackIds,
                 },
                 {
                     headers: {
@@ -162,16 +138,13 @@ const Main = () => {
             );
 
             if (response.status === 200) {
-                console.log("Image links sent successfully");
+                console.log("IDs sent successfully");
                 return response.data.collage;
             } else {
-                console.error(
-                    "Error sending image links: ",
-                    response.statusText
-                );
+                console.error("Error sending IDs: ", response.statusText);
             }
         } catch (error) {
-            console.error("Error sending image links: ", error);
+            console.error("Error sending IDs: ", error);
         }
     };
 
