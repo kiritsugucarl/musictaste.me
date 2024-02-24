@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { debounce } from "lodash";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
@@ -12,6 +13,7 @@ const Main = () => {
     const [addedSongs, setAddedSongs] = useState([]);
     const [audioFeatures, setAudioFeatures] = useState([]);
     const [counter, setCounter] = useState(0);
+    const [collage, setCollage] = useState(null);
     const [resultActive, setResultActive] = useState(false);
 
     const navigate = useNavigate();
@@ -62,6 +64,9 @@ const Main = () => {
                 ];
 
                 await sendImageLinksToBackend(allImageLinks);
+
+                // Set collage state when getting results
+                setCollage(await fetchCollage(allImageLinks));
 
                 const selectedSongsFeatures = await fetchAudioFeatures(
                     trackIds,
@@ -122,14 +127,55 @@ const Main = () => {
 
     const sendImageLinksToBackend = async (imageLinks) => {
         try {
-            await axios.post("http://localhost:5000/recommendationCollage", {
-                imageLinks,
-            });
-            console.log("Image links sent successfully");
+            const response = await axios.post(
+                "http://localhost:5000/recommendationCollage",
+                {
+                    imageLinks,
+                }
+            );
+
+            if (response.status === 200) {
+                console.log("Image links sent successfully");
+            } else {
+                console.error(
+                    "Error sending image links: ",
+                    response.statusText
+                );
+            }
         } catch (error) {
             console.error("Error sending image links: ", error);
         }
     };
+
+    const fetchCollage = async (imageLinks) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:5000/recommendationCollage",
+                {
+                    imageLinks,
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                console.log("Image links sent successfully");
+                return response.data.collage;
+            } else {
+                console.error(
+                    "Error sending image links: ",
+                    response.statusText
+                );
+            }
+        } catch (error) {
+            console.error("Error sending image links: ", error);
+        }
+    };
+
+    const debouncedGetResults = debounce(getResults, 300); // Adjust the debounce delay as needed
 
     return (
         <main className="container content-container section">
@@ -208,10 +254,7 @@ const Main = () => {
                         ))}
                     </ul>
                     <button
-                        // onClick={() => {getResults; handleImageLinkSubmit();}} this line will send the results images to python
-                        onClick={() => {
-                            getResults();
-                        }}
+                        onClick={debouncedGetResults}
                         className="main__addedSongs-getResultBtn"
                     >
                         Get Result
@@ -220,7 +263,7 @@ const Main = () => {
             </div>
             {resultActive && (
                 <div className="main__results-container">
-                    <Recommendation />
+                    <Recommendation collage={collage} />
                     <hr className="main__results-line" />
                     <Personality audioFeatures={audioFeatures} />
                 </div>
