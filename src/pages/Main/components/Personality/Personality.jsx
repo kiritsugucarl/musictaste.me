@@ -1,4 +1,13 @@
+import { over } from "lodash";
 import { useState, useEffect } from "react";
+import {
+    RadialBarChart,
+    RadialBar,
+    Legend,
+    Tooltip,
+    ResponsiveContainer,
+    PolarAngleAxis,
+} from "recharts";
 import personalityDescription from "./data/personalityDescription.json";
 import "./Personality.css";
 
@@ -60,15 +69,15 @@ const determineMusicPersonality = (averageFeatures) => {
     };
 
     const weights = {
+        acousticness: 1,
         danceability: 1,
         energy: 1,
-        speechiness: 1,
-        valence: 1,
-        tempo: 1,
         instrumentalness: 1,
-        loudness: 1,
         liveness: 1,
-        acousticness: 1,
+        loudness: 1,
+        speechiness: 1,
+        tempo: 1,
+        valence: 1,
     };
 
     // Reduce louness scores between 0 - 1
@@ -78,15 +87,15 @@ const determineMusicPersonality = (averageFeatures) => {
 
     // Calculate the weighted sum of scores
     const weightedSum =
+        weights.acousticness * acousticness +
         weights.danceability * danceability +
         weights.energy * energy +
-        weights.speechiness * speechiness +
-        weights.valence * valence +
-        weights.tempo * normalizedTempo +
         weights.instrumentalness * instrumentalness +
-        weights.loudness * normalizedLoudness +
         weights.liveness * liveness +
-        weights.acousticness * acousticness;
+        weights.loudness * normalizedLoudness +
+        weights.speechiness * speechiness +
+        weights.tempo * normalizedTempo +
+        weights.valence * valence;
 
     const overallWeight = Object.values(weights).reduce(
         (sum, weight) => sum + weight,
@@ -122,6 +131,27 @@ const determineMusicPersonality = (averageFeatures) => {
         return "Undefined Personality";
     }
 };
+
+// const CustomLegend = ({ payload, iconWidth, iconHeight }) => {
+//     <ul className="personality__custom-legend">
+//         {payload.map((entry, index) => (
+//             <li key={`item-${index}`} className="personality__legend-item">
+//                 <svg
+//                     width={iconWidth}
+//                     height={iconHeight}
+//                     style={{ marginRight: "8px" }}
+//                 >
+//                     <rect
+//                         width={iconWidth}
+//                         height={iconHeight}
+//                         fill={entry.color}
+//                     />
+//                 </svg>
+//                 {entry.value}
+//             </li>
+//         ))}
+//     </ul>;
+// };
 
 const Personality = ({ audioFeatures, logDebug }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
@@ -165,33 +195,136 @@ const Personality = ({ audioFeatures, logDebug }) => {
         ? `${imageBasePath}${musicPersonality}.png`
         : null;
 
+    const getColorForValue = (index) => {
+        const colors = [
+            "#33CE7C",
+            "#FF8348",
+            "#4B85FD",
+            "#9057FA",
+            "#E42A3C",
+            "#FF6817",
+            "#5258ED",
+            "#F5A7E3",
+            "#FFE032",
+        ];
+
+        return colors[index % colors.length];
+    };
+
+    const radialBarData = overallAverageFeatures
+        ? Object.keys(overallAverageFeatures).map((feature, index) => {
+              let value;
+              if (feature === "loudness") {
+                  value = normalize(overallAverageFeatures[feature], -60, 0);
+              } else if (feature === "tempo") {
+                  value = normalize(overallAverageFeatures[feature], 60, 200);
+              } else {
+                  value = overallAverageFeatures[feature];
+              }
+
+              const percentageValue =
+                  typeof value === "undefined" ? undefined : value * 100;
+
+              // Set fill to transparent for unfilled bars
+              const fill =
+                  typeof value === "undefined"
+                      ? "transparent"
+                      : getColorForValue(index);
+
+              return {
+                  feature,
+                  value,
+                  percentageValue,
+                  fill,
+              };
+          })
+        : [];
+
+    const legendColors = overallAverageFeatures
+        ? Object.keys(overallAverageFeatures).map((feature, index) => ({
+              value: (
+                  <div className="personality__graph-data-wrapper">
+                      <span className="personality__graph-data-feature">
+                          {feature.charAt(0).toUpperCase() + feature.slice(1)}
+                      </span>
+                      <span className="personality__graph-data-percentage">
+                          {Math.round(radialBarData[index]?.percentageValue)}%
+                      </span>
+                  </div>
+              ),
+              color: getColorForValue(index),
+          }))
+        : [];
     return (
         <div className="personality">
             <h2 className="personality__title">
-                Your{" "}
-                <span className="title-mustard"> music personality is </span>
+                Your <span className="title-mustard">music personality is</span>
             </h2>
-            {overallAverageFeatures ? (
-                <>
-                    {imagePath && (
-                        <img
-                            src={imagePath}
-                            className="personality__result-img"
-                        />
-                    )}
-                    <p className="personality__result-title">
-                        {musicPersonality}
-                    </p>
-                    {musicPersonality &&
-                        personalityDescription[musicPersonality] && (
-                            <p className="personality__description">
-                                {personalityDescription[musicPersonality]}
-                            </p>
+            <div className="personality__wrapper">
+                {overallAverageFeatures ? (
+                    <div className="personality__result-wrapper">
+                        {imagePath && (
+                            <img
+                                src={imagePath}
+                                className="personality__result-img"
+                            />
                         )}
-                </>
-            ) : (
-                <p>No data available</p>
-            )}
+                        <p className="personality__result-title">
+                            {musicPersonality}
+                        </p>
+                        {musicPersonality &&
+                            personalityDescription[musicPersonality] && (
+                                <p className="personality__description">
+                                    {personalityDescription[musicPersonality]}
+                                </p>
+                            )}
+                    </div>
+                ) : (
+                    <p>No data available</p>
+                )}
+                <div className="personality__graph-wrapper">
+                    <ResponsiveContainer>
+                        <RadialBarChart
+                            cx="30%"
+                            cy="50%"
+                            innerRadius="15%"
+                            outerRadius="90%"
+                            data={radialBarData}
+                            barSize={12.5}
+                            startAngle={90}
+                            endAngle={-270}
+                        >
+                            <PolarAngleAxis
+                                type="number"
+                                domain={[0, 1]}
+                                angleAxisId={0}
+                                tick={false}
+                            />
+                            <RadialBar
+                                minAngle={15}
+                                background={{ fill: "#00000000" }}
+                                clockWise
+                                cornerRadius={15}
+                                dataKey="value"
+                            />
+                            {/* <Tooltip /> */}
+                            <Legend
+                                iconSize={12.5}
+                                layout="vertical"
+                                verticalAlign="middle"
+                                align="right"
+                                payload={legendColors.map(
+                                    ({ value, color }) => ({
+                                        value,
+                                        type: "square",
+                                        color,
+                                    })
+                                )}
+                            />
+                        </RadialBarChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
         </div>
     );
 };
