@@ -65,6 +65,7 @@ const determineMusicPersonality = (averageFeatures) => {
         speechiness: 1,
         valence: 1,
         tempo: 1,
+        instrumentalness: 1,
         loudness: 1,
         liveness: 1,
         acousticness: 1,
@@ -82,6 +83,7 @@ const determineMusicPersonality = (averageFeatures) => {
         weights.speechiness * speechiness +
         weights.valence * valence +
         weights.tempo * normalizedTempo +
+        weights.instrumentalness * instrumentalness +
         weights.loudness * normalizedLoudness +
         weights.liveness * liveness +
         weights.acousticness * acousticness;
