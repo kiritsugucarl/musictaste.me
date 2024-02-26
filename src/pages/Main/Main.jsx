@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
+import ScaleLoader from "react-spinners/ScaleLoader";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
@@ -15,6 +16,7 @@ const Main = () => {
     const [counter, setCounter] = useState(0);
     const [collage, setCollage] = useState(null);
     const [resultActive, setResultActive] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -44,6 +46,7 @@ const Main = () => {
 
     // get results
     const getResults = async () => {
+        setLoading(true);
         if (counter === 5) {
             try {
                 const trackIds = addedSongs.map((song) => song.id);
@@ -92,6 +95,8 @@ const Main = () => {
                 setResultActive(true);
             } catch (error) {
                 console.error("Error: ", error.message);
+            } finally {
+                setLoading(false);
             }
         } else {
             console.log("Need five inputs!");
@@ -245,6 +250,18 @@ const Main = () => {
                     <Recommendation collage={collage} />
                     <hr className="main__results-line" />
                     <Personality audioFeatures={audioFeatures} />
+                </div>
+            )}
+
+            {loading && (
+                <div className="main__loading-overlay">
+                    <ScaleLoader
+                        color="#45a083"
+                        height={150}
+                        width={6}
+                        loading
+                        radius={2}
+                    />
                 </div>
             )}
         </main>

@@ -157,6 +157,18 @@
     border: 3px solid var(--clr-mustard);
 }
 
+.main__loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Make sure it's above other content */
+}
 /* xs */
 /* @media (min-width: 475px) {} */
 
