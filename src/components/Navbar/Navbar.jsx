@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import "./Navbar.css";
 import { CSSTransition } from "react-transition-group";
@@ -12,6 +12,8 @@ import { useToken } from "../../config/TokenContext";
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
     const { token, setToken, clearToken } = useToken();
 
+    const navigate = useNavigate();
+
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 
     const handleMobileMenuClick = () => {
@@ -20,7 +22,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
 
     const logout = () => {
         clearToken();
-        console.log(window.localStorage.getItem("musictaste.me-token"));
+        navigate("/");
     };
 
     return (

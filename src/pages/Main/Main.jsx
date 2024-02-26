@@ -9,7 +9,7 @@ import "./Main.css";
 import Personality from "./components/Personality/Personality";
 
 const Main = () => {
-    const { token } = useToken();
+    const { token, isTokenValid } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [audioFeatures, setAudioFeatures] = useState([]);
     const [counter, setCounter] = useState(0);
@@ -17,6 +17,12 @@ const Main = () => {
     const [resultActive, setResultActive] = useState(false);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isTokenValid()) {
+            navigate("/timeout");
+        }
+    }, [isTokenValid, navigate]);
 
     // add songs to added list
     const addSongToAddedList = (song) => {
