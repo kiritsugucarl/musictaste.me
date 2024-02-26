@@ -10,6 +10,16 @@ A web app to idenfity your music taste. Created for the completion in Fourth Yea
 - Flask
 - Python
 
+## Clone the flask repository:
+Clone the repository:
+```bash
+git clone https://github.com/kiritsugucarl/musictaste.me-api.git
+```
+
+```bash
+git checkout dev
+```
+
 ## How to use (dev):
 To access the directory:
 ```bash
@@ -38,10 +48,25 @@ npm install react-transition-group
 npm install emailjs-com
 ```
 
+```bash
+npm install lodash
+```
+
+```bash
+npm install recharts
+```
+
+```bash
+npm install react-spinners
+```
 
 To run the dev server:
 ```bash
 npm run dev
+```
+Run the flask server:
+```bash
+python musicCollage.py
 ```
 
 ## Contributors:

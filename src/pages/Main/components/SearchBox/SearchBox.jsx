@@ -30,6 +30,7 @@ const SearchBox = ({
 
     const searchItems = async (e) => {
         e.preventDefault();
+
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`,
