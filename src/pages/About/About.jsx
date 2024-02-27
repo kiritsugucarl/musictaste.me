@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
-import aboutimage from "/about.image.png";
 import member1 from "/member1.png";
 import member2 from "/member2.png";
 import member3 from "/member3.png";
@@ -13,11 +12,6 @@ const About = () => {
         <div className="container content-container section">
             <div className="about-wrapper">
                 <h1 className="about-title">ABOUT THE WEBSITE</h1>
-                <img
-                    className="about-top-image"
-                    src={aboutimage}
-                    alt="About Us"
-                />
 
                 <p className="about-description">
                     We know you love music. We know you have favorite artists
