@@ -29,28 +29,32 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
         <div className="header container">
             {/* Desktop nav */}
             <div className="nav-wrapper">
-                <button
-                    className="nav-menuButton"
-                    onClick={() => onMobileMenuToggle(!isMobileNavOpen)}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
-                </button>
-
                 <div className="nav__logo-wrapper">
                     <img className="nav-logo" src={logo} />
                     <h2 className="nav-title">
                         mt<span className="title-mustard">.</span>me
                     </h2>
+                </div>
+
+                <div>
+                    <button
+                        className="nav-menuButton"
+                        onClick={() => onMobileMenuToggle(!isMobileNavOpen)}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
+                            />
+                        </svg>
+                    </button>
                 </div>
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
@@ -103,26 +107,18 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                 isMobileNavOpen ? "show" : ""
                             }`}
                         >
-                            <button
-                                className="mobile-nav-returnButton"
-                                onClick={handleMobileMenuClick}
-                            >
-                                <svg
-                                    className="mobile-nav-returnButtonImg"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z"
-                                    />
-                                </svg>
-                            </button>
                             <nav className="mobile-nav-wrapper">
+                                {token && (
+                                    <div className="mobile-nav-user-wrapper">
+                                        <p className="mobile-nav-user-greeting">
+                                            Hello,
+                                        </p>
+                                        <p className="mobile-nav-user-name">
+                                            &nbsp;{token.user.display_name}
+                                        </p>
+                                    </div>
+                                )}
+                                <hr className="mobile-nav-hr" />
                                 <ul className="mobile-nav-ul">
                                     <li className="mobile-nav-li">
                                         <svg
@@ -184,7 +180,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                             <path
                                                 stroke-linecap="round"
                                                 stroke-linejoin="round"
-                                                d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+                                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
                                             />
                                         </svg>
 
@@ -199,19 +195,53 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
 
                                     <li className="mobile-nav-li">
                                         {!token ? (
-                                            <a
-                                                className="mobile-nav-link"
-                                                href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-                                            >
-                                                LOGIN
-                                            </a>
+                                            <>
+                                                <svg
+                                                    className="mobile-nav-linkIcon"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
+                                                    />
+                                                </svg>
+
+                                                <a
+                                                    className="mobile-nav-link"
+                                                    href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+                                                >
+                                                    Login
+                                                </a>
+                                            </>
                                         ) : (
-                                            <button
-                                                className="mobile-nav-link"
-                                                onClick={logout}
-                                            >
-                                                LOGOUT
-                                            </button>
+                                            <>
+                                                <svg
+                                                    className="mobile-nav-linkIcon"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                                                    />
+                                                </svg>
+
+                                                <button
+                                                    className="mobile-nav-link"
+                                                    onClick={logout}
+                                                >
+                                                    Logout
+                                                </button>
+                                            </>
                                         )}
                                     </li>
                                 </ul>

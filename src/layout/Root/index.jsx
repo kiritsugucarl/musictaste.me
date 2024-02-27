@@ -17,8 +17,16 @@ const Root = () => {
         }
     };
 
+    const handleOverlayClick = () => {
+        setIsMobileNavOpen(false);
+        document.body.style.overflow = "auto";
+    };
+
     return (
         <div className="page-wrapper">
+            {isMobileNavOpen && (
+                <div className="overlay" onClick={handleOverlayClick} />
+            )}
             <Navbar
                 isMobileNavOpen={isMobileNavOpen}
                 onMobileMenuToggle={handleMobileMenuToggle}

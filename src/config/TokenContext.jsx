@@ -8,13 +8,13 @@ export const TokenProvider = ({ children }) => {
 
     useEffect(() => {
         const hash = window.location.hash;
-        let token = window.localStorage.getItem("musictaste.me-token");
+        let storedToken = window.localStorage.getItem("musictaste.me-token");
         let tokenExpiresAt = window.localStorage.getItem(
             "musictaste.me-token-expires-at"
         );
 
-        if (!token && hash) {
-            token = hash
+        if (!storedToken && hash) {
+            storedToken = hash
                 .substring(1)
                 .split("&")
                 .find((elem) => elem.startsWith("access_token"))
@@ -24,7 +24,7 @@ export const TokenProvider = ({ children }) => {
             tokenExpiresAt = calculateExpiresAt();
 
             window.location.hash = "";
-            window.localStorage.setItem("musictaste.me-token", token);
+            window.localStorage.setItem("musictaste.me-token", storedToken);
             window.localStorage.setItem(
                 "musictaste.me-token-expires-at",
                 tokenExpiresAt
@@ -33,15 +33,38 @@ export const TokenProvider = ({ children }) => {
             // window.opener.postMessage("authentication_success");
         }
 
-        setToken(token);
+        setToken(storedToken);
         setExpiresAt(tokenExpiresAt);
 
-        window.addEventListener("beforeunload", handleBeforeTabClose);
+        // window.addEventListener("beforeunload", handleBeforeTabClose);
 
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeTabClose);
-        };
+        if (storedToken) {
+            fetchSpotifyUser(storedToken);
+        }
+
+        // return () => {
+        //     window.removeEventListener("beforeunload", handleBeforeTabClose);
+        // };
     }, []);
+
+    const fetchSpotifyUser = async (token) => {
+        try {
+            const response = await fetch("https://api.spotify.com/v1/me", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                const user = await response.json();
+                setToken({ ...token, user });
+            } else {
+                console.error("Failed to fetch user information");
+            }
+        } catch (error) {
+            console.error("Error fetching user information", error);
+        }
+    };
 
     const calculateExpiresAt = () => {
         const expiresIn = 3600;
@@ -58,6 +81,7 @@ export const TokenProvider = ({ children }) => {
 
     const clearToken = () => {
         window.localStorage.removeItem("musictaste.me-token");
+        setToken(null);
         setToken("");
     };
 
