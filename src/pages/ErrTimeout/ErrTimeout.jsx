@@ -6,13 +6,13 @@ import "./ErrTimeout.css";
 const ErrTimeout = () => {
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const redirectTimeout = setTimeout(() => {
-    //         navigate("/");
-    //     }, 5000);
+    useEffect(() => {
+        const redirectTimeout = setTimeout(() => {
+            navigate("/");
+        }, 5000);
 
-    //     return () => clearTimeout(redirectTimeout);
-    // }, [navigate]);
+        return () => clearTimeout(redirectTimeout);
+    }, [navigate]);
 
     return (
         <div className="timeout">
@@ -21,7 +21,7 @@ const ErrTimeout = () => {
             <p className="timeout__desc">
                 Session timeout! Please click to go back to home and login your
                 Spotify account again{" "}
-                <Link className="timeout__redirect-link" to="">
+                <Link className="timeout__redirect-link" to="/">
                     click here
                 </Link>
                 .
