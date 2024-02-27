@@ -57,7 +57,7 @@ const Home = () => {
                 </div>
 
                 <div className="model_home-container">
-                    <img className="model_img" src="/model.png" alt="model" />
+                    {/* <img className="model_img" src="/model.png" alt="model" /> */}
                 </div>
             </div>
         </main>
