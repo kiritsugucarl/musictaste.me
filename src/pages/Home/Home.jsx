@@ -18,8 +18,15 @@ const Home = () => {
     return (
         <main className="container">
             <div className="home-container">
-                <div className="home-wrapper">
-                    <img className="home-img" src='/main mascot.png'/>
+                <div id="#section-1" className="home-wrapper">
+                    <div className="home__img-container">
+                        <img className="home__img" src="/main mascot.png" />
+                        <img
+                            src="/mascot-bg.png"
+                            alt=""
+                            className="home__mascot-bg"
+                        />
+                    </div>
                     <div className="home__title-wrapper">
                         <h2 className="home__main-title">
                             musictaste<span className="title-mustard">.</span>me
@@ -55,6 +62,18 @@ const Home = () => {
                             />
                         </div>
                     </div>
+                </div>
+                <div className="home-container-2">
+                    <h2>
+                        Find your{" "}
+                        <span className="title-mustard">music taste</span>.
+                    </h2>
+                </div>
+                <div className="home-container-3">
+                    <h2>
+                        <span className="title-mustard">Find your</span> music
+                        personality <span className="title-mustard">.</span>
+                    </h2>
                 </div>
             </div>
         </main>

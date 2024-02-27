@@ -3,21 +3,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
 }
 
 .home-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
     position: relative;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.home-img {
+.home__img-container {
+    /* width: 100%; */
+    position: relative;
+}
+
+.home__img {
     width: 30rem;
     height: 30rem;
+}
+
+.home__mascot-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .home__title-wrapper {
@@ -54,13 +69,23 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: .5rem;
+    gap: 0.5rem;
     color: var(--clr-light);
     font-weight: bold;
 }
 
 .home__login-spotify-img {
     width: 7rem;
+}
+
+.home-container-2 {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--clr-primary);
+}
+
+.home-container-3 {
+    min-height: 100vh;
 }
 
 /* xs */
@@ -175,10 +200,6 @@
 
     .home__login-button {
         padding: 0.75rem 3rem;
-    }
-
-    .model_img {
-        width: 45rem;
     }
 }
 
