@@ -1,4 +1,5 @@
 .nav-wrapper {
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -10,7 +11,7 @@
 .nav-menuButton {
     align-self: center;
     margin-left: auto;
-    color: var(--clr-light);
+    color: var(--clr-mustard);
     width: var(--size-4xl);
     height: var(--size-4xl);
     display: block;
@@ -39,9 +40,9 @@
 }
 
 .desktop-nav {
+    display: none;
     flex: 1;
     padding-bottom: 0.2rem;
-    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -65,7 +66,7 @@
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
     top: 0;
-    left: -18.75rem;
+    right: -18.75rem;
     height: 100%;
     z-index: 999;
     transition: left 0.3s ease;
@@ -73,11 +74,11 @@
 
 .mobile-nav.show {
     /* justify-content: center; */
-    left: 0;
+    right: 0;
 }
 
 .mobile-nav-slide-enter {
-    transform: translateX(-100%);
+    transform: translateX(100%);
 }
 
 .mobile-nav-slide-enter-active {
@@ -211,6 +212,10 @@
 
 /* lg */
 @media (min-width: 1024px) {
+    .desktop-nav {
+        display: flex;
+    }
+
     .nav-title {
         padding-bottom: 0.05rem;
     }
