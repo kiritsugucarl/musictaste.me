@@ -19,6 +19,7 @@ const Home = () => {
         <main className="container">
             <div className="home-container">
                 <div className="home-wrapper">
+                    <img className="home-img" src='/main mascot.png'/>
                     <div className="home__title-wrapper">
                         <h2 className="home__main-title">
                             musictaste<span className="title-mustard">.</span>me
@@ -54,10 +55,6 @@ const Home = () => {
                             />
                         </div>
                     </div>
-                </div>
-
-                <div className="model_home-container">
-                    <img className="model_img" src="/model.png" alt="model" />
                 </div>
             </div>
         </main>
