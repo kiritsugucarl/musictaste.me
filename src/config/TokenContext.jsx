@@ -4,6 +4,7 @@ const TokenContext = createContext();
 
 export const TokenProvider = ({ children }) => {
     const [token, setToken] = useState("");
+    const [user, setUser] = useState("");
     const [expiresAt, setExpiresAt] = useState(0);
 
     useEffect(() => {
@@ -57,7 +58,8 @@ export const TokenProvider = ({ children }) => {
 
             if (response.ok) {
                 const user = await response.json();
-                setToken({ ...token, user });
+                // setToken(user);
+                setUser(user);
             } else {
                 console.error("Failed to fetch user information");
             }
@@ -87,7 +89,7 @@ export const TokenProvider = ({ children }) => {
 
     return (
         <TokenContext.Provider
-            value={{ token, setToken, clearToken, isTokenValid }}
+            value={{ token, setToken, clearToken, isTokenValid, user }}
         >
             {children}
         </TokenContext.Provider>

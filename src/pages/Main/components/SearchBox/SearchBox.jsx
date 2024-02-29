@@ -29,6 +29,7 @@ const SearchBox = ({
     let searchTimeout;
 
     const searchItems = async (e) => {
+        console.log("token : ", token);
         e.preventDefault();
 
         const config = {
@@ -44,6 +45,7 @@ const SearchBox = ({
         };
 
         try {
+            console.log("ETO CONFIG", config);
             const response = await axios.get(SEARCH_ENDPOINT, config);
             setSearchResults(response.data);
             setTotalResults(response.data.total);
