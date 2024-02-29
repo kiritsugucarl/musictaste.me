@@ -10,14 +10,14 @@ import {
 import { useToken } from "../../config/TokenContext";
 
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
-    const { token, setToken, clearToken } = useToken();
+    const { token, user, clearToken } = useToken();
 
     const navigate = useNavigate();
 
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 
     const handleMobileMenuClick = () => {
-        onMobileMenuToggle(false);
+        isMobileNavOpen(false);
     };
 
     const logout = () => {
@@ -108,16 +108,18 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                             }`}
                         >
                             <nav className="mobile-nav-wrapper">
-                                {/* {token && (
+                                {token ? (
                                     <div className="mobile-nav-user-wrapper">
                                         <p className="mobile-nav-user-greeting">
                                             Hello,
                                         </p>
                                         <p className="mobile-nav-user-name">
-                                            &nbsp;{token.user.display_name}
+                                            &nbsp;{user.display_name}
                                         </p>
                                     </div>
-                                )} */}
+                                ) : (
+                                    <></>
+                                )}
                                 <hr className="mobile-nav-hr" />
                                 <ul className="mobile-nav-ul">
                                     <li className="mobile-nav-li">

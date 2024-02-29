@@ -4,6 +4,7 @@ const TokenContext = createContext();
 
 export const TokenProvider = ({ children }) => {
     const [token, setToken] = useState("");
+    const [user, setUser] = useState("");
     const [expiresAt, setExpiresAt] = useState(0);
 
     useEffect(() => {
@@ -38,33 +39,34 @@ export const TokenProvider = ({ children }) => {
 
         // window.addEventListener("beforeunload", handleBeforeTabClose);
 
-        // if (storedToken) {
-        //     fetchSpotifyUser(storedToken);
-        // }
+        if (storedToken) {
+            fetchSpotifyUser(storedToken);
+        }
 
         // return () => {
         //     window.removeEventListener("beforeunload", handleBeforeTabClose);
         // };
     }, []);
 
-    // const fetchSpotifyUser = async (token) => {
-    //     try {
-    //         const response = await fetch("https://api.spotify.com/v1/me", {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //         });
+    const fetchSpotifyUser = async (token) => {
+        try {
+            const response = await fetch("https://api.spotify.com/v1/me", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
 
-    //         if (response.ok) {
-    //             const user = await response.json();
-    //             setToken({ token });
-    //         } else {
-    //             console.error("Failed to fetch user information");
-    //         }
-    //     } catch (error) {
-    //         console.error("Error fetching user information", error);
-    //     }
-    // };
+            if (response.ok) {
+                const user = await response.json();
+                // setToken(user);
+                setUser(user);
+            } else {
+                console.error("Failed to fetch user information");
+            }
+        } catch (error) {
+            console.error("Error fetching user information", error);
+        }
+    };
 
     const calculateExpiresAt = () => {
         const expiresIn = 3600;
@@ -87,7 +89,7 @@ export const TokenProvider = ({ children }) => {
 
     return (
         <TokenContext.Provider
-            value={{ token, setToken, clearToken, isTokenValid }}
+            value={{ token, setToken, clearToken, isTokenValid, user }}
         >
             {children}
         </TokenContext.Provider>
