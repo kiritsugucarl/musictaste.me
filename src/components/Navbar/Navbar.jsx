@@ -108,7 +108,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                             }`}
                         >
                             <nav className="mobile-nav-wrapper">
-                                {token && (
+                                {/* {token && (
                                     <div className="mobile-nav-user-wrapper">
                                         <p className="mobile-nav-user-greeting">
                                             Hello,
@@ -117,7 +117,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                             &nbsp;{token.user.display_name}
                                         </p>
                                     </div>
-                                )}
+                                )} */}
                                 <hr className="mobile-nav-hr" />
                                 <ul className="mobile-nav-ul">
                                     <li className="mobile-nav-li">

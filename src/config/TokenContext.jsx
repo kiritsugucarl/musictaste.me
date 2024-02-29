@@ -38,33 +38,33 @@ export const TokenProvider = ({ children }) => {
 
         // window.addEventListener("beforeunload", handleBeforeTabClose);
 
-        if (storedToken) {
-            fetchSpotifyUser(storedToken);
-        }
+        // if (storedToken) {
+        //     fetchSpotifyUser(storedToken);
+        // }
 
         // return () => {
         //     window.removeEventListener("beforeunload", handleBeforeTabClose);
         // };
     }, []);
 
-    const fetchSpotifyUser = async (token) => {
-        try {
-            const response = await fetch("https://api.spotify.com/v1/me", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+    // const fetchSpotifyUser = async (token) => {
+    //     try {
+    //         const response = await fetch("https://api.spotify.com/v1/me", {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         });
 
-            if (response.ok) {
-                const user = await response.json();
-                setToken({ ...token, user });
-            } else {
-                console.error("Failed to fetch user information");
-            }
-        } catch (error) {
-            console.error("Error fetching user information", error);
-        }
-    };
+    //         if (response.ok) {
+    //             const user = await response.json();
+    //             setToken({ token });
+    //         } else {
+    //             console.error("Failed to fetch user information");
+    //         }
+    //     } catch (error) {
+    //         console.error("Error fetching user information", error);
+    //     }
+    // };
 
     const calculateExpiresAt = () => {
         const expiresIn = 3600;

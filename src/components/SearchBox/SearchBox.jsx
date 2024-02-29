@@ -29,6 +29,7 @@ const SearchBox = ({
     let searchTimeout;
 
     const searchItems = async (e) => {
+        console.log("token : ", token);
         e.preventDefault();
         const config = {
             headers: {
