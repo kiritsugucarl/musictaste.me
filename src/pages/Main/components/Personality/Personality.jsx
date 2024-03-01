@@ -265,14 +265,12 @@ const Personality = ({ audioFeatures, logDebug }) => {
                 <div className="personality__graph-wrapper">
                     <ResponsiveContainer>
                         <RadialBarChart
-                            cx="40%"
-                            cy="30%"
                             innerRadius="15%"
                             outerRadius="90%"
                             data={radialBarData}
                             barSize={12.5}
-                            startAngle={90}
-                            endAngle={-270}
+                            startAngle={-270}
+                            endAngle={90}
                         >
                             <PolarAngleAxis
                                 type="number"
