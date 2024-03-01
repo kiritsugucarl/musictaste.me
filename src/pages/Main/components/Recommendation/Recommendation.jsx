@@ -4,7 +4,7 @@ const Recommendation = ({ collage }) => {
     return (
         <div className="recommendation">
             <h2 className="recommendation__title">
-                Your <span className="title-mustard"> music taste result</span>
+                Your <span className="title-accent"> music taste result</span>
             </h2>
             {collage ? (
                 <img
