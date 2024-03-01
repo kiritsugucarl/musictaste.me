@@ -8,6 +8,7 @@ import {
     ResponsiveContainer,
     PolarAngleAxis,
 } from "recharts";
+import CustomLegend from "./components/CustomLegend/CustomLegend";
 import personalityDescription from "./data/personalityDescription.json";
 import "./Personality.css";
 
@@ -130,20 +131,6 @@ const determineMusicPersonality = (averageFeatures) => {
     } else {
         return "Undefined Personality";
     }
-};
-
-const CustomLegend = ({ payload, iconWidth, iconHeight }) => {
-    <ul className="personality__custom-legend">
-        {payload.map((entry, index) => (
-            <li key={`item-${index}`} className="personality__legend-item">
-                <div
-                    className="legend-color"
-                    style={{ backgroundColor: entry.color }}
-                />
-                <span className="legend-label">{entry.value}</span>
-            </li>
-        ))}
-    </ul>;
 };
 
 const Personality = ({ audioFeatures, logDebug }) => {
@@ -301,7 +288,7 @@ const Personality = ({ audioFeatures, logDebug }) => {
                                 dataKey="value"
                             />
                             {/* <Tooltip /> */}
-                            <Legend
+                            {/* <Legend
                                 iconSize={12.5}
                                 layout="vertical"
                                 verticalAlign="bottom"
@@ -313,9 +300,10 @@ const Personality = ({ audioFeatures, logDebug }) => {
                                         color,
                                     })
                                 )}
-                            />
+                            /> */}
                         </RadialBarChart>
                     </ResponsiveContainer>
+                    <CustomLegend legendColors={legendColors} />
                 </div>
             </div>
         </div>
