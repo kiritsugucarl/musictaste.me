@@ -126,37 +126,28 @@ const SearchBox = ({
                                     // Show pause button for the currently playing song
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
                                         viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
+                                        fill="currentColor"
                                         className="searchBox__content-search-result-pause"
                                     >
                                         <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            fill-rule="evenodd"
+                                            d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z"
+                                            clip-rule="evenodd"
                                         />
                                     </svg>
                                 ) : (
                                     // Show play button for other songs
                                     <svg
-                                        className="searchBox__content-search-result-play"
                                         xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
                                         viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
+                                        fill="currentColor"
+                                        className="searchBox__content-search-result-play"
                                     >
                                         <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        />
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M15.91 11.672a.375.375 0 010 0.656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
+                                            fill-rule="evenodd"
+                                            d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
+                                            clip-rule="evenodd"
                                         />
                                     </svg>
                                 )}
@@ -177,9 +168,18 @@ const SearchBox = ({
                                 </p>
                             </div>
                             {isSongAdded ? (
-                                <p className="searchBox__content-search-result-addedPrompt">
-                                    Added
-                                </p>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="searchBox__content-search-result-addedPrompt"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
                             ) : (
                                 <button
                                     className="searchBox__content-search-result-addButton"
@@ -187,12 +187,17 @@ const SearchBox = ({
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
                                         fill="none"
-                                        className="searchBox__content-search-result-addButtonImg"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
                                         stroke="currentColor"
+                                        className="searchBox__content-search-result-addButtonImg"
                                     >
-                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                        />
                                     </svg>
                                 </button>
                             )}

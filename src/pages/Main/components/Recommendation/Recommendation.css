@@ -8,15 +8,30 @@
     margin-top: 5rem;
 }
 
+.recommendation__title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
 .recommendation__title {
     color: var(--clr-primary);
-    font-size: var(--size-2xl);
+    font-size: var(--size-4xl);
     text-align: center;
 }
 
-.personality__collage {
+.recommendation__title-desc {
+    text-align: center;
+    max-width: 35ch;
+    font-size: var(--size-xl);
+}
+
+.recommendation__finalImage {
     height: 30rem;
-    width: 20rem;
+    width: 16.875rem;
+    border-radius: 1rem;
 }
 
 /* xs */
