@@ -132,26 +132,19 @@ const determineMusicPersonality = (averageFeatures) => {
     }
 };
 
-// const CustomLegend = ({ payload, iconWidth, iconHeight }) => {
-//     <ul className="personality__custom-legend">
-//         {payload.map((entry, index) => (
-//             <li key={`item-${index}`} className="personality__legend-item">
-//                 <svg
-//                     width={iconWidth}
-//                     height={iconHeight}
-//                     style={{ marginRight: "8px" }}
-//                 >
-//                     <rect
-//                         width={iconWidth}
-//                         height={iconHeight}
-//                         fill={entry.color}
-//                     />
-//                 </svg>
-//                 {entry.value}
-//             </li>
-//         ))}
-//     </ul>;
-// };
+const CustomLegend = ({ payload, iconWidth, iconHeight }) => {
+    <ul className="personality__custom-legend">
+        {payload.map((entry, index) => (
+            <li key={`item-${index}`} className="personality__legend-item">
+                <div
+                    className="legend-color"
+                    style={{ backgroundColor: entry.color }}
+                />
+                <span className="legend-label">{entry.value}</span>
+            </li>
+        ))}
+    </ul>;
+};
 
 const Personality = ({ audioFeatures, logDebug }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
