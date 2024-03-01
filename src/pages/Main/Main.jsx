@@ -1,22 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
+import html2canvas from "html2canvas";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
 import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
 import Personality from "./components/Personality/Personality";
+import RecommendationImage from "../../components/RecommendationImage/RecommendationImage.jsx";
 
 const Main = () => {
     const { token, isTokenValid } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
     const [audioFeatures, setAudioFeatures] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [collage, setCollage] = useState(null);
     const [resultActive, setResultActive] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const [passableTrackIds, setPassableTrackIds] = useState([]);
+
+    const [capturedImageUrl, setCapturedImageUrl] = useState(null);
+
+    const [showRecommendationImage, setShowRecommendationImage] =
+        useState(false);
 
     const navigate = useNavigate();
 
@@ -57,8 +65,6 @@ const Main = () => {
                     token
                 );
 
-                console.log("Recommended songs:", recommendations);
-
                 const recommendationTrackIds = recommendations.map(
                     (song) => song.id
                 );
@@ -70,10 +76,7 @@ const Main = () => {
                     ...selectedSongsTrackIds,
                 ];
 
-                // await sendImageLinksToBackend(allImageLinks);
-
-                // Set collage state when getting results
-                setCollage(await fetchCollage(allTrackIds));
+                setPassableTrackIds(allTrackIds);
 
                 const selectedSongsFeatures = await fetchAudioFeatures(
                     trackIds,
@@ -93,6 +96,7 @@ const Main = () => {
                 setAudioFeatures(allFeatures);
 
                 setResultActive(true);
+                setShowRecommendationImage(true);
             } catch (error) {
                 console.error("Error: ", error.message);
             } finally {
@@ -101,6 +105,12 @@ const Main = () => {
         } else {
             console.log("Need five inputs!");
         }
+    };
+
+    const handleCapture = (capturedImageUrl) => {
+        console.log("Captured Image URL: ", capturedImageUrl);
+        setCapturedImageUrl(capturedImageUrl);
+        setShowRecommendationImage(false);
     };
 
     // Fetch recommendations from Spotify API
@@ -132,31 +142,6 @@ const Main = () => {
 
         const response = await axios.get(audioFeaturesEndpoint, config);
         return response.data.audio_features;
-    };
-
-    const fetchCollage = async (trackIds) => {
-        try {
-            const response = await axios.post(
-                "http://localhost:5000/recommendationCollage",
-                {
-                    trackIds,
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
-
-            if (response.status === 200) {
-                console.log("IDs sent successfully");
-                return response.data.collage;
-            } else {
-                console.error("Error sending IDs: ", response.statusText);
-            }
-        } catch (error) {
-            console.error("Error sending IDs: ", error);
-        }
     };
 
     const debouncedGetResults = debounce(getResults, 300); // Adjust the debounce delay as needed
@@ -245,9 +230,16 @@ const Main = () => {
                     </button>
                 </div>
             </div>
+
             {resultActive && (
                 <div className="main__results-container">
-                    <Recommendation collage={collage} />
+                    {showRecommendationImage && (
+                        <RecommendationImage
+                            allTrackIds={passableTrackIds}
+                            onCapture={handleCapture}
+                        />
+                    )}
+                    <Recommendation imageUrl={capturedImageUrl} />
                     <hr className="main__results-line" />
                     <Personality audioFeatures={audioFeatures} />
                 </div>
