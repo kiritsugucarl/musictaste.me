@@ -8,6 +8,7 @@ import {
     ResponsiveContainer,
     PolarAngleAxis,
 } from "recharts";
+import CustomLegend from "./components/CustomLegend/CustomLegend";
 import personalityDescription from "./data/personalityDescription.json";
 import "./Personality.css";
 
@@ -131,27 +132,6 @@ const determineMusicPersonality = (averageFeatures) => {
         return "Undefined Personality";
     }
 };
-
-// const CustomLegend = ({ payload, iconWidth, iconHeight }) => {
-//     <ul className="personality__custom-legend">
-//         {payload.map((entry, index) => (
-//             <li key={`item-${index}`} className="personality__legend-item">
-//                 <svg
-//                     width={iconWidth}
-//                     height={iconHeight}
-//                     style={{ marginRight: "8px" }}
-//                 >
-//                     <rect
-//                         width={iconWidth}
-//                         height={iconHeight}
-//                         fill={entry.color}
-//                     />
-//                 </svg>
-//                 {entry.value}
-//             </li>
-//         ))}
-//     </ul>;
-// };
 
 const Personality = ({ audioFeatures, logDebug }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
@@ -285,14 +265,12 @@ const Personality = ({ audioFeatures, logDebug }) => {
                 <div className="personality__graph-wrapper">
                     <ResponsiveContainer>
                         <RadialBarChart
-                            cx="40%"
-                            cy="30%"
                             innerRadius="15%"
                             outerRadius="90%"
                             data={radialBarData}
                             barSize={12.5}
-                            startAngle={90}
-                            endAngle={-270}
+                            startAngle={-270}
+                            endAngle={90}
                         >
                             <PolarAngleAxis
                                 type="number"
@@ -308,7 +286,7 @@ const Personality = ({ audioFeatures, logDebug }) => {
                                 dataKey="value"
                             />
                             {/* <Tooltip /> */}
-                            <Legend
+                            {/* <Legend
                                 iconSize={12.5}
                                 layout="vertical"
                                 verticalAlign="bottom"
@@ -320,9 +298,10 @@ const Personality = ({ audioFeatures, logDebug }) => {
                                         color,
                                     })
                                 )}
-                            />
+                            /> */}
                         </RadialBarChart>
                     </ResponsiveContainer>
+                    <CustomLegend legendColors={legendColors} />
                 </div>
             </div>
         </div>
