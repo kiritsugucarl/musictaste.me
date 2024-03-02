@@ -32,7 +32,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                 <div className="nav__logo-wrapper">
                     <img className="nav-logo" src={logo} />
                     <h2 className="nav-title">
-                        mt<span className="title-mustard">.</span>me
+                        mt<span className="title-accent">.</span>me
                     </h2>
                 </div>
 

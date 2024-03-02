@@ -9,7 +9,7 @@
 }
 
 .err404__title {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-size: var(--size-3xl);
 }
 
@@ -19,17 +19,17 @@
 }
 
 .err404__desc {
-    color: var(--clr-light);
+    color: var(--clr-white);
     font-size: var(--size-lg);
     text-align: center;
 }
 
 .err404__redirect-link {
-    color: var(--clr-mustard);
+    color: var(--clr-accent);
     text-decoration: underline;
     transition: 0.3s color;
 }
 
 .err404__redirect-link:hover {
-    color: var(--clr-dark-mustard);
+    color: var(--clr-main-accent);
 }
