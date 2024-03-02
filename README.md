@@ -7,18 +7,8 @@ A web app to idenfity your music taste. Created for the completion in Fourth Yea
 - Javascript (ES6+)
 - SpotifyAPI
 - Axios
-- Flask
-- Python
-
-## Clone the flask repository:
-Clone the repository:
-```bash
-git clone https://github.com/kiritsugucarl/musictaste.me-api.git
-```
-
-```bash
-git checkout dev
-```
+- Flask (removed)
+- Python (removed)
 
 ## How to use (dev):
 To access the directory:
@@ -60,13 +50,13 @@ npm install recharts
 npm install react-spinners
 ```
 
+```bash
+npm install html2canvas
+```
+
 To run the dev server:
 ```bash
 npm run dev
-```
-Run the flask server:
-```bash
-python musicCollage.py
 ```
 
 ## Contributors:
@@ -82,3 +72,6 @@ To contribute to the repository, create your own branch using
 git checkout -b "branchName"
 ```
 and create pull requests and wait for the approval of another contributors.
+
+## UPDATES
+- Flask has been removed from usage due to performance and build issues. 
