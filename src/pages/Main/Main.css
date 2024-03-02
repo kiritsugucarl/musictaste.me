@@ -21,7 +21,7 @@
 
 .main__title {
     font-size: var(--size-4xl);
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .main__titleDesc {

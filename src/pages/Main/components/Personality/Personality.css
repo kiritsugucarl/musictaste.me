@@ -7,7 +7,7 @@
 }
 
 .personality__title {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-size: var(--size-4xl);
     text-align: center;
 }
@@ -38,12 +38,14 @@
 .personality__result-title {
     font-size: var(--size-4xl);
     font-weight: 600;
+    color: var(--clr-main);
 }
 
 .personality__description {
     max-width: 80%;
     text-align: center;
     font-size: var(--size-base);
+    color: var(--clr-main);
 }
 
 .personality__graph-wrapper {
