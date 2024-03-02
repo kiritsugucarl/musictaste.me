@@ -22,15 +22,15 @@
 .about-description {
     font-size: var(--size-xs);
     line-height: 1.5rem;
-    color: var(--clr-light);
+    color: var(--clr-white);
     text-align: center;
 
 }
 
 .about__line {
     width: 60%;
-    border-top: 0.125em solid var(--clr-primary);
-    background-color: var(--clr-primary);
+    border-top: 0.125em solid var(--clr-secondary);
+    background-color: var(--clr-secondary);
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
@@ -42,7 +42,7 @@
     font-size: var(--size-xs);
     margin: 1rem;
     line-height: 2;
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     max-width: 85ch;
     text-align: center;
 
@@ -74,7 +74,7 @@
 }
 .about__name {
     font-size: var(--size-base);
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-weight: bold;
     letter-spacing: 0.03rem;
     white-space: nowrap;

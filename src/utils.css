@@ -24,11 +24,11 @@
 }
 
 .pink-btn {
-    background-color: var(--clr-primary);
+    background-color: var(--clr-secondary);
 }
 
-.title-mustard {
-    color: var(--clr-mustard);
+.title-accent {
+    color: var(--clr-accent);
 }
 
 .inactive {

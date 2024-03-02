@@ -31,7 +31,7 @@
 }
 
 /* .searchBox__content-searchBar:focus .searchBox__content-searchBar-wrapper {
-    background-color: var(--clr-mustard);
+    background-color: var(--clr-accent);
 } */
 
 .searchBox__content-search-result-prompt {
@@ -52,7 +52,6 @@
 .searchBox__content-search-result-item {
     display: flex;
     align-items: center;
-    /* border-bottom: 1px solid var(--clr-light); */
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-top: 0.5rem;
@@ -65,7 +64,7 @@
 }
 
 .searchBox__content-search-result-item:hover {
-    background-color: var(--clr-light);
+    background-color: var(--clr-white);
     border-radius: 1rem;
 }
 
@@ -77,21 +76,21 @@
 }
 
 .searchBox__content-search-result-play:hover {
-    color: var(--clr-primary) !important;
+    color: var(--clr-secondary) !important;
 }
 
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-play,
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-pause {
-    color: var(--clr-dark);
+    color: var(--clr-main);
 }
 
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-addButton,
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-addedPrompt {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .searchBox__content-search-result-albumImg {
@@ -107,7 +106,7 @@
 
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-songName {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .searchBox__content-search-result-songDetails {
@@ -116,7 +115,7 @@
 
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-songDetails {
-    color: var(--clr-dark);
+    color: var(--clr-main);
 }
 
 /* .searchBox__content-search-result-songName {
@@ -129,7 +128,7 @@
 
 .searchBox__content-search-result-addButton {
     margin-left: auto;
-    color: var(--clr-light);
+    color: var(--clr-white);
     transition: color 0.3s ease-in-out;
     min-width: var(--size-3xl);
     min-height: var(--size-3xl);
@@ -139,12 +138,12 @@
     max-width: var(--size-3xl);
     min-height: var(--size-3xl);
     margin-left: auto;
-    color: var(--clr-light);
+    color: var(--clr-white);
     transition: color 0.3s ease-in-out;
 }
 
 .searchBox__content-search-result-addButton:hover svg {
-    fill: var(--clr-primary);
+    fill: var(--clr-secondary);
 }
 
 .searchBox__content-search-result-addButtonImg {

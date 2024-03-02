@@ -14,18 +14,18 @@
 .contact-page-container h2 {
     margin-bottom: 1rem;
     font-size: var(--size-base);
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 .contact-page-container p {  
     font-size: var(--size-sm);
     text-align: center;
     max-width: 100%;
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 .contact__line {
     width: 80%;
-    border-top: 0.125em solid var(--clr-primary);
-    background-color: var(--clr-primary);
+    border-top: 0.125em solid var(--clr-secondary);
+    background-color: var(--clr-secondary);
     margin: 2rem auto;
 }
 
@@ -49,7 +49,7 @@ input,
 textarea {
     width: 100%;
     padding: 0.63rem;
-    border: 0.13rem solid var(--clr-light);
+    border: 0.13rem solid var(--clr-white);
     border-radius: 0.63rem;
 }
 textarea[name="message"] {
@@ -62,8 +62,8 @@ textarea[name="message"] {
     border: none;
     font-size: var(--size-sm);
     font-weight: bold;
-    color: var(--clr-dark);
-    background-color: var(--clr-light);
+    color: var(--clr-main);
+    background-color: var(--clr-white);
     border-radius: 2.5rem;
     margin: 1rem auto;
     transition:
@@ -72,8 +72,8 @@ textarea[name="message"] {
 }
 
 .contact__submit-Btn:hover {
-    color: var(--clr-dark);
-    background-color: var(--clr-primary);
+    color: var(--clr-main);
+    background-color: var(--clr-secondary);
 }
 .contact__submit-Btn:active {
     transform: translateY(0.25rem);
@@ -83,8 +83,8 @@ textarea[name="message"] {
     top: 0.63rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--clr-primary);
-    color: var(--clr-light);
+    background-color: var(--clr-secondary);
+    color: var(--clr-white);
     padding: 0.25rem 0.25rem;
     border-radius: 0.31rem;
     text-align: center;
