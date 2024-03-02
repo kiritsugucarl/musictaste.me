@@ -285,8 +285,8 @@ const Personality = ({ audioFeatures, logDebug }) => {
                 <div className="personality__graph-wrapper">
                     <ResponsiveContainer>
                         <RadialBarChart
-                            cx="30%"
-                            cy="50%"
+                            cx="40%"
+                            cy="30%"
                             innerRadius="15%"
                             outerRadius="90%"
                             data={radialBarData}
@@ -311,8 +311,8 @@ const Personality = ({ audioFeatures, logDebug }) => {
                             <Legend
                                 iconSize={12.5}
                                 layout="vertical"
-                                verticalAlign="middle"
-                                align="right"
+                                verticalAlign="bottom"
+                                align="center"
                                 payload={legendColors.map(
                                     ({ value, color }) => ({
                                         value,

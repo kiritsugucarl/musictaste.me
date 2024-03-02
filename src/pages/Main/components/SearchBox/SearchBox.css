@@ -1,12 +1,14 @@
 .searchBox__content-search {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
 }
 
 .searchBox__content-searchBar-wrapper {
     display: flex;
-    background-color: var(--clr-gray);
+    width: 100%;
+    background-color: var(--clr-mustard);
     border-radius: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -17,6 +19,7 @@
 
 .searchBox__content-searchBarImg {
     width: var(--size-xl);
+    color: var(--clr-dark);
 }
 
 .searchBox__content-searchBar {
@@ -24,7 +27,7 @@
     background: none;
     border: none;
     font-size: var(--size-base);
-    color: var(--clr-secondary);
+    color: var(--clr-dark);
 }
 
 /* .searchBox__content-searchBar:focus .searchBox__content-searchBar-wrapper {
@@ -40,6 +43,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    width: 95%;
     list-style-type: none;
     padding-inline-start: 0.5rem;
     padding-inline-end: 0.5rem;
@@ -48,7 +52,6 @@
 .searchBox__content-search-result-item {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--clr-white);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-top: 0.5rem;
@@ -67,8 +70,8 @@
 
 .searchBox__content-search-result-play,
 .searchBox__content-search-result-pause {
-    width: var(--size-xl);
-    height: var(--size-xl);
+    min-width: var(--size-3xl);
+    min-height: var(--size-3xl);
     transition: color 0.3s ease-in;
 }
 
@@ -91,13 +94,14 @@
 }
 
 .searchBox__content-search-result-albumImg {
-    width: var(--size-3xl);
-    height: var(--size-3xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
 }
 
 .searchBox__content-search-result-songName {
     font-weight: bold;
     transition: color 0.3s ease-in;
+    font-size: var(--size-xs);
 }
 
 .searchBox__content-search-result-item:hover
@@ -114,22 +118,25 @@
     color: var(--clr-main);
 }
 
-.searchBox__content-search-result-songName {
+/* .searchBox__content-search-result-songName {
     font-size: var(--size-xs);
-}
+} */
 
 .searchBox__content-search-result-songDetails {
-    font-size: var(--size-xxs);
+    font-size: var(--size-xs);
 }
 
 .searchBox__content-search-result-addButton {
     margin-left: auto;
     color: var(--clr-white);
     transition: color 0.3s ease-in-out;
+    min-width: var(--size-3xl);
+    min-height: var(--size-3xl);
 }
 
 .searchBox__content-search-result-addedPrompt {
-    font-size: var(--size-xs);
+    max-width: var(--size-3xl);
+    min-height: var(--size-3xl);
     margin-left: auto;
     color: var(--clr-white);
     transition: color 0.3s ease-in-out;
@@ -141,8 +148,8 @@
 
 .searchBox__content-search-result-addButtonImg {
     display: block;
-    width: var(--size-xl);
-    height: var(--size-xl);
+    width: var(--size-3xl);
+    height: var(--size-3xl);
 }
 
 .searchBox__content-search-result-audio {
