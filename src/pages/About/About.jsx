@@ -12,11 +12,6 @@ const About = () => {
         <div className="container content-container section">
             <div className="about-wrapper">
                 <h1 className="about-title">ABOUT THE WEBSITE</h1>
-                <img
-                    className="about-top-image"
-                    src={aboutimage}
-                    alt="About Us"
-                />
 
                 <p className="about-description">
                     We know you love music. We know you have favorite artists

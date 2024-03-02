@@ -8,6 +8,7 @@ import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
 import ErrTimeout from "./pages/ErrTimeout/ErrTimeout.jsx";
 import ErrNotFound from "./pages/ErrNotFound/ErrNotFound.jsx";
+import RecommendationImage from "./components/RecommendationImage/RecommendationImage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     {
         path: "/timeout",
         element: <ErrTimeout />,
+    },
+    {
+        path: "/imageTest",
+        element: <RecommendationImage />,
     },
     {
         path: "*",

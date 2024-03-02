@@ -1,16 +1,13 @@
 import "./Recommendation.css";
 
-const Recommendation = ({ collage }) => {
+const Recommendation = ({ imageUrl }) => {
     return (
         <div className="recommendation">
             <h2 className="recommendation__title">
                 Your <span className="title-accent"> music taste result</span>
             </h2>
-            {collage ? (
-                <img
-                    src={`data:image/jpeg;base64,${collage}`}
-                    className="personality__collage"
-                />
+            {imageUrl ? (
+                <img src={imageUrl} className="personality__collage" />
             ) : (
                 <p>Loading...</p>
             )}
