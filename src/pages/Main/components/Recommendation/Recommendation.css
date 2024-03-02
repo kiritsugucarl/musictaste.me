@@ -17,7 +17,7 @@
 }
 
 .recommendation__title {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-size: var(--size-4xl);
     text-align: center;
 }

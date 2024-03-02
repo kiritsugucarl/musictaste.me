@@ -8,7 +8,7 @@
 .searchBox__content-searchBar-wrapper {
     display: flex;
     width: 100%;
-    background-color: var(--clr-mustard);
+    background-color: var(--clr-accent);
     border-radius: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -19,7 +19,7 @@
 
 .searchBox__content-searchBarImg {
     width: var(--size-xl);
-    color: var(--clr-dark);
+    color: var(--clr-main);
 }
 
 .searchBox__content-searchBar {
@@ -27,7 +27,7 @@
     background: none;
     border: none;
     font-size: var(--size-base);
-    color: var(--clr-dark);
+    color: var(--clr-main);
 }
 
 /* .searchBox__content-searchBar:focus .searchBox__content-searchBar-wrapper {
@@ -83,7 +83,7 @@
     .searchBox__content-search-result-play,
 .searchBox__content-search-result-item:hover
     .searchBox__content-search-result-pause {
-    color: var(--clr-main);
+    color: var(--clr-secondary);
 }
 
 .searchBox__content-search-result-item:hover

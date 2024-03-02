@@ -1,7 +1,6 @@
 .result-container {
     height: 1920px;
     width: 1080px;
-    /* border: 1px solid red; */
     background-image: url(../../assets/finalImageBg.png);
     display: flex;
     flex-direction: column;
@@ -22,11 +21,11 @@
     font-family: "MuseoModerno", sans-serif;
     font-size: var(--size-7xl);
     letter-spacing: 0.2rem;
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .result-yellow {
-    color: var(--clr-mustard);
+    color: var(--clr-accent);
 }
 
 .result-collage {
@@ -40,7 +39,7 @@
     width: 90%;
     height: 4px;
     border: none;
-    background-color: var(--clr-mustard);
+    background-color: var(--clr-accent);
     border-radius: 0.5rem;
 }
 
@@ -104,7 +103,7 @@
 }
 
 .result__track-details-item-index {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-size: var(--size-6xl);
     font-weight: 600;
 }
@@ -116,11 +115,11 @@
 
 .result__track-details-item-songDetails-songName {
     font-size: var(--size-2xl);
-    color: var(--clr-light);
+    color: var(--clr-white);
     font-weight: 600;
 }
 
 .result__track-details-item-songDetails-songArtists {
     font-size: var(--size-base);
-    color: var(--clr-light);
+    color: var(--clr-white);
 }
