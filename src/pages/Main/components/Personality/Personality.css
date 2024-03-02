@@ -7,7 +7,7 @@
 }
 
 .personality__title {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-size: var(--size-2xl);
     text-align: center;
 }
@@ -22,7 +22,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background-color: var(--clr-primary);
+    background-color: var(--clr-secondary);
     border-radius: 1rem;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .personality__graph-data-feature {
-    color: var(--clr-light);
+    color: var(--clr-white);
     flex: 1;
 }
 

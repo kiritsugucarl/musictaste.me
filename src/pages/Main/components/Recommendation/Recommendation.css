@@ -9,7 +9,7 @@
 }
 
 .recommendation__title {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     font-size: var(--size-2xl);
     text-align: center;
 }

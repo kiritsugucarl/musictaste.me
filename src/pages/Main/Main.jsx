@@ -153,7 +153,7 @@ const Main = () => {
                     <div className="main__title-wrapper">
                         <h2 className="main__title">
                             Find your{" "}
-                            <span className="title-mustard"> music taste </span>
+                            <span className="title-accent"> music taste </span>
                         </h2>
                         <p className="main__titleDesc">
                             Pick five (5) songs that you absolutely love to

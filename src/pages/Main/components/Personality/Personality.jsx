@@ -258,7 +258,7 @@ const Personality = ({ audioFeatures, logDebug }) => {
     return (
         <div className="personality">
             <h2 className="personality__title">
-                Your <span className="title-mustard">music personality is</span>
+                Your <span className="title-accent">music personality is</span>
             </h2>
             <div className="personality__wrapper">
                 {overallAverageFeatures ? (
