@@ -162,6 +162,7 @@ const Home = () => {
                             their music taste.
                         </p>
                     </div>
+
                     <div
                         className="home__personality-carousel"
                         onTouchStart={(e) => handleTouchStart(e)}

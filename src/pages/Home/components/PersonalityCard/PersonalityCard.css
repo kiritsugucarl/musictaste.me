@@ -18,8 +18,8 @@
 
 .flip-card {
     background-color: transparent;
-    width: 10.5rem;
-    height: 15.5rem;
+    width: 8rem;
+    height: 13rem;
     perspective: 900px;
 }
 
@@ -86,6 +86,7 @@
 }
 
 .home__personality-carousel {
+    min-width: 100%;
     min-height: 30rem;
     display: flex;
     align-items: center;

@@ -282,7 +282,7 @@
     }
 
     .home-container-2 {
-        min-height: 30vh;
+        min-height: 40vh;
         align-items: normal;
     }
 
@@ -310,7 +310,7 @@
         position: absolute;
         width: 30rem;
         right: 0;
-        bottom: -35%;
+        bottom: -45%;
     }
 
     .home__main-title {
@@ -369,14 +369,18 @@
 
     .home__img-landing {
         width: 35rem;
-        bottom: -50%;
+        bottom: -35%;
+    }
+
+    .home-container-2 {
+        min-height: 50vh;
     }
 }
 
 /* 2xl */
 @media (min-width: 1536px) {
     .home__img-landing {
-        width: 40rem;
-        bottom: -70%;
+        /* width: 40rem; */
+        bottom: -50%;
     }
 }
