@@ -34,6 +34,24 @@
     border-radius: 1rem;
 }
 
+.recommendation__finalImageWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.recommendation__overlay-icons {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.recommendation__finalImageLink {
+    width: var(--size-2xl);
+}
+
 /* xs */
 /* @media (min-width: 475px) {} */
 

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
 import html2canvas from "html2canvas";
@@ -34,6 +35,16 @@ const Main = () => {
         }
     }, [isTokenValid, navigate]);
 
+    useEffect(() => {
+        // Set body overflow based on the loading state
+        document.body.style.overflow = loading ? "hidden" : "auto";
+
+        // Cleanup function to reset overflow when component unmounts
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [loading]);
+
     // add songs to added list
     const addSongToAddedList = (song) => {
         if (!addedSongs.some((addedSong) => addedSong.id === song.id)) {
@@ -54,6 +65,8 @@ const Main = () => {
 
     // get results
     const getResults = async () => {
+        // Scroll to the top of the page before setting loading to false
+        window.scrollTo({ top: 0, behavior: "smooth" });
         setLoading(true);
         if (counter === 5) {
             try {
@@ -99,8 +112,6 @@ const Main = () => {
                 setShowRecommendationImage(true);
             } catch (error) {
                 console.error("Error: ", error.message);
-            } finally {
-                setLoading(false);
             }
         } else {
             console.log("Need five inputs!");
@@ -111,6 +122,7 @@ const Main = () => {
         console.log("Captured Image URL: ", capturedImageUrl);
         setCapturedImageUrl(capturedImageUrl);
         setShowRecommendationImage(false);
+        setLoading(false);
     };
 
     // Fetch recommendations from Spotify API
@@ -247,13 +259,7 @@ const Main = () => {
 
             {loading && (
                 <div className="main__loading-overlay">
-                    <ScaleLoader
-                        color="#45a083"
-                        height={150}
-                        width={6}
-                        loading
-                        radius={2}
-                    />
+                    <BeatLoader color="#36d7b7" size={40} />
                 </div>
             )}
         </main>
