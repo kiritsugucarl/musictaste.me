@@ -235,6 +235,7 @@ const Personality = ({ audioFeatures, logDebug }) => {
               color: getColorForValue(index),
           }))
         : [];
+
     return (
         <div className="personality">
             <h2 className="personality__title">
@@ -242,20 +243,43 @@ const Personality = ({ audioFeatures, logDebug }) => {
             </h2>
             <div className="personality__wrapper">
                 {overallAverageFeatures ? (
-                    <div className="personality__result-wrapper">
+                    <div
+                        className="personality__result-wrapper"
+                        style={{
+                            backgroundColor:
+                                personalityDescription[musicPersonality]
+                                    .backgroundColor,
+                        }}
+                    >
                         {imagePath && (
                             <img
                                 src={imagePath}
                                 className="personality__result-img"
                             />
                         )}
-                        <p className="personality__result-title">
+                        <p
+                            className="personality__result-title"
+                            style={{
+                                color: personalityDescription[musicPersonality]
+                                    .color,
+                            }}
+                        >
                             {musicPersonality}
                         </p>
                         {musicPersonality &&
                             personalityDescription[musicPersonality] && (
-                                <p className="personality__description">
-                                    {personalityDescription[musicPersonality]}
+                                <p
+                                    className="personality__description"
+                                    style={{
+                                        color: personalityDescription[
+                                            musicPersonality
+                                        ].color,
+                                    }}
+                                >
+                                    {
+                                        personalityDescription[musicPersonality]
+                                            .description
+                                    }
                                 </p>
                             )}
                     </div>

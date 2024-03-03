@@ -1,13 +1,72 @@
 {
-    "Party Man": "The life of the party! You love upbeat and danceable tunes.",
-    "Extrovert": "Outgoing and lively, you enjoy music that reflects your energetic personality.",
-    "Introvert": "You appreciate more laid-back and introspective tracks.",
-    "Live Enthusiast": "You thrive on the energy of live performances.",
-    "Emotional": "Music is a powerful emotional experience for you.",
-    "Instrumentalist": "You appreciate the intricacies of instrumental music.",
-    "The Thinker": "Your taste leans towards music that stimulates thought.",
-    "The Warrior": "You enjoy powerful and intense tracks that motivate you.",
-    "The Heartbroken": "Music is your emotional outlet, especially during tough times.",
-    "The Shredhead": "You love music with intense guitar shredding and powerful riffs.",
-    "Undefined Personality": "Your music taste is unique and can't be defined by existing categories."
+  "The Warrior" : {
+      "name" : "The Warrior",
+      "description" : "You enjoy powerful and intense tracks that motivate you.",
+      "backgroundColor" : "#33CE7C",
+      "textColor" : "#232931",
+      "image": "/personalities/The Warrior.png"
+  },
+  "Live Enthusiast" : {
+      "name" : "Live Enthusiast",
+      "description" : "You thrive on the energy of live performances.",
+      "backgroundColor" : "#33CE7C",
+      "textColor" : "#232931",
+      "image": "/personalities/Live Enthusiast.png"
+  },
+  "The Thinker" : {
+      "name" : "The Thinker",
+      "description" : "Your taste leans towards music that stimulates thought.",
+      "backgroundColor" : "#33CE7C",
+      "textColor" : "#232931",
+      "image": "/personalities/The Thinker.png"
+  },
+  "Party Man" : {
+      "name" : "Party Man",
+      "description" : "The life of the party! You love upbeat and danceable tunes.",
+      "backgroundColor" : "#FF8348",
+      "textColor" : "#232931",
+      "image": "/personalities/Party Man.png"
+  },
+  "Extrovert" : {
+      "name" : "Extrovert",
+      "description" : "The life of the party! You love upbeat and danceable tunes.",
+      "backgroundColor" : "#FF8348",
+      "textColor" : "#232931",
+      "image": "/personalities/Extrovert.png"
+  },
+  "Introvert" : {
+      "name": "Introvert",
+      "description": "You appreciate more laid-back and introspective tracks.",
+      "backgroundColor" : "#4B85FD",
+      "textColor" : "#F1F1F1",
+      "image" : "/personalities/Introvert.png"
+  },
+  "The Shredhead" : {
+      "name": "The Shredhead",
+      "description": "You love music with intense guitar shredding and powerful riffs.",
+      "backgroundColor" : "#4B85FD",
+      "textColor" : "#F1F1F1",
+      "image" : "/personalities/The Shredhead.png"
+  },
+  "Emotional" : {
+      "name" : "Emotional",
+      "description": "Music is a powerful emotional experience for you.",
+      "backgroundColor" : "#9057fa",
+      "textColor" : "#F1F1F1",
+      "image" : "/personalities/Emotional.png"
+  },
+  "The Heartbroken" : {
+      "name" : "The Heartbroken",
+      "description": "Music is your emotional outlet, especially during tough times.",
+      "backgroundColor" : "#9057fa",
+      "textColor" : "#F1F1F1",
+      "image" : "/personalities/The Heartbroken.png"
+  },
+  "Instrumentalist" : {
+      "name" : "Instrumentalist",
+      "description": "You appreciate the intricacies of instrumental music.",
+      "backgroundColor" : "#9057fa",
+      "textColor" : "#F1F1F1",
+      "image" : "/personalities/Instrumentalist.png"
   }
+}

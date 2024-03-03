@@ -26,7 +26,6 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background-color: var(--clr-secondary);
     border-radius: 1rem;
 }
 
@@ -38,14 +37,12 @@
 .personality__result-title {
     font-size: var(--size-4xl);
     font-weight: 600;
-    color: var(--clr-main);
 }
 
 .personality__description {
     max-width: 80%;
     text-align: center;
     font-size: var(--size-base);
-    color: var(--clr-main);
 }
 
 .personality__graph-wrapper {
