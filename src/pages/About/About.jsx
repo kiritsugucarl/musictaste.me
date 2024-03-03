@@ -1,81 +1,98 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
-import member1 from "/member1.png";
-import member2 from "/member2.png";
-import member3 from "/member3.png";
-import member4 from "/member4.png";
-import member5 from "/member5.png";
+import member1 from "/PINEDA.png";
+import member2 from "/ORTILLO.png";
+import member3 from "/MANOSCA.png";
+import member4 from "/AVE.png";
+import member5 from "/DESCALZO.png";
 
 const About = () => {
-    return (
-        <div className="container content-container section">
-            <div className="about-wrapper">
-                <h1 className="about-title">ABOUT THE WEBSITE</h1>
+  return (
+    <div className="about-page">
+      <h1>
+        <span className="about-the__title">About the </span>{" "}
+        <span className="website__mustard">website</span>
+      </h1>
 
-                <p className="about-description">
-                    We know you love music. We know you have favorite artists
-                    and songs, genres that you love and hate, and that you
-                    listen to over and over again. We also know that sometimes,
-                    when it comes to music, you don't know how much you like
-                    something until someone else tells you how much they do -
-                    and we want to help!
-                </p>
-
-                <hr className="about__line" />
-
-                <h2 className="about__the-team-title">MEET THE TEAM</h2>
-
-                <div className="about__desc-team">
-                    <p>
-                        The Architects of Innovation: Meet the Extraordinary
-                        Team Behind the App's Development. This app's
-                        development team is a dedicated and creative collection
-                        of individuals who have collaborated to bring it to
-                        reality.
-                    </p>
-                </div>
-                <div className="about__meet-the-team">
-                    <div class="about__team">
-                        <img src={member1} alt="Team Member 1" />
-                        <div class="about__name">
-                            {" "}
-                            CARL DENNIS <br class="NLine"></br> PINEDA{" "}
-                        </div>
-                        <div className="about__role"> Backend Developer</div>
-                    </div>
-                    <div class="about__team">
-                        <img src={member2} alt="Team Member 2" />
-                        <div class="about__name">
-                            MICO JOSHUA<br class="NLine"></br> ORTILLO
-                        </div>
-                        <div className="about__role"> Backend Developer</div>
-                    </div>
-                    <div class="about__team">
-                        <img src={member3} alt="Team Member 3" />
-                        <div class="about__name">
-                            SHALOM JAMAICA<br class="NLine"></br> AVE
-                        </div>
-                        <div className="about__role"> Frontend Developer</div>
-                    </div>
-                    <div class="about__team">
-                        <img src={member4} alt="Team Member 4" />
-                        <div class="about__name">
-                            KAYLA CLAUDINE<br class="NLine"></br> DESCALZO
-                        </div>
-                        <div className="about__role"> Frontend Developer</div>
-                    </div>
-                    <div class="about__team">
-                        <img src={member5} alt="Team Member 5" />
-                        <div class="about__name">
-                            DAN EMMANUEL <br class="NLine"></br> MANOSCA
-                        </div>
-                        <div className="about__role"> Frontend Developer</div>
-                    </div>
-                </div>
-            </div>
+      <div className="about-description">
+        <p>
+          We know you love music. We know you have favorite artists and songs,
+          genres that you love and hate, and that you listen to over and over
+          again. We also know that sometimes, when it comes to music, you don't
+          know how much you like something until someone else tells you how much
+          they do - and we want to help!
+        </p>
+      </div>
+      <hr className="section-divider" />
+      <div className="the-team-container">
+        <h3>
+          <span className="meet-the__title">Meet the</span>{" "}
+          <span className="team__title">team</span>
+        </h3>
+      </div>
+      <div className="desc-team">
+        <p>
+          The Architects of Innovation: Meet the Extraordinary Team Behind the
+          App's Development. This app's development team is a dedicated and
+          creative collection of individuals who have collaborated to bring it
+          to reality.
+        </p>
+      </div>
+      <div className="meet-the-team">
+        <div className="team">
+          <div className="image-container">
+            <img src={member1} alt="Team Member 1" className="team-member-img" />
+          </div>
+          <div className="name">
+            CARL DENNIS <br className="NLine" />
+            PINEDA
+          </div>
+          <div className="role">Fullstack, Leader</div>
         </div>
-    );
+        <div className="team">
+          <div className="image-container">
+            <img src={member2} alt="Team Member 2" className="team-member-img" />
+          </div>
+          <div className="name">
+            MICO JOSHUA <br className="NLine" />
+            ORTILLO
+          </div>
+          <div className="role">Backend Developer</div>
+        </div>
+        <div className="team">
+          <div className="image-container">
+            <img src={member3} alt="Team Member 3" className="team-member-img" />
+          </div>
+          <div className="name">
+            DAN EMMANUEL <br className="NLine" />
+            MANOSCA
+          </div>
+          <div className="role">Documentation</div>
+        </div>
+        <div className="team">
+          <div className="image-container">
+            <img src={member4} alt="Team Member 4" className="team-member-img" />
+          </div>
+          <div className="name">
+            SHALOM JAMAICA <br className="NLine" />
+            AVE
+          </div>
+          <div className="role">Frontend Developer, UI/UX</div>
+        </div>
+        <div className="team">
+          <div className="image-container">
+            <img src={member5} alt="Team Member 5" className="team-member-img" />
+          </div>
+          <div className="name">
+            KAYLA CLAUDINE <br className="NLine" />
+            DESCALZO
+          </div>
+          <div className="role">Frontend Developer, Graphic Designer</div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default About;

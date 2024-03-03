@@ -1,251 +1,240 @@
-.contact-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
 
-.contact-title {
-    font-size: var(--size-xl);
-    letter-spacing: 0.18rem;
-    margin-bottom: 0.63rem;
-}
-
-.contact-page-container h2 {
-    margin-bottom: 1rem;
-    font-size: var(--size-base);
-    color: var(--clr-secondary);
-}
-.contact-page-container p {  
-    font-size: var(--size-sm);
+  
+  .contact-title {
+    font-weight: bold!important;
     text-align: center;
-    max-width: 100%;
-    color: var(--clr-secondary);
-}
-.contact__line {
-    width: 80%;
-    border-top: 0.125em solid var(--clr-secondary);
-    background-color: var(--clr-secondary);
-    margin: 2rem auto;
-}
+    font-size: var(--size-3xl);
+    margin-bottom: 0.63rem;
+  }
+  .contact-highlight {
+      color: var(--clr-secondary); /* Change the color for 'CONTACT' */
+    font-weight: bold!important;
+    }
 
-form {
+    .us-highlight {
+      color: var(--clr-accent);
+
+    }
+  .contact-description{
+    text-align: center;
+    font-size: var(--size-base);
+  }
+  .contact-description .break{
+    display: none; 
+  }
+  .default-image {
+  display: block; 
+  }
+
+  .alternate-image {
+  display: none; 
+  }
+
+  .form-heading{
+    font-size: var(--size-xl);
+  }
+  .form-description p{
+    text-align: left;
+    display: block;
+    font-size: var(--size-sm);
+  }
+  form {
     margin: 2rem auto;
     width: 100%;
     padding: 1.25rem;
     border-radius: 1.875rem;
-    background-color: var(--clr-gray);
-}
-.contact__form-group {
+    background-color: var(--clr-secondary);
+  }
+  
+  .contact__form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 0.63rem 0;
     margin-top: 1.75rem;
-}
-.contact__form-input {
+    width: 100%; 
+
+  }
+  .contact__form-input {
     font-size: var(--size-xs);
+    width: 100%;
+  
+  }
+  .Getin-highlight {
+    color: var(--clr-main);
+    font-weight: bold;
 
-}
-
-input,
-textarea {
+  }
+  .touch-highlight {
+    color: var(--clr-accent);
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
     width: 100%;
     padding: 0.63rem;
-    border: 0.13rem solid var(--clr-white);
+    border: 0.13rem solid var(--clr-light);
     border-radius: 0.63rem;
-}
-textarea[name="message"] {
+  }
+  textarea[name="message"] {
     height: 8rem;
-}
-.contact__submit-Btn {
+  }
+  .contact__submit-Btn {
     display: flex;
     justify-content: center;
     padding: 0.63rem 1.25rem;
     border: none;
     font-size: var(--size-sm);
-    font-weight: bold;
+    font-weight: bold !important;
     color: var(--clr-main);
-    background-color: var(--clr-white);
+    background-color: var(--clr-accent);
     border-radius: 2.5rem;
     margin: 1rem auto;
-    transition:
-        background-color 0.3s,
-        color 0.3s;
-}
-
-.contact__submit-Btn:hover {
-    color: var(--clr-main);
-    background-color: var(--clr-secondary);
-}
-.contact__submit-Btn:active {
-    transform: translateY(0.25rem);
-}
-.contact__message-popup {
-    position: fixed;
-    top: 0.63rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--clr-secondary);
-    color: var(--clr-white);
-    padding: 0.25rem 0.25rem;
-    border-radius: 0.31rem;
-    text-align: center;
-    z-index: 999;
-}
-
+    margin-top: 1.5rem;
+  }
+  
+  
+  
+/* xs */
 @media (min-width: 475px) {
-    
-    .contact-page-container h1 {
-        font-size: var(--size-2xl);
-    }
-    .contact-page-container p {
-        font-size: var(--size-xs);
-        max-width: 50ch;
-    }
-    .contact-page-container h2 {
-        font-size: var(--size-lg);
-    }
-    .contact__line {
-        width: 70%;
-    }
-    form {
-        max-width: 34.375rem;
-    }
-    .contact__form-input {
-        font-size: var(--size-sm);
-    }
-    .contact__submit-Btn {
-        margin-top: 2rem;
-        margin-bottom: 1.75rem;
-        width: 12rem;
-    }
-    textarea[name="message"] {
-        height: 8rem;
-    }
-    .contact__form-input {
-        font-size: var(--size-xs);
-    }
-    .contact__message-popup {
-        width: 10.625rem;
-        font-size: var(--size-xs);
-    }
+  .contact-page-container {
+      max-width: 475px;  
+  }
+  .default-image {
+    display: block; 
+  }
+
+  .alternate-image {
+    display: none; 
+  }
+ 
+  form {
+    max-width: 400px; 
+  }
+  
+  
 }
 
+/* sm */
 @media (min-width: 640px) {
-    
-    .contact-page-container h1 {
-        font-size: var(--size-2xl);
-    }
-
-    form {
-        max-width: 25rem;
-    }
-    
-    .contact__form-input {
-        font-size: var(--size-sm);
-    }
-    .contact__submit-Btn {
-        width: 12rem;
-    }
+  .contact-page-container {
+      max-width: 640px;
+  }
+  form {
+    max-width: 500px; 
+  }
+  
+  .contact-image {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    width: 30rem;
+  }
 }
 
+/* md */
 @media (min-width: 768px) {
-    
-    .contact-page-container h1 {
-        font-size: var(--size-3xl);
-    }
-    .contact-page-container p {
-        font-size: var(--size-sm);
-        max-width: 50ch;
-    }
-    .contact-page-container h2 {
-        font-size: var(--size-lg);
-    }
-    .contact__line {
-        width: 75%;
-    }
-    .contact__form-input {
-        font-size: var(--size-sm);
-    }
-    form {
-        max-width: 34.375rem;
-    }
-    .contact__submit-Btn {
-        width: 14rem;
-    }
+  .contact-page-container {
+      max-width: 768px;
+      padding-right: 1.5rem;
+  }
+  .contact-title{
+    text-align: left;
+    font-size: var(--size-4xl);
 
-    textarea[name="message"] {
-        height: 10rem;
-    }
-    .contact__message-popup {
-        width: 12.5rem;
-        font-size: var(--size-sm);
-    }
-}
+  }
+  .contact-description{
+    text-align: justify;
+    font-size: var(--size-base);
 
+  } 
+  .contact__form-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+;
+  }
+  .default-image {
+    display: none; 
+  }
+  
+  .alternate-image {
+    display: block; 
+    margin-right: 2.5rem;
+  }
+
+  
+  form {
+    width: 600px; 
+  }
+  
+}  
+
+
+/* lg */
 @media (min-width: 1024px) {
-   
+  .contact-page-container {
+    max-width: 1024px;
+}
+  
+  .contact-description{
+    text-align: justify;
+    font-size: var(--size-base);}
 
-    .contact-page-container p {
-        margin-top: 1rem;
-        max-width: 70ch;
-    }
-
-    .contact__submit-Btn {
-        width: 12rem;
-    }
-
-    .contact__message-popup {
-        width: 14.375rem;
-        font-size: var(--size-base);
-    }
+    .contact-description .break{
+    display: block; 
+  }
+  .alternate-image {
+    display: block; 
+    width: 40rem;  
 }
 
+}
+
+/* xl */
 @media (min-width: 1280px) {
-   
-    .contact-page-container h1 {
-        font-size: var(--size-3xl);
-    }
-    .contact-page-container p {
-        font-size: var(--size-base);
-        max-width: 75ch;
-    }
-    .contact-page-container h2 {
-        font-size: var(--size-xl);
-    }
-   
-    form {
-        max-width: 37.5rem;
-    }
-    .contact__form-input {
-        font-size: var(--size-base);
-    }
-    .contact__submit-Btn {
-        width: 12rem;
-    }
-    textarea[name="message"] {
-        height: 12rem;
-    }
-    .contact__message-popup {
-        padding: 0.75rem;
-        width: 16.25rem;
-        font-size: var(--size-xl);
-    }
+  .contact-page-container {
+    max-width: 1280px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+  
+  }
+  form {
+    min-width: 600px; 
+    height: 30rem;
+  } 
+  .contact-image{
+    width: 100rem;
+  }
+  
 }
 
+/* 2xl */
 @media (min-width: 1536px) {
-    
-    .contact-page-container p {
-        max-width: 80ch;
-    }
-    .contact__line {
-        width: 78%;
-    }
-    form {
-        max-width: 43.75rem;
-    }
-    .contact__form-input {
-        font-size: var(--size-base);
-    }
-    .contact__submit-Btn {
-        width: 14rem;
-    }
+  .contact-page-container {
+    max-width: 1536px;
+}
+  
+  .contact-title{
+    font-size: var(--size-4xl);
+
+  }
+  .contact-description{
+    font-size: var(--size-lg);
+  }
+  .contact__form-group{
+    max-width: 1536px;
+    width: 100%; 
+  }
+ 
+  form {
+    min-width: 700px;  
+    width: 50rem;
+  } 
+   
+  .alternate-image{
+    height: 50rem;
+  }
 }
