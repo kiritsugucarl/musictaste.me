@@ -139,7 +139,7 @@
 
 .home-container-3 {
     margin-top: 4rem;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     min-width: 100%;

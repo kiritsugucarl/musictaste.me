@@ -5,10 +5,7 @@ const PersonalityCard = ({ personality, isActive }) => {
         personality;
 
     return (
-        <div
-            className={`flip__main ${isActive ? "active" : ""}`}
-            // style={{ backgroundColor, color: textColor }}
-        >
+        <div className={`flip__main ${isActive ? "active" : ""}`}>
             <div className="flip-card">
                 <div className="flip-card-inner">
                     <div
