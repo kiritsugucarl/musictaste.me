@@ -60,7 +60,7 @@ const determineMusicPersonality = (averageFeatures) => {
         partyMan: 0.7,
         extrovert: 0.65,
         introvert: 0.5,
-        instrumetalist: 0.35,
+        instrumentalist: 0.35,
         liveEnthusiast: 0.6,
         emotional: 0.45,
         theThinker: 0.55,
@@ -133,7 +133,7 @@ const determineMusicPersonality = (averageFeatures) => {
     }
 };
 
-const Personality = ({ audioFeatures, logDebug }) => {
+const Personality = ({ audioFeatures }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
 
     useEffect(() => {
