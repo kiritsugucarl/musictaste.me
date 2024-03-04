@@ -1,322 +1,311 @@
 .about-page {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
 .about-page h1 {
-  text-align: center;
-  font-size: var(--size-3xl);
-
+    text-align: center;
+    font-size: var(--size-3xl);
+    font-family: "MuseoModerno", sans-serif;
 }
 .about-the__title {
-  margin-left:1rem;
-  color: var(--clr-secondary);
-  font-weight: bold;
+    margin-left: 1rem;
+    color: var(--clr-secondary);
+    font-weight: bold;
 }
 
 .website__mustard {
-  color: var(--clr-accent);
-  font-weight: bold;
+    color: var(--clr-accent);
+    font-weight: bold;
 }
 
 .about-description p {
-  margin: 0.75rem;
-  line-height: 1.5rem;
-  color: var(--clr-white);
-  font-size: var(--size-base);
-  text-align: center;
+    margin: 0.75rem;
+    line-height: 1.5rem;
+    color: var(--clr-white);
+    font-size: var(--size-base);
+    text-align: center;
 }
 
 .section-divider {
-  max-width: 60%;
-  border: 0.75rem;
-  background-color: var(--clr-accent);
-  border-top: 0.10em solid var(--clr-accent);
-  margin: 2rem auto;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  width: 67.875rem; 
+    max-width: 60%;
+    border: 0.75rem;
+    background-color: var(--clr-accent);
+    border-top: 0.1em solid var(--clr-accent);
+    margin: 2rem auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 67.875rem;
 }
 
-.the-team-container h3{
-  text-align: center;
-  font-size: var(--size-2xl);
-
+.the-team-container h3 {
+    text-align: center;
+    font-size: var(--size-2xl);
 }
 .meet-the__title {
-  color: var(--clr-secondary); 
-  font-weight: bold;
+    color: var(--clr-secondary);
+    font-weight: bold;
+    font-family: "MuseoModerno", sans-serif;
 }
 
 .team__title {
-  color: var(--clr-accent); 
-  font-weight: bold;
+    color: var(--clr-accent);
+    font-weight: bold;
+    font-family: "MuseoModerno", sans-serif;
 }
 
 .desc-team p {
-  text-align: center;
-  margin: 0.75rem;
-  line-height: 1.5rem;
-  font-size: var(--size-sm);
+    text-align: center;
+    margin: 0.75rem;
+    line-height: 1.5rem;
+    font-size: var(--size-sm);
 }
 .meet-the-team {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .team {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 calc(30% - 1rem);
-  max-width: calc(33% - 1rem);
-  margin-bottom: 2rem;
-  position: relative;
-  align-items: center;
-
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(30% - 1rem);
+    max-width: calc(33% - 1rem);
+    margin-bottom: 2rem;
+    position: relative;
+    align-items: center;
 }
 
-
 .team .image-container {
-  position: relative;
-  border-radius: 50%  ;
-  width: 8rem; 
-  height: 8rem; 
-  overflow: hidden; 
-
+    position: relative;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
 }
 
 .team .image-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100%; 
-  background-color: transparent;
-  transition: background-color 0.3s; 
-  border-radius: inherit;
-  opacity: 0.5;
- 
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    border-radius: inherit;
+    opacity: 0.5;
 }
 
 .team .image-container:hover::after {
- background-color: var(--clr-accent);/* Change background color to yellow on hover */
+    background-color: var(
+        --clr-accent
+    ); /* Change background color to yellow on hover */
 }
 
-
 .team-member-img {
-  object-fit: cover; 
+    object-fit: cover;
 }
 
 .team-member-img:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 .name .NLine {
-  display: none; 
+    display: none;
 }
 
 .name {
-  font-size: var(--size-base);
-  color: var(--clr-secondary);
-  font-weight: bold;
-  letter-spacing: 0.02rem;
-  white-space: nowrap; 
-  margin: 0.625rem 0;
-  text-align: center;
+    font-size: var(--size-base);
+    color: var(--clr-secondary);
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    white-space: nowrap;
+    margin: 0.625rem 0;
+    text-align: center;
 }
 
 .role {
-  font-size: var(--size-sm);
-  margin-bottom: 0.10rem;
-  text-align: center;
-  white-space: nowrap; 
-
+    font-size: var(--size-sm);
+    margin-bottom: 0.1rem;
+    text-align: center;
+    white-space: nowrap;
 }
 
 @media (min-width: 475px) {
-  .about-page {
+    /* .about-page {
       max-width: 475px;
-  }
-  .about-page h1 {
-    justify-content: center;
-    text-align: center;
-  }
+  } */
+    .about-page h1 {
+        justify-content: center;
+        text-align: center;
+    }
 
-  .about-description{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
+    .about-description {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
 
-  .section-divider{
-   width: 60% ;
-   border-top: 0.10em solid var(--clr-accent);
-  }
+    .section-divider {
+        width: 60%;
+        border-top: 0.1em solid var(--clr-accent);
+    }
 
-  .the-team-container h3 {
-    justify-content: center;
-    text-align: center;
-  }
+    .the-team-container h3 {
+        justify-content: center;
+        text-align: center;
+    }
 
-  .desc-team{
-    justify-content: center;
-    text-align: center;
-  }
+    .desc-team {
+        justify-content: center;
+        text-align: center;
+    }
 
-  .meet-the-team {
-    padding-top: 1rem;
-    display: flex;
-    flex-direction:column;
-  }
+    .meet-the-team {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
 
-  .team {
-    align-items: center;
-  }
+    .team {
+        align-items: center;
+    }
 
-  .team .image-container {    /*change size of member*/
-    width: 8rem;
-    height: 8rem;
-  }
-
+    .team .image-container {
+        /*change size of member*/
+        width: 8rem;
+        height: 8rem;
+    }
 }
 
 @media (min-width: 640px) {
-  .about-page {
+    /* .about-page {
       max-width: 640px;
-  }
-
-  
+  } */
 }
 
 @media (min-width: 768px) {
-  .about-page {
+    /* .about-page {
     max-width: 768px;
-}
-.about-page h1{
-  text-align: left;
-  font-size: var(--size-4xl);
-}
-  .about-description p {
-  text-align: justify;
-  font-size: var(--size-lg);
-}
-  .the-team-container h3{
-  text-align: left;
-  margin-left:1rem;
-  font-size: var(--size-3xl);
-  }
-  .desc-team p{
-    text-align: justify;
-    font-size: var(--size-base);
-
-  }
-  .meet-the-team {
-    max-width: 768px;
-    flex-direction: row;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 2.76rem;
-  
-  }
-  .team .image-container {    /*change size of member*/
-    width: 11rem;
-    height: 11rem;
-  } 
-}
-
-  @media (min-width: 1024px) {
-  .about-page {
-    max-width: 1024px;
-  }
-  .about-page h1{
-    font-size: var(--size-4xl);
-  }
+} */
+    .about-page h1 {
+        text-align: left;
+        font-size: var(--size-4xl);
+    }
     .about-description p {
-    text-align: justify;
-    font-size: var(--size-lg);
-  }
-    .the-team-container h3{
-    font-size: var(--size-3xl);
+        text-align: justify;
+        font-size: var(--size-lg);
+    }
+    .the-team-container h3 {
+        text-align: left;
+        margin-left: 1rem;
+        font-size: var(--size-3xl);
     }
     .desc-team p {
-      text-align: justify;
-      font-size: var(--size-base);
-
+        text-align: justify;
+        font-size: var(--size-base);
     }
     .meet-the-team {
-      display: flex;
-      max-width: 1024px;
-      gap: 2rem;
-    } 
-  }
-  
-@media (min-width: 1280px) {
-  .about-page {
-    max-width: 1280px;
+        max-width: 768px;
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2.76rem;
+    }
+    .team .image-container {
+        /*change size of member*/
+        width: 11rem;
+        height: 11rem;
+    }
 }
-  .about-page h1{
-  font-size: var(--size-4xl);
-}
-  .about-description p {
-  font-size: var(--size-xl);
 
-}
-  .the-team-container h3{
-  font-size: var(--size-3xl);
-  }
-  .desc-team p {
-    font-size: var(--size-lg);
-  }
-  
-  .meet-the-team {
-    display: flex;
-    max-width: 1280px;
-    gap: 3rem;
-  }
-  .name{
-    font-size: var(--size-xl);
-  }
-  .role{
-    font-size: var(--size-lg);
-  }
-
-  
-
-}
-@media (min-width: 1536px) {
-  .about-page {
-      max-width: 1536px;
-  }
-  .about-page h1{
-    font-size: var(--size-4xl);
-  }
+@media (min-width: 1024px) {
+    /* .about-page {
+    max-width: 1024px;
+  } */
+    .about-page h1 {
+        font-size: var(--size-4xl);
+    }
     .about-description p {
-    font-size: var(--size-xl);
-  
-  }
-    .the-team-container h3{
-    font-size: var(--size-3xl);
+        text-align: justify;
+        font-size: var(--size-lg);
+    }
+    .the-team-container h3 {
+        font-size: var(--size-3xl);
     }
     .desc-team p {
-      font-size: var(--size-lg);
+        text-align: justify;
+        font-size: var(--size-base);
     }
-  .meet-the-team {
-    display: flex;
-    max-width: 1536px;
-    gap: 2.5rem;
-  }
-  .team .image-container {    /*change size of member*/
-    width: 13rem;
-    height: 13rem;
-  }
-  .name{
-    font-size: var(--size-xl);
-  }
-  .role{
-    font-size: var(--size-lg);
-  }
-  
+    .meet-the-team {
+        display: flex;
+        max-width: 1024px;
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    /* .about-page {
+    max-width: 1280px;
+} */
+    .about-page h1 {
+        font-size: var(--size-4xl);
+    }
+    .about-description p {
+        font-size: var(--size-xl);
+    }
+    .the-team-container h3 {
+        font-size: var(--size-3xl);
+    }
+    .desc-team p {
+        font-size: var(--size-lg);
+    }
+
+    .meet-the-team {
+        display: flex;
+        max-width: 1280px;
+        gap: 3rem;
+    }
+    .name {
+        font-size: var(--size-xl);
+    }
+    .role {
+        font-size: var(--size-lg);
+    }
+}
+@media (min-width: 1536px) {
+    /* .about-page {
+      max-width: 1536px;
+  } */
+    .about-page h1 {
+        font-size: var(--size-4xl);
+    }
+    .about-description p {
+        font-size: var(--size-xl);
+    }
+    .the-team-container h3 {
+        font-size: var(--size-3xl);
+    }
+    .desc-team p {
+        font-size: var(--size-lg);
+    }
+    .meet-the-team {
+        display: flex;
+        max-width: 1536px;
+        gap: 2.5rem;
+    }
+    .team .image-container {
+        /*change size of member*/
+        width: 13rem;
+        height: 13rem;
+    }
+    .name {
+        font-size: var(--size-xl);
+    }
+    .role {
+        font-size: var(--size-lg);
+    }
 }

@@ -238,6 +238,7 @@
         padding: 1.5rem;
         min-width: 40%;
         max-width: 40%;
+        min-height: 90vh;
     }
 
     .main__addedSong-songList {
