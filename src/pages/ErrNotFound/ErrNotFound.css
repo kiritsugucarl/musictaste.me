@@ -1,0 +1,35 @@
+.err404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    height: 100vh;
+}
+
+.err404__title {
+    color: var(--clr-secondary);
+    font-size: var(--size-3xl);
+}
+
+.err404__image {
+    height: 20rem;
+    border-radius: 1.5rem;
+}
+
+.err404__desc {
+    color: var(--clr-white);
+    font-size: var(--size-lg);
+    text-align: center;
+}
+
+.err404__redirect-link {
+    color: var(--clr-accent);
+    text-decoration: underline;
+    transition: 0.3s color;
+}
+
+.err404__redirect-link:hover {
+    color: var(--clr-main-accent);
+}

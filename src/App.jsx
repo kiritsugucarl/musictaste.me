@@ -3,12 +3,12 @@ import Root from "./layout/Root/index.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 import Main from "./pages/Main/Main.jsx";
-import Result from "./pages/Result/Result.jsx";
 import { TokenProvider } from "./config/TokenContext.jsx";
 import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
-
-
+import ErrTimeout from "./pages/ErrTimeout/ErrTimeout.jsx";
+import ErrNotFound from "./pages/ErrNotFound/ErrNotFound.jsx";
+import RecommendationImage from "./components/RecommendationImage/RecommendationImage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -25,10 +25,6 @@ const router = createBrowserRouter([
                 element: <Main />,
             },
             {
-                path: "/result",
-                element: <Result />,
-            },
-            {
                 path: "/about",
                 element: <About />,
             },
@@ -36,8 +32,19 @@ const router = createBrowserRouter([
                 path: "/contact",
                 element: <Contact />,
             },
-            
         ],
+    },
+    {
+        path: "/timeout",
+        element: <ErrTimeout />,
+    },
+    {
+        path: "/imageTest",
+        element: <RecommendationImage />,
+    },
+    {
+        path: "*",
+        element: <ErrNotFound />,
     },
 ]);
 

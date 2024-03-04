@@ -1,0 +1,19 @@
+.personality__custom-legend {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.personality__legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-color {
+    width: 25px;
+    height: 15px;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+}

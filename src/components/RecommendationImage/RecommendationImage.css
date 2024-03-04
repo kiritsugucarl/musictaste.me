@@ -1,0 +1,125 @@
+.result-container {
+    height: 1920px;
+    width: 1080px;
+    background-image: url(../../assets/finalImageBg.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.result-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    gap: 4rem;
+}
+
+.result-title {
+    font-family: "MuseoModerno", sans-serif;
+    font-size: var(--size-7xl);
+    letter-spacing: 0.2rem;
+    color: var(--clr-secondary);
+}
+
+.result-yellow {
+    color: var(--clr-accent);
+}
+
+.result-collage {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.result-hr {
+    width: 90%;
+    height: 4px;
+    border: none;
+    background-color: var(--clr-accent);
+    border-radius: 0.5rem;
+}
+
+.result-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+        "item1 item6"
+        "item2 item7"
+        "item3 item8"
+        "item4 item9"
+        "item5 item10";
+    gap: 2rem;
+}
+
+.result__track-details-item:nth-child(1) {
+    grid-area: item1;
+}
+
+.result__track-details-item:nth-child(2) {
+    grid-area: item2;
+}
+
+.result__track-details-item:nth-child(3) {
+    grid-area: item3;
+}
+
+.result__track-details-item:nth-child(4) {
+    grid-area: item4;
+}
+.result__track-details-item:nth-child(5) {
+    grid-area: item5;
+}
+
+.result__track-details-item:nth-child(6) {
+    grid-area: item6;
+}
+
+.result__track-details-item:nth-child(7) {
+    grid-area: item7;
+}
+
+.result__track-details-item:nth-child(8) {
+    grid-area: item8;
+}
+
+.result__track-details-item:nth-child(9) {
+    grid-area: item9;
+}
+
+.result__track-details-item:nth-child(10) {
+    grid-area: item10;
+}
+
+.result__track-details-item {
+    display: flex;
+    align-items: center;
+    /* justify-content:; */
+    gap: 1rem;
+}
+
+.result__track-details-item-index {
+    color: var(--clr-secondary);
+    font-size: var(--size-6xl);
+    font-weight: 600;
+}
+
+.result__track-item-songDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.result__track-details-item-songDetails-songName {
+    font-size: var(--size-2xl);
+    color: var(--clr-white);
+    font-weight: 600;
+}
+
+.result__track-details-item-songDetails-songArtists {
+    font-size: var(--size-base);
+    color: var(--clr-white);
+}

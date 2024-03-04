@@ -1,13 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchBox from "./components/SearchBox";
+import { debounce } from "lodash";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import BeatLoader from "react-spinners/BeatLoader";
+import { useToken } from "../../config/TokenContext";
+import axios from "axios";
+import html2canvas from "html2canvas";
+import SearchBox from "./components/SearchBox/SearchBox.jsx";
+import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
+import Personality from "./components/Personality/Personality";
+import RecommendationImage from "../../components/RecommendationImage/RecommendationImage.jsx";
 
 const Main = () => {
+    const { token, isTokenValid } = useToken();
     const [addedSongs, setAddedSongs] = useState([]);
+    const [audioFeatures, setAudioFeatures] = useState([]);
     const [counter, setCounter] = useState(0);
+    const [resultActive, setResultActive] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const [passableTrackIds, setPassableTrackIds] = useState([]);
+
+    const [capturedImageUrl, setCapturedImageUrl] = useState(null);
+
+    const [showRecommendationImage, setShowRecommendationImage] =
+        useState(false);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isTokenValid()) {
+            navigate("/timeout");
+        }
+    }, [isTokenValid, navigate]);
+
+    useEffect(() => {
+        // Set body overflow based on the loading state
+        document.body.style.overflow = loading ? "hidden" : "auto";
+
+        // Cleanup function to reset overflow when component unmounts
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [loading]);
 
     // add songs to added list
     const addSongToAddedList = (song) => {
@@ -28,24 +64,113 @@ const Main = () => {
     };
 
     // get results
-    const getResults = () => {
-        {
-            counter === 5
-                ? navigate("/result")
-                : console.log("Need five inputs!");
+    const getResults = async () => {
+        // Scroll to the top of the page before setting loading to false
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setLoading(true);
+        if (counter === 5) {
+            try {
+                const trackIds = addedSongs.map((song) => song.id);
+
+                // Fetch recommendations from Spotify API
+                const recommendations = await fetchRecommendations(
+                    trackIds,
+                    token
+                );
+
+                const recommendationTrackIds = recommendations.map(
+                    (song) => song.id
+                );
+
+                const selectedSongsTrackIds = addedSongs.map((song) => song.id);
+
+                const allTrackIds = [
+                    ...recommendationTrackIds,
+                    ...selectedSongsTrackIds,
+                ];
+
+                setPassableTrackIds(allTrackIds);
+
+                const selectedSongsFeatures = await fetchAudioFeatures(
+                    trackIds,
+                    token
+                );
+
+                const recommendedSongsFeatures = await fetchAudioFeatures(
+                    recommendations.map((song) => song.id),
+                    token
+                );
+
+                const allFeatures = [
+                    ...selectedSongsFeatures,
+                    ...recommendedSongsFeatures,
+                ];
+
+                setAudioFeatures(allFeatures);
+
+                setResultActive(true);
+                setShowRecommendationImage(true);
+            } catch (error) {
+                console.error("Error: ", error.message);
+            }
+        } else {
+            console.log("Need five inputs!");
         }
     };
+
+    const handleCapture = (capturedImageUrl) => {
+        console.log("Captured Image URL: ", capturedImageUrl);
+        setCapturedImageUrl(capturedImageUrl);
+        setShowRecommendationImage(false);
+        setLoading(false);
+    };
+
+    // Fetch recommendations from Spotify API
+    const fetchRecommendations = async (trackIds, token) => {
+        const recommendationsEndpoint = `https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=${trackIds.join(
+            ","
+        )}`;
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        const response = await axios.get(recommendationsEndpoint, config);
+        return response.data.tracks; // i will get the links from this line
+    };
+
+    const fetchAudioFeatures = async (trackIds, token) => {
+        const audioFeaturesEndpoint = `https://api.spotify.com/v1/audio-features?ids=${trackIds.join(
+            ","
+        )}`;
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        const response = await axios.get(audioFeaturesEndpoint, config);
+        return response.data.audio_features;
+    };
+
+    const debouncedGetResults = debounce(getResults, 300); // Adjust the debounce delay as needed
 
     return (
         <main className="container content-container section">
             <div className="main-wrapper">
                 <div className="main__content-wrapper">
                     <div className="main__title-wrapper">
-                        <h2 className="main__title">Find your music taste.</h2>
+                        <h2 className="main__title">
+                            Find your{" "}
+                            <span className="title-accent"> music taste </span>
+                        </h2>
                         <p className="main__titleDesc">
                             Pick five (5) songs that you absolutely love to
-                            evaluate and identify your music taste! (Song
-                            library comes from Spotify)
+                            evaluate and identify your music personality! (Song
+                            library is powered by Spotify)
                         </p>
                     </div>
                     <SearchBox
@@ -55,7 +180,7 @@ const Main = () => {
                     />
                 </div>
                 <div className="main__addedSongs-wrapper">
-                    <h2 className="main__addedSong-title">ADDED SONGS</h2>
+                    <h3 className="main__addedSong-title">ADDED SONGS</h3>
                     <ul className="main__addedSong-songList">
                         {addedSongs.map((song, index) => (
                             <li
@@ -110,13 +235,33 @@ const Main = () => {
                         ))}
                     </ul>
                     <button
-                        onClick={getResults}
+                        onClick={debouncedGetResults}
                         className="main__addedSongs-getResultBtn"
                     >
                         Get Result
                     </button>
                 </div>
             </div>
+
+            {resultActive && (
+                <div className="main__results-container">
+                    {showRecommendationImage && (
+                        <RecommendationImage
+                            allTrackIds={passableTrackIds}
+                            onCapture={handleCapture}
+                        />
+                    )}
+                    <Recommendation imageUrl={capturedImageUrl} />
+                    <hr className="main__results-line" />
+                    <Personality audioFeatures={audioFeatures} />
+                </div>
+            )}
+
+            {loading && (
+                <div className="main__loading-overlay">
+                    <BeatLoader color="#36d7b7" size={40} />
+                </div>
+            )}
         </main>
     );
 };

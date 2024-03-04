@@ -1,266 +1,222 @@
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  text-align: center;
+.contact-title {
+    font-weight: bold !important;
+    text-align: center;
+    font-size: var(--size-3xl);
+    margin-bottom: 0.63rem;
+    font-family: "MuseoModerno", sans-serif;
+}
+.contact-highlight {
+    color: var(--clr-secondary); /* Change the color for 'CONTACT' */
+    font-weight: bold !important;
 }
 
-.contact-container h1 {
-  letter-spacing: 0.18rem;
-  margin-bottom: 0.63rem;
+.us-highlight {
+    color: var(--clr-accent);
+}
+.contact-description {
+    text-align: center;
+    font-size: var(--size-base);
+}
+.contact-description .break {
+    display: none;
+}
+.default-image {
+    display: block;
 }
 
-.contact-container h2 {
-  margin-bottom: 1rem;
-  margin-top: 0.875rem;
-  font-size: var(--size-lg);
-  color: var(--clr-primary);
+.alternate-image {
+    display: none;
 }
-.contact-container p {
-  color: var(--clr-primary);
+
+.form-heading {
+    font-size: var(--size-xl);
 }
-.section-divider {
-  width:60%;
-  background-color: var(--clr-light);
-  border-top: 0.13rem solid  var(--clr-light); 
-  margin-top: 3rem;
+.form-description p {
+    text-align: left;
+    display: block;
+    font-size: var(--size-sm);
 }
 form {
-  margin: 2rem auto; 
-  width: 100%;
-  padding: 1.25rem;
-  border-radius: 1.875rem;
-  background-color: var(--clr-gray);
-  /*max-width: 100%;*/
+    margin: 2rem auto;
+    width: 100%;
+    padding: 1.25rem;
+    border-radius: 1.875rem;
+    background-color: var(--clr-secondary);
 }
-.form-group {
-  margin: 0.63rem 0;
-  margin-top: 1.75rem;
+
+.contact__form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.63rem 0;
+    margin-top: 1.75rem;
+    width: 100%;
 }
+.contact__form-input {
+    font-size: var(--size-xs);
+    width: 100%;
+}
+.Getin-highlight {
+    color: var(--clr-main);
+    font-weight: bold;
+}
+.touch-highlight {
+    color: var(--clr-accent);
+    font-weight: bold;
+}
+
 input,
 textarea {
-  width: 100%;
-  font-size: var(--size-xs);
-  padding: 0.63rem;
-  border: 0.13rem  solid var(--clr-light);
-  border-radius: 0.63rem;
-
+    width: 100%;
+    padding: 0.63rem;
+    border: 0.13rem solid var(--clr-light);
+    border-radius: 0.63rem;
 }
 textarea[name="message"] {
-  height: 8rem; 
+    height: 8rem;
 }
-.button {
-  display: flex;
-  justify-content: center; 
-  padding: 0.63rem  1.25rem;
-  border: none;
-  font-size: var(--size-sm);
-  font-weight: bold;
-  color: var(--clr-dark);
-  background-color: var(--clr-light);
-  border-radius: 2.5rem;
-  margin: 1rem auto;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.button:hover {
-  color: var(--clr-dark);
-  background-color: var(--clr-primary);
-}
-.button:active {
-  transform: translateY(0.25rem);
-}
-.message-popup {
-  position: fixed;
-  top: 0.63rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--clr-primary);
-  color: var(--clr-light);
-  padding: 0.25rem  0.25rem;
-  border-radius: 0.31rem;
-  text-align: center;
-  z-index: 999; 
+.contact__submit-Btn {
+    display: flex;
+    justify-content: center;
+    padding: 0.63rem 1.25rem;
+    border: none;
+    font-size: var(--size-sm);
+    font-weight: bold !important;
+    color: var(--clr-main);
+    background-color: var(--clr-accent);
+    border-radius: 2.5rem;
+    margin: 1rem auto;
+    margin-top: 1.5rem;
 }
 
+/* xs */
 @media (min-width: 475px) {
-  .contact-container {
-    max-width: 475px;
-  }
-  .contact-container h1 {
-    font-size: var(--size-2xl);
-  }
-  .contact-container p {
-    font-size: var(--size-xs);
-    max-width:50ch;
-  }
-  .contact-container h2 {
-    font-size: var(--size-lg);
-  }
-  .section-divider {
-    width: 90%;
-  }
-  form {
-    max-width: 350px
-  }
-  .button {
-    margin-top: 2rem;
-    margin-bottom: 1.75rem;
-    width: 12rem;
+    .contact-page-container {
+        max-width: 475px;
+    }
+    .default-image {
+        display: block;
+    }
 
-  }
-  textarea[name="message"] {
-    height: 8rem; 
-  }
-  
-  input::placeholder,
-  textarea::placeholder {
-    font-size: var(--size-xs);
-  }
-  .message-popup {
-    width: 170px;
-    font-size: var(--size-xs);
-  }
+    .alternate-image {
+        display: none;
+    }
+
+    form {
+        max-width: 400px;
+    }
 }
 
 /* sm */
 @media (min-width: 640px) {
-  .contact-container {
-    max-width: 640px;
-  }
-  .contact-container h1 {
-    font-size: var(--size-2xl);
-  }
+    .contact-page-container {
+        max-width: 640px;
+    }
+    form {
+        max-width: 500px;
+    }
 
-  .section-divider {
-    width: 70%;
-  }
-  form {
-    max-width: 400px;
-  }
-  .button {
-    width: 12rem;
-  }
-  input::placeholder,
-  textarea::placeholder {
-    font-size: var(--size-sm);
-  }
-  }
+    .contact-image {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center the image horizontally */
+        align-items: center; /* Center the image vertically */
+        width: 30rem;
+    }
+}
 
+/* md */
 @media (min-width: 768px) {
-  .contact-container {
-    max-width: 768px;
-    width: 100%;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  .contact-container h1 {
-    font-size: var(--size-3xl);
-  }
-  .contact-container p {
-    font-size: var(--size-sm);
-    max-width: 50ch;
-  }
-  .contact-container h2 {
-    font-size: var(--size-base);
-  }
-  .section-divider {
-    max-width: 70%;
-  }
-  form {
-    max-width:550px;
-  }
-  .button {
-    width: 14rem;
-  }
-  input::placeholder,
-  textarea::placeholder {
-    font-size: var(--size-base);
-  }
-  textarea[name="message"] {
-    height: 10rem; 
-  } 
-  .message-popup {
-    width: 200px;
-    font-size: var(--size-sm);
-  }
+    .contact-page-container {
+        max-width: 768px;
+        padding-right: 1.5rem;
+    }
+    .contact-title {
+        text-align: left;
+        font-size: var(--size-4xl);
+    }
+    .contact-description {
+        text-align: justify;
+        font-size: var(--size-base);
+    }
+    .contact__form-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .default-image {
+        display: none;
+    }
+
+    .alternate-image {
+        display: block;
+        margin-right: 2.5rem;
+    }
+
+    form {
+        width: 600px;
+    }
 }
 
+/* lg */
 @media (min-width: 1024px) {
-  .contact-container {
-    max-width: 1024px;
-  }
-  .contact-container p {
-    margin-top: 1rem;
-    max-width: 70ch;
-  }
-  .section-divider {
-    width: 50%;
-  }
-  .button {
-    width: 12rem;
-  
-  }
-  .message-popup {
-    width: 230px;
-    font-size: var(--size-base);
-  }
+    .contact-page-container {
+        max-width: 1024px;
+    }
+
+    .contact-description {
+        text-align: justify;
+        font-size: var(--size-base);
+    }
+
+    .contact-description .break {
+        display: block;
+    }
+    .alternate-image {
+        display: block;
+        width: 40rem;
+    }
 }
 
+/* xl */
 @media (min-width: 1280px) {
-  .contact-container {
-    max-width: 1280px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  .contact-container h1 {
-    font-size: var(--size-3xl);
-  }
-  .contact-container p {
-    font-size: var(--size-base);
-    max-width: 75ch;
-  }
-  .contact-container h2 {
-    font-size: var(--size-base);
-  }
-  .section-divider {
-    width: 50%;
-  }
-  form {
-    max-width:600px;
-  }
-  .button {
-    width: 12rem;
-  
-  }
-  textarea[name="message"] {
-    height: 12rem; 
-  }
-  .message-popup {
-    padding: 0.75rem;
-    width: 260px;
-    font-size: var(--size-xl);
-  }
+    .contact-page-container {
+        max-width: 1280px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    form {
+        min-width: 600px;
+        height: 30rem;
+    }
+    .contact-image {
+        width: 100rem;
+    }
 }
 
 /* 2xl */
 @media (min-width: 1536px) {
-  .contact-container {
-    max-width: 1536px;
-  }
-  .contact-container p {
-    max-width: 80ch;
-  }
-  form {
-    max-width:700px;
-  }
-  .button {
-    width: 14rem;
-  }
- 
+    .contact-page-container {
+        max-width: 1536px;
+    }
+
+    .contact-title {
+        font-size: var(--size-4xl);
+    }
+    .contact-description {
+        font-size: var(--size-lg);
+    }
+    .contact__form-group {
+        max-width: 1536px;
+        width: 100%;
+    }
+
+    form {
+        min-width: 700px;
+        width: 50rem;
+    }
+
+    .alternate-image {
+        height: 50rem;
+    }
 }
-
-
-

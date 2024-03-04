@@ -7,6 +7,8 @@ A web app to idenfity your music taste. Created for the completion in Fourth Yea
 - Javascript (ES6+)
 - SpotifyAPI
 - Axios
+- Flask (removed)
+- Python (removed)
 
 ## How to use (dev):
 To access the directory:
@@ -36,6 +38,22 @@ npm install react-transition-group
 npm install emailjs-com
 ```
 
+```bash
+npm install lodash
+```
+
+```bash
+npm install recharts
+```
+
+```bash
+npm install react-spinners
+```
+
+```bash
+npm install html2canvas
+```
+
 To run the dev server:
 ```bash
 npm run dev
@@ -54,3 +72,6 @@ To contribute to the repository, create your own branch using
 git checkout -b "branchName"
 ```
 and create pull requests and wait for the approval of another contributors.
+
+## UPDATES
+- Flask has been removed from usage due to performance and build issues. 

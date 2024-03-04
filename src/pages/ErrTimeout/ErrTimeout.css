@@ -1,0 +1,35 @@
+.timeout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100vh;
+    padding: 2rem;
+}
+
+.timeout__title {
+    color: var(--clr-secondary);
+    font-size: var(--size-3xl);
+}
+
+.timeout__image {
+    height: 20rem;
+    border-radius: 1.5rem;
+}
+
+.timeout__desc {
+    color: var(--clr-white);
+    font-size: var(--size-lg);
+    text-align: center;
+}
+
+.timeout__redirect-link {
+    color: var(--clr-accent);
+    text-decoration: underline;
+    transition: 0.3s color;
+}
+
+.timeout__redirect-link:hover {
+    color: var(--clr-main-accent);
+}

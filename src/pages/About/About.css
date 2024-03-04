@@ -1,330 +1,311 @@
 .about-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
-
 .about-page h1 {
-  letter-spacing: 0.2rem;
-  padding: 1.25rem;
-  padding-bottom: 1.875rem;
+    text-align: center;
+    font-size: var(--size-3xl);
+    font-family: "MuseoModerno", sans-serif;
+}
+.about-the__title {
+    margin-left: 1rem;
+    color: var(--clr-secondary);
+    font-weight: bold;
 }
 
-.about-image img {
-  max-height: 15rem;
-  margin-bottom: 2rem;
+.website__mustard {
+    color: var(--clr-accent);
+    font-weight: bold;
 }
 
 .about-description p {
-  line-height: 1.5rem;
-  color: var(--clr-light);
+    margin: 0.75rem;
+    line-height: 1.5rem;
+    color: var(--clr-white);
+    font-size: var(--size-base);
+    text-align: center;
 }
 
 .section-divider {
-  border: 0.75rem;
-  background-color: var(--clr-primary);
-  border-top: 0.125em solid var(--clr-primary);
-  margin: 2rem 0;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+    max-width: 60%;
+    border: 0.75rem;
+    background-color: var(--clr-accent);
+    border-top: 0.1em solid var(--clr-accent);
+    margin: 2rem auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 67.875rem;
+}
+
+.the-team-container h3 {
+    text-align: center;
+    font-size: var(--size-2xl);
+}
+.meet-the__title {
+    color: var(--clr-secondary);
+    font-weight: bold;
+    font-family: "MuseoModerno", sans-serif;
+}
+
+.team__title {
+    color: var(--clr-accent);
+    font-weight: bold;
+    font-family: "MuseoModerno", sans-serif;
 }
 
 .desc-team p {
-  margin: 1rem;
-  line-height: 2;
-  color: var(--clr-primary);
-  max-width: 85ch;
+    text-align: center;
+    margin: 0.75rem;
+    line-height: 1.5rem;
+    font-size: var(--size-sm);
 }
-.team {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 20rem; 
-  flex: 0 0 calc(20% - 1.25rem);
-}
-
 .meet-the-team {
-  display: flex;
-  justify-content: center;
-  max-width: 1024px;
-  gap: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.team img {
-   border-radius: 80%;
+.team {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(30% - 1rem);
+    max-width: calc(33% - 1rem);
+    margin-bottom: 2rem;
+    position: relative;
+    align-items: center;
+}
+
+.team .image-container {
+    position: relative;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
+}
+
+.team .image-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    border-radius: inherit;
+    opacity: 0.5;
+}
+
+.team .image-container:hover::after {
+    background-color: var(
+        --clr-accent
+    ); /* Change background color to yellow on hover */
+}
+
+.team-member-img {
+    object-fit: cover;
+}
+
+.team-member-img:hover {
+    transform: scale(1.1);
 }
 .name .NLine {
-  display: none; 
+    display: none;
 }
+
 .name {
-  color: var(--clr-primary);
-  font-weight: bold;
-  letter-spacing: 0.02rem;
-  white-space: nowrap; 
-  margin: 0.625rem 0;
+    font-size: var(--size-base);
+    color: var(--clr-secondary);
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    white-space: nowrap;
+    margin: 0.625rem 0;
+    text-align: center;
 }
 
 .role {
-  margin-bottom: 0.10rem;
-}
-
-/**************************************************/
- 
-/* lg */
-@media (min-width: 475px) {
-  .about-page {
-      max-width: 475px;
-      
-  }
-  .about-page h1 {
-    font-size: var(--size-2xl);
-  }
-
-  .about-image{
-    max-width: 18rem;
-    align-items: center;
-  }
-  .about-description{
-    font-size: var(--size-xs);
-    max-width: 50ch;
-  }
-  .section-divider{
-   width: 40% ;
-  }
-  .meet-the-team {
-    flex-direction: column;
-    max-width: 700px;
-    gap: 1rem;
-    margin-top: 2rem;
-
-  }
-  .team {
-    justify-content: center; 
-    align-items: center; 
-    width: 8rem;
-
-    }
-  
-  .the-team-container h2 {
-    font-size: var(--size-lg);
-    letter-spacing: 0.2rem;
-    }
-    .desc-team p{
-    font-size: var(--size-xs);
-    max-width: 45ch;
-    }
-    .name .NLine{
-      display: none; 
-    }
-  .name {
     font-size: var(--size-sm);
-  }
-  .role {
-    font-size: var(--size-sm);
+    margin-bottom: 0.1rem;
+    text-align: center;
     white-space: nowrap;
-
-  }
 }
 
-/* sm */
+@media (min-width: 475px) {
+    /* .about-page {
+      max-width: 475px;
+  } */
+    .about-page h1 {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .about-description {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .section-divider {
+        width: 60%;
+        border-top: 0.1em solid var(--clr-accent);
+    }
+
+    .the-team-container h3 {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .desc-team {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .meet-the-team {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .team {
+        align-items: center;
+    }
+
+    .team .image-container {
+        /*change size of member*/
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
 @media (min-width: 640px) {
-  .about-page {
+    /* .about-page {
       max-width: 640px;
-  }
-  .about-description{
-    max-width: 65ch;}
-  .desc-team p{
-      max-width:60ch;
-  }
+  } */
 }
 
 @media (min-width: 768px) {
-  .about-page {
-      max-width: 768px;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-  }
-  .about-page h1 {
-    font-size: var(--size-3xl);
-  }
-
-  .about-image{
-    max-width: 20rem;
-    align-items: center;
-  }
-  .about-description{
-    font-size: var(--size-sm);
-    max-width: 70ch;
-  }
-  .section-divider{
-   width: 90% ;
-  }
-  .meet-the-team {
-    display: flex;
-    flex-direction: row;
-    max-width: 690px;
-    gap: 1rem;
-
-  }
-   .team img{
-    width: 6rem; 
-     max-width: 100%;
-  }
-  .the-team-container h2 {
-    font-size: var(--size-xl);
-    letter-spacing: 0.2rem;
+    /* .about-page {
+    max-width: 768px;
+} */
+    .about-page h1 {
+        text-align: left;
+        font-size: var(--size-4xl);
     }
-    .desc-team p{
-    font-size: var(--size-sm);/**/
-    max-width: 70ch;
+    .about-description p {
+        text-align: justify;
+        font-size: var(--size-lg);
     }
-  .name, .NLine {
-    font-size: var(--size-xs);
-    white-space: normal;
-  }
-  .role {
-    font-size: var(--size-xs);
-    white-space: nowrap;
-  }
-}
-  @media (min-width: 1024px) {
-    .about-page {
-        max-width: 1024px;
+    .the-team-container h3 {
+        text-align: left;
+        margin-left: 1rem;
+        font-size: var(--size-3xl);
     }
-    .about-image{
-      max-width: 24rem;
+    .desc-team p {
+        text-align: justify;
+        font-size: var(--size-base);
     }
-    .about-description{
-      max-width: 90ch;}
-    .desc-team p{
-        max-width:90ch;
-    }
-    .team {
-      width: 11rem;
-          }
     .meet-the-team {
-      display: flex;
-      max-width: 900px;
-      gap: 1rem;
+        max-width: 768px;
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2.76rem;
     }
-      
-    .name, .NLine {
-      font-size: var(--size-sm);
-      letter-spacing: 0.04rem;
-      white-space: normal;
+    .team .image-container {
+        /*change size of member*/
+        width: 11rem;
+        height: 11rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* .about-page {
+    max-width: 1024px;
+  } */
+    .about-page h1 {
+        font-size: var(--size-4xl);
+    }
+    .about-description p {
+        text-align: justify;
+        font-size: var(--size-lg);
+    }
+    .the-team-container h3 {
+        font-size: var(--size-3xl);
+    }
+    .desc-team p {
+        text-align: justify;
+        font-size: var(--size-base);
+    }
+    .meet-the-team {
+        display: flex;
+        max-width: 1024px;
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    /* .about-page {
+    max-width: 1280px;
+} */
+    .about-page h1 {
+        font-size: var(--size-4xl);
+    }
+    .about-description p {
+        font-size: var(--size-xl);
+    }
+    .the-team-container h3 {
+        font-size: var(--size-3xl);
+    }
+    .desc-team p {
+        font-size: var(--size-lg);
+    }
+
+    .meet-the-team {
+        display: flex;
+        max-width: 1280px;
+        gap: 3rem;
+    }
+    .name {
+        font-size: var(--size-xl);
     }
     .role {
-      font-size: var(--size-sm);
+        font-size: var(--size-lg);
     }
-    
-
-  }
-  
-/* xl */
-@media (min-width: 1280px) {
-  .about-page {
-      max-width: 1280px;
-      padding-left: 2rem;
-      padding-right: 2rem;
-  }
-  .about-page h1 {
-    font-size: var(--size-4xl);
-  }
-
-  .about-image{
-    max-width: 30rem;
-    align-items: center;
-  }
-  .about-description{
-    font-size: var(--size-lg);
-    line-height: 2rem;
-    max-width: 100ch;
-  }
-  .section-divider{
-   width: 100% ;
-  }
-  .meet-the-team {
-    display: flex;
-    max-width: 900px;
-    gap: 3rem;
-  }
-  .the-team-container h2 {
-    font-size: var(--size-2xl);
-    letter-spacing: 0.2rem;
-    }
-    .desc-team p{
-    font-size: var(--size-base);
-    max-width: 90ch;
-    }
-    .team img {
-      width: 9rem;
-  
-      }
-  .name .NLine {
-    font-size: var(--size-base);
-    white-space: normal;
-  }
-  .role {
-    font-size: var(--size-base);
-  }
-
 }
-/* 2xl */
 @media (min-width: 1536px) {
-  .about-page {
+    /* .about-page {
       max-width: 1536px;
-  }
-  .about-image{
-    max-width: 28rem;
-  }
-  .about-description{
-    max-width: 105ch;
-  }
-  .meet-the-team {
-    display: flex;
-    max-width: 1000px;
-    gap: 2.5rem;
-  }
-  .desc-team{
-    max-width: 105ch;
-  }
-  .team img {
-    width: 8rem;  
+  } */
+    .about-page h1 {
+        font-size: var(--size-4xl);
     }
-
-  .name .NLine {
-      display: none; 
+    .about-description p {
+        font-size: var(--size-xl);
     }
-  .name {
-    font-size: var(--size-base);
-    white-space: normal;
-    letter-spacing: 0.03rem;
-
-  }
+    .the-team-container h3 {
+        font-size: var(--size-3xl);
+    }
+    .desc-team p {
+        font-size: var(--size-lg);
+    }
+    .meet-the-team {
+        display: flex;
+        max-width: 1536px;
+        gap: 2.5rem;
+    }
+    .team .image-container {
+        /*change size of member*/
+        width: 13rem;
+        height: 13rem;
+    }
+    .name {
+        font-size: var(--size-xl);
+    }
+    .role {
+        font-size: var(--size-lg);
+    }
 }
-
-
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

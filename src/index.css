@@ -1,10 +1,10 @@
 :root {
     /* colors */
-    --clr-primary: #4ecca3;
-    --clr-light: #eeeeee;
-    --clr-dark: #232931;
-    --clr-t-dark: #292b2a8a;
-    --clr-gray: #393e46;
+    --clr-main: #232931;
+    --clr-secondary: #45a083;
+    --clr-accent: #fde767;
+    --clr-white: #f1f1f1;
+    --clr-purple: #9057fa;
 
     /* sizes */
     --size-xxs: 0.5rem; /* 8px */
@@ -34,15 +34,19 @@ html {
 }
 
 body {
-    font-family: "Inter", sans-serif;
-    background-color: var(--clr-dark);
+    font-family: "Poppins", sans-serif;
+    background-color: var(--clr-main);
 }
 
 .page-wrapper {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
-    color: var(--clr-light);
+    color: var(--clr-white);
+}
+
+h2 {
+    font-family: "MuseoModerno", sans-serif;
 }
 
 img,

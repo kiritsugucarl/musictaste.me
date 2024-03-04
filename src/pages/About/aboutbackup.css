@@ -1,0 +1,138 @@
+.about-page {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .about-the__title {
+    margin-left:1rem;
+    color: var(--clr-secondary);
+    font-weight: bold;
+    font-size: var(--size-4xl);
+  }
+  
+  .website__mustard {
+    color: var(--clr-accent);
+    font-weight: bold;
+    font-size: var(--size-4xl);
+  
+  
+  }
+  
+  .about-description p {
+    margin: 0.75rem;
+    line-height: 1.5rem;
+    color: var(--clr-white);
+    font-size: var(--size-base);
+  
+  }
+  
+  .section-divider {
+    border: 0.75rem;
+    background-color: var(--clr-accent);
+    border-top: 0.20em solid var(--clr-accent);
+    margin: 2rem auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 67.875rem; 
+    
+  }
+  .meet-the__title {
+    color: var(--clr-secondary); 
+    font-size: var(--size-2xl);
+    font-weight: bold;
+  
+  }
+  
+  .team__title {
+    color: var(--clr-accent); 
+    font-size: var(--size-2xl);
+    font-weight: bold;
+  
+  }
+  .desc-team p {
+    margin: 0.75rem;
+    line-height: 1.5rem;
+    font-size: var(--size-sm);
+  }
+  .meet-the-team {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+    gap: 0.65rem; 
+  }
+  
+  .team {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(30% - 1rem);
+    max-width: calc(33% - 1rem);
+    margin-bottom: 2rem;
+    position: relative;
+  
+  }
+  
+  
+  
+    
+  .team .image-container {
+    position: relative;
+    border-radius: 50%  ;
+    width: 200px; /* Adjust this value to match your image width */
+    height: 200px; /* Adjust this value to match your image height */
+    overflow: hidden; /* Ensure any parts of the image exceeding the container are hidden */
+  
+  }
+  
+  .team .image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: transparent;
+    transition: background-color 0.3s; 
+    border-radius: inherit;
+    opacity: 0.5;
+   
+  }
+  
+  .team .image-container:hover::after {
+   background-color: var(--clr-accent);/* Change background color to yellow on hover */
+  }
+  
+  
+  .team-member-img {
+    object-fit: cover; 
+  }
+  
+  .team-member-img:hover {
+    transform: scale(1.1);
+  }
+  
+  .team-member-img {
+    width: 100%; 
+    height: 100%; 
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .name .NLine {
+    display: none; 
+  }
+  
+  .name {
+    color: var(--clr-secondary);
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    white-space: nowrap; 
+    margin: 0.625rem 0;
+    text-align: center;
+  }
+  
+  .role {
+    margin-bottom: 0.10rem;
+    text-align: center;
+    white-space: nowrap; 
+  
+  }

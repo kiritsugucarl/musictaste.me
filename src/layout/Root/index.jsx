@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 
 const Root = () => {
@@ -16,13 +17,22 @@ const Root = () => {
         }
     };
 
+    const handleOverlayClick = () => {
+        setIsMobileNavOpen(false);
+        document.body.style.overflow = "auto";
+    };
+
     return (
         <div className="page-wrapper">
+            {isMobileNavOpen && (
+                <div className="overlay" onClick={handleOverlayClick} />
+            )}
             <Navbar
                 isMobileNavOpen={isMobileNavOpen}
                 onMobileMenuToggle={handleMobileMenuToggle}
             />
             <Outlet />
+            <Footer />
         </div>
     );
 };

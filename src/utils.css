@@ -24,7 +24,15 @@
 }
 
 .pink-btn {
-    background-color: var(--clr-primary);
+    background-color: var(--clr-secondary);
+}
+
+.title-accent {
+    color: var(--clr-accent);
+}
+
+.inactive {
+    display: none;
 }
 
 /* xs */
