@@ -9,7 +9,10 @@ const CustomLegend = ({ legendColors }) => {
                         className="legend-color"
                         style={{ backgroundColor: color }}
                     />
-                    <span className="legend-label" style={{ color: color }}>
+                    <span
+                        className="legend-label"
+                        style={{ color: color, fontSize: "inherit" }}
+                    >
                         {value}
                     </span>
                 </li>

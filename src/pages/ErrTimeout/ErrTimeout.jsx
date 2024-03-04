@@ -1,15 +1,19 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useToken } from "../../config/TokenContext";
 
 import "./ErrTimeout.css";
 
 const ErrTimeout = () => {
+    const { clearToken } = useToken();
     const navigate = useNavigate();
 
     useEffect(() => {
         const redirectTimeout = setTimeout(() => {
             navigate("/");
         }, 5000);
+
+        clearToken();
 
         return () => clearTimeout(redirectTimeout);
     }, [navigate]);
