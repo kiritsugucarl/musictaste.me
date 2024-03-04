@@ -238,9 +238,16 @@ const Personality = ({ audioFeatures, logDebug }) => {
 
     return (
         <div className="personality">
-            <h2 className="personality__title">
-                Your <span className="title-accent">music personality is</span>
-            </h2>
+            <div className="personality__title-wrapper">
+                <h2 className="personality__title">
+                    Your{" "}
+                    <span className="title-accent">music personality is</span>
+                </h2>
+                <p className="personality__title-desc">
+                    Your music personality is determined depending on your song
+                    choices.
+                </p>
+            </div>
             <div className="personality__wrapper">
                 {overallAverageFeatures ? (
                     <div
@@ -287,44 +294,33 @@ const Personality = ({ audioFeatures, logDebug }) => {
                     <p>No data available</p>
                 )}
                 <div className="personality__graph-wrapper">
-                    <ResponsiveContainer>
-                        <RadialBarChart
-                            innerRadius="15%"
-                            outerRadius="90%"
-                            data={radialBarData}
-                            barSize={12.5}
-                            startAngle={-270}
-                            endAngle={90}
-                        >
-                            <PolarAngleAxis
-                                type="number"
-                                domain={[0, 1]}
-                                angleAxisId={0}
-                                tick={false}
-                            />
-                            <RadialBar
-                                minAngle={15}
-                                background={{ fill: "#00000000" }}
-                                clockWise
-                                cornerRadius={15}
-                                dataKey="value"
-                            />
-                            {/* <Tooltip /> */}
-                            {/* <Legend
-                                iconSize={12.5}
-                                layout="vertical"
-                                verticalAlign="bottom"
-                                align="center"
-                                payload={legendColors.map(
-                                    ({ value, color }) => ({
-                                        value,
-                                        type: "square",
-                                        color,
-                                    })
-                                )}
-                            /> */}
-                        </RadialBarChart>
-                    </ResponsiveContainer>
+                    <div className="personality__radialBar-container">
+                        <ResponsiveContainer>
+                            <RadialBarChart
+                                innerRadius="15%"
+                                outerRadius="90%"
+                                data={radialBarData}
+                                barSize={12.5}
+                                startAngle={-270}
+                                endAngle={90}
+                            >
+                                <PolarAngleAxis
+                                    type="number"
+                                    domain={[0, 1]}
+                                    angleAxisId={0}
+                                    tick={false}
+                                />
+                                <RadialBar
+                                    minAngle={15}
+                                    background={{ fill: "#00000000" }}
+                                    clockWise
+                                    cornerRadius={15}
+                                    dataKey="value"
+                                />
+                            </RadialBarChart>
+                        </ResponsiveContainer>
+                    </div>
+
                     <CustomLegend legendColors={legendColors} />
                 </div>
             </div>

@@ -20,12 +20,12 @@
 }
 
 .main__title {
-    font-size: var(--size-4xl);
+    font-size: var(--size-3xl);
     color: var(--clr-secondary);
 }
 
 .main__titleDesc {
-    font-size: var(--size-xl);
+    font-size: var(--size-lg);
 }
 
 .main__addedSongs-wrapper {
@@ -150,6 +150,7 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
+    width: 100%;
 }
 
 .main__results-line {
@@ -175,11 +176,11 @@
 /* sm */
 @media (min-width: 640px) {
     .main__title {
-        font-size: var(--size-3xl);
+        font-size: var(--size-4xl);
     }
 
     .main__titleDesc {
-        font-size: var(--size-sm);
+        font-size: var(--size-xl);
     }
 
     .main__addedSong-title {
@@ -187,12 +188,12 @@
     }
 
     .main__addedSong-songList-iteration {
-        font-size: var(--size-xl);
+        font-size: var(--size-2xl);
     }
 
     .main__addedSong-songList-songAlbumImg {
-        width: var(--size-3xl);
-        height: var(--size-3xl);
+        width: var(--size-5xl);
+        height: var(--size-5xl);
     }
 
     .main__addedSong-songList-songName {
@@ -200,11 +201,16 @@
     }
 
     .main__addedSong-songList-songDetails {
-        font-size: var(--size-xs);
+        font-size: var(--size-sm);
+    }
+
+    .main__addedSong-songList-removeButtonImg {
+        min-width: var(--size-3xl);
+        min-height: var(--size-3xl);
     }
 
     .main__addedSongs-getResultBtn {
-        font-size: var(--size-sm);
+        font-size: var(--size-lg);
     }
 }
 
@@ -243,13 +249,13 @@
         padding: 1rem;
     }
 
-    .main__title {
+    /* .main__title {
         font-size: var(--size-4xl);
     }
 
     .main__titleDesc {
-        font-size: var(--size-base);
-    }
+        font-size: var(--size-2xl);
+    } */
 
     .main__addedSong-title {
         font-size: var(--size-3xl);
@@ -258,11 +264,11 @@
     .main__addedSong-songList-iteration {
         font-size: var(--size-base);
     }
-
+    /* 
     .main__addedSong-songList-songAlbumImg {
         width: var(--size-4xl);
         height: var(--size-4xl);
-    }
+    } */
 
     .main__addedSong-songList-songName {
         font-size: var(--size-base);
@@ -280,32 +286,37 @@
 /* xl */
 @media (min-width: 1280px) {
     .main__title {
-        font-size: var(--size-4xl);
+        font-size: var(--size-5xl);
     }
 
     .main__titleDesc {
-        font-size: var(--size-base);
+        font-size: var(--size-2xl);
     }
 
     .main__addedSong-title {
-        font-size: var(--size-3xl);
+        font-size: var(--size-4xl);
     }
 
     .main__addedSong-songList-iteration {
-        font-size: var(--size-base);
+        font-size: var(--size-lg);
     }
 
     .main__addedSong-songList-songAlbumImg {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
+        width: var(--size-6xl);
+        height: var(--size-6xl);
     }
 
     .main__addedSong-songList-songName {
-        font-size: var(--size-base);
+        font-size: var(--size-lg);
     }
 
     .main__addedSong-songList-songDetails {
-        font-size: var(--size-sm);
+        font-size: var(--size-base);
+    }
+
+    .main__addedSong-songList-removeButtonImg {
+        min-width: var(--size-4xl);
+        min-height: var(--size-4xl);
     }
 
     .main__addedSongs-getResultBtn {
