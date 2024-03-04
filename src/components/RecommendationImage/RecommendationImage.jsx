@@ -19,8 +19,8 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
 
     useEffect(() => {
         if (imagesLoaded === allTrackIds.length) {
-            console.log("images i have in recommendation image", images);
-            console.log("All images are mounted");
+            // console.log("images i have in recommendation image", images);
+            // console.log("All images are mounted");
             // Adding a delay of 1 second (1000 milliseconds)
             setTimeout(() => {
                 const content = document.getElementById("result-container");

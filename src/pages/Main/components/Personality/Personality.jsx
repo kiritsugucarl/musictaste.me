@@ -54,7 +54,7 @@ const determineMusicPersonality = (averageFeatures) => {
         acousticness,
     } = averageFeatures;
 
-    console.log("Features:" + averageFeatures);
+    // console.log("Features:" + averageFeatures);
 
     const thresholds = {
         partyMan: 0.7,
@@ -158,6 +158,12 @@ const Personality = ({ audioFeatures }) => {
                 {}
             );
 
+            // Calculate and log the average for each feature after the loop
+            for (const key in sumFeatures) {
+                const average = sumFeatures[key] / audioFeatures.length;
+                console.log(`${key} Average:`, average);
+            }
+
             const overallAverages = {};
             for (const key in sumFeatures) {
                 overallAverages[key] = sumFeatures[key] / audioFeatures.length;
@@ -255,7 +261,7 @@ const Personality = ({ audioFeatures }) => {
                         style={{
                             backgroundColor:
                                 personalityDescription[musicPersonality]
-                                    .backgroundColor,
+                                    ?.backgroundColor || "#F1f1f1",
                         }}
                     >
                         {imagePath && (
@@ -278,9 +284,10 @@ const Personality = ({ audioFeatures }) => {
                                 <p
                                     className="personality__description"
                                     style={{
-                                        color: personalityDescription[
-                                            musicPersonality
-                                        ].color,
+                                        color:
+                                            personalityDescription[
+                                                musicPersonality
+                                            ]?.color || "#232323",
                                     }}
                                 >
                                     {
