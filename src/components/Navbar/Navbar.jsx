@@ -109,18 +109,20 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                         >
                             <nav className="mobile-nav-wrapper">
                                 {token ? (
-                                    <div className="mobile-nav-user-wrapper">
-                                        <p className="mobile-nav-user-greeting">
-                                            Hello,
-                                        </p>
-                                        <p className="mobile-nav-user-name">
-                                            &nbsp;{user.display_name}
-                                        </p>
-                                    </div>
+                                    <>
+                                        <div className="mobile-nav-user-wrapper">
+                                            <p className="mobile-nav-user-greeting">
+                                                Hello,
+                                            </p>
+                                            <p className="mobile-nav-user-name">
+                                                &nbsp;{user.display_name}
+                                            </p>
+                                        </div>
+                                        <hr className="mobile-nav-hr" />
+                                    </>
                                 ) : (
                                     <></>
                                 )}
-                                <hr className="mobile-nav-hr" />
                                 <ul className="mobile-nav-ul">
                                     <li className="mobile-nav-li">
                                         <svg
