@@ -20,6 +20,7 @@
 .result-title {
     font-family: "MuseoModerno", sans-serif;
     font-size: var(--size-7xl);
+    text-align: center;
     letter-spacing: 0.2rem;
     color: var(--clr-secondary);
 }
