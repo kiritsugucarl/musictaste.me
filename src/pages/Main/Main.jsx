@@ -119,7 +119,7 @@ const Main = () => {
     };
 
     const handleCapture = (capturedImageUrl) => {
-        console.log("Captured Image URL: ", capturedImageUrl);
+        // console.log("Captured Image URL: ", capturedImageUrl);
         setCapturedImageUrl(capturedImageUrl);
         setShowRecommendationImage(false);
         setLoading(false);

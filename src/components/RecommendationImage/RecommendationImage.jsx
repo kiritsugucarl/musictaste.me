@@ -3,7 +3,6 @@ import axios from "axios";
 import html2canvas from "html2canvas";
 import { useToken } from "../../config/TokenContext";
 import "./RecommendationImage.css";
-// import { image } from "html2canvas/dist/types/css/types/image";
 
 const RecommendationImage = ({ allTrackIds, onCapture }) => {
     const { token, user } = useToken();
@@ -19,9 +18,6 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
 
     useEffect(() => {
         if (imagesLoaded === allTrackIds.length) {
-            console.log("images i have in recommendation image", images);
-            console.log("All images are mounted");
-            // Adding a delay of 1 second (1000 milliseconds)
             setTimeout(() => {
                 const content = document.getElementById("result-container");
                 html2canvas(content, {
@@ -30,7 +26,7 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
                     useCORS: true,
                 }).then((canvas) => {
                     const dataUrl = canvas.toDataURL("image/png");
-                    onCapture(dataUrl); // Pass the captured image URL to the callback
+                    onCapture(dataUrl);
                 });
             }, 3000);
         }
@@ -75,33 +71,6 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
 
         fetchTrackDetails();
     }, [allTrackIds]);
-
-    // const captureImage = async () => {
-    //     const content = document.getElementById("result-container");
-    //     try {
-    //         const canvas = await html2canvas(content, { scale: 1 });
-    //         const dataUrl = canvas.toDataURL("image/png");
-    //         return dataUrl;
-    //     } catch (error) {
-    //         console.error("Error capturing image: ", error);
-    //         return null;
-    //     }
-    // };
-
-    // const generateImage = async () => {
-    //     const imageUrl = await captureImage();
-    //     if (imageUrl) {
-    //         onImageGenerated(imageUrl);
-    //         console.log("Generated: ", imageUrl);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     // Ensure that both trackDetails and images are not empty before capturing the image
-    //     if (trackDetails.length > 8 && images.length > 8) {
-    //         generateImage;
-    //     }
-    // }, [trackDetails, onImageGenerated]);
 
     return (
         <div id="result-container" className="result-container">

@@ -22,6 +22,7 @@
 }
 
 .personality__title-desc {
+    font-size: var(--size-lg);
     max-width: 40ch;
     text-align: center;
 }
@@ -106,7 +107,7 @@
     }
 
     .personality__title-desc {
-        font-size: var(--size-lg);
+        font-size: var(--size-xl);
     }
 
     .personality__result-img {
