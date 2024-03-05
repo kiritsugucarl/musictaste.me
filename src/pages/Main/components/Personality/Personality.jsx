@@ -57,16 +57,10 @@ const determineMusicPersonality = (averageFeatures) => {
     // console.log("Features:" + averageFeatures);
 
     const thresholds = {
-        partyMan: 0.7,
-        extrovert: 0.65,
-        introvert: 0.5,
-        instrumetalist: 0.35,
-        liveEnthusiast: 0.6,
-        emotional: 0.45,
-        theThinker: 0.55,
-        theWarrior: 0.8,
-        theHeartbroken: 0.4,
-        theShredhead: 0.75,
+        energetic: 0.44,
+        jollyCasual: 0.4,
+        emotional: 0.39,
+        enchanted: 0.36,
     };
 
     const weights = {
@@ -108,32 +102,20 @@ const determineMusicPersonality = (averageFeatures) => {
     const normalizedScore = weightedSum / overallWeight;
     // console.log("Normalized Score: " + normalizedScore);
 
-    if (normalizedScore > thresholds.partyMan) {
-        return "Party Man";
-    } else if (normalizedScore > thresholds.extrovert) {
-        return "Extrovert";
-    } else if (normalizedScore > thresholds.introvert) {
-        return "Introvert";
-    } else if (normalizedScore > thresholds.liveEnthusiast) {
-        return "Live Enthusiast";
-    } else if (normalizedScore > thresholds.emotional) {
+    if (normalizedScore >= thresholds.energetic) {
+        return "Energetic";
+    } else if (normalizedScore >= thresholds.jollyCasual) {
+        return "Jolly Casual";
+    } else if (normalizedScore <= thresholds.enchanted) {
+        return "Enchanted";
+    } else if (normalizedScore <= thresholds.emotional) {
         return "Emotional";
-    } else if (normalizedScore > thresholds.instrumetalist) {
-        return "Instrumentalist";
-    } else if (normalizedScore > thresholds.theThinker) {
-        return "The Thinker";
-    } else if (normalizedScore > thresholds.theWarrior) {
-        return "The Warrior";
-    } else if (normalizedScore > thresholds.theHeartbroken) {
-        return "The Heartbroken";
-    } else if (normalizedScore > thresholds.theShredhead) {
-        return "The Shredhead";
     } else {
-        return "Undefined Personality";
+        return "Nonchalant";
     }
 };
 
-const Personality = ({ audioFeatures, logDebug }) => {
+const Personality = ({ audioFeatures }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
 
     useEffect(() => {
@@ -157,6 +139,12 @@ const Personality = ({ audioFeatures, logDebug }) => {
                 },
                 {}
             );
+
+            // Calculate and log the average for each feature after the loop
+            for (const key in sumFeatures) {
+                const average = sumFeatures[key] / audioFeatures.length;
+                console.log(`${key} Average:`, average);
+            }
 
             const overallAverages = {};
             for (const key in sumFeatures) {
@@ -268,7 +256,7 @@ const Personality = ({ audioFeatures, logDebug }) => {
                             className="personality__result-title"
                             style={{
                                 color: personalityDescription[musicPersonality]
-                                    .color,
+                                    .textColor,
                             }}
                         >
                             {musicPersonality}
@@ -280,7 +268,7 @@ const Personality = ({ audioFeatures, logDebug }) => {
                                     style={{
                                         color: personalityDescription[
                                             musicPersonality
-                                        ].color,
+                                        ].textColor,
                                     }}
                                 >
                                     {
