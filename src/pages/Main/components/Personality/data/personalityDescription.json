@@ -3,7 +3,7 @@
       "name" : "Emotional",
       "description": "Music is a powerful emotional experience for you. You like listening to music that make you feel connected to the music itself, probably likes singing along them with feels too! ",
       "backgroundColor" : "#9057fa",
-      "textColor" : "#F1F1F1",
+      "textColor" : "#232931",
       "image" : "/personalities/Emotional.png"
     },
     "Enchanted" : {
@@ -31,7 +31,7 @@
         "name": "Nonchalant",
         "description": "Just like your music taste, you are hard to identify. Your expressions might be so difficult to read, and doesn't actually show it.",
         "backgroundColor" : "#4B85FD",
-        "textColor" : "#F1F1F1",
+        "textColor" : "#232931",
         "image" : "/personalities/Nonchalant.png"
     }
 }
