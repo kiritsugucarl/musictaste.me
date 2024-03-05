@@ -54,7 +54,7 @@ const determineMusicPersonality = (averageFeatures) => {
         acousticness,
     } = averageFeatures;
 
-    console.log("Features:" + averageFeatures);
+    // console.log("Features:" + averageFeatures);
 
     const thresholds = {
         partyMan: 0.7,
@@ -103,10 +103,10 @@ const determineMusicPersonality = (averageFeatures) => {
         0
     );
 
-    console.log("Overall Weight: " + overallWeight);
+    // console.log("Overall Weight: " + overallWeight);
 
     const normalizedScore = weightedSum / overallWeight;
-    console.log("Normalized Score: " + normalizedScore);
+    // console.log("Normalized Score: " + normalizedScore);
 
     if (normalizedScore > thresholds.partyMan) {
         return "Party Man";
