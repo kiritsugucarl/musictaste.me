@@ -18,6 +18,7 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
 
     useEffect(() => {
         if (imagesLoaded === allTrackIds.length) {
+            // Adding a delay of 1 second (1000 milliseconds)
             setTimeout(() => {
                 const content = document.getElementById("result-container");
                 html2canvas(content, {
@@ -26,7 +27,7 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
                     useCORS: true,
                 }).then((canvas) => {
                     const dataUrl = canvas.toDataURL("image/png");
-                    onCapture(dataUrl);
+                    onCapture(dataUrl); // Pass the captured image URL to the callback
                 });
             }, 3000);
         }
@@ -71,7 +72,7 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
 
         fetchTrackDetails();
     }, [allTrackIds]);
-
+  
     return (
         <div id="result-container" className="result-container">
             <div className="result-wrapper">

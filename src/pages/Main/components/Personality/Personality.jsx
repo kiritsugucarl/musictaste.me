@@ -54,8 +54,6 @@ const determineMusicPersonality = (averageFeatures) => {
         acousticness,
     } = averageFeatures;
 
-    // console.log("Features:" + averageFeatures);
-
     const thresholds = {
         energetic: 0.44,
         jollyCasual: 0.4,
@@ -139,12 +137,6 @@ const Personality = ({ audioFeatures }) => {
                 },
                 {}
             );
-
-            // Calculate and log the average for each feature after the loop
-            for (const key in sumFeatures) {
-                const average = sumFeatures[key] / audioFeatures.length;
-                console.log(`${key} Average:`, average);
-            }
 
             const overallAverages = {};
             for (const key in sumFeatures) {
