@@ -94,6 +94,7 @@
     background: none;
     border: none;
     font-size: var(--size-4xl);
+    color: var(--clr-accent);
     cursor: pointer;
 }
 
@@ -126,7 +127,7 @@
     }
 
     .carousel-control {
-        font-size: var(--size-5xl);
+        font-size: var(--size-7xl);
     }
 }
 
@@ -163,7 +164,7 @@
     }
 
     .carousel-control {
-        font-size: var(--size-6xl);
+        font-size: var(--size-9xl);
     }
 }
 
@@ -192,7 +193,7 @@
     }
 
     .carousel-control {
-        font-size: var(--size-7xl);
+        font-size: 11rem;
     }
 }
 
