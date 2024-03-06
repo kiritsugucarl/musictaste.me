@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "/logo.png";
 import "./Navbar.css";
 import { CSSTransition } from "react-transition-group";
@@ -11,6 +11,8 @@ import { useToken } from "../../config/TokenContext";
 
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
     const { token, user, clearToken } = useToken();
+
+    const location = useLocation();
 
     const navigate = useNavigate();
 
@@ -59,17 +61,36 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
                         <li className="desktop-nav-li">
-                            <Link to="/" className="desktop-nav-link">
+                            <Link
+                                to="/"
+                                className={`desktop-nav-link ${
+                                    location.pathname === "/" ? "active" : ""
+                                }`}
+                            >
                                 Home
                             </Link>
                         </li>
                         <li className="desktop-nav-li">
-                            <Link to="/about" className="desktop-nav-link">
+                            <Link
+                                to="/about"
+                                className={`desktop-nav-link ${
+                                    location.pathname === "/about"
+                                        ? "active"
+                                        : ""
+                                }`}
+                            >
                                 About
                             </Link>
                         </li>
                         <li className="desktop-nav-li">
-                            <Link to="/contact" className="desktop-nav-link">
+                            <Link
+                                to="/contact"
+                                className={`desktop-nav-link ${
+                                    location.pathname === "/contact"
+                                        ? "active"
+                                        : ""
+                                }`}
+                            >
                                 Contact
                             </Link>
                         </li>
@@ -141,7 +162,11 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                         </svg>
                                         <Link
                                             to="/"
-                                            className="mobile-nav-link"
+                                            className={`mobile-nav-link ${
+                                                location.pathname === "/"
+                                                    ? "active"
+                                                    : ""
+                                            }`}
                                             onClick={handleMobileMenuClick}
                                         >
                                             Home
@@ -165,7 +190,11 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
 
                                         <Link
                                             to="/about"
-                                            className="mobile-nav-link"
+                                            className={`mobile-nav-link ${
+                                                location.pathname === "/about"
+                                                    ? "active"
+                                                    : ""
+                                            }`}
                                             onClick={handleMobileMenuClick}
                                         >
                                             About
@@ -190,7 +219,11 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
 
                                         <Link
                                             to="/contact"
-                                            className="mobile-nav-link"
+                                            className={`mobile-nav-link ${
+                                                location.pathname === "/contact"
+                                                    ? "active"
+                                                    : ""
+                                            }`}
                                             onClick={handleMobileMenuClick}
                                         >
                                             Contact Us

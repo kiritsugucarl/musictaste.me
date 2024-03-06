@@ -199,6 +199,11 @@
     height: var(--size-3xl);
 }
 
+.active {
+    color: var(--clr-accent);
+    /* text-decoration: underline; */
+}
+
 /* xs */
 /* @media (min-width: 475px) {} */
 
