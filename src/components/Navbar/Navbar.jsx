@@ -115,7 +115,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                                 Hello,
                                             </p>
                                             <p className="mobile-nav-user-name">
-                                                &nbsp;{user.display_name}
+                                                {user.display_name}
                                             </p>
                                         </div>
                                         <hr className="mobile-nav-hr" />
