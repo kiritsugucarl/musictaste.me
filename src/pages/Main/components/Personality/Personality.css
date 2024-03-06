@@ -111,7 +111,7 @@
     }
 
     .personality__result-img {
-        height: 30rem;
+        height: 35rem;
         width: 24rem;
     }
 
@@ -121,6 +121,10 @@
 
     .personality__description {
         font-size: var(--size-base);
+    }
+
+    .personality__result-wrapper {
+        max-width: 70%;
     }
 
     .personality__radialBar-container {

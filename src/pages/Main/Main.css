@@ -252,11 +252,11 @@
 
     /* .main__title {
         font-size: var(--size-4xl);
-    }
+    } */
 
     .main__titleDesc {
-        font-size: var(--size-2xl);
-    } */
+        text-align: left;
+    }
 
     .main__addedSong-title {
         font-size: var(--size-3xl);

@@ -129,10 +129,10 @@
 }
 
 .mobile-nav-hr {
-    height: 0.5rem;
+    height: 0.25rem;
     background-color: var(--clr-accent);
     border: none;
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
 }
 
 .mobile-nav-ul {
@@ -197,6 +197,11 @@
     display: block;
     width: var(--size-3xl);
     height: var(--size-3xl);
+}
+
+.active {
+    color: var(--clr-accent);
+    /* text-decoration: underline; */
 }
 
 /* xs */
