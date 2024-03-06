@@ -32,6 +32,7 @@
     height: 45rem;
     width: 25.3125rem;
     border-radius: 1rem;
+    /* box-shadow: 0 4px 2px -2px ; */
 }
 
 .recommendation__finalImageWrapper {
@@ -49,7 +50,13 @@
 }
 
 .recommendation__finalImageLink {
-    width: var(--size-2xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
+    transition: color 0.3s;
+}
+
+.recommendation__finalImageLink:hover {
+    color: var(--clr-accent);
 }
 
 /* xs */
@@ -68,6 +75,11 @@
     .recommendation__finalImage {
         height: 56rem; /* 896 */
         width: 31.5rem; /* 504 */
+    }
+
+    .recommendation__finalImageLink {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
     }
 }
 
