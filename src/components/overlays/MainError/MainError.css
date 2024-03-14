@@ -95,7 +95,7 @@
 }
 
 .mainError-bottom-icon {
-    width: var(--size-2xl);
+    width: var(--size-lg);
 }
 
 .mainError-message {
@@ -118,7 +118,7 @@
     }
 
     .mainError-bottom-icon {
-        width: var(--size-3xl);
+        width: var(--size-xl);
     }
 }
 
@@ -135,7 +135,7 @@
     }
 
     .mainError-bottom-icon {
-        width: var(--size-4xl);
+        width: var(--size-2xl);
     }
 }
 

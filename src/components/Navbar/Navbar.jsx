@@ -31,12 +31,14 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
         <div className="header container">
             {/* Desktop nav */}
             <div className="nav-wrapper">
-                <div className="nav__logo-wrapper">
-                    <img className="nav-logo" src={logo} />
-                    <h2 className="nav-title">
-                        mt<span className="title-accent">.</span>me
-                    </h2>
-                </div>
+                <Link to="/">
+                    <div className="nav__logo-wrapper">
+                        <img className="nav-logo" src={logo} />
+                        <h2 className="nav-title">
+                            mt<span className="title-accent">.</span>me
+                        </h2>
+                    </div>
+                </Link>
 
                 <div>
                     <button
