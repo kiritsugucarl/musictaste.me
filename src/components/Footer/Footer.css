@@ -17,7 +17,7 @@
 }
 
 .footer__link:hover {
-    color: var(--clr-mustard);
+    color: var(--clr-accent);
 }
 
 /* xs */
