@@ -97,6 +97,68 @@
     font-size: var(--size-sm);
 }
 
+.personality__legend-guides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.personality__legend-guides-title {
+    color: var(--clr-secondary);
+    font-size: var(--size-2xl);
+}
+
+.personality__legend-guides-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease; /* Transition on max-height */
+}
+
+.personality__legend-guides-content.reveal {
+    max-height: 800px;
+    transition: max-height 1s ease; /* Ensure transition on max-height */
+}
+
+.personality__legend-guides-list {
+    list-style: none;
+    padding-inline-start: 0;
+    text-align: justify;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.personality__legend-guides-feature {
+    font-size: var(--size-sm);
+    max-width: 60ch;
+}
+
+.personality__legend-guides-feature-title {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.personality__showLegend {
+    background-color: var(--clr-accent);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: var(--clr-main);
+    font-weight: 600;
+    font-size: var(--size-sm);
+    transition: filter 0.3s;
+}
+
+.personality__showLegend:hover {
+    filter: brightness(75%);
+}
+
 /* xs */
 /* @media (min-width: 475px) {} */
 
@@ -136,6 +198,15 @@
     .personality__graph-data-percentage {
         font-size: var(--size-base);
     }
+
+    .personality__legend-guides-title {
+        font-size: var(--size-3xl);
+    }
+
+    .personality__legend-guides-feature,
+    .personality__showLegend {
+        font-size: var(--size-base);
+    }
 }
 
 /* md */
@@ -146,6 +217,11 @@
     .personality__wrapper {
         flex-direction: row;
         justify-content: space-around;
+        /* max-width: 50%; */
+    }
+
+    .personality__result-wrapper {
+        max-width: 45%;
     }
 }
 
@@ -159,9 +235,12 @@
         font-size: var(--size-xl);
     }
 
+    .personality__result-wrapper {
+        max-width: 40%;
+    }
+
     .personality__result-img {
         height: 35rem;
-        width: 29rem;
     }
 
     .personality__result-title {
@@ -181,7 +260,24 @@
     .personality__graph-data-percentage {
         font-size: var(--size-lg);
     }
+
+    .personality__legend-guides-title {
+        font-size: var(--size-4xl);
+    }
+
+    .personality__legend-guides-feature,
+    .personality__showLegend {
+        font-size: var(--size-lg);
+    }
 }
 
 /* 2xl */
-/* @media (min-width: 1536px) {} */
+@media (min-width: 1536px) {
+    .personality__result-wrapper {
+        max-width: 37.5%;
+    }
+
+    .personality__graph-wrapper {
+        flex-direction: row;
+    }
+}
