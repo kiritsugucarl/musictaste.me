@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
     CLIENT_ID,
     REDIRECT_URI,
@@ -8,6 +8,7 @@ import {
 import { useToken } from "../../config/TokenContext";
 import PersonalityCard from "./components/PersonalityCard/PersonalityCard";
 import personalitiesData from "./data/personalityCardData.json";
+import HomeError from "../../components/overlays/HomeError/HomeError";
 import spotifyLogo from "/spotify-logo.png";
 import "./Home.css";
 
@@ -16,6 +17,23 @@ const Home = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [startX, setStartX] = useState(0);
     const [slideDirection, setSlideDirection] = useState(null);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("error") === "access_denied") {
+            console.log("Error received!");
+            setError(true); // Set error state to true if access denied
+
+            setTimeout(() => {
+                handleCloseError();
+            }, 10000);
+        }
+    }, []);
+
+    const handleCloseError = () => {
+        setError(false);
+    };
 
     const handleNext = () => {
         setActiveIndex(
@@ -79,6 +97,8 @@ const Home = () => {
     return (
         <main className="container">
             <div className="home-container">
+                {error && <HomeError onClose={handleCloseError} />}
+
                 <div id="#section-1" className="home-wrapper">
                     <div className="home__section-1-wrapper">
                         <div className="home__img-container">
@@ -88,7 +108,8 @@ const Home = () => {
                             <div className="home__title-wrapper">
                                 <h2 className="home__main-title">
                                     musictaste
-                                    <span className="title-mustard">.</span>me
+                                    <span className="title-mustard">.</span>
+                                    me
                                 </h2>
                                 <p className="home__main-description">
                                     musictaste.me is a Web Application that aims
