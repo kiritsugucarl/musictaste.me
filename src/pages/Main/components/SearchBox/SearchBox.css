@@ -172,7 +172,8 @@
         font-size: var(--size-sm);
     }
 
-    .searchBox__content-search-result-play {
+    .searchBox__content-search-result-play,
+    .searchBox__content-search-result-pause {
         width: var(--size-4xl);
         height: var(--size-4xl);
     }
@@ -249,7 +250,8 @@
         font-size: var(--size-lg);
     }
 
-    .searchBox__content-search-result-play {
+    .searchBox__content-search-result-play,
+    .searchBox__content-search-result-pause {
         width: var(--size-5xl);
         height: var(--size-5xl);
     }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useToken } from "../../../../config/TokenContext";
 import "./SearchBox.css";
+import PlaybackError from "../../../../components/overlays/PlaybackError/PlaybackError";
 
 const SearchBox = ({
     addSongToAddedList,
@@ -22,6 +23,7 @@ const SearchBox = ({
     const [totalResults, setTotalResults] = useState(0);
     const [currentPreviewUrl, setCurrentPreviewUrl] = useState("");
     const [currentTrackId, setCurrentTrackId] = useState(null);
+    const [error, setError] = useState(false);
 
     // Playback States
     const [isPlaying, setIsPlaying] = useState(false);
@@ -63,8 +65,21 @@ const SearchBox = ({
         addSongToAddedList(item);
     };
 
+    const handleCloseError = () => {
+        setError(false);
+    };
+
     const playSong = (previewUrl, trackId) => {
         const audio = document.getElementById("audio-element");
+
+        if (!previewUrl) {
+            setIsPlaying(false);
+            setError(true);
+            setTimeout(() => {
+                handleCloseError();
+            }, 10000);
+            return;
+        }
 
         if (currentPreviewUrl === previewUrl) {
             // If the same song is clicked, toggle play/pause
@@ -207,48 +222,51 @@ const SearchBox = ({
     };
 
     return (
-        <div className="searchBox__content-search">
-            <div className="searchBox__content-searchBar-wrapper">
-                <svg
-                    className="searchBox__content-searchBarImg"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                    />
-                </svg>
-                {/* {console.log(token)} */}
-                {token ? (
-                    <input
-                        className="searchBox__content-searchBar"
-                        type="text"
-                        placeholder="Search..."
-                        onChange={handleInputChange}
-                    />
-                ) : (
-                    <span>ERR 401: No token found</span>
+        <>
+            {error && <PlaybackError onClose={handleCloseError} />}
+            <div className="searchBox__content-search">
+                <div className="searchBox__content-searchBar-wrapper">
+                    <svg
+                        className="searchBox__content-searchBarImg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                        />
+                    </svg>
+                    {/* {console.log(token)} */}
+                    {token ? (
+                        <input
+                            className="searchBox__content-searchBar"
+                            type="text"
+                            placeholder="Search..."
+                            onChange={handleInputChange}
+                        />
+                    ) : (
+                        <span>ERR 401: No token found</span>
+                    )}
+                </div>
+                {renderResults()}
+
+                {currentPreviewUrl && (
+                    <audio
+                        controls={false}
+                        autoPlay
+                        src={currentPreviewUrl}
+                        className="searchBox__content-search-result-audio"
+                        id="audio-element"
+                    >
+                        Your browser does not support the audio element.
+                    </audio>
                 )}
             </div>
-            {renderResults()}
-
-            {currentPreviewUrl && (
-                <audio
-                    controls={false}
-                    autoPlay
-                    src={currentPreviewUrl}
-                    className="searchBox__content-search-result-audio"
-                    id="audio-element"
-                >
-                    Your browser does not support the audio element.
-                </audio>
-            )}
-        </div>
+        </>
     );
 };
 
