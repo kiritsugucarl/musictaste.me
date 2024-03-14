@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
-import ScaleLoader from "react-spinners/ScaleLoader";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
 import html2canvas from "html2canvas";
+import MainError from "../../components/overlays/MainError/MainError";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
 import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
@@ -19,6 +19,7 @@ const Main = () => {
     const [counter, setCounter] = useState(0);
     const [resultActive, setResultActive] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const [passableTrackIds, setPassableTrackIds] = useState([]);
 
@@ -61,6 +62,10 @@ const Main = () => {
             prevSongs.filter((addedSong) => addedSong.id != song.id)
         );
         setCounter((prevCounter) => prevCounter - 1);
+    };
+
+    const handleCloseError = () => {
+        setError(false);
     };
 
     // get results
@@ -114,7 +119,12 @@ const Main = () => {
                 console.error("Error: ", error.message);
             }
         } else {
-            console.log("Need five inputs!");
+            setLoading(false);
+            // console.log("Need five inputs!");
+            setError(true);
+            setTimeout(() => {
+                handleCloseError();
+            }, 10000);
         }
     };
 
@@ -160,6 +170,8 @@ const Main = () => {
     return (
         <main className="container content-container section">
             <div className="main-wrapper">
+                {error && <MainError onClose={handleCloseError} />}
+
                 <div className="main__content-wrapper">
                     <div className="main__title-wrapper">
                         <h2 className="main__title">
