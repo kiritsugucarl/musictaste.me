@@ -23,7 +23,8 @@ const ErrTimeout = () => {
             <h2 className="timeout__title">Session Time Out!</h2>
             <img src="/timeout.png" className="timeout__image" />
             <p className="timeout__desc">
-                Session timeout! Please click to go back to home and login your
+                Session timeout! Redirecting! If the page doesn't redirect you
+                automatically please click to go back to home and login your
                 Spotify account again{" "}
                 <Link className="timeout__redirect-link" to="/">
                     click here
