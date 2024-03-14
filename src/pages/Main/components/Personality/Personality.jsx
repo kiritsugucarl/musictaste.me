@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import CustomLegend from "./components/CustomLegend/CustomLegend";
 import personalityDescription from "./data/personalityDescription.json";
+import featuresDescription from "./data/featuresDescription.json";
 import "./Personality.css";
 
 const imageBasePath = "/personalities/";
@@ -115,6 +116,7 @@ const determineMusicPersonality = (averageFeatures) => {
 
 const Personality = ({ audioFeatures }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
+    const [showGuides, setShowGuides] = useState(false);
 
     useEffect(() => {
         if (audioFeatures.length > 0) {
@@ -303,6 +305,44 @@ const Personality = ({ audioFeatures }) => {
 
                     <CustomLegend legendColors={legendColors} />
                 </div>
+            </div>
+
+            <div className="personality__legend-guides">
+                <div
+                    className={`personality__legend-guides-content ${
+                        showGuides ? "reveal" : ""
+                    }`}
+                >
+                    <h2 className="personality__legend-guides-title">
+                        What do these features mean?
+                    </h2>
+                    <ul className="personality__legend-guides-list">
+                        {Object.keys(featuresDescription).map((feature) => (
+                            <li
+                                key={feature}
+                                className="personality__legend-guides-feature"
+                            >
+                                <span
+                                    className="personality__legend-guides-feature-title"
+                                    style={{
+                                        color: featuresDescription[feature]
+                                            .textColor,
+                                    }}
+                                >
+                                    {feature}: &nbsp;
+                                </span>
+                                {featuresDescription[feature].description}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <button
+                    className="personality__showLegend"
+                    onClick={() => setShowGuides(!showGuides)}
+                >
+                    {showGuides ? "Hide Feature Guides" : "Show Feature Guides"}
+                </button>
             </div>
         </div>
     );

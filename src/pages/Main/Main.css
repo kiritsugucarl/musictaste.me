@@ -79,7 +79,7 @@
 }
 
 .main__addedSong-songList-iteration {
-    font-size: var(--size-xl);
+    font-size: var(--size-2xl);
     font-weight: 600;
     transition: color 0.3s ease-in-out;
 }
@@ -103,6 +103,10 @@
 .main__addedSong-songList-removeButton {
     margin-left: auto;
     transition: color 0.3s ease-in-out;
+}
+
+.main__addedSong-songList-removeButton:hover {
+    filter: brightness(90%);
 }
 
 .main__addedSong-songList-removeButtonImg {
@@ -188,7 +192,7 @@
     }
 
     .main__addedSong-songList-iteration {
-        font-size: var(--size-2xl);
+        font-size: var(--size-3xl);
     }
 
     .main__addedSong-songList-songAlbumImg {
@@ -205,8 +209,8 @@
     }
 
     .main__addedSong-songList-removeButtonImg {
-        min-width: var(--size-3xl);
-        min-height: var(--size-3xl);
+        min-width: var(--size-4xl);
+        min-height: var(--size-4xl);
     }
 
     .main__addedSongs-getResultBtn {
@@ -239,6 +243,7 @@
         min-width: 40%;
         max-width: 40%;
         min-height: 90vh;
+        margin-bottom: 0;
     }
 
     .main__addedSong-songList {
@@ -263,7 +268,7 @@
     }
 
     .main__addedSong-songList-iteration {
-        font-size: var(--size-base);
+        font-size: var(--size-4xl);
     }
     /* 
     .main__addedSong-songList-songAlbumImg {
@@ -299,7 +304,7 @@
     }
 
     .main__addedSong-songList-iteration {
-        font-size: var(--size-lg);
+        font-size: var(--size-5xl);
     }
 
     .main__addedSong-songList-songAlbumImg {
@@ -316,8 +321,8 @@
     }
 
     .main__addedSong-songList-removeButtonImg {
-        min-width: var(--size-4xl);
-        min-height: var(--size-4xl);
+        min-width: var(--size-5xl);
+        min-height: var(--size-5xl);
     }
 
     .main__addedSongs-getResultBtn {

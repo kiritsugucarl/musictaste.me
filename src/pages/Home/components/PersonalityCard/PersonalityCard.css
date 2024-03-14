@@ -11,7 +11,7 @@
 }
 
 .flip-card {
-    cursor: pointer;
+    /* cursor: pointer; */
     background-color: transparent;
     width: 8rem;
     height: 13rem;
@@ -26,7 +26,7 @@
     height: 100%;
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card.active:hover .flip-card-inner {
     transform: scale(1.2) rotateY(180deg);
 }
 
@@ -96,6 +96,11 @@
     font-size: var(--size-4xl);
     color: var(--clr-accent);
     cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.carousel-control:hover {
+    filter: brightness(50%);
 }
 
 /* xs */

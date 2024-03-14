@@ -1,0 +1,38 @@
+{
+    "Acousticness":{
+        "description": "Measure whether the track is acoustic.",
+        "textColor" : "#33CE7C"
+    },
+    "Danceability":{
+        "description": "Describes how suitable is the track for dancing based on tempo, rhythm, stability, beat strength, and regularity",
+        "textColor" : "#FF8348"
+    },
+    "Energy":{
+        "description": "Represents a perceptual measure of intensity and activity based on dynamic range, perceived loudness, timbre, onset rate, and general entropy. ",
+        "textColor" : "#4B85FD"
+    },
+    "Instrumentalness":{
+        "description": "Measures the amount of instruments based on the vocal content.",
+        "textColor" : "#9057FA"
+    },
+    "Liveness":{
+        "description": "Predicts if the track was performed live.",
+        "textColor" : "#E42A3C"
+    },
+    "Loudness":{
+        "description": "The overall loduneess of  a track which is the quality of a sound that is primary psychological correlate of amplitude or physical strength.",
+        "textColor" : "#FF6817"
+    },
+    "Speechiness":{
+        "description": "Detects the presence of spoken words in a track.",
+        "textColor" : "#5258ED"
+    },
+    "Tempo":{
+        "description": "Represents how high or low the beats per minute (BPM) is in the track. Tempo is the speed or pace of a given piece and derives directly from the average beat duration",
+        "textColor" : "#F5A7E3"
+    },
+    "Valence":{
+        "description": "Measures the positiveness or negativeness the track conveys. Higher means the track is on a positive scale and lower score means the track is on a negative scale.",
+        "textColor" : "#FFE032"
+    }
+}
