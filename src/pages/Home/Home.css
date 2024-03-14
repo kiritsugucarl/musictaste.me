@@ -82,6 +82,11 @@
     border-radius: 1rem;
     padding: 0.5rem 1.5rem;
     border-radius: 2rem;
+    transition: filter 0.3s;
+}
+
+.home__login-button:hover {
+    filter: brightness(75%);
 }
 
 .home__spotify-ack-container {
@@ -286,6 +291,7 @@
     .home-container-2 {
         min-height: 40vh;
         padding: 5rem 0;
+        justify-content: space-between;
     }
 
     .home-wrapper {
@@ -304,7 +310,7 @@
     }
 
     .home__title-wrapper-2 {
-        padding: 2rem;
+        padding: 0;
     }
 
     .home__img-landing {
@@ -350,7 +356,7 @@
     }
 
     .home__title {
-        font-size: var(--size-8xl);
+        font-size: var(--size-7xl);
     }
 
     .home__main-description {
@@ -371,7 +377,7 @@
     }
 
     .home__img-landing {
-        width: 50rem;
+        width: 45rem;
     }
 
     .home-container-2 {

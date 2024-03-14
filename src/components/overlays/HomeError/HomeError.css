@@ -97,7 +97,7 @@
 }
 
 .homeError-bottom-icon {
-    width: var(--size-2xl);
+    width: var(--size-lg);
 }
 
 .homeError-message {
@@ -120,7 +120,7 @@
     }
 
     .homeError-bottom-icon {
-        width: var(--size-3xl);
+        width: var(--size-xl);
     }
 }
 
@@ -137,7 +137,7 @@
     }
 
     .homeError-bottom-icon {
-        width: var(--size-4xl);
+        width: var(--size-2xl);
     }
 }
 
