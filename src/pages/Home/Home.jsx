@@ -102,7 +102,7 @@ const Home = () => {
                 <div id="#section-1" className="home-wrapper">
                     <div className="home__section-1-wrapper">
                         <div className="home__img-container">
-                            <img className="home__img" src="/main-mascot.png" />
+                            <img className="home__img" src="/main-mascot.gif" />
                         </div>
                         <div className="home__main">
                             <div className="home__title-wrapper">

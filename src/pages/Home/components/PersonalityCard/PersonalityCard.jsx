@@ -6,7 +6,7 @@ const PersonalityCard = ({ personality, isActive }) => {
 
     return (
         <div className={`flip__main ${isActive ? "active" : ""}`}>
-            <div className="flip-card">
+            <div className={`flip-card ${isActive ? "active" : ""}`}>
                 <div className="flip-card-inner">
                     <div
                         className="flip-card-front"

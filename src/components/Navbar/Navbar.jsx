@@ -60,7 +60,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                 </div>
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
-                        <li className="desktop-nav-li">
+                        {/* <li className="desktop-nav-li">
                             <Link
                                 to="/"
                                 className={`desktop-nav-link ${
@@ -69,7 +69,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                             >
                                 Home
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="desktop-nav-li">
                             <Link
                                 to="/about"
@@ -169,7 +169,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                             }`}
                                             onClick={handleMobileMenuClick}
                                         >
-                                            Home
+                                            HOME
                                         </Link>
                                     </li>
                                     <li className="mobile-nav-li">
@@ -197,7 +197,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                             }`}
                                             onClick={handleMobileMenuClick}
                                         >
-                                            About
+                                            ABOUT
                                         </Link>
                                     </li>
 
@@ -226,7 +226,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                             }`}
                                             onClick={handleMobileMenuClick}
                                         >
-                                            Contact Us
+                                            CONTACT US
                                         </Link>
                                     </li>
 
@@ -252,7 +252,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                                     className="mobile-nav-link"
                                                     href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
                                                 >
-                                                    Login
+                                                    LOGIN
                                                 </a>
                                             </>
                                         ) : (
@@ -276,7 +276,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                                     className="mobile-nav-link"
                                                     onClick={logout}
                                                 >
-                                                    Logout
+                                                    LOGOUT
                                                 </button>
                                             </>
                                         )}
