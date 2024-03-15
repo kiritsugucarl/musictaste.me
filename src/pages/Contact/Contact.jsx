@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import "./Contact.css";
+import EmailSent from "../../components/overlays/EmailSent/EmailSent";
 import default_contact_image from "/contact.svg";
 import alternate_contact_image from "/alternate.svg";
 
@@ -33,8 +34,6 @@ const Contact = () => {
                 "f79rWBMGDwfilR9HA"
             )
             .then((response) => {
-                console.log("Email sent successfully!", response);
-
                 setFormData({
                     name: "",
                     email: "",
@@ -46,11 +45,15 @@ const Contact = () => {
 
                 setTimeout(() => {
                     setPopupVisible(false);
-                }, 3000);
+                }, 5000);
             })
             .catch((error) => {
                 console.error("Error sending email:", error);
             });
+    };
+
+    const handleCloseSuccess = () => {
+        setEmailSent(false);
     };
 
     return (
@@ -63,14 +66,23 @@ const Contact = () => {
                 <p className="contact-description">
                     Whether you're curious about the free trial, the prices, or
                     the new features, we're ready to answer any of your
-                    questions.<br className="break" /> Please fill out the form below.
+                    questions.
+                    <br className="break" /> Please fill out the form below.
                 </p>
 
                 <div className="contact__form-group">
                     <div className="contact-image">
-                        <img src={default_contact_image} alt="Default Contact" className="default-image" />
-                        <img src={alternate_contact_image} alt="Alternate Contact" className="alternate-image" />
-                    </div>              
+                        <img
+                            src={default_contact_image}
+                            alt="Default Contact"
+                            className="default-image"
+                        />
+                        <img
+                            src={alternate_contact_image}
+                            alt="Alternate Contact"
+                            className="alternate-image"
+                        />
+                    </div>
 
                     <form onSubmit={handleSubmit}>
                         <h1 className="form-heading">
@@ -112,17 +124,18 @@ const Contact = () => {
                                 className="contact__form-input"
                             ></textarea>
                         </div>
-                        <div className="contact__submit-Btn">
-                            <button type="submit">SUBMIT</button>
-                        </div>
+
+                        <button className="contact__submit-Btn" type="submit">
+                            SUBMIT
+                        </button>
                     </form>
 
                     {popupVisible && (
-                        <div className="contact__message-popup">
-                            {emailSent
-                                ? "Email sent successfully!"
-                                : "An error occurred. Please try again later."}
-                        </div>
+                        <>
+                            {emailSent && (
+                                <EmailSent onClose={handleCloseSuccess} />
+                            )}
+                        </>
                     )}
                 </div>
             </div>

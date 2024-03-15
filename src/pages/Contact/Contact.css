@@ -88,6 +88,12 @@ textarea[name="message"] {
     border-radius: 2.5rem;
     margin: 1rem auto;
     margin-top: 1.5rem;
+    width: 100%;
+    transition: filter 0.3s;
+}
+
+.contact__submit-Btn:hover {
+    filter: brightness(75%);
 }
 
 /* xs */
