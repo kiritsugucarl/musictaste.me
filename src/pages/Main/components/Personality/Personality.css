@@ -215,7 +215,7 @@
     .personality__showLegend {
         font-size: var(--size-base);
     }
-
+  
     .personality__percentage {
         font-size: var(--size-xl);
     }
@@ -285,6 +285,7 @@
     .personality__percentage {
         font-size: var(--size-2xl);
     }
+
 }
 
 /* 2xl */
