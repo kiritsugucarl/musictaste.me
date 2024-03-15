@@ -6,6 +6,10 @@ import {
     RESPONSE_TYPE,
 } from "../../config/spotifyConfig";
 import { useToken } from "../../config/TokenContext";
+import {
+    fetchDataFromFirebase,
+    calculatePercentage,
+} from "../../config/firebaseServices/fetchDataFromFirebase";
 import PersonalityCard from "./components/PersonalityCard/PersonalityCard";
 import personalitiesData from "./data/personalityCardData.json";
 import HomeError from "../../components/overlays/HomeError/HomeError";
@@ -18,6 +22,23 @@ const Home = () => {
     const [startX, setStartX] = useState(0);
     const [slideDirection, setSlideDirection] = useState(null);
     const [error, setError] = useState(false);
+    const [percentages, setPercentages] = useState({});
+
+    useEffect(() => {
+        // Fetch data from Firebase and calculate percentages
+        const fetchAndCalculatePercentages = async () => {
+            try {
+                const data = await fetchDataFromFirebase();
+                const calculatedPercentages = calculatePercentage(data);
+                setPercentages(calculatedPercentages);
+                console.log(percentages);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchAndCalculatePercentages();
+    }, []);
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -203,6 +224,11 @@ const Home = () => {
                                 personality={personalitiesData[personalityName]}
                                 isActive={index === 1}
                                 index={index}
+                                percentage={
+                                    percentages
+                                        ? percentages[personalityName]
+                                        : 0
+                                }
                             />
                         ))}
 
