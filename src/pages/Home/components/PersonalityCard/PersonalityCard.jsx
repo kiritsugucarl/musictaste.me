@@ -1,6 +1,6 @@
 import "./PersonalityCard.css";
 
-const PersonalityCard = ({ personality, isActive }) => {
+const PersonalityCard = ({ personality, isActive, percentage }) => {
     const { name, description, backgroundColor, textColor, image } =
         personality;
 
@@ -23,7 +23,12 @@ const PersonalityCard = ({ personality, isActive }) => {
                         className="flip-card-back"
                         style={{ backgroundColor, color: textColor }}
                     >
-                        <p className="card__description">{description}</p>
+                        <div className="flip-card-back-wrapper">
+                            <p className="card__percentage">
+                                {percentage}% users got this trait!
+                            </p>
+                            <p className="card__description">{description}</p>
+                        </div>
                     </div>
                 </div>
             </div>

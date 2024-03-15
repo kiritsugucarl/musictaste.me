@@ -8,9 +8,14 @@ import {
     ResponsiveContainer,
     PolarAngleAxis,
 } from "recharts";
+import {
+    fetchDataFromFirebase,
+    calculatePercentage,
+} from "../../../../config/firebaseServices/fetchDataFromFirebase";
 import CustomLegend from "./components/CustomLegend/CustomLegend";
 import personalityDescription from "./data/personalityDescription.json";
 import featuresDescription from "./data/featuresDescription.json";
+import updatePersonalityCount from "../../../../config/firebaseServices/updatePersonalityCount";
 import "./Personality.css";
 
 const imageBasePath = "/personalities/";
@@ -117,6 +122,23 @@ const determineMusicPersonality = (averageFeatures) => {
 const Personality = ({ audioFeatures }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
     const [showGuides, setShowGuides] = useState(false);
+    const [percentages, setPercentages] = useState({});
+
+    useEffect(() => {
+        // Fetch data from Firebase and calculate percentages
+        const fetchAndCalculatePercentages = async () => {
+            try {
+                const data = await fetchDataFromFirebase();
+                const calculatedPercentages = calculatePercentage(data);
+                setPercentages(calculatedPercentages);
+                console.log("Percentage", percentages);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchAndCalculatePercentages();
+    }, []);
 
     useEffect(() => {
         if (audioFeatures.length > 0) {
@@ -152,6 +174,12 @@ const Personality = ({ audioFeatures }) => {
     const musicPersonality = overallAverageFeatures
         ? determineMusicPersonality(overallAverageFeatures)
         : null;
+
+    useEffect(() => {
+        if (musicPersonality) {
+            updatePersonalityCount(musicPersonality);
+        }
+    }, [musicPersonality]);
 
     const imagePath = musicPersonality
         ? `${imageBasePath}${musicPersonality}.png`
@@ -257,19 +285,33 @@ const Personality = ({ audioFeatures }) => {
                         </p>
                         {musicPersonality &&
                             personalityDescription[musicPersonality] && (
-                                <p
-                                    className="personality__description"
-                                    style={{
-                                        color: personalityDescription[
-                                            musicPersonality
-                                        ].textColor,
-                                    }}
-                                >
-                                    {
-                                        personalityDescription[musicPersonality]
-                                            .description
-                                    }
-                                </p>
+                                <>
+                                    <p
+                                        className="personality__description"
+                                        style={{
+                                            color: personalityDescription[
+                                                musicPersonality
+                                            ].textColor,
+                                        }}
+                                    >
+                                        {
+                                            personalityDescription[
+                                                musicPersonality
+                                            ].description
+                                        }
+                                    </p>
+                                    <p
+                                        className="personality__percentage"
+                                        style={{
+                                            color: personalityDescription[
+                                                musicPersonality
+                                            ].textColor,
+                                        }}
+                                    >
+                                        {percentages[musicPersonality]}% of
+                                        users got this personality!
+                                    </p>
+                                </>
                             )}
                     </div>
                 ) : (
