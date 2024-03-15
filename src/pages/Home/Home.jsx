@@ -31,7 +31,7 @@ const Home = () => {
                 const data = await fetchDataFromFirebase();
                 const calculatedPercentages = calculatePercentage(data);
                 setPercentages(calculatedPercentages);
-                console.log(percentages);
+                // console.log(percentages);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -43,7 +43,7 @@ const Home = () => {
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         if (params.get("error") === "access_denied") {
-            console.log("Error received!");
+            // console.log("Error received!");
             setError(true); // Set error state to true if access denied
 
             setTimeout(() => {
