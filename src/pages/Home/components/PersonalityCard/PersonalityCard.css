@@ -44,13 +44,11 @@
     flex-direction: column;
     justify-content: start;
     max-width: 90%;
-    height: 100%;
 }
 
 .flip-card-front {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: var(--clr-purple);
     color: var(--clr-main);
@@ -62,8 +60,7 @@
     max-height: 100%;
 }
 
-.card__title,
-.card__description {
+.card__title {
     font-weight: 600;
 }
 
@@ -111,11 +108,12 @@
 }
 
 .carousel-control:hover {
-    filter: brightness(50%);
+    color: var(--clr-secondary);
 }
 
 .card__percentage {
     font-style: italic;
+    font-weight: 600;
 }
 
 /* xs */

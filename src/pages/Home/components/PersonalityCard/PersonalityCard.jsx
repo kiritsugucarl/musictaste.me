@@ -24,10 +24,10 @@ const PersonalityCard = ({ personality, isActive, percentage }) => {
                         style={{ backgroundColor, color: textColor }}
                     >
                         <div className="flip-card-back-wrapper">
+                            <p className="card__description">{description}</p>
                             <p className="card__percentage">
                                 {percentage}% users got this trait!
                             </p>
-                            <p className="card__description">{description}</p>
                         </div>
                     </div>
                 </div>
