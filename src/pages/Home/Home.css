@@ -86,7 +86,8 @@
 }
 
 .home__login-button:hover {
-    filter: brightness(75%);
+    background-color: var(--clr-secondary);
+    color: var(--clr-accent);
 }
 
 .home__spotify-ack-container {
@@ -145,7 +146,6 @@
 }
 
 .home-container-3 {
-    margin-top: 4rem;
     /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
