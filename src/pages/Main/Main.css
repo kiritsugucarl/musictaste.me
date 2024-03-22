@@ -188,7 +188,7 @@
     }
 
     .main__addedSong-title {
-        font-size: var(--size-2xl);
+        font-size: var(--size-xl);
     }
 
     .main__addedSong-songList-iteration {
@@ -223,6 +223,15 @@
 
 /* lg */
 @media (min-width: 1024px) {
+    .main__title {
+        font-size: var(--size-5xl);
+    }
+
+    .main__titleDesc {
+        text-align: left;
+        font-size: var(--size-2xl);
+    }
+
     .main-wrapper {
         flex-direction: row-reverse;
         margin-top: 4rem;
@@ -237,13 +246,17 @@
         gap: 1.5rem;
     }
 
+    .main__title {
+        text-align: left;
+    }
+
     .main__addedSongs-wrapper {
         gap: 1.5rem;
         padding: 1.5rem;
         min-width: 40%;
         max-width: 40%;
         min-height: 90vh;
-        margin-bottom: 0;
+        margin-bottom: 3rem;
     }
 
     .main__addedSong-songList {
@@ -255,16 +268,8 @@
         padding: 1rem;
     }
 
-    /* .main__title {
-        font-size: var(--size-4xl);
-    } */
-
-    .main__titleDesc {
-        text-align: left;
-    }
-
     .main__addedSong-title {
-        font-size: var(--size-3xl);
+        font-size: var(--size-2xl);
     }
 
     .main__addedSong-songList-iteration {
@@ -291,16 +296,8 @@
 
 /* xl */
 @media (min-width: 1280px) {
-    .main__title {
-        font-size: var(--size-5xl);
-    }
-
-    .main__titleDesc {
-        font-size: var(--size-2xl);
-    }
-
     .main__addedSong-title {
-        font-size: var(--size-4xl);
+        font-size: var(--size-3xl);
     }
 
     .main__addedSong-songList-iteration {
