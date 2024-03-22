@@ -86,6 +86,7 @@
 }
 
 .home__login-button:hover {
+    border: 2px solid var(--clr-white);
     background-color: var(--clr-secondary);
     color: var(--clr-accent);
 }
