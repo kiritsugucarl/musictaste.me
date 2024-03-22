@@ -223,6 +223,15 @@
 
 /* lg */
 @media (min-width: 1024px) {
+    .main__title {
+        font-size: var(--size-5xl);
+    }
+
+    .main__titleDesc {
+        text-align: left;
+        font-size: var(--size-2xl);
+    }
+
     .main-wrapper {
         flex-direction: row-reverse;
         margin-top: 4rem;
@@ -235,6 +244,10 @@
 
     .main__title-wrapper {
         gap: 1.5rem;
+    }
+
+    .main__title {
+        text-align: left;
     }
 
     .main__addedSongs-wrapper {
@@ -253,14 +266,6 @@
     .main__addedSong-songList-item {
         gap: 1.5rem;
         padding: 1rem;
-    }
-
-    /* .main__title {
-        font-size: var(--size-4xl);
-    } */
-
-    .main__titleDesc {
-        text-align: left;
     }
 
     .main__addedSong-title {
@@ -291,14 +296,6 @@
 
 /* xl */
 @media (min-width: 1280px) {
-    .main__title {
-        font-size: var(--size-5xl);
-    }
-
-    .main__titleDesc {
-        font-size: var(--size-2xl);
-    }
-
     .main__addedSong-title {
         font-size: var(--size-3xl);
     }
