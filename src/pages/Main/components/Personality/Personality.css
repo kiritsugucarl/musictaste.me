@@ -17,12 +17,12 @@
 
 .personality__title {
     color: var(--clr-secondary);
-    font-size: var(--size-3xl);
+    font-size: var(--size-2xl);
     text-align: center;
 }
 
 .personality__title-desc {
-    font-size: var(--size-lg);
+    font-size: var(--size-sm);
     max-width: 40ch;
     text-align: center;
 }
@@ -173,11 +173,11 @@
 /* sm */
 @media (min-width: 640px) {
     .personality__title {
-        font-size: var(--size-4xl);
+        font-size: var(--size-3xl);
     }
 
     .personality__title-desc {
-        font-size: var(--size-xl);
+        font-size: var(--size-base);
     }
 
     .personality__result-img {
@@ -226,6 +226,15 @@
 
 /* lg */
 @media (min-width: 1024px) {
+    .personality__title {
+        font-size: var(--size-4xl);
+    }
+
+    .personality__title-desc {
+        font-size: var(--size-lg);
+        max-width: 70ch;
+    }
+
     .personality__wrapper {
         flex-direction: row;
         justify-content: space-around;
@@ -239,14 +248,6 @@
 
 /* xl */
 @media (min-width: 1280px) {
-    .personality__title {
-        font-size: var(--size-5xl);
-    }
-
-    .personality__title-desc {
-        font-size: var(--size-xl);
-    }
-
     .personality__result-wrapper {
         max-width: 40%;
     }
@@ -285,7 +286,6 @@
     .personality__percentage {
         font-size: var(--size-2xl);
     }
-
 }
 
 /* 2xl */
