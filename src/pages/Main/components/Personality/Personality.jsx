@@ -131,7 +131,7 @@ const Personality = ({ audioFeatures }) => {
                 const data = await fetchDataFromFirebase();
                 const calculatedPercentages = calculatePercentage(data);
                 setPercentages(calculatedPercentages);
-                console.log("Percentage", percentages);
+                // console.log("Percentage", percentages);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
