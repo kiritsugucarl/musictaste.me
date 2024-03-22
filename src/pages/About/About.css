@@ -135,9 +135,6 @@
 }
 
 @media (min-width: 475px) {
-    /* .about-page {
-      max-width: 475px;
-  } */
     .about-page h1 {
         justify-content: center;
         text-align: center;
@@ -182,16 +179,12 @@
 }
 
 @media (min-width: 640px) {
-    /* .about-page {
-      max-width: 640px;
-  } */
-
     .about-page h1 {
         font-size: var(--size-4xl);
     }
 
     .about-description p {
-        font-size: var(--size-lg);
+        font-size: var(--size-xl);
     }
 
     .the-team-container h3 {
@@ -199,20 +192,19 @@
     }
 
     .desc-team p {
-        font-size: var(--size-base);
+        font-size: var(--size-lg);
     }
 }
 
 @media (min-width: 768px) {
-    /* .about-page {
-    max-width: 768px;
-} */
     .about-page h1 {
         text-align: left;
     }
+
     .about-description p {
         text-align: justify;
     }
+
     .the-team-container h3 {
         text-align: left;
         margin-left: 1rem;
@@ -221,6 +213,7 @@
     .desc-team p {
         text-align: justify;
     }
+
     .meet-the-team {
         max-width: 768px;
         flex-direction: row;
@@ -230,96 +223,53 @@
         justify-content: center;
         gap: 2.75rem;
     }
-    .team .image-container {
-        /*change size of member*/
-        width: 11rem;
-        height: 11rem;
-    }
 }
 
 @media (min-width: 1024px) {
-    /* .about-page {
-    max-width: 1024px;
-  } */
-    .about-page h1 {
-        font-size: var(--size-4xl);
-    }
-    .about-description p {
-        text-align: justify;
-        font-size: var(--size-lg);
-    }
-    .the-team-container h3 {
-        font-size: var(--size-3xl);
-    }
-    .desc-team p {
-        text-align: justify;
-        font-size: var(--size-base);
-    }
     .meet-the-team {
-        display: flex;
         max-width: 1024px;
         gap: 2rem;
+    }
+
+    .team .image-container {
+        /*change size of member*/
+        width: 10rem;
+        height: 10rem;
     }
 }
 
 @media (min-width: 1280px) {
-    /* .about-page {
-    max-width: 1280px;
-} */
     .about-page h1 {
-        font-size: var(--size-4xl);
+        font-size: var(--size-5xl);
     }
+
     .about-description p {
-        font-size: var(--size-xl);
+        font-size: var(--size-2xl);
     }
+
     .the-team-container h3 {
         font-size: var(--size-3xl);
     }
+
     .desc-team p {
-        font-size: var(--size-lg);
+        font-size: var(--size-xl);
     }
 
     .meet-the-team {
         display: flex;
         max-width: 1280px;
         gap: 3rem;
+        padding-top: 2rem;
     }
+
     .name {
         font-size: var(--size-xl);
     }
+
     .role {
         font-size: var(--size-lg);
     }
 }
-@media (min-width: 1536px) {
-    /* .about-page {
-      max-width: 1536px;
-  } */
-    .about-page h1 {
-        font-size: var(--size-4xl);
-    }
-    .about-description p {
-        font-size: var(--size-xl);
-    }
-    .the-team-container h3 {
-        font-size: var(--size-3xl);
-    }
-    .desc-team p {
-        font-size: var(--size-lg);
-    }
-    .meet-the-team {
-        display: flex;
-        max-width: 1536px;
-        gap: 2.5rem;
-    }
-    .team .image-container {
-        width: 13rem;
-        height: 13rem;
-    }
-    .name {
-        font-size: var(--size-xl);
-    }
-    .role {
-        font-size: var(--size-lg);
-    }
-}
+
+/*@media (min-width: 1536px) {}
+*/
