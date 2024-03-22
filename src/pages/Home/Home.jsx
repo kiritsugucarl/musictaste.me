@@ -72,7 +72,7 @@ const Home = () => {
             }
         }
     };
-
+  
     useEffect(() => {
         // Fetch data from Firebase and calculate percentages
         const fetchAndCalculatePercentages = async () => {
