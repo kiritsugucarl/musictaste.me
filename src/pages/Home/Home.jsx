@@ -5,6 +5,8 @@ import {
     REDIRECT_URI,
     RESPONSE_TYPE,
 } from "../../config/spotifyConfig";
+import { Browser } from "@capacitor/browser";
+import { Capacitor } from "@capacitor/core";
 import { useToken } from "../../config/TokenContext";
 import {
     fetchDataFromFirebase,
@@ -17,12 +19,59 @@ import spotifyLogo from "/spotify-logo.png";
 import "./Home.css";
 
 const Home = () => {
-    const { token } = useToken();
+    const { token, setToken } = useToken();
     const [activeIndex, setActiveIndex] = useState(0);
     const [startX, setStartX] = useState(0);
     const [slideDirection, setSlideDirection] = useState(null);
     const [error, setError] = useState(false);
     const [percentages, setPercentages] = useState({});
+
+    const handleGetStarted = async () => {
+        const platform = Capacitor.getPlatform();
+        if (platform === "web") {
+            window.open(
+                `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`,
+                "_self"
+            );
+        } else {
+            try {
+                const authenticationUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
+                const { url } = await Browser.open({
+                    url: authenticationUrl,
+                    presentationStyle: "fullscreen",
+                });
+                // Execute JavaScript to hide the URL bar
+                const hideUrlBarScript = `
+                    setTimeout(() => {
+                        window.scrollTo(0, 1);
+                    }, 500);
+                `;
+                Browser.executeScript({ code: hideUrlBarScript });
+                handleUrlChange(url);
+            } catch (error) {
+                console.error("Error opening browser:", error);
+            }
+        }
+    };
+
+    const handleUrlChange = (url) => {
+        // Check if the URL contains the token or the authentication success indicator
+        if (
+            url.includes("access_token") ||
+            url.includes("authentication_success")
+        ) {
+            // Extract token from the URL
+            const params = new URLSearchParams(url.split("#")[1]);
+            const accessToken = params.get("access_token");
+            // Pass the token to your TokenProvider
+            if (accessToken) {
+                setToken(accessToken);
+                fetchSpotifyUser(accessToken); // Fetch user data
+                // Close the in-app browser
+                Browser.close();
+            }
+        }
+    };
 
     useEffect(() => {
         // Fetch data from Firebase and calculate percentages
@@ -139,12 +188,12 @@ const Home = () => {
                                 </p>
                                 <div className="home__login-container">
                                     {!token ? (
-                                        <a
+                                        <button
                                             className="home__login-button"
-                                            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+                                            onClick={handleGetStarted}
                                         >
                                             GET STARTED
-                                        </a>
+                                        </button>
                                     ) : (
                                         <Link
                                             className="home__login-button"
