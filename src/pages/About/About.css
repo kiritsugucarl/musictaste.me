@@ -233,7 +233,7 @@
     }
 
     .about-description p {
-        font-size: var(--size-2xl);
+        font-size: var(--size-xl);
     }
 
     .meet-the-team {

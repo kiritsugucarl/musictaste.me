@@ -158,6 +158,7 @@
 }
 
 .main__results-line {
+    margin-top: 0.5rem;
     width: 85%;
     border: 3px solid var(--clr-accent);
 }

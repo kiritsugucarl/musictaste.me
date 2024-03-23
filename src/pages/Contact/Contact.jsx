@@ -64,9 +64,8 @@ const Contact = () => {
                     <span className="us-highlight">us</span>
                 </h1>
                 <p className="contact-description">
-                    Whether you're curious about the free trial, the prices, or
-                    the new features, we're ready to answer any of your
-                    questions.
+                    Whether you're curious about the new features, we're ready
+                    to answer any of your questions.
                     <br className="break" /> Please fill out the form below.
                 </p>
 
@@ -94,7 +93,7 @@ const Contact = () => {
                         </p>
                         <div className="contact__form-group">
                             <input
-                                placeholder=" Your name"
+                                placeholder=" Your name..."
                                 type="text"
                                 name="name"
                                 value={formData.name}
@@ -105,7 +104,7 @@ const Contact = () => {
                         </div>
                         <div className="contact__form-group">
                             <input
-                                placeholder=" Your email"
+                                placeholder=" Your email..."
                                 type="email"
                                 name="email"
                                 value={formData.email}
@@ -116,7 +115,7 @@ const Contact = () => {
                         </div>
                         <div className="contact__form-group">
                             <textarea
-                                placeholder=" Messages"
+                                placeholder=" Your message..."
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}

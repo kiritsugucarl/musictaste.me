@@ -15,7 +15,7 @@
 }
 .contact-description {
     text-align: center;
-    font-size: var(--size-base);
+    font-size: var(--size-lg);
 }
 .contact-description .break {
     display: none;
@@ -31,6 +31,11 @@
 .form-heading {
     font-size: var(--size-xl);
 }
+
+.form-description {
+    margin-bottom: 1.2rem;
+}
+
 .form-description p {
     text-align: left;
     display: block;
@@ -40,7 +45,7 @@ form {
     margin: 2rem auto;
     width: 100%;
     padding: 1.25rem;
-    border-radius: 1.875rem;
+    border-radius: 0.5rem;
     background-color: var(--clr-secondary);
 }
 
@@ -50,13 +55,24 @@ form {
     align-items: center;
     justify-content: center;
     margin: 0.63rem 0;
-    margin-top: 1.75rem;
+    margin-top: 1rem;
     width: 100%;
 }
 .contact__form-input {
     font-size: var(--size-xs);
     width: 100%;
+    transition: box-shadow 0.3s ease;
 }
+
+.contact__form-input:focus,
+.contact__form-input:not(:placeholder-shown) {
+    box-shadow: 0px 2px 5px rgb(61, 61, 61); /* Adjust the values as per your requirement */
+}
+
+.contact__form-input:not(:focus):not(:placeholder-shown) {
+    box-shadow: none;
+}
+
 .Getin-highlight {
     color: var(--clr-main);
     font-weight: bold;
@@ -69,13 +85,15 @@ form {
 input,
 textarea {
     width: 100%;
-    padding: 0.63rem;
+    padding: 1rem;
     border: 0.13rem solid var(--clr-light);
-    border-radius: 0.63rem;
+    border-radius: 1rem;
 }
+
 textarea[name="message"] {
     height: 8rem;
 }
+
 .contact__submit-Btn {
     display: flex;
     justify-content: center;
@@ -88,12 +106,15 @@ textarea[name="message"] {
     border-radius: 2.5rem;
     margin: 1rem auto;
     margin-top: 1.5rem;
+    margin-bottom: 0.3rem;
     width: 100%;
     transition: filter 0.3s;
 }
 
 .contact__submit-Btn:hover {
-    filter: brightness(75%);
+    border: 2px solid var(--clr-white);
+    background-color: var(--clr-secondary);
+    color: var(--clr-accent);
 }
 
 /* xs */
@@ -116,9 +137,18 @@ textarea[name="message"] {
 
 /* sm */
 @media (min-width: 640px) {
+    .contact-title {
+        font-size: var(--size-4xl);
+    }
+
+    .contact-description {
+        font-size: var(--size-xl);
+    }
+
     .contact-page-container {
         max-width: 640px;
     }
+
     form {
         max-width: 500px;
     }
@@ -139,12 +169,12 @@ textarea[name="message"] {
     }
     .contact-title {
         text-align: left;
-        font-size: var(--size-4xl);
     }
+
     .contact-description {
         text-align: justify;
-        font-size: var(--size-base);
     }
+
     .contact__form-group {
         display: flex;
         flex-direction: row;
@@ -170,9 +200,12 @@ textarea[name="message"] {
         max-width: 1024px;
     }
 
+    .contact-title {
+        font-size: var(--size-5xl);
+    }
+
     .contact-description {
-        text-align: justify;
-        font-size: var(--size-base);
+        font-size: var(--size-xl);
     }
 
     .contact-description .break {
@@ -180,7 +213,7 @@ textarea[name="message"] {
     }
     .alternate-image {
         display: block;
-        width: 40rem;
+        width: 35rem;
     }
 }
 
@@ -188,12 +221,10 @@ textarea[name="message"] {
 @media (min-width: 1280px) {
     .contact-page-container {
         max-width: 1280px;
-        padding-left: 2rem;
         padding-right: 2rem;
     }
     form {
-        min-width: 600px;
-        height: 30rem;
+        min-width: 550px;
     }
     .contact-image {
         width: 100rem;

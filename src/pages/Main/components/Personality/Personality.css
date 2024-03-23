@@ -147,17 +147,36 @@
 }
 
 .personality__showLegend {
+    font-size: var(--size-base);
+    position: relative;
+    margin-top: auto;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-weight: 900;
+}
+
+.personality__showLegend::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
     background-color: var(--clr-accent);
-    padding: 1rem;
-    border-radius: 1rem;
-    color: var(--clr-main);
-    font-weight: 600;
-    font-size: var(--size-sm);
-    transition: filter 0.3s;
+    opacity: 0;
+    transition:
+        opacity 0.3s ease-in-out,
+        transform 0.3s ease-in-out;
 }
 
 .personality__showLegend:hover {
-    filter: brightness(75%);
+    color: var(--clr-accent);
+}
+
+.personality__showLegend:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
 }
 
 .personality__percentage {
@@ -213,7 +232,7 @@
 
     .personality__legend-guides-feature,
     .personality__showLegend {
-        font-size: var(--size-base);
+        font-size: var(--size-lg);
     }
 
     .personality__percentage {
@@ -243,6 +262,11 @@
 
     .personality__result-wrapper {
         max-width: 45%;
+    }
+
+    .personality__legend-guides-feature,
+    .personality__showLegend {
+        font-size: var(--size-base);
     }
 }
 
