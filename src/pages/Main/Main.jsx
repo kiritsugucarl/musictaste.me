@@ -147,7 +147,7 @@ const Main = () => {
         };
 
         const response = await axios.get(recommendationsEndpoint, config);
-        return response.data.tracks; // i will get the links from this line
+        return response.data.tracks;
     };
 
     const fetchAudioFeatures = async (trackIds, token) => {

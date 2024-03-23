@@ -259,7 +259,7 @@
         min-width: 40%;
         max-width: 40%;
         min-height: 90vh;
-        margin-bottom: 3rem;
+        margin-bottom: 0;
     }
 
     .main__addedSong-songList {

@@ -13,11 +13,11 @@ const Recommendation = ({ imageUrl }) => {
                     social media platform!
                 </p>
             </div>
-            <div className="recommendation__finalImageWrapper shadow-effect">
+            <div className="recommendation__finalImageWrapper">
                 {imageUrl ? (
                     <img
                         src={imageUrl}
-                        className="recommendation__finalImage"
+                        className="recommendation__finalImage shadow-effect"
                     />
                 ) : (
                     <p>Loading...</p>
@@ -33,7 +33,30 @@ const Recommendation = ({ imageUrl }) => {
                             viewBox="0 0 24 24"
                             fill="currentColor"
                         >
-                            <path d="M12 1.5a.75.75 0 0 1 .75.75V7.5h-1.5V2.25A.75.75 0 0 1 12 1.5ZM11.25 7.5v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V7.5h3.75a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h3.75Z" />
+                            <path
+                                fill-rule="evenodd"
+                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div className="recommendation__overlay-icons-mobile">
+                    <a
+                        href={imageUrl}
+                        download="musicTaste.png"
+                        className="recommendation__finalImageLink"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
+                                clip-rule="evenodd"
+                            />
                         </svg>
                     </a>
                 </div>
