@@ -3,7 +3,7 @@ import "./Footer.css";
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer section">
             <div className="footer-wrapper container">
                 <p className="footer-text">COPYRIGHT © musictaste.me</p>
                 <p className="links">

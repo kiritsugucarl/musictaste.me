@@ -120,7 +120,6 @@ const Main = () => {
             }
         } else {
             setLoading(false);
-            // console.log("Need five inputs!");
             setError(true);
             setTimeout(() => {
                 handleCloseError();
@@ -165,7 +164,7 @@ const Main = () => {
         return response.data.audio_features;
     };
 
-    const debouncedGetResults = debounce(getResults, 300); // Adjust the debounce delay as needed
+    const debouncedGetResults = debounce(getResults, 300);
 
     return (
         <main className="container content-container section">
