@@ -21,6 +21,9 @@ const Main = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    const [recommendationTrackIds, setRecommendationTrackIds] = useState([]);
+    const [selectedSongsTrackIds, setSelectedSongsTrackIds] = useState([]);
+
     const [passableTrackIds, setPassableTrackIds] = useState([]);
 
     const [capturedImageUrl, setCapturedImageUrl] = useState(null);
@@ -89,6 +92,9 @@ const Main = () => {
 
                 const selectedSongsTrackIds = addedSongs.map((song) => song.id);
 
+                setRecommendationTrackIds(recommendationTrackIds);
+                setSelectedSongsTrackIds(selectedSongsTrackIds);
+
                 const allTrackIds = [
                     ...recommendationTrackIds,
                     ...selectedSongsTrackIds,
@@ -105,6 +111,13 @@ const Main = () => {
                     recommendations.map((song) => song.id),
                     token
                 );
+
+                // navigate("/imageTest", {
+                //     state: {
+                //         recommendationTrackIds,
+                //         selectedSongsTrackIds,
+                //     },
+                // });
 
                 const allFeatures = [
                     ...selectedSongsFeatures,
@@ -257,7 +270,8 @@ const Main = () => {
                 <div className="main__results-container">
                     {showRecommendationImage && (
                         <RecommendationImage
-                            allTrackIds={passableTrackIds}
+                            recommendationTrackIds={recommendationTrackIds}
+                            selectedSongsTrackIds={selectedSongsTrackIds}
                             onCapture={handleCapture}
                         />
                     )}
