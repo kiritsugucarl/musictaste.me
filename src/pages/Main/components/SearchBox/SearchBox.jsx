@@ -106,7 +106,7 @@ const SearchBox = ({
             return (
                 <div>
                     <p className="searchBox__content-search-result-prompt">
-                        Search a song, artist, or album...
+                        {/* Search a song, artist, or album... */}
                     </p>
                 </div>
             );
@@ -117,9 +117,6 @@ const SearchBox = ({
                 {searchResults.tracks.items.map((track) => {
                     const album = track.album; // Extract album information
                     const previewUrl = track.preview_url;
-                    {
-                        // console.log(`ID: ${track.id}`);
-                    }
                     const isSongAdded = addedSongs.some(
                         (addedSong) => addedSong.id === track.id
                     );
@@ -181,18 +178,20 @@ const SearchBox = ({
                                 </p>
                             </div>
                             {isSongAdded ? (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    className="searchBox__content-search-result-addedPrompt"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-                                        clip-rule="evenodd"
-                                    />
-                                </svg>
+                                <button className="searchBox__content-search-result-addButton">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        className="searchBox__content-search-result-addedPrompt"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                </button>
                             ) : (
                                 <button
                                     className="searchBox__content-search-result-addButton"
@@ -240,12 +239,11 @@ const SearchBox = ({
                             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                         />
                     </svg>
-                    {/* {console.log(token)} */}
                     {token ? (
                         <input
                             className="searchBox__content-searchBar"
                             type="text"
-                            placeholder="Search..."
+                            placeholder="Search for song, album, or artists..."
                             onChange={handleInputChange}
                         />
                     ) : (

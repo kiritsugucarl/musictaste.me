@@ -217,7 +217,7 @@
     }
 
     .meet-the-team {
-        max-width: 768px;
+        max-width: 100%;
         flex-direction: row;
         display: flex;
         flex-wrap: wrap;
@@ -233,11 +233,11 @@
     }
 
     .about-description p {
-        font-size: var(--size-2xl);
+        font-size: var(--size-xl);
     }
 
     .meet-the-team {
-        max-width: 1024px;
+        max-width: 100%;
         gap: 2rem;
     }
 
@@ -260,7 +260,7 @@
 @media (min-width: 1280px) {
     .meet-the-team {
         display: flex;
-        max-width: 1280px;
+        max-width: 100%;
         gap: 3rem;
         padding-top: 2rem;
     }

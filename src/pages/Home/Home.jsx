@@ -19,6 +19,7 @@ import spotifyLogo from "/spotify-logo.png";
 import "./Home.css";
 
 const Home = () => {
+    // State variables
     const { token, setToken } = useToken();
     const [activeIndex, setActiveIndex] = useState(0);
     const [startX, setStartX] = useState(0);
@@ -27,6 +28,7 @@ const Home = () => {
     const [percentages, setPercentages] = useState({});
 
     const handleGetStarted = async () => {
+        // If the platform is web, proceed normally, if mobile app, use the browser plugin
         const platform = Capacitor.getPlatform();
         if (platform === "web") {
             window.open(
@@ -40,13 +42,6 @@ const Home = () => {
                     url: authenticationUrl,
                     presentationStyle: "fullscreen",
                 });
-                // Execute JavaScript to hide the URL bar
-                const hideUrlBarScript = `
-                    setTimeout(() => {
-                        window.scrollTo(0, 1);
-                    }, 500);
-                `;
-                Browser.executeScript({ code: hideUrlBarScript });
                 handleUrlChange(url);
             } catch (error) {
                 console.error("Error opening browser:", error);
@@ -72,7 +67,7 @@ const Home = () => {
             }
         }
     };
- 
+
     useEffect(() => {
         // Fetch data from Firebase and calculate percentages
         const fetchAndCalculatePercentages = async () => {
@@ -92,7 +87,6 @@ const Home = () => {
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         if (params.get("error") === "access_denied") {
-            // console.log("Error received!");
             setError(true); // Set error state to true if access denied
 
             setTimeout(() => {
@@ -105,6 +99,7 @@ const Home = () => {
         setError(false);
     };
 
+    // handle the carousel movement
     const handleNext = () => {
         setActiveIndex(
             (prevIndex) =>
@@ -122,6 +117,7 @@ const Home = () => {
         setSlideDirection("prev");
     };
 
+    // handle swiping carousel for mobile version
     const handleTouchStart = (e) => {
         setStartX(e.touches[0].clientX);
     };
@@ -145,6 +141,8 @@ const Home = () => {
         setStartX(null);
     };
 
+    // handle display of cards in carousel
+
     const getVisibleIndices = (activeIndex, totalCards) => {
         const prevIndex = (activeIndex - 1 + totalCards) % totalCards;
         const nextIndex = (activeIndex + 1) % totalCards;
@@ -161,8 +159,6 @@ const Home = () => {
     );
 
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-
-    const navigate = useNavigate();
 
     return (
         <main className="container">
@@ -187,6 +183,7 @@ const Home = () => {
                                     now and identify your music taste!
                                 </p>
                                 <div className="home__login-container">
+                                    {/* if there is no token then the button is get started; otherwise, proceed */}
                                     {!token ? (
                                         <button
                                             className="home__login-button"
@@ -264,9 +261,22 @@ const Home = () => {
                             className="carousel-control"
                             onClick={handlePrev}
                         >
-                            &lt;
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M15.75 19.5 8.25 12l7.5-7.5"
+                                />
+                            </svg>
                         </button>
 
+                        {/* map the data of cards and get their details */}
                         {visibleCards.map((personalityName, index) => (
                             <PersonalityCard
                                 key={personalityName}
@@ -285,7 +295,19 @@ const Home = () => {
                             className="carousel-control"
                             onClick={handleNext}
                         >
-                            &gt;
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                                />
+                            </svg>
                         </button>
                     </div>
                 </div>

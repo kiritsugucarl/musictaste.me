@@ -4,6 +4,7 @@
     margin-top: 2rem;
     height: 100%;
     gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .main__content-wrapper {
@@ -158,6 +159,7 @@
 }
 
 .main__results-line {
+    margin-top: 0.5rem;
     width: 85%;
     border: 3px solid var(--clr-accent);
 }
@@ -236,6 +238,7 @@
         flex-direction: row-reverse;
         margin-top: 4rem;
         gap: 2rem;
+        margin-bottom: 4rem;
     }
 
     .main__content-wrapper {

@@ -101,10 +101,9 @@
     display: none;
     background: none;
     border: none;
-    font-size: var(--size-4xl);
     color: var(--clr-accent);
     cursor: pointer;
-    transition: filter 0.3s;
+    transition: color 0.3s;
 }
 
 .carousel-control:hover {
@@ -149,7 +148,8 @@
     }
 
     .carousel-control {
-        font-size: var(--size-7xl);
+        width: 5rem;
+        height: 10rem;
     }
 }
 
@@ -186,7 +186,8 @@
     }
 
     .carousel-control {
-        font-size: var(--size-9xl);
+        width: 7.5rem;
+        height: 15rem;
     }
 }
 
@@ -215,7 +216,8 @@
     }
 
     .carousel-control {
-        font-size: 11rem;
+        width: 10rem;
+        height: 20rem;
     }
 }
 

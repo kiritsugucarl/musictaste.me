@@ -383,7 +383,7 @@ const Personality = ({ audioFeatures }) => {
                     className="personality__showLegend"
                     onClick={() => setShowGuides(!showGuides)}
                 >
-                    {showGuides ? "Hide Feature Guides" : "Show Feature Guides"}
+                    {showGuides ? "HIDE FEATURE GUIDES" : "SHOW FEATURE GUIDES"}
                 </button>
             </div>
         </div>

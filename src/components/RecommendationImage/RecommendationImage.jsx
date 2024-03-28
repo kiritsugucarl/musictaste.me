@@ -1,14 +1,91 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import html2canvas from "html2canvas";
 import { useToken } from "../../config/TokenContext";
 import "./RecommendationImage.css";
 
-const RecommendationImage = ({ allTrackIds, onCapture }) => {
+const RecommendationImage = ({
+    allTrackIds,
+    recommendationTrackIds,
+    selectedSongsTrackIds,
+    onCapture,
+}) => {
     const { token, user } = useToken();
     const userName = user.display_name;
-    const [trackDetails, setTrackDetails] = useState([]);
-    const [images, setImages] = useState([]);
+
+    const [selectedSongsDetails, setSelectedSongsDetails] = useState([]);
+    const [recommendationDetails, setRecommendationDetails] = useState([]);
+
+    // const location = useLocation();
+    // const { recommendationTrackIds, selectedSongsTrackIds } = location.state;
+
+    useEffect(() => {
+        const fetchSelectedSongsDetails = async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.spotify.com/v1/tracks?ids=${selectedSongsTrackIds.join(
+                        ","
+                    )}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                if (response.data.tracks) {
+                    const details = response.data.tracks.map((track) => ({
+                        id: track.id,
+                        name: track.name,
+                        artists: track.artists
+                            .map((artist) => artist.name)
+                            .join(", "),
+                        image: track.album.images[0].url,
+                    }));
+
+                    setSelectedSongsDetails(details);
+                }
+            } catch (error) {
+                console.error("Error fetching selected songs details: ", error);
+            }
+        };
+        fetchSelectedSongsDetails();
+    }, [selectedSongsTrackIds, token]);
+
+    useEffect(() => {
+        const fetchRecommendationDetails = async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.spotify.com/v1/tracks?ids=${recommendationTrackIds.join(
+                        ","
+                    )}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                if (response.data.tracks) {
+                    const details = response.data.tracks.map((track) => ({
+                        id: track.id,
+                        name: track.name,
+                        artists: track.artists
+                            .map((artist) => artist.name)
+                            .join(", "),
+                        image: track.album.images[0].url,
+                    }));
+
+                    setRecommendationDetails(details);
+                }
+            } catch (error) {
+                console.error("Error fetching recommendation details: ", error);
+            }
+        };
+
+        fetchRecommendationDetails();
+    }, [recommendationTrackIds, token]);
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
 
@@ -17,8 +94,11 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
     };
 
     useEffect(() => {
-        if (imagesLoaded === allTrackIds.length) {
-            // Adding a delay of 1 second (1000 milliseconds)
+        if (
+            imagesLoaded ===
+            selectedSongsTrackIds.length + recommendationTrackIds.length
+        ) {
+            // Adding a delay of 3 second (3000 milliseconds)
             setTimeout(() => {
                 const content = document.getElementById("result-container");
                 html2canvas(content, {
@@ -31,48 +111,13 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
                 });
             }, 3000);
         }
-    }, [imagesLoaded, allTrackIds, onCapture]);
+    }, [
+        imagesLoaded,
+        selectedSongsTrackIds,
+        recommendationTrackIds,
+        onCapture,
+    ]);
 
-    useEffect(() => {
-        const fetchTrackDetails = async () => {
-            try {
-                const response = await axios.get(
-                    `https://api.spotify.com/v1/tracks?ids=${allTrackIds.join(
-                        ","
-                    )}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-
-                if (response.data.tracks) {
-                    const details = response.data.tracks.map((track) => {
-                        return {
-                            id: track.id,
-                            name: track.name,
-                            artists: track.artists
-                                .map((artist) => artist.name)
-                                .join(", "),
-                        };
-                    });
-
-                    setTrackDetails(details);
-                    setImages(
-                        response.data.tracks.map(
-                            (track) => track.album.images[0].url
-                        )
-                    );
-                }
-            } catch (error) {
-                console.error("Error fetching track details: ", error);
-            }
-        };
-
-        fetchTrackDetails();
-    }, [allTrackIds]);
-  
     return (
         <div id="result-container" className="result-container">
             <div className="result-wrapper">
@@ -81,39 +126,59 @@ const RecommendationImage = ({ allTrackIds, onCapture }) => {
                     <span className="result-yellow">music taste</span>
                 </h1>
 
-                <div className="result-collage">
-                    {images.length > 0 &&
-                        trackDetails.length > 0 &&
-                        images.map((image, index) => (
-                            <div
-                                key={trackDetails[index].id}
-                                className="result__track-item"
-                            >
+                <div className="result-selected-section">
+                    <h3 className="result-secondaryTitle">
+                        {userName}'s choice of{" "}
+                        <span className="secondaryTitle-yellow"> songs</span>
+                    </h3>
+                    {selectedSongsDetails.map((song, index) => (
+                        <div className="result-item">
+                            <p className="result-item-index">{index + 1}</p>
+                            <div className="result-item-container">
                                 <img
-                                    src={image}
-                                    alt=""
-                                    className="result__track-item-img"
                                     onLoad={handleImageLoad}
+                                    className="result-item-track-img"
+                                    src={song.image}
                                 />
+                                <div className="result-item-details-wrapper">
+                                    <p className="result-item-details-songName">
+                                        {song.name}
+                                    </p>
+                                    <p className="result-item-details-songArtist">
+                                        {song.artists}
+                                    </p>
+                                </div>
                             </div>
-                        ))}
+                        </div>
+                    ))}
                 </div>
 
-                <hr className="result-hr" />
-
-                <div className="result-list">
-                    {trackDetails.map((track, index) => (
-                        <div className="result__track-details-item">
-                            <p className="result__track-details-item-index">
-                                {index + 1}
-                            </p>
-                            <div className="result__track-details-item-songDetails">
-                                <p className="result__track-details-item-songDetails-songName">
-                                    {track.name}
-                                </p>
-                                <p className="result__track-details-item-songDetails-songArtists">
-                                    {track.artists}
-                                </p>
+                <div className="result-taste-section">
+                    <h3 className="result-secondaryTitle">
+                        {userName}'s{" "}
+                        <span className="secondaryTitle-yellow">
+                            {" "}
+                            music taste
+                        </span>{" "}
+                        based on their input
+                    </h3>
+                    {recommendationDetails.map((song, index) => (
+                        <div className="result-item">
+                            <p className="result-item-index">{index + 1}</p>
+                            <div className="result-item-container">
+                                <img
+                                    onLoad={handleImageLoad}
+                                    className="result-item-track-img"
+                                    src={song.image}
+                                />
+                                <div className="result-item-details-wrapper">
+                                    <p className="result-item-details-songName">
+                                        {song.name}
+                                    </p>
+                                    <p className="result-item-details-songArtist">
+                                        {song.artists}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))}
