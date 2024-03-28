@@ -26,5 +26,12 @@
         "backgroundColor" : "#FF8348",
         "textColor" : "#232931",
         "image" : "/personalities/Jolly Casual.png"
+    },
+    "Nonchalant" : {
+        "name": "Nonchalant",
+        "description": "Just like your music taste, you are hard to identify. Your expressions might be so difficult to read, and doesn't actually show it.",
+        "backgroundColor" : "#4B85FD",
+        "textColor" : "#232931",
+        "image" : "/personalities/Nonchalant.png"
     }
 }

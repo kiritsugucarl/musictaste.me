@@ -23,6 +23,5 @@ export const calculatePercentage = (data) => {
     for (const key in data) {
         percentages[key] = (((data[key] || 0) / totalCount) * 100).toFixed(1); // Round to one decimal point
     }
-    // console.log("Percentages: ", percentages);
     return percentages;
 };

@@ -21,7 +21,6 @@ export const TokenProvider = ({ children }) => {
                 .find((elem) => elem.startsWith("access_token"))
                 .split("=")[1];
 
-            // storedToken = tokenParam;
             tokenExpiresAt = calculateExpiresAt();
 
             window.location.hash = "";
@@ -30,22 +29,14 @@ export const TokenProvider = ({ children }) => {
                 "musictaste.me-token-expires-at",
                 tokenExpiresAt
             );
-
-            // window.opener.postMessage("authentication_success");
         }
 
         setToken(storedToken);
         setExpiresAt(tokenExpiresAt);
 
-        // window.addEventListener("beforeunload", handleBeforeTabClose);
-
         if (storedToken) {
             fetchSpotifyUser(storedToken);
         }
-
-        // return () => {
-        //     window.removeEventListener("beforeunload", handleBeforeTabClose);
-        // };
     }, []);
 
     const fetchSpotifyUser = async (token) => {
@@ -58,7 +49,6 @@ export const TokenProvider = ({ children }) => {
 
             if (response.ok) {
                 const user = await response.json();
-                // setToken(user);
                 setUser(user);
             } else {
                 console.error("Failed to fetch user information");

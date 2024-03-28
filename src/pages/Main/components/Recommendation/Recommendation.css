@@ -37,7 +37,11 @@
 
 .recommendation__finalImageWrapper {
     position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
 }
 
 .shadow-effect {
@@ -46,12 +50,18 @@
 }
 
 .recommendation__overlay-icons {
-    display: flex;
+    display: none;
     flex-direction: column;
     padding: 1rem;
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.recommendation__overlay-icons-mobile {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
 }
 
 .recommendation__finalImageLink {
@@ -105,6 +115,15 @@
     .recommendation__title-desc {
         font-size: var(--size-lg);
         max-width: 70ch;
+    }
+
+    .recommendation__overlay-icons {
+        display: flex;
+        right: -2rem;
+    }
+
+    .recommendation__overlay-icons-mobile {
+        display: none;
     }
 }
 

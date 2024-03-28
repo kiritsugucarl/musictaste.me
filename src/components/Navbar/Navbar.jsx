@@ -62,16 +62,6 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                 </div>
                 <nav className="desktop-nav">
                     <ul className="desktop-nav-ul">
-                        {/* <li className="desktop-nav-li">
-                            <Link
-                                to="/"
-                                className={`desktop-nav-link ${
-                                    location.pathname === "/" ? "active" : ""
-                                }`}
-                            >
-                                Home
-                            </Link>
-                        </li> */}
                         <li className="desktop-nav-li">
                             <Link
                                 to="/about"

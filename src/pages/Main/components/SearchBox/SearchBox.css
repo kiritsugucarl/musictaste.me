@@ -68,6 +68,8 @@
 .searchBox__content-search-result-pause {
     min-width: var(--size-3xl);
     min-height: var(--size-3xl);
+    max-height: var(--size-3xl);
+    max-width: var(--size-3xl);
     transition: color 0.3s ease-in;
 }
 
@@ -96,6 +98,7 @@
 
 .searchBox__content-search-result-songName {
     font-weight: bold;
+    max-width: 45ch;
     transition: color 0.3s ease-in;
     font-size: var(--size-xs);
 }
@@ -128,11 +131,15 @@
     transition: color 0.3s ease-in-out;
     min-width: var(--size-3xl);
     min-height: var(--size-3xl);
+    max-width: var(--size-3xl);
+    max-height: var(--size-3xl);
 }
 
 .searchBox__content-search-result-addedPrompt {
-    max-width: var(--size-3xl);
+    min-width: var(--size-3xl);
     min-height: var(--size-3xl);
+    max-width: var(--size-3xl);
+    max-height: var(--size-3xl);
     margin-left: auto;
     color: var(--clr-white);
     transition: color 0.3s ease-in-out;
@@ -144,8 +151,10 @@
 
 .searchBox__content-search-result-addButtonImg {
     display: block;
-    width: var(--size-3xl);
-    height: var(--size-3xl);
+    min-width: var(--size-3xl);
+    min-height: var(--size-3xl);
+    max-height: var(--size-3xl);
+    max-width: var(--size-3xl);
 }
 
 .searchBox__content-search-result-audio {
@@ -174,8 +183,10 @@
 
     .searchBox__content-search-result-play,
     .searchBox__content-search-result-pause {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
+        min-width: var(--size-4xl);
+        min-height: var(--size-4xl);
+        max-height: var(--size-4xl);
+        max-width: var(--size-4xl);
     }
 
     .searchBox__content-search-result-albumImg {
@@ -191,12 +202,17 @@
         font-size: var(--size-base);
     }
     .searchBox__content-search-result-addedPrompt {
-        width: var(--size-4xl);
+        min-width: var(--size-4xl);
+        min-height: var(--size-4xl);
+        max-height: var(--size-4xl);
+        max-width: var(--size-4xl);
     }
 
     .searchBox__content-search-result-addButtonImg {
-        width: var(--size-4xl);
-        height: var(--size-4xl);
+        min-width: var(--size-4xl);
+        min-height: var(--size-4xl);
+        max-height: var(--size-4xl);
+        max-width: var(--size-4xl);
     }
 }
 
@@ -252,8 +268,10 @@
 
     .searchBox__content-search-result-play,
     .searchBox__content-search-result-pause {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
+        min-width: var(--size-5xl);
+        min-height: var(--size-5xl);
+        max-height: var(--size-5xl);
+        max-width: var(--size-5xl);
     }
 
     .searchBox__content-search-result-albumImg {
@@ -271,8 +289,10 @@
 
     .searchBox__content-search-result-addButtonImg
         .searchBox__content-search-result-addedPrompt {
-        width: var(--size-5xl);
-        height: var(--size-5xl);
+        min-width: var(--size-5xl);
+        min-height: var(--size-5xl);
+        max-height: var(--size-5xl);
+        max-width: var(--size-5xl);
     }
 }
 

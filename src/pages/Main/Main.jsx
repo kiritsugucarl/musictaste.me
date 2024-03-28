@@ -21,6 +21,9 @@ const Main = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    const [recommendationTrackIds, setRecommendationTrackIds] = useState([]);
+    const [selectedSongsTrackIds, setSelectedSongsTrackIds] = useState([]);
+
     const [passableTrackIds, setPassableTrackIds] = useState([]);
 
     const [capturedImageUrl, setCapturedImageUrl] = useState(null);
@@ -89,6 +92,9 @@ const Main = () => {
 
                 const selectedSongsTrackIds = addedSongs.map((song) => song.id);
 
+                setRecommendationTrackIds(recommendationTrackIds);
+                setSelectedSongsTrackIds(selectedSongsTrackIds);
+
                 const allTrackIds = [
                     ...recommendationTrackIds,
                     ...selectedSongsTrackIds,
@@ -106,6 +112,13 @@ const Main = () => {
                     token
                 );
 
+                // navigate("/imageTest", {
+                //     state: {
+                //         recommendationTrackIds,
+                //         selectedSongsTrackIds,
+                //     },
+                // });
+
                 const allFeatures = [
                     ...selectedSongsFeatures,
                     ...recommendedSongsFeatures,
@@ -120,7 +133,6 @@ const Main = () => {
             }
         } else {
             setLoading(false);
-            // console.log("Need five inputs!");
             setError(true);
             setTimeout(() => {
                 handleCloseError();
@@ -147,7 +159,7 @@ const Main = () => {
         };
 
         const response = await axios.get(recommendationsEndpoint, config);
-        return response.data.tracks; // i will get the links from this line
+        return response.data.tracks;
     };
 
     const fetchAudioFeatures = async (trackIds, token) => {
@@ -165,7 +177,7 @@ const Main = () => {
         return response.data.audio_features;
     };
 
-    const debouncedGetResults = debounce(getResults, 300); // Adjust the debounce delay as needed
+    const debouncedGetResults = debounce(getResults, 300);
 
     return (
         <main className="container content-container section">
@@ -258,7 +270,8 @@ const Main = () => {
                 <div className="main__results-container">
                     {showRecommendationImage && (
                         <RecommendationImage
-                            allTrackIds={passableTrackIds}
+                            recommendationTrackIds={recommendationTrackIds}
+                            selectedSongsTrackIds={selectedSongsTrackIds}
                             onCapture={handleCapture}
                         />
                     )}

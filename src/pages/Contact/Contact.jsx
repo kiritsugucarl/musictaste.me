@@ -83,7 +83,10 @@ const Contact = () => {
                         />
                     </div>
 
-                    <form onSubmit={handleSubmit}>
+                    <form
+                        className="contact__form-wrapper"
+                        onSubmit={handleSubmit}
+                    >
                         <h1 className="form-heading">
                             <span className="Getin-highlight">Get in</span>{" "}
                             <span className="touch-highlight">touch</span>
