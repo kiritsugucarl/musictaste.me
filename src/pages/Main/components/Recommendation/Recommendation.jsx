@@ -13,7 +13,7 @@ const Recommendation = ({ imageUrl }) => {
                     social media platform!
                 </p>
             </div>
-            <div className="recommendation__finalImageWrapper shadow-effect">
+            <div className="recommendation__finalImageWrapper">
                 {imageUrl ? (
                     <img
                         src={imageUrl}
