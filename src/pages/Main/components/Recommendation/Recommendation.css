@@ -121,7 +121,6 @@
         font-size: var(--size-lg);
         max-width: 70ch;
     }
-}
 
     .recommendation__overlay-icons {
         display: flex;
