@@ -28,10 +28,24 @@ const Home = () => {
     const [percentages, setPercentages] = useState({});
 
     const handleGetStarted = async () => {
-        window.open(
-            `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`,
-            "_self"
-        );
+        // If the platform is web, proceed normally, if mobile app, use the browser plugin
+        const platform = Capacitor.getPlatform();
+        if (platform === "web") {
+            window.open(
+                `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`,
+                "_self"
+            );
+        } else {
+            try {
+                const authenticationUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
+                const { url } = await Browser.open({
+                    url: authenticationUrl,
+                    presentationStyle: "fullscreen",
+                });
+            } catch (error) {
+                console.error("Error opening browser:", error);
+            }
+        }
     };
 
     useEffect(() => {
