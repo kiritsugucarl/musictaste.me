@@ -28,44 +28,10 @@ const Home = () => {
     const [percentages, setPercentages] = useState({});
 
     const handleGetStarted = async () => {
-        // If the platform is web, proceed normally, if mobile app, use the browser plugin
-        const platform = Capacitor.getPlatform();
-        if (platform === "web") {
-            window.open(
-                `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`,
-                "_self"
-            );
-        } else {
-            try {
-                const authenticationUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
-                const { url } = await Browser.open({
-                    url: authenticationUrl,
-                    presentationStyle: "fullscreen",
-                });
-                handleUrlChange(url);
-            } catch (error) {
-                console.error("Error opening browser:", error);
-            }
-        }
-    };
-
-    const handleUrlChange = (url) => {
-        // Check if the URL contains the token or the authentication success indicator
-        if (
-            url.includes("access_token") ||
-            url.includes("authentication_success")
-        ) {
-            // Extract token from the URL
-            const params = new URLSearchParams(url.split("#")[1]);
-            const accessToken = params.get("access_token");
-            // Pass the token to your TokenProvider
-            if (accessToken) {
-                setToken(accessToken);
-                fetchSpotifyUser(accessToken); // Fetch user data
-                // Close the in-app browser
-                Browser.close();
-            }
-        }
+        window.open(
+            `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`,
+            "_self"
+        );
     };
 
     useEffect(() => {
