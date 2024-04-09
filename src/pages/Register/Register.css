@@ -1,0 +1,65 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+}
+.register__title {
+    font-size: var(--size-2xl);
+    color: var(--clr-secondary);
+    text-align: center;
+}
+
+.register__forms-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--clr-secondary);
+}
+
+.register__input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 90%;
+}
+
+.register__label {
+    font-size: var(--size-lg);
+    font-weight: bold;
+}
+
+.register__radio {
+    width: 1rem;
+}
+
+.register__radio-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.register__select {
+    padding: 0.25rem;
+    border-radius: 1rem;
+}
+
+.register__submit-button {
+    background-color: var(--clr-accent);
+    color: var(--clr-main);
+    padding: 0.75rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    transition: filter 0.3s;
+}
+
+.register__submit-button:hover {
+    filter: brightness(75%);
+}

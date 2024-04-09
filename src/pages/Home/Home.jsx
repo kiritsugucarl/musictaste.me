@@ -11,6 +11,7 @@ import { useToken } from "../../config/TokenContext";
 import {
     fetchDataFromFirebase,
     calculatePercentage,
+    checkUserExistenceInFirebase,
 } from "../../config/firebaseServices/fetchDataFromFirebase";
 import PersonalityCard from "./components/PersonalityCard/PersonalityCard";
 import personalitiesData from "./data/personalityCardData.json";
@@ -20,12 +21,30 @@ import "./Home.css";
 
 const Home = () => {
     // State variables
-    const { token, setToken } = useToken();
+    const navigate = useNavigate();
+    const { token, user } = useToken();
     const [activeIndex, setActiveIndex] = useState(0);
     const [startX, setStartX] = useState(0);
     const [slideDirection, setSlideDirection] = useState(null);
     const [error, setError] = useState(false);
     const [percentages, setPercentages] = useState({});
+
+    const checkUserInFirebase = async (user) => {
+        try {
+            const userExists = await checkUserExistenceInFirebase(user.id);
+            if (!userExists) {
+                navigate("/register"); // Redirect to register page if user is not registered
+            }
+        } catch (error) {
+            console.error("Error checking user existence in Firebase:", error);
+        }
+    };
+
+    useEffect(() => {
+        if (user) {
+            checkUserInFirebase(user);
+        }
+    }, [user]);
 
     const handleGetStarted = async () => {
         // If the platform is web, proceed normally, if mobile app, use the browser plugin
