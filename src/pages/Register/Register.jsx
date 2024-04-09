@@ -14,6 +14,11 @@ const Register = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        if (!username || !gender || !age) {
+            alert("Please fill in all the required fields.");
+            return;
+        }
+
         try {
             const database = getDatabase();
             const usersRef = ref(database, `users/${user.id}`); // Reference the user node directly
@@ -69,6 +74,7 @@ const Register = () => {
                         type="text"
                         value={username}
                         maxLength={16}
+                        required="true"
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
@@ -83,6 +89,7 @@ const Register = () => {
                                     name="gender"
                                     value="male"
                                     checked={gender === "male"}
+                                    required="true"
                                     onChange={() => setGender("male")}
                                 />
                                 <span className="register__radio-value">
@@ -99,6 +106,7 @@ const Register = () => {
                                     name="gender"
                                     value="fenale"
                                     checked={gender === "female"}
+                                    required="true"
                                     onChange={() => setGender("female")}
                                 />
                                 <span className="register__radio-value">
@@ -115,6 +123,7 @@ const Register = () => {
                                     name="gender"
                                     value="other"
                                     checked={gender === "other"}
+                                    required="true"
                                     onChange={() => setGender("other")}
                                 />
                                 <span className="register__radio-value">
@@ -131,6 +140,7 @@ const Register = () => {
                         className="register__select"
                         onChange={(e) => setAge(e.target.value)}
                         value={age}
+                        required="true"
                     >
                         <option value="">Select Age</option>
                         {renderAgeOptions()}
