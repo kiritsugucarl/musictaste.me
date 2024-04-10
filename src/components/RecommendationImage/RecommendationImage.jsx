@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import html2canvas from "html2canvas";

@@ -1,4 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import logo from "/logo.png";
 import "./Navbar.css";
 import { CSSTransition } from "react-transition-group";
@@ -8,15 +9,33 @@ import {
     RESPONSE_TYPE,
 } from "../../config/spotifyConfig";
 import { useToken } from "../../config/TokenContext";
+import { getDatabase, ref, get } from "firebase/database";
 
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
     const { token, user, clearToken } = useToken();
-
     const location = useLocation();
-
     const navigate = useNavigate();
-
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+    const [username, setUsername] = useState("");
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    useEffect(() => {
+        // Function to fetch the username when the component mounts
+        if (user && user.id) {
+            const database = getDatabase();
+            const usersRef = ref(database, `users/${user.id}/username`);
+            get(usersRef)
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        setUsername(snapshot.val()); // Set the username state
+                        console.log("Username :", username);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching username:", error);
+                });
+        }
+    }, [user]);
 
     const handleMobileMenuClick = () => {
         isMobileNavOpen(false);
@@ -87,7 +106,7 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                             </Link>
                         </li>
                         <li className="desktop-nav-li">
-                            {!token ? (
+                            {!username ? (
                                 <a
                                     className="desktop-nav-link"
                                     href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
@@ -95,12 +114,47 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                     LOGIN
                                 </a>
                             ) : (
-                                <button
-                                    className="desktop-nav-link"
-                                    onClick={logout}
+                                <div
+                                    className="desktop-nav-dropdown"
+                                    onClick={() =>
+                                        setDropdownOpen(!dropdownOpen)
+                                    }
                                 >
-                                    LOGOUT
-                                </button>
+                                    <p className="nav-dropdown">
+                                        {username}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            className="nav-dropdown-icon"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                                            />
+                                        </svg>
+                                    </p>{" "}
+                                    {/* Display username */}
+                                    {dropdownOpen && (
+                                        <div className="dropdown-content">
+                                            <Link
+                                                className="dropdown-link"
+                                                to="/profile"
+                                            >
+                                                Profile
+                                            </Link>
+                                            <button
+                                                className="dropdown-link"
+                                                onClick={logout}
+                                            >
+                                                Logout
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
                             )}
                         </li>
                     </ul>
