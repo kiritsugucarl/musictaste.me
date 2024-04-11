@@ -11,6 +11,7 @@ import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
 import Personality from "./components/Personality/Personality";
 import RecommendationImage from "../../components/RecommendationImage/RecommendationImage.jsx";
+import MusicPersonalityRecommendations from "./components/MusicPersonalityRecommendations/MusicPersonalityRecommendation.jsx";
 
 const Main = () => {
     const { token, isTokenValid } = useToken();
@@ -289,6 +290,9 @@ const Main = () => {
                         audioFeatures={audioFeatures}
                         onUpdatePersonality={handleUpdatePersonality}
                     />
+                    {/* <MusicPersonalityRecommendations
+                        passableTrackIds={passableTrackIds}
+                    /> */}
                 </div>
             )}
 
