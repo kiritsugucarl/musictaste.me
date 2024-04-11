@@ -21,6 +21,13 @@ const Main = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    const [personality, setPersonality] = useState(null);
+
+    // Define a function to update the personality state
+    const handleUpdatePersonality = (newPersonality) => {
+        setPersonality(newPersonality);
+    };
+
     const [recommendationTrackIds, setRecommendationTrackIds] = useState([]);
     const [selectedSongsTrackIds, setSelectedSongsTrackIds] = useState([]);
 
@@ -268,16 +275,20 @@ const Main = () => {
 
             {resultActive && (
                 <div className="main__results-container">
-                    {showRecommendationImage && (
+                    {showRecommendationImage && personality && (
                         <RecommendationImage
                             recommendationTrackIds={recommendationTrackIds}
                             selectedSongsTrackIds={selectedSongsTrackIds}
                             onCapture={handleCapture}
+                            personality={personality}
                         />
                     )}
                     <Recommendation imageUrl={capturedImageUrl} />
                     <hr className="main__results-line" />
-                    <Personality audioFeatures={audioFeatures} />
+                    <Personality
+                        audioFeatures={audioFeatures}
+                        onUpdatePersonality={handleUpdatePersonality}
+                    />
                 </div>
             )}
 

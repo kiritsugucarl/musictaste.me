@@ -8,7 +8,7 @@ import { useToken } from "../../config/TokenContext";
 import "./RecommendationImage.css";
 
 const RecommendationImage = ({
-    allTrackIds,
+    personality,
     recommendationTrackIds,
     selectedSongsTrackIds,
     onCapture,
@@ -98,7 +98,8 @@ const RecommendationImage = ({
     useEffect(() => {
         if (
             imagesLoaded ===
-            selectedSongsTrackIds.length + recommendationTrackIds.length
+                selectedSongsTrackIds.length + recommendationTrackIds.length &&
+            personality // Ensure personality is not null
         ) {
             // Adding a delay of 3 second (3000 milliseconds)
             setTimeout(async () => {
@@ -150,6 +151,7 @@ const RecommendationImage = ({
                     const record = {
                         datetime: dateTimeString,
                         url: downloadURL,
+                        personality: personality, // Add personality to the record
                     };
 
                     // Set the record object under the unique ID
@@ -168,6 +170,7 @@ const RecommendationImage = ({
         recommendationTrackIds,
         onCapture,
         user.id,
+        personality, // Include personality as a dependency
     ]);
 
     return (

@@ -119,7 +119,7 @@ const determineMusicPersonality = (averageFeatures) => {
     }
 };
 
-const Personality = ({ audioFeatures }) => {
+const Personality = ({ audioFeatures, onUpdatePersonality }) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
     const [showGuides, setShowGuides] = useState(false);
     const [percentages, setPercentages] = useState({});
@@ -178,6 +178,8 @@ const Personality = ({ audioFeatures }) => {
     useEffect(() => {
         if (musicPersonality) {
             updatePersonalityCount(musicPersonality);
+            // Update the personality using the callback function
+            onUpdatePersonality(musicPersonality);
         }
     }, [musicPersonality]);
 
