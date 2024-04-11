@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
 import { useToken } from "../../config/TokenContext";
-import { getDatabase, ref, get } from "firebase/database";
+import {
+    getDatabase,
+    ref,
+    get,
+    orderByChild,
+    limitToLast,
+} from "firebase/database";
 
 const Profile = () => {
-    const { user } = useToken(); // Assuming you have a user object from your authentication context
+    const { user } = useToken();
     const [userData, setUserData] = useState(null);
+    const [records, setRecords] = useState([]);
 
     useEffect(() => {
-        // Function to fetch the user data when the component mounts
         const fetchUserData = async () => {
             try {
                 if (user && user.id) {
@@ -15,8 +21,7 @@ const Profile = () => {
                     const usersRef = ref(database, `users/${user.id}`);
                     const snapshot = await get(usersRef);
                     if (snapshot.exists()) {
-                        setUserData(snapshot.val()); // Set the user data state
-                        console.log("User data:", userData);
+                        setUserData(snapshot.val());
                     }
                 }
             } catch (error) {
@@ -24,8 +29,49 @@ const Profile = () => {
             }
         };
 
-        fetchUserData(); // Call the function to fetch user data
-    }, [user]); // Dependency array ensures useEffect runs when user changes
+        fetchUserData();
+    }, [user]);
+
+    useEffect(() => {
+        const fetchRecords = async () => {
+            try {
+                if (user && user.id) {
+                    const database = getDatabase();
+                    const recordsRef = ref(
+                        database,
+                        `users/${user.id}/records`
+                    );
+                    const snapshot = await get(recordsRef);
+                    const recordsData = [];
+                    snapshot.forEach((childSnapshot) => {
+                        recordsData.push({
+                            id: childSnapshot.key,
+                            datetime: childSnapshot.val().datetime,
+                            url: childSnapshot.val().url,
+                        });
+                    });
+                    setRecords(recordsData);
+                }
+            } catch (error) {
+                console.error("Error fetching records:", error);
+            }
+        };
+
+        fetchRecords();
+    }, [user]);
+
+    function formatDateTime(dateTimeString) {
+        const options = {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+        };
+        const dateTime = new Date(dateTimeString);
+        return dateTime.toLocaleDateString(undefined, options);
+    }
 
     return (
         <div>
@@ -35,9 +81,17 @@ const Profile = () => {
                     <p>Username: {userData.username}</p>
                     <p>Age: {userData.age}</p>
                     <p>Gender: {userData.gender}</p>
-                    {/* Display other user data as needed */}
                 </div>
             )}
+            <h2>Records History</h2>
+            <ul>
+                {records.map((record) => (
+                    <li key={record.id}>
+                        <p>Date and Time: {formatDateTime(record.datetime)}</p>
+                        <img src={record.url} />
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

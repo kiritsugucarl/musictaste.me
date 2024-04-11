@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getDatabase, ref as dbRef, set, push } from "firebase/database"; // Import necessary Firebase Realtime Database functions
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import html2canvas from "html2canvas";
@@ -100,16 +101,65 @@ const RecommendationImage = ({
             selectedSongsTrackIds.length + recommendationTrackIds.length
         ) {
             // Adding a delay of 3 second (3000 milliseconds)
-            setTimeout(() => {
+            setTimeout(async () => {
                 const content = document.getElementById("result-container");
-                html2canvas(content, {
-                    scale: 1,
-                    allowTaint: true,
-                    useCORS: true,
-                }).then((canvas) => {
-                    const dataUrl = canvas.toDataURL("image/png");
-                    onCapture(dataUrl); // Pass the captured image URL to the callback
-                });
+                try {
+                    // Convert the content to an image using html2canvas
+                    const canvas = await html2canvas(content, {
+                        scale: 1,
+                        allowTaint: true,
+                        useCORS: true,
+                    });
+
+                    // Get a reference to the Firebase Storage bucket
+                    const storage = getStorage();
+
+                    // Generate a unique filename for the image (you can customize this as needed)
+                    const filename = `${Date.now()}-${Math.random()}.png`;
+
+                    // Create a reference to the image file in Firebase Storage
+                    const imageRef = ref(
+                        storage,
+                        `users/${user.id}/${filename}`
+                    );
+
+                    // Convert the canvas to Blob
+                    const blob = await new Promise((resolve) =>
+                        canvas.toBlob(resolve, "image/png")
+                    );
+
+                    // Upload the image file to Firebase Storage
+                    await uploadBytes(imageRef, blob);
+
+                    // Get the download URL of the uploaded image
+                    const downloadURL = await getDownloadURL(imageRef);
+
+                    // Get a reference to the Firebase Realtime Database
+                    const database = getDatabase();
+
+                    // Generate a unique ID for the record
+                    const newRecordRef = push(
+                        dbRef(database, `users/${user.id}/records`)
+                    );
+
+                    // Construct the date and time string
+                    const currentDate = new Date();
+                    const dateTimeString = currentDate.toISOString();
+
+                    // Construct the record object to be stored in the database
+                    const record = {
+                        datetime: dateTimeString,
+                        url: downloadURL,
+                    };
+
+                    // Set the record object under the unique ID
+                    set(newRecordRef, record);
+
+                    // Pass the captured image URL to the callback
+                    onCapture(downloadURL);
+                } catch (error) {
+                    console.error("Error uploading image:", error);
+                }
             }, 3000);
         }
     }, [
@@ -117,6 +167,7 @@ const RecommendationImage = ({
         selectedSongsTrackIds,
         recommendationTrackIds,
         onCapture,
+        user.id,
     ]);
 
     return (
