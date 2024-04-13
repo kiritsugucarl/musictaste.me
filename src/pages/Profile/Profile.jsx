@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import { useToken } from "../../config/TokenContext";
 import { getDatabase, ref, get, remove, set } from "firebase/database";
 import "./Profile.css";
+import HistoryOverlay from "./components/HistoryOverlay";
 
 const Profile = () => {
     const { user } = useToken();
     const [userData, setUserData] = useState(null);
     const [records, setRecords] = useState([]);
     const [newUsername, setNewUsername] = useState("");
+    const [isViewingHistory, setIsViewingHistory] = useState(false);
     const [isEditingUsername, setIsEditingUsername] = useState(false);
+    const [selectedRecord, setSelectedRecord] = useState(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -31,6 +34,11 @@ const Profile = () => {
 
     const handleCloseUsernameChange = () => {
         setIsEditingUsername(false);
+    };
+
+    // Function to update records state
+    const updateRecords = (updatedRecords) => {
+        setRecords(updatedRecords);
     };
 
     useEffect(() => {
@@ -62,22 +70,6 @@ const Profile = () => {
         fetchRecords();
     }, [user]);
 
-    const deleteRecord = async (recordId) => {
-        try {
-            const database = getDatabase();
-            const recordRef = ref(
-                database,
-                `users/${user.id}/records/${recordId}`
-            );
-            await remove(recordRef);
-            setRecords((prevRecords) =>
-                prevRecords.filter((record) => record.id !== recordId)
-            );
-        } catch (error) {
-            console.error("Error deleting record:", error);
-        }
-    };
-
     const handleUsernameChange = (event) => {
         setNewUsername(event.target.value);
     };
@@ -91,6 +83,26 @@ const Profile = () => {
             return "Not specified";
         }
     }
+
+    const showDetailedHistory = (record) => {
+        setSelectedRecord(record);
+        setIsViewingHistory(true);
+    };
+
+    const handleCloseDetailedHistory = () => {
+        setSelectedRecord(null);
+        setIsViewingHistory(false);
+    };
+
+    useEffect(() => {
+        // Set body overflow based on the loading state
+        document.body.style.overflow = isViewingHistory ? "hidden" : "auto";
+
+        // Cleanup function to reset overflow when component unmounts
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isViewingHistory]);
 
     const updateUsername = async () => {
         if (newUsername != "") {
@@ -167,7 +179,11 @@ const Profile = () => {
             </h2>
             <ul className="profile__history-container">
                 {records.map((record) => (
-                    <li className="profile__history" key={record.id}>
+                    <li
+                        onClick={() => showDetailedHistory(record)} // Pass a function reference
+                        className="profile__history"
+                        key={record.id}
+                    >
                         <p className="profile__history-date">
                             {formatDateTime(record.datetime).formatDate}
                         </p>
@@ -182,12 +198,6 @@ const Profile = () => {
                             src={record.url}
                             alt={`Record ${record.id}`}
                         />
-                        <button
-                            className="profile__removeButton"
-                            onClick={() => deleteRecord(record.id)}
-                        >
-                            Remove
-                        </button>
                     </li>
                 ))}
             </ul>
@@ -198,17 +208,34 @@ const Profile = () => {
                         <h2 className="profile__editTitle">Change Username</h2>
                         <input
                             type="text"
+                            placeholder="Minimum of 1 character!"
                             value={newUsername}
                             onChange={handleUsernameChange}
                         />
                         <div className="profile__buttons-wrapper">
-                            <button onClick={handleCloseUsernameChange}>
+                            <button
+                                className="profile__cancelButton"
+                                onClick={handleCloseUsernameChange}
+                            >
                                 Cancel
                             </button>
-                            <button onClick={updateUsername}>Save</button>
+                            <button
+                                className="profile__saveButton"
+                                onClick={updateUsername}
+                            >
+                                Save
+                            </button>
                         </div>
                     </div>
                 </div>
+            )}
+
+            {isViewingHistory && (
+                <HistoryOverlay
+                    updateRecords={updateRecords}
+                    onClose={handleCloseDetailedHistory}
+                    record={selectedRecord}
+                />
             )}
         </div>
     );

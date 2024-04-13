@@ -68,7 +68,9 @@ const Register = () => {
             </h2>
             <div className="register__forms-wrapper">
                 <div className="register__input-container">
-                    <label className="register__label">Name or Alias: </label>
+                    <label className="register__label">
+                        Username (display name):{" "}
+                    </label>
                     <input
                         className="register__input-text"
                         type="text"

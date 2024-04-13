@@ -45,11 +45,37 @@
     background-color: var(--clr-secondary);
     padding: 2rem;
     border-radius: 1rem;
+    gap: 1rem;
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.profile__editTitle {
+    font-size: var(--size-2xl);
+}
+
+.profile__buttons-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile__cancelButton {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background-color: var(--clr-error);
+    transition: filter 0.3s;
+}
+
+.profile__saveButton {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background-color: var(--clr-main);
+    transition: filter 0.3s;
 }
 
 .profile__age {
@@ -114,4 +140,5 @@
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     font-size: var(--size-sm);
+    margin-top: 1rem;
 }
