@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useToken } from "../../config/TokenContext";
 import { getDatabase, ref, get, remove, set } from "firebase/database";
+import "./Profile.css";
 
 const Profile = () => {
     const { user } = useToken();
@@ -27,6 +28,10 @@ const Profile = () => {
 
         fetchUserData();
     }, [user]);
+
+    const handleCloseUsernameChange = () => {
+        setIsEditingUsername(false);
+    };
 
     useEffect(() => {
         const fetchRecords = async () => {
@@ -77,79 +82,134 @@ const Profile = () => {
         setNewUsername(event.target.value);
     };
 
+    function identifyGender(gender) {
+        if (gender == "male") {
+            return "He/Him";
+        } else if (gender == "female") {
+            return "She/Her";
+        } else {
+            return "Not specified";
+        }
+    }
+
     const updateUsername = async () => {
-        try {
-            const database = getDatabase();
-            const userRef = ref(database, `users/${user.id}`);
-            await set(userRef, { ...userData, username: newUsername });
-            setUserData((prevUserData) => ({
-                ...prevUserData,
-                username: newUsername,
-            }));
-            setNewUsername("");
-            setIsEditingUsername(false);
-        } catch (error) {
-            console.error("Error updating username:", error);
+        if (newUsername != "") {
+            try {
+                const database = getDatabase();
+                const userRef = ref(database, `users/${user.id}`);
+                await set(userRef, { ...userData, username: newUsername });
+                setUserData((prevUserData) => ({
+                    ...prevUserData,
+                    username: newUsername,
+                }));
+                setNewUsername("");
+                setIsEditingUsername(false);
+            } catch (error) {
+                console.error("Error updating username:", error);
+            }
+        } else {
+            handleCloseUsernameChange();
         }
     };
 
     function formatDateTime(dateTimeString) {
-        const options = {
+        const dateTime = new Date(dateTimeString);
+        const dateOptions = {
             month: "long",
             day: "numeric",
             year: "numeric",
+        };
+        const timeOptions = {
             hour: "numeric",
             minute: "numeric",
             second: "numeric",
         };
-        const dateTime = new Date(dateTimeString);
-        return dateTime.toLocaleDateString(undefined, options);
+        const formatDate = dateTime.toLocaleDateString(undefined, dateOptions);
+        const formatTime = dateTime.toLocaleTimeString(undefined, timeOptions);
+        return { formatDate, formatTime };
     }
 
     return (
-        <div>
-            <h1>Profile Page</h1>
+        <div className="profile container section">
             {userData && (
-                <div>
-                    <p>
-                        Username:{" "}
-                        {isEditingUsername ? (
-                            <>
-                                <input
-                                    type="text"
-                                    value={newUsername}
-                                    onChange={handleUsernameChange}
-                                />
-                                <button onClick={updateUsername}>Save</button>
-                            </>
-                        ) : (
-                            <>
-                                {userData.username}{" "}
-                                <button
-                                    onClick={() => setIsEditingUsername(true)}
+                <div className="profile__details-wrapper">
+                    <h2 className="profile__title">
+                        <>
+                            {userData.username}{" "}
+                            <button onClick={() => setIsEditingUsername(true)}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    className="profile__editButton"
                                 >
-                                    Edit
-                                </button>
-                            </>
-                        )}
-                    </p>
-                    <p>Age: {userData.age}</p>
-                    <p>Gender: {userData.gender}</p>
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                                    />
+                                </svg>
+                            </button>
+                        </>
+                    </h2>
+                    <div>
+                        <p className="profile__age">{userData.age} years old</p>
+                        <p className="profile__gender">
+                            {identifyGender(userData.gender)}
+                        </p>
+                    </div>
                 </div>
             )}
-            <h2>Records History</h2>
-            <ul>
+            <h2 className="profile__secondaryTitle">
+                Records <span className="title-mustard"> History </span>
+            </h2>
+            <ul className="profile__history-container">
                 {records.map((record) => (
-                    <li key={record.id}>
-                        <p>Date and Time: {formatDateTime(record.datetime)}</p>
-                        <p>Personality: {record.personality}</p>
-                        <img src={record.url} alt={`Record ${record.id}`} />
-                        <button onClick={() => deleteRecord(record.id)}>
-                            Delete
+                    <li className="profile__history" key={record.id}>
+                        <p className="profile__history-date">
+                            {formatDateTime(record.datetime).formatDate}
+                        </p>
+                        <p className="profile__history-date">
+                            {formatDateTime(record.datetime).formatTime}
+                        </p>
+                        <p className="profile__history-personality">
+                            {record.personality}
+                        </p>
+                        <img
+                            className="profile__history-img"
+                            src={record.url}
+                            alt={`Record ${record.id}`}
+                        />
+                        <button
+                            className="profile__removeButton"
+                            onClick={() => deleteRecord(record.id)}
+                        >
+                            Remove
                         </button>
                     </li>
                 ))}
             </ul>
+
+            {isEditingUsername && (
+                <div className="profile__editUsernameOverlay">
+                    <div className="profile__editUsername">
+                        <h2 className="profile__editTitle">Change Username</h2>
+                        <input
+                            type="text"
+                            value={newUsername}
+                            onChange={handleUsernameChange}
+                        />
+                        <div className="profile__buttons-wrapper">
+                            <button onClick={handleCloseUsernameChange}>
+                                Cancel
+                            </button>
+                            <button onClick={updateUsername}>Save</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

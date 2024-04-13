@@ -1,0 +1,117 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile__details-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.profile__title {
+    display: flex;
+    gap: 1rem;
+    font-size: var(--size-3xl);
+    color: var(--clr-secondary);
+}
+
+.profile__editButton {
+    color: var(--clr-accent);
+    width: 1.5rem;
+    transition: filter 0.3s;
+}
+
+.profile__editButton:hover {
+    filter: brightness(75%);
+}
+
+.profile__editUsernameOverlay {
+    position: absolute;
+    background-color: #19191975;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__editUsername {
+    background-color: var(--clr-secondary);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__age {
+    font-size: var(--size-xl);
+}
+
+.profile__gender {
+    font-style: italic;
+    font-size: var(--size-lg);
+}
+
+.profile__secondaryTitle {
+    color: var(--clr-secondary);
+    text-align: center;
+}
+
+.profile__history-container {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-inline-start: 0;
+    justify-content: center;
+}
+
+.profile__history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: #cab952;
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 40%;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.profile__history:hover {
+    filter: brightness(75%);
+}
+
+.profile__history-date {
+    font-size: var(--size-xs);
+    color: var(--clr-main);
+}
+
+.profile__history-personality {
+    font-size: var(--size-base);
+    font-weight: 600;
+    color: var(--clr-main);
+}
+
+.profile__history-img {
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.profile__removeButton {
+    background-color: var(--clr-error);
+    color: var(--clr-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: var(--size-sm);
+}
