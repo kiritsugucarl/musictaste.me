@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getDatabase, ref as dbRef, set, push } from "firebase/database"; // Import necessary Firebase Realtime Database functions
+import { getDatabase, ref as dbRef, set, push, get } from "firebase/database"; // Import necessary Firebase Realtime Database functions
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import html2canvas from "html2canvas";
@@ -14,13 +14,31 @@ const RecommendationImage = ({
     onCapture,
 }) => {
     const { token, user } = useToken();
-    const userName = user.display_name;
+    const [userName, setUsername] = useState("");
 
     const [selectedSongsDetails, setSelectedSongsDetails] = useState([]);
     const [recommendationDetails, setRecommendationDetails] = useState([]);
 
     // const location = useLocation();
     // const { recommendationTrackIds, selectedSongsTrackIds } = location.state;
+
+    useEffect(() => {
+        // Function to fetch the username when the component mounts
+        if (user && user.id) {
+            const database = getDatabase();
+            const usersRef = dbRef(database, `users/${user.id}/username`);
+            get(usersRef)
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        setUsername(snapshot.val()); // Set the username state
+                        console.log("Username :", userName);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching username:", error);
+                });
+        }
+    }, [user]);
 
     useEffect(() => {
         const fetchSelectedSongsDetails = async () => {
