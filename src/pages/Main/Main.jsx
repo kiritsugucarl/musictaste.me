@@ -34,6 +34,8 @@ const Main = () => {
 
     const [passableTrackIds, setPassableTrackIds] = useState([]);
 
+    const [personalityRecoIds, setPersonalityRecoIds] = useState([]);
+
     const [capturedImageUrl, setCapturedImageUrl] = useState(null);
 
     const [showRecommendationImage, setShowRecommendationImage] =
@@ -109,6 +111,15 @@ const Main = () => {
                 ];
 
                 setPassableTrackIds(allTrackIds);
+
+                const personalityRecommendations = await fetchRecommendations(
+                    recommendationTrackIds,
+                    token
+                );
+
+                setPersonalityRecoIds(
+                    personalityRecommendations.map((song) => song.id)
+                );
 
                 const selectedSongsFeatures = await fetchAudioFeatures(
                     trackIds,
@@ -290,9 +301,9 @@ const Main = () => {
                         audioFeatures={audioFeatures}
                         onUpdatePersonality={handleUpdatePersonality}
                     />
-                    {/* <MusicPersonalityRecommendations
-                        passableTrackIds={passableTrackIds}
-                    /> */}
+                    <MusicPersonalityRecommendations
+                        personalityRecoIds={personalityRecoIds}
+                    />
                 </div>
             )}
 

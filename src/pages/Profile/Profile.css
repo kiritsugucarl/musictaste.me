@@ -30,7 +30,7 @@
 }
 
 .profile__editUsernameOverlay {
-    position: absolute;
+    position: fixed;
     background-color: #19191975;
     top: 0;
     right: 0;
@@ -65,16 +65,21 @@
 }
 
 .profile__cancelButton {
+    width: 7.5rem;
     padding: 0.25rem 0.75rem;
+    font-weight: 600;
     border-radius: 1rem;
     background-color: var(--clr-error);
     transition: filter 0.3s;
 }
 
 .profile__saveButton {
+    width: 7.5rem;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
-    background-color: var(--clr-main);
+    background-color: var(--clr-accent);
+    color: var(--clr-main);
+    font-weight: 600;
     transition: filter 0.3s;
 }
 
@@ -106,7 +111,6 @@
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
-    background-color: #cab952;
     padding: 1rem;
     border-radius: 1rem;
     max-width: 40%;

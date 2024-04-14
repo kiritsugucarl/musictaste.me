@@ -5,6 +5,7 @@ import {
     ref as storageRef,
     getDownloadURL,
 } from "firebase/storage";
+import personalityColors from "../personalityColors.json";
 import { useToken } from "../../../config/TokenContext";
 import "./HistoryOverlay.css";
 
@@ -108,7 +109,10 @@ const HistoryOverlay = ({ record, onClose, updateRecords }) => {
 
     return (
         <div className="historyOverlay">
-            <div className="historyOverlay__container">
+            <div
+                className="historyOverlay__container"
+                style={{ backgroundColor: personalityColors[personality] }}
+            >
                 <svg
                     onClick={handleCloseOverlay}
                     xmlns="http://www.w3.org/2000/svg"

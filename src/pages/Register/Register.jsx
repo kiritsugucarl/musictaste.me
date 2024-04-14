@@ -46,33 +46,22 @@ const Register = () => {
             console.error("Error storing user data:", error);
         }
     };
-
-    const renderAgeOptions = () => {
-        const options = [];
-        for (let i = 9; i <= 65; i++) {
-            options.push(
-                <option key={i} value={i}>
-                    {i}
-                </option>
-            );
-        }
-        return options;
-    };
-
     return (
-        <div className="container register">
-            <h2 className="register__title">
-                Create your{" "}
-                <span className="title-mustard"> musictaste.me</span> account
-                now!
-            </h2>
+        <div className="container register section">
             <div className="register__forms-wrapper">
+                <div className="register__title-wrapper">
+                    <h2 className="register__title">Register</h2>
+                    <p className="register__subtitle">
+                        Create your{" "}
+                        <span className="title-mustard"> musictaste.me</span>{" "}
+                        account now!
+                    </p>
+                </div>
                 <div className="register__input-container">
-                    <label className="register__label">
-                        Username (display name):{" "}
-                    </label>
+                    <label className="register__label">Username </label>
                     <input
                         className="register__input-text"
+                        placeholder="Input username (display name)"
                         type="text"
                         value={username}
                         maxLength={16}
@@ -83,77 +72,71 @@ const Register = () => {
                 <div className="register__input-container">
                     <label className="register__label">Gender: </label>
                     <div className="register__radio-options">
-                        <label>
-                            <div className="register__radio-wrapper">
-                                <input
-                                    className="register__radio"
-                                    type="radio"
-                                    name="gender"
-                                    value="male"
-                                    checked={gender === "male"}
-                                    required="true"
-                                    onChange={() => setGender("male")}
-                                />
-                                <span className="register__radio-value">
-                                    {" "}
-                                    Male
-                                </span>
-                            </div>
-                        </label>
-                        <label>
-                            <div className="register__radio-wrapper">
-                                <input
-                                    className="register__radio"
-                                    type="radio"
-                                    name="gender"
-                                    value="fenale"
-                                    checked={gender === "female"}
-                                    required="true"
-                                    onChange={() => setGender("female")}
-                                />
-                                <span className="register__radio-value">
-                                    {" "}
-                                    Female
-                                </span>
-                            </div>
-                        </label>
-                        <label>
-                            <div className="register__radio-wrapper">
-                                <input
-                                    className="register__radio"
-                                    type="radio"
-                                    name="gender"
-                                    value="other"
-                                    checked={gender === "other"}
-                                    required="true"
-                                    onChange={() => setGender("other")}
-                                />
-                                <span className="register__radio-value">
-                                    {" "}
-                                    Wish not to specify
-                                </span>
-                            </div>
-                        </label>
+                        <div className="register__radio-wrapper">
+                            <span className="register__radio-value"> Male</span>
+                            <input
+                                className="register__radio"
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                checked={gender === "male"}
+                                required="true"
+                                onChange={() => setGender("male")}
+                            />
+                        </div>
+
+                        <div className="register__radio-wrapper">
+                            <span className="register__radio-value">
+                                {" "}
+                                Female
+                            </span>
+                            <input
+                                className="register__radio"
+                                type="radio"
+                                name="gender"
+                                value="fenale"
+                                checked={gender === "female"}
+                                required="true"
+                                onChange={() => setGender("female")}
+                            />
+                        </div>
+
+                        <div className="register__radio-wrapper">
+                            <span className="register__radio-value">
+                                {" "}
+                                Prefer not to say
+                            </span>
+                            <input
+                                className="register__radio"
+                                type="radio"
+                                name="gender"
+                                value="other"
+                                checked={gender === "other"}
+                                required="true"
+                                onChange={() => setGender("other")}
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="register__input-container">
                     <label className="register__label">Age: </label>
-                    <select
-                        className="register__select"
-                        onChange={(e) => setAge(e.target.value)}
+                    <input
+                        className="register__input-age"
+                        placeholder="Input age"
+                        type="number"
+                        min="7"
+                        max="65"
                         value={age}
-                        required="true"
-                    >
-                        <option value="">Select Age</option>
-                        {renderAgeOptions()}
-                    </select>
+                        required={true}
+                        onChange={(e) => setAge(e.target.value)}
+                    />
                 </div>
                 <button
                     className="register__submit-button"
                     type="submit"
                     onClick={handleFormSubmit}
                 >
-                    Create Profile
+                    Create Account
                 </button>
             </div>
         </div>

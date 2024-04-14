@@ -3,6 +3,7 @@ import { useToken } from "../../config/TokenContext";
 import { getDatabase, ref, get, remove, set } from "firebase/database";
 import "./Profile.css";
 import HistoryOverlay from "./components/HistoryOverlay";
+import personalityColors from "./personalityColors.json";
 
 const Profile = () => {
     const { user } = useToken();
@@ -183,6 +184,10 @@ const Profile = () => {
                         onClick={() => showDetailedHistory(record)} // Pass a function reference
                         className="profile__history"
                         key={record.id}
+                        style={{
+                            backgroundColor:
+                                personalityColors[record.personality],
+                        }}
                     >
                         <p className="profile__history-date">
                             {formatDateTime(record.datetime).formatDate}
@@ -206,9 +211,12 @@ const Profile = () => {
                 <div className="profile__editUsernameOverlay">
                     <div className="profile__editUsername">
                         <h2 className="profile__editTitle">Change Username</h2>
+                        <p className="profile__editSub">
+                            Minimum of 1 character
+                        </p>
                         <input
                             type="text"
-                            placeholder="Minimum of 1 character!"
+                            placeholder="Input new display name"
                             value={newUsername}
                             onChange={handleUsernameChange}
                         />
