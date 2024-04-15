@@ -354,6 +354,11 @@
 
     .dropdown-linkIcon {
         min-width: 1.25rem;
+        max-width: 1.25rem;
+    }
+
+    .dropdown-title {
+        flex: 1;
     }
 
     .dropdown-link:hover {
@@ -394,6 +399,7 @@
 
     .dropdown-linkIcon {
         min-width: 1.5rem;
+        max-width: 1.5rem;
     }
 }
 

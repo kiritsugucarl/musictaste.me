@@ -17,7 +17,8 @@
     align-items: center;
     justify-content: center;
     background-color: #cab952;
-    width: 80%;
+    width: 20rem;
+    max-height: 33.25rem;
     padding: 1rem;
     border-radius: 1rem;
 }
@@ -26,6 +27,7 @@
     width: 2rem;
     margin-left: auto;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 .historyOverlay__closeButton:hover {
@@ -38,7 +40,7 @@
 }
 
 .historyOverlay__result {
-    width: 55%;
+    width: 60%;
 }
 
 .historyOverlay__dateTime {
@@ -60,3 +62,22 @@
     background-color: var(--clr-error);
     font-size: var(--size-base);
 }
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+@media (min-width: 640px) {
+}
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

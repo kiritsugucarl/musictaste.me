@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { useToken } from "../../../../config/TokenContext";
+import "./MusicPersonalityRecommendations.css";
 
 const MusicPersonalityRecommendations = ({ personalityRecoIds }) => {
     const { token } = useToken();
@@ -40,11 +42,31 @@ const MusicPersonalityRecommendations = ({ personalityRecoIds }) => {
     }, [personalityRecoIds, token]);
 
     return (
-        <div>
-            <h2>Music Personality Recommendations</h2>
-            {/* {recommendationDetails.map((song, index) => (
-                // .mpersonalityreco_
-            ))} */}
+        <div className="pRecommendation section ">
+            <h2 className="pRecommendation__title">
+                <span className="title-mustard">Music Recommendations</span>{" "}
+                based on your personality
+            </h2>
+            <ul className="pRecommendation__container">
+                {recommendationDetails.map((track, index) => (
+                    <li className="pRecommendation__wrapper" key={track.id}>
+                        <p className="pRecommendation__index">{index + 1}</p>
+                        <img
+                            className="pRecommendation__img"
+                            src={track.image}
+                            alt={`${track.name} album cover`}
+                        />
+                        <div className="pRecommendation__detailsContainer">
+                            <p className="pRecommendation__trackTitle">
+                                {track.name}
+                            </p>
+                            <p className="pRecommendation__trackArtists">
+                                {track.artists}
+                            </p>
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

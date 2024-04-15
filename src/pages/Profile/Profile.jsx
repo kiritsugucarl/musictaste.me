@@ -148,7 +148,8 @@ const Profile = () => {
                 <div className="profile__details-wrapper">
                     <h2 className="profile__title">
                         <>
-                            {userData.username}{" "}
+                            {userData.username}'s{" "}
+                            <span className="title-mustard">profile</span>
                             <button onClick={() => setIsEditingUsername(true)}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -167,14 +168,20 @@ const Profile = () => {
                             </button>
                         </>
                     </h2>
-                    <div>
-                        <p className="profile__age">{userData.age} years old</p>
+                    <div className="profile__subDetails">
+                        <p className="profile__age">
+                            <span className="title-mustard"> AGE: </span>
+                            {userData.age} years old
+                        </p>
                         <p className="profile__gender">
+                            <span className="title-mustard">GENDER: </span>{" "}
                             {identifyGender(userData.gender)}
                         </p>
                     </div>
                 </div>
             )}
+
+            <hr className="profile__hr" />
             <h2 className="profile__secondaryTitle">
                 Records <span className="title-mustard"> History </span>
             </h2>
@@ -210,13 +217,17 @@ const Profile = () => {
             {isEditingUsername && (
                 <div className="profile__editUsernameOverlay">
                     <div className="profile__editUsername">
-                        <h2 className="profile__editTitle">Change Username</h2>
+                        <h2 className="profile__editTitle">
+                            Change{" "}
+                            <span className="title-mustard"> Username </span>
+                        </h2>
                         <p className="profile__editSub">
                             Minimum of 1 character
                         </p>
                         <input
                             type="text"
                             placeholder="Input new display name"
+                            maxLength={16}
                             value={newUsername}
                             onChange={handleUsernameChange}
                         />

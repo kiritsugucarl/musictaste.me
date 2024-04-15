@@ -15,7 +15,7 @@
 .profile__title {
     display: flex;
     gap: 1rem;
-    font-size: var(--size-3xl);
+    font-size: var(--size-2xl);
     color: var(--clr-secondary);
 }
 
@@ -46,7 +46,7 @@
     padding: 2rem;
     border-radius: 1rem;
     gap: 1rem;
-    width: 80%;
+    width: 18rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +54,15 @@
 }
 
 .profile__editTitle {
+    align-self: start;
     font-size: var(--size-2xl);
+    color: var(--clr-main);
+}
+
+.profile__editSub {
+    align-self: start;
+    font-weight: 600;
+    color: var(--clr-main);
 }
 
 .profile__buttons-wrapper {
@@ -62,6 +70,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin-top: 1.5rem;
 }
 
 .profile__cancelButton {
@@ -83,18 +92,30 @@
     transition: filter 0.3s;
 }
 
+.profile__cancelButton:hover,
+.profile__saveButton:hover {
+    filter: brightness(75%);
+}
+
 .profile__age {
-    font-size: var(--size-xl);
+    font-size: var(--size-base);
 }
 
 .profile__gender {
-    font-style: italic;
-    font-size: var(--size-lg);
+    font-size: var(--size-base);
+}
+
+.profile__hr {
+    height: 5px;
+    border: none;
+    background-color: var(--clr-accent);
+    border-radius: 1rem;
 }
 
 .profile__secondaryTitle {
     color: var(--clr-secondary);
     text-align: center;
+    font-size: var(--size-xl);
 }
 
 .profile__history-container {
@@ -113,7 +134,7 @@
     gap: 0.25rem;
     padding: 1rem;
     border-radius: 1rem;
-    max-width: 40%;
+    width: 40%;
     cursor: pointer;
     transition: filter 0.3s;
 }
@@ -135,7 +156,7 @@
 
 .profile__history-img {
     border-radius: 1rem;
-    width: 100%;
+    width: 80%;
 }
 
 .profile__removeButton {
@@ -146,3 +167,162 @@
     font-size: var(--size-sm);
     margin-top: 1rem;
 }
+
+/* xs */
+@media (min-width: 475px) {
+    .profile__editUsername {
+        width: 25rem;
+    }
+}
+
+/* sm */
+@media (min-width: 640px) {
+    .profile__editUsername {
+        width: 29rem;
+    }
+
+    .profile__editTitle {
+        font-size: var(--size-3xl);
+    }
+    .profile__editSub,
+    .profile__cancelButton,
+    .profile__saveButton {
+        font-size: var(--size-lg);
+    }
+
+    .profile__title {
+        gap: 1.25rem;
+        font-size: var(--size-3xl);
+    }
+
+    .profile__editButton {
+        width: 1.75rem;
+    }
+
+    .profile__age {
+        font-size: var(--size-lg);
+    }
+
+    .profile__gender {
+        font-size: var(--size-lg);
+    }
+    .profile__secondaryTitle {
+        font-size: var(--size-2xl);
+    }
+    .profile__history-date {
+        font-size: var(--size-sm);
+    }
+    .profile__history-personality {
+        font-size: var(--size-lg);
+    }
+    .profile__removeButton {
+        font-size: var(--size-base);
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    .profile__history {
+        width: 13rem;
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    .profile__details-wrapper {
+        align-self: start;
+        text-align: left;
+    }
+
+    .profile__editUsername {
+        width: 32rem;
+    }
+
+    .profile__subDetails {
+        width: 100%;
+    }
+
+    .profile__editTitle {
+        font-size: var(--size-4xl);
+    }
+    .profile__editSub,
+    .profile__cancelButton,
+    .profile__saveButton {
+        font-size: var(--size-xl);
+    }
+
+    .profile__history {
+        width: 18rem;
+    }
+
+    .profile__editButton {
+        width: 2rem;
+    }
+
+    .profile__title {
+        font-size: var(--size-4xl);
+    }
+
+    .profile__age {
+        font-size: var(--size-xl);
+    }
+
+    .profile__gender {
+        font-size: var(--size-xl);
+    }
+    .profile__secondaryTitle {
+        font-size: var(--size-3xl);
+    }
+    .profile__history-date {
+        font-size: var(--size-base);
+    }
+    .profile__history-personality {
+        font-size: var(--size-xl);
+    }
+    .profile__removeButton {
+        font-size: var(--size-lg);
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .profile__editUsername {
+        width: 36rem;
+    }
+
+    .profile__history {
+        width: 23rem;
+    }
+
+    .profile__title {
+        gap: 1.5rem;
+        font-size: var(--size-5xl);
+    }
+
+    .profile__editButton {
+        width: 2.25rem;
+    }
+
+    .profile__age {
+        font-size: var(--size-2xl);
+    }
+
+    .profile__gender {
+        font-size: var(--size-2xl);
+    }
+    .profile__secondaryTitle {
+        font-size: var(--size-4xl);
+    }
+    .profile__history-date {
+        font-size: var(--size-lg);
+    }
+    .profile__history-personality {
+        font-size: var(--size-2xl);
+    }
+    .profile__removeButton {
+        font-size: var(--size-xl);
+    }
+}
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

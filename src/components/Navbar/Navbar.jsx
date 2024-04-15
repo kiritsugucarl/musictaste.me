@@ -9,7 +9,7 @@ import {
     RESPONSE_TYPE,
 } from "../../config/spotifyConfig";
 import { useToken } from "../../config/TokenContext";
-import { getDatabase, ref, get } from "firebase/database";
+import { getDatabase, ref, get, onValue } from "firebase/database";
 
 const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
     const { token, user, clearToken } = useToken();
@@ -24,16 +24,14 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
         if (user && user.id) {
             const database = getDatabase();
             const usersRef = ref(database, `users/${user.id}/username`);
-            get(usersRef)
-                .then((snapshot) => {
-                    if (snapshot.exists()) {
-                        setUsername(snapshot.val()); // Set the username state
-                        console.log("Username :", username);
-                    }
-                })
-                .catch((error) => {
-                    console.error("Error fetching username:", error);
-                });
+            const unsubscribe = onValue(usersRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    setUsername(snapshot.val()); // Set the username state
+                }
+            });
+
+            // Cleanup function to unsubscribe from the listener when component unmounts
+            return () => unsubscribe();
         }
     }, [user]);
 
@@ -159,7 +157,9 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                                         d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                                                     />
                                                 </svg>
-                                                Profile
+                                                <span className="dropdown-title">
+                                                    Profile
+                                                </span>
                                             </Link>
                                             <button
                                                 className="dropdown-link"
@@ -179,7 +179,9 @@ const Navbar = ({ isMobileNavOpen, onMobileMenuToggle }) => {
                                                         d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
                                                     />
                                                 </svg>
-                                                Logout
+                                                <span className="dropdown-title">
+                                                    Logout
+                                                </span>
                                             </button>
                                         </div>
                                     )}
