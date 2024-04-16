@@ -72,7 +72,11 @@
 }
 
 /* md */
-/* @media (min-width: 768px) {} */
+@media (min-width: 768px) {
+    .pRecommendation__container {
+        gap: 1.5rem;
+    }
+}
 
 /* lg */
 @media (min-width: 1024px) {
@@ -93,7 +97,11 @@
 }
 
 /* xl */
-/* @media (min-width: 1280px) {} */
+@media (min-width: 1280px) {
+    .pRecommendation__container {
+        gap: 2rem;
+    }
+}
 
 /* 2xl */
 /* @media (min-width: 1536px) {} */

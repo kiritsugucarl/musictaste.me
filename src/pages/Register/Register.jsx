@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useToken } from "../../config/TokenContext";
 import { getDatabase, ref, get, set, update } from "firebase/database";
 import "./Register.css";
+import TermsOfUse from "./components/TermsOfUse/TermsOfUse.jsx";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -10,6 +11,11 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [gender, setGender] = useState("");
     const [age, setAge] = useState("");
+    const [showTerms, setShowTerms] = useState(true);
+
+    const handleCloseTerms = () => {
+        setShowTerms(false);
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -139,6 +145,8 @@ const Register = () => {
                     Create Account
                 </button>
             </div>
+
+            {showTerms && <TermsOfUse onClose={handleCloseTerms} />}
         </div>
     );
 };
