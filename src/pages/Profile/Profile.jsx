@@ -13,6 +13,8 @@ const Profile = () => {
     const [isViewingHistory, setIsViewingHistory] = useState(false);
     const [isEditingUsername, setIsEditingUsername] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
+    const [numToShow, setNumToShow] = useState(6); // Number of records to show initially
+    const [numToLoad, setNumToLoad] = useState(6); // Number of records to load each time
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -61,6 +63,9 @@ const Profile = () => {
                             personality: childSnapshot.val().personality,
                         });
                     });
+                    recordsData.sort(
+                        (a, b) => new Date(b.datetime) - new Date(a.datetime)
+                    );
                     setRecords(recordsData);
                 }
             } catch (error) {
@@ -70,6 +75,14 @@ const Profile = () => {
 
         fetchRecords();
     }, [user]);
+
+    // Load more records when the user scrolls down to the bottom
+    const loadMoreRecords = () => {
+        setNumToShow((prevNumToShow) => prevNumToShow + numToLoad);
+    };
+
+    // Render only the specified number of records
+    const visibleRecords = records.slice(0, numToShow);
 
     const handleUsernameChange = (event) => {
         setNewUsername(event.target.value);
@@ -186,9 +199,9 @@ const Profile = () => {
                 Records <span className="title-mustard"> History </span>
             </h2>
             <ul className="profile__history-container">
-                {records.map((record) => (
+                {visibleRecords.map((record) => (
                     <li
-                        onClick={() => showDetailedHistory(record)} // Pass a function reference
+                        onClick={() => showDetailedHistory(record)}
                         className="profile__history"
                         key={record.id}
                         style={{
@@ -247,6 +260,11 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
+            )}
+            {numToShow < records.length && (
+                <button className="load-more" onClick={loadMoreRecords}>
+                    Load More
+                </button>
             )}
 
             {isViewingHistory && (

@@ -4,7 +4,6 @@ import { debounce } from "lodash";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
-import html2canvas from "html2canvas";
 import MainError from "../../components/overlays/MainError/MainError";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
 import Recommendation from "./components/Recommendation/Recommendation";
