@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../config/TokenContext";
-import { getDatabase, ref, get, set, update } from "firebase/database";
+import { getDatabase, ref, get, set, update, onValue } from "firebase/database";
 import "./Register.css";
 import TermsOfUse from "./components/TermsOfUse/TermsOfUse.jsx";
 
@@ -12,6 +12,31 @@ const Register = () => {
     const [gender, setGender] = useState("");
     const [age, setAge] = useState("");
     const [showTerms, setShowTerms] = useState(true);
+    const [userExists, setUserExists] = useState(false);
+
+    useEffect(() => {
+        const checkUserExistence = async () => {
+            try {
+                const database = getDatabase();
+                const usersRef = ref(database, `users/${user.id}`);
+
+                // Listen for changes on the user node
+                onValue(usersRef, (snapshot) => {
+                    setUserExists(snapshot.exists()); // Update userExists state based on snapshot existence
+                });
+            } catch (error) {
+                console.error("Error checking user existence:", error);
+            }
+        };
+
+        checkUserExistence();
+    }, [user.id]);
+
+    useEffect(() => {
+        if (userExists) {
+            navigate("/");
+        }
+    }, [userExists]);
 
     const handleCloseTerms = () => {
         setShowTerms(false);
