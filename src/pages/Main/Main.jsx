@@ -4,13 +4,13 @@ import { debounce } from "lodash";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useToken } from "../../config/TokenContext";
 import axios from "axios";
-import html2canvas from "html2canvas";
 import MainError from "../../components/overlays/MainError/MainError";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
 import Recommendation from "./components/Recommendation/Recommendation";
 import "./Main.css";
 import Personality from "./components/Personality/Personality";
 import RecommendationImage from "../../components/RecommendationImage/RecommendationImage.jsx";
+import MusicPersonalityRecommendations from "./components/MusicPersonalityRecommendations/MusicPersonalityRecommendation.jsx";
 
 const Main = () => {
     const { token, isTokenValid } = useToken();
@@ -21,10 +21,19 @@ const Main = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    const [personality, setPersonality] = useState(null);
+
+    // Define a function to update the personality state
+    const handleUpdatePersonality = (newPersonality) => {
+        setPersonality(newPersonality);
+    };
+
     const [recommendationTrackIds, setRecommendationTrackIds] = useState([]);
     const [selectedSongsTrackIds, setSelectedSongsTrackIds] = useState([]);
 
     const [passableTrackIds, setPassableTrackIds] = useState([]);
+
+    const [personalityRecoIds, setPersonalityRecoIds] = useState([]);
 
     const [capturedImageUrl, setCapturedImageUrl] = useState(null);
 
@@ -101,6 +110,15 @@ const Main = () => {
                 ];
 
                 setPassableTrackIds(allTrackIds);
+
+                const personalityRecommendations = await fetchRecommendations(
+                    recommendationTrackIds,
+                    token
+                );
+
+                setPersonalityRecoIds(
+                    personalityRecommendations.map((song) => song.id)
+                );
 
                 const selectedSongsFeatures = await fetchAudioFeatures(
                     trackIds,
@@ -268,16 +286,23 @@ const Main = () => {
 
             {resultActive && (
                 <div className="main__results-container">
-                    {showRecommendationImage && (
+                    {showRecommendationImage && personality && (
                         <RecommendationImage
                             recommendationTrackIds={recommendationTrackIds}
                             selectedSongsTrackIds={selectedSongsTrackIds}
                             onCapture={handleCapture}
+                            personality={personality}
                         />
                     )}
                     <Recommendation imageUrl={capturedImageUrl} />
                     <hr className="main__results-line" />
-                    <Personality audioFeatures={audioFeatures} />
+                    <Personality
+                        audioFeatures={audioFeatures}
+                        onUpdatePersonality={handleUpdatePersonality}
+                    />
+                    <MusicPersonalityRecommendations
+                        personalityRecoIds={personalityRecoIds}
+                    />
                 </div>
             )}
 

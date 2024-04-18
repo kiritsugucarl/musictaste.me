@@ -1,0 +1,107 @@
+.pRecommendation {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.pRecommendation__title {
+    color: var(--clr-secondary);
+    text-align: center;
+}
+
+.pRecommendation__container {
+    padding-inline-start: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 90%;
+}
+
+.pRecommendation__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pRecommendation__index {
+    color: var(--clr-secondary);
+    font-weight: 600;
+    font-size: var(--size-3xl);
+    min-width: 1ch;
+}
+
+.pRecommendation__img {
+    width: 3rem;
+}
+
+.pRecommendation__detailsContainer {
+    flex: 1;
+}
+
+.pRecommendation__trackTitle {
+    font-weight: 600;
+}
+
+.pRecommendation__trackTitle,
+.pRecommendation__trackArtists {
+    font-size: var(--size-base);
+}
+
+/* @media (min-width: 475px) {} */
+
+/* sm */
+@media (min-width: 640px) {
+    .pRecommendation__title {
+        font-size: var(--size-3xl);
+    }
+
+    .pRecommendation__index {
+        font-size: var(--size-4xl);
+    }
+    .pRecommendation__img {
+        width: 3.5rem;
+    }
+    .pRecommendation__trackTitle,
+    .pRecommendation__trackArtists {
+        font-size: var(--size-lg);
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    .pRecommendation__container {
+        gap: 1.5rem;
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    .pRecommendation__title {
+        font-size: var(--size-4xl);
+    }
+
+    .pRecommendation__index {
+        font-size: var(--size-5xl);
+    }
+    .pRecommendation__img {
+        width: 4rem;
+    }
+    .pRecommendation__trackTitle,
+    .pRecommendation__trackArtists {
+        font-size: var(--size-xl);
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .pRecommendation__container {
+        gap: 2rem;
+    }
+}
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

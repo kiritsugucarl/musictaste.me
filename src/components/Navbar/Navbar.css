@@ -266,6 +266,7 @@
         padding-right: 1.5rem;
         margin-left: 4rem;
         text-transform: uppercase;
+        min-width: 10rem;
     }
 
     .desktop-nav-link {
@@ -273,6 +274,27 @@
         font-weight: 600;
         position: relative;
         transition: color 0.3s ease-in-out;
+    }
+
+    .desktop-nav-dropdown {
+        font-size: var(--size-lg);
+        font-weight: 600;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .nav-dropdown {
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+    }
+    .nav-dropdown-icon {
+        width: 1.5rem;
+        height: 2rem;
+    }
+
+    .desktop-nav-dropdown:hover .nav-dropdown {
+        color: var(--clr-accent);
     }
 
     .desktop-nav-link::after {
@@ -301,6 +323,47 @@
     .nav-menuButton {
         display: none;
     }
+
+    .dropdown-content {
+        position: absolute;
+        min-width: 100%;
+        border-radius: 1rem;
+        background-color: var(--clr-white);
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .dropdown-link {
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: var(--clr-main);
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-linkIcon {
+        min-width: 1.25rem;
+        max-width: 1.25rem;
+    }
+
+    .dropdown-title {
+        flex: 1;
+    }
+
+    .dropdown-link:hover {
+        background-color: var(--clr-accent);
+    }
 }
 
 /* xl */
@@ -321,6 +384,22 @@
 
     .desktop-nav-link {
         font-size: var(--size-2xl);
+    }
+
+    .desktop-nav-dropdown {
+        font-size: var(--size-2xl);
+        font-weight: 600;
+        position: relative;
+    }
+
+    .nav-dropdown-icon {
+        width: 1.75rem;
+        height: 2rem;
+    }
+
+    .dropdown-linkIcon {
+        min-width: 1.5rem;
+        max-width: 1.5rem;
     }
 }
 

@@ -1,0 +1,83 @@
+.historyOverlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #19191975;
+}
+
+.historyOverlay__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #cab952;
+    width: 20rem;
+    max-height: 33.25rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.historyOverlay__closeButton {
+    width: 2rem;
+    margin-left: auto;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.historyOverlay__closeButton:hover {
+    color: var(--clr-main);
+}
+
+.historyOverlay__personality {
+    font-size: var(--size-2xl);
+    color: var(--clr-main);
+}
+
+.historyOverlay__result {
+    width: 60%;
+}
+
+.historyOverlay__dateTime {
+    font-size: var(--size-xs);
+    color: var(--clr-main);
+    font-style: italic;
+}
+
+.historyOverlay__downloadButton {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background-color: var(--clr-secondary);
+    font-size: var(--size-base);
+}
+
+.historyOverlay__removeButton {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background-color: var(--clr-error);
+    font-size: var(--size-base);
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+@media (min-width: 640px) {
+}
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

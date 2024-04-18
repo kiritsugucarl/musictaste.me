@@ -13,6 +13,20 @@ export const fetchDataFromFirebase = async () => {
     }
 };
 
+// Function to check if a user exists in Firebase database
+export const checkUserExistenceInFirebase = async (userId) => {
+    const db = getDatabase();
+    const userRef = ref(db, `users/${userId}`);
+
+    try {
+        const snapshot = await get(userRef);
+        return snapshot.exists(); // Returns true if user exists, false otherwise
+    } catch (error) {
+        console.error("Error checking user existence in Firebase:", error);
+        throw error;
+    }
+};
+
 // Calculate percentage values
 export const calculatePercentage = (data) => {
     const totalCount = Object.values(data).reduce(

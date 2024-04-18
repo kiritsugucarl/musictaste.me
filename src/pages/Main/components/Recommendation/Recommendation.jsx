@@ -1,6 +1,43 @@
+import {
+    getStorage,
+    ref as storageRef,
+    getDownloadURL,
+} from "firebase/storage";
 import "./Recommendation.css";
 
 const Recommendation = ({ imageUrl }) => {
+    const handleDownloadImage = async () => {
+        try {
+            const storage = getStorage();
+
+            const donwloadUrl = await getDownloadURL(
+                storageRef(storage, imageUrl)
+            );
+
+            const xhr = new XMLHttpRequest();
+            xhr.responseType = "blob";
+
+            xhr.onload = (event) => {
+                const blob = xhr.response;
+
+                const downloadLink = document.createElement("a");
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = "musicTaste.png";
+
+                document.body.appendChild(downloadLink);
+
+                downloadLink.click();
+
+                document.body.removeChild(downloadLink);
+            };
+
+            xhr.open("GET", donwloadUrl);
+            xhr.send();
+        } catch (error) {
+            console.error("Error downloading image: ", error);
+        }
+    };
+
     return (
         <div className="recommendation">
             <div className="recommendation__title-wrapper">
@@ -24,7 +61,7 @@ const Recommendation = ({ imageUrl }) => {
                 )}
                 <div className="recommendation__overlay-icons">
                     <a
-                        href={imageUrl}
+                        onClick={handleDownloadImage}
                         download="musicTaste.png"
                         className="recommendation__finalImageLink"
                     >
@@ -43,7 +80,7 @@ const Recommendation = ({ imageUrl }) => {
                 </div>
                 <div className="recommendation__overlay-icons-mobile">
                     <a
-                        href={imageUrl}
+                        onClick={handleDownloadImage}
                         download="musicTaste.png"
                         className="recommendation__finalImageLink"
                     >

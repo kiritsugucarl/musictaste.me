@@ -10,6 +10,8 @@ import Contact from "./pages/Contact/Contact.jsx";
 import ErrTimeout from "./pages/ErrTimeout/ErrTimeout.jsx";
 import ErrNotFound from "./pages/ErrNotFound/ErrNotFound.jsx";
 import RecommendationImage from "./components/RecommendationImage/RecommendationImage.jsx";
+import Register from "./pages/Register/Register.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
+            },
+            {
+                path: "/profile",
+                element: <Profile />,
             },
         ],
     },
