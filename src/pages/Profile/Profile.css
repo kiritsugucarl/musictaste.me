@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    min-height: 70vh;
 }
 
 .profile__details-wrapper {

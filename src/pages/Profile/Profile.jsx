@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useToken } from "../../config/TokenContext";
 import { getDatabase, ref, get, remove, set } from "firebase/database";
 import "./Profile.css";
@@ -7,6 +8,7 @@ import personalityColors from "./personalityColors.json";
 
 const Profile = () => {
     const { user } = useToken();
+    const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
     const [records, setRecords] = useState([]);
     const [newUsername, setNewUsername] = useState("");
@@ -34,6 +36,12 @@ const Profile = () => {
 
         fetchUserData();
     }, [user]);
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/");
+        }
+    });
 
     const handleCloseUsernameChange = () => {
         setIsEditingUsername(false);
@@ -199,32 +207,36 @@ const Profile = () => {
                 Records <span className="title-mustard"> History </span>
             </h2>
             <ul className="profile__history-container">
-                {visibleRecords.map((record) => (
-                    <li
-                        onClick={() => showDetailedHistory(record)}
-                        className="profile__history"
-                        key={record.id}
-                        style={{
-                            backgroundColor:
-                                personalityColors[record.personality],
-                        }}
-                    >
-                        <p className="profile__history-date">
-                            {formatDateTime(record.datetime).formatDate}
-                        </p>
-                        <p className="profile__history-date">
-                            {formatDateTime(record.datetime).formatTime}
-                        </p>
-                        <p className="profile__history-personality">
-                            {record.personality}
-                        </p>
-                        <img
-                            className="profile__history-img"
-                            src={record.url}
-                            alt={`Record ${record.id}`}
-                        />
-                    </li>
-                ))}
+                {visibleRecords.length > 0 ? (
+                    visibleRecords.map((record) => (
+                        <li
+                            onClick={() => showDetailedHistory(record)}
+                            className="profile__history"
+                            key={record.id}
+                            style={{
+                                backgroundColor:
+                                    personalityColors[record.personality],
+                            }}
+                        >
+                            <p className="profile__history-date">
+                                {formatDateTime(record.datetime).formatDate}
+                            </p>
+                            <p className="profile__history-date">
+                                {formatDateTime(record.datetime).formatTime}
+                            </p>
+                            <p className="profile__history-personality">
+                                {record.personality}
+                            </p>
+                            <img
+                                className="profile__history-img"
+                                src={record.url}
+                                alt={`Record ${record.id}`}
+                            />
+                        </li>
+                    ))
+                ) : (
+                    <li className="profile__no-records">No records found.</li>
+                )}
             </ul>
 
             {isEditingUsername && (
