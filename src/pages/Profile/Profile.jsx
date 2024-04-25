@@ -11,12 +11,13 @@ const Profile = () => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
     const [records, setRecords] = useState([]);
+    const [filteredRecords, setFilteredRecords] = useState([]);
     const [newUsername, setNewUsername] = useState("");
     const [isViewingHistory, setIsViewingHistory] = useState(false);
     const [isEditingUsername, setIsEditingUsername] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
     const [numToShow, setNumToShow] = useState(6); // Number of records to show initially
-    const [numToLoad, setNumToLoad] = useState(6); // Number of records to load each time
+    const [filter, setFilter] = useState("All"); // Filter state
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -84,13 +85,20 @@ const Profile = () => {
         fetchRecords();
     }, [user]);
 
-    // Load more records when the user scrolls down to the bottom
-    const loadMoreRecords = () => {
-        setNumToShow((prevNumToShow) => prevNumToShow + numToLoad);
-    };
+    useEffect(() => {
+        const filterRecords = () => {
+            const filtered =
+                filter === "All"
+                    ? records
+                    : records.filter((record) => record.personality === filter);
+            setFilteredRecords(filtered);
+        };
+        filterRecords();
+    }, [records, filter]);
 
-    // Render only the specified number of records
-    const visibleRecords = records.slice(0, numToShow);
+    const loadMoreRecords = () => {
+        setNumToShow((prev) => prev + 6);
+    };
 
     const handleUsernameChange = (event) => {
         setNewUsername(event.target.value);
@@ -206,9 +214,17 @@ const Profile = () => {
             <h2 className="profile__secondaryTitle">
                 Records <span className="title-mustard"> History </span>
             </h2>
+            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+                <option value="All">All</option>
+                <option value="Emotional">Emotional</option>
+                <option value="Enchanted">Enchanted</option>
+                <option value="Energetic">Energetic</option>
+                <option value="Jolly Casual">Jolly Casual</option>
+                <option value="Nonchalant">Nonchalant</option>
+            </select>
             <ul className="profile__history-container">
-                {visibleRecords.length > 0 ? (
-                    visibleRecords.map((record) => (
+                {records.length > 0 ? (
+                    filteredRecords.slice(0, numToShow).map((record) => (
                         <li
                             onClick={() => showDetailedHistory(record)}
                             className="profile__history"
@@ -273,7 +289,7 @@ const Profile = () => {
                     </div>
                 </div>
             )}
-            {numToShow < records.length && (
+            {numToShow < filteredRecords.length && (
                 <button className="load-more" onClick={loadMoreRecords}>
                     Load More
                 </button>
