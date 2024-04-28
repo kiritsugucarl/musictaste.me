@@ -68,7 +68,7 @@ const Profile = () => {
                         recordsData.push({
                             id: childSnapshot.key,
                             datetime: childSnapshot.val().datetime,
-                            url: childSnapshot.val().url,
+                            urls: childSnapshot.val().urls,
                             personality: childSnapshot.val().personality,
                         });
                     });
@@ -249,7 +249,7 @@ const Profile = () => {
                             </p>
                             <img
                                 className="profile__history-img"
-                                src={record.url}
+                                src={record.urls.musicTasteUrl}
                                 alt={`Record ${record.id}`}
                             />
                         </li>

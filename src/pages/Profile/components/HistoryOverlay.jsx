@@ -11,21 +11,37 @@ import "./HistoryOverlay.css";
 
 const HistoryOverlay = ({ record, onClose, updateRecords }) => {
     const { user } = useToken();
-    const { id, url, datetime, personality } = record;
+    const { id, urls, datetime, personality } = record;
     const [isProcessing, setIsProcessing] = useState(false);
 
     const handleCloseOverlay = () => {
         onClose();
     };
 
-    const handleDownloadImage = async () => {
+    const handleDownloadImage = async (urlType) => {
+        let imageUrl;
+        switch (urlType) {
+            case "musicTasteUrl":
+                imageUrl = urls.musicTasteUrl;
+                break;
+            case "personalityImageUrl":
+                imageUrl = urls.personalityImageUrl;
+                break;
+            case "graphImageUrl":
+                imageUrl = urls.graphImageUrl;
+                break;
+            default:
+                console.error("Invalid URL type provided.");
+                return;
+        }
+
         try {
             // Initialize Firebase Storage
             const storage = getStorage();
 
             // Get the download URL for the image
             const downloadUrl = await getDownloadURL(
-                storageRef(storage, record.url)
+                storageRef(storage, imageUrl)
             );
 
             // Create a new XMLHttpRequest
@@ -130,16 +146,29 @@ const HistoryOverlay = ({ record, onClose, updateRecords }) => {
                 </svg>
 
                 <h2 className="historyOverlay__personality">{personality}</h2>
-                <img className="historyOverlay__result" src={url} />
+                <img
+                    className="historyOverlay__result"
+                    src={urls.musicTasteUrl}
+                />
+                <img
+                    className="historyOverlay__graphImage"
+                    src={urls.graphImageUrl}
+                />
                 <p className="historyOverlay__dateTime">
                     Created on {formatDateTime(datetime).formatDate}{" "}
                     {formatDateTime(datetime).formatTime}
                 </p>
                 <button
-                    onClick={handleDownloadImage}
+                    onClick={() => handleDownloadImage("musicTasteUrl")}
                     className="historyOverlay__downloadButton"
                 >
                     Download this Image
+                </button>
+                <button
+                    onClick={() => handleDownloadImage("graphImageUrl")}
+                    className="historyOverlay__downloadButton"
+                >
+                    View Graph Statistics
                 </button>
                 <button
                     className="historyOverlay__removeButton"
