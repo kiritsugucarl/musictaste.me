@@ -303,10 +303,11 @@ const Personality = ({
                     choices.
                 </p>
             </div>
-            <div className="personality__wrapper" id="personality__wrapper">
+            <div className="personality__wrapper">
                 {overallAverageFeatures ? (
                     <div
                         className="personality__result-wrapper"
+                        id="personality__wrapper"
                         style={{
                             backgroundColor:
                                 personalityDescription[musicPersonality]
