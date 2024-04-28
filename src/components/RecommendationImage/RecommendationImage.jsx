@@ -9,6 +9,8 @@ import "./RecommendationImage.css";
 
 const RecommendationImage = ({
     personality,
+    resultImageUrl,
+    statisticsImageUrl,
     recommendationTrackIds,
     selectedSongsTrackIds,
     onCapture,
@@ -117,7 +119,9 @@ const RecommendationImage = ({
         if (
             imagesLoaded ===
                 selectedSongsTrackIds.length + recommendationTrackIds.length &&
-            personality // Ensure personality is not null
+            personality &&
+            resultImageUrl &&
+            statisticsImageUrl
         ) {
             // Adding a delay of 3 second (3000 milliseconds)
             setTimeout(async () => {

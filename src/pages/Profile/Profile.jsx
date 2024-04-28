@@ -214,7 +214,11 @@ const Profile = () => {
             <h2 className="profile__secondaryTitle">
                 Records <span className="title-mustard"> History </span>
             </h2>
-            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+            <select
+                className="profile__selectSort"
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+            >
                 <option value="All">All</option>
                 <option value="Emotional">Emotional</option>
                 <option value="Enchanted">Enchanted</option>

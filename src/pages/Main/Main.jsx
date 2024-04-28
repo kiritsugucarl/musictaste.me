@@ -22,10 +22,20 @@ const Main = () => {
     const [error, setError] = useState(false);
 
     const [personality, setPersonality] = useState(null);
+    const [resultImageUrl, setResultImageUrl] = useState(null);
+    const [statisticsImageUrl, setStatisticsImageUrl] = useState(null);
 
     // Define a function to update the personality state
     const handleUpdatePersonality = (newPersonality) => {
         setPersonality(newPersonality);
+    };
+
+    const handleResultImageUrl = (passedResultImageUrl) => {
+        setResultImageUrl(passedResultImageUrl);
+    };
+
+    const handleStatisticsImageUrl = (passedStatisticImageUrl) => {
+        setStatisticsImageUrl(passedStatisticImageUrl);
     };
 
     const [recommendationTrackIds, setRecommendationTrackIds] = useState([]);
@@ -292,6 +302,8 @@ const Main = () => {
                             selectedSongsTrackIds={selectedSongsTrackIds}
                             onCapture={handleCapture}
                             personality={personality}
+                            resultImageUrl={resultImageUrl}
+                            statisticsImageUrl={statisticsImageUrl}
                         />
                     )}
                     <Recommendation imageUrl={capturedImageUrl} />
@@ -299,6 +311,8 @@ const Main = () => {
                     <Personality
                         audioFeatures={audioFeatures}
                         onUpdatePersonality={handleUpdatePersonality}
+                        onPassResultImage={handleResultImageUrl}
+                        onPassStatisticsImage={handleStatisticsImageUrl}
                     />
                     <MusicPersonalityRecommendations
                         personalityRecoIds={personalityRecoIds}
