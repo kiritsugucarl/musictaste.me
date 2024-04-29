@@ -9,6 +9,8 @@ import "./RecommendationImage.css";
 
 const RecommendationImage = ({
     personality,
+    resultImageUrl,
+    statisticsImageUrl,
     recommendationTrackIds,
     selectedSongsTrackIds,
     onCapture,
@@ -113,11 +115,21 @@ const RecommendationImage = ({
         setImagesLoaded((prev) => prev + 1);
     };
 
+    const uploadImage = async (blob) => {
+        const storage = getStorage();
+        const filename = `musicTaste-${Date.now()}.png`;
+        const imageRef = ref(storage, `users/${user.id}/${filename}`);
+        await uploadBytes(imageRef, blob);
+        return getDownloadURL(imageRef);
+    };
+
     useEffect(() => {
         if (
             imagesLoaded ===
                 selectedSongsTrackIds.length + recommendationTrackIds.length &&
-            personality // Ensure personality is not null
+            personality &&
+            resultImageUrl &&
+            statisticsImageUrl
         ) {
             // Adding a delay of 3 second (3000 milliseconds)
             setTimeout(async () => {
@@ -130,28 +142,13 @@ const RecommendationImage = ({
                         useCORS: true,
                     });
 
-                    // Get a reference to the Firebase Storage bucket
-                    const storage = getStorage();
-
-                    // Generate a unique filename for the image (you can customize this as needed)
-                    const filename = `${Date.now()}-${Math.random()}.png`;
-
-                    // Create a reference to the image file in Firebase Storage
-                    const imageRef = ref(
-                        storage,
-                        `users/${user.id}/${filename}`
-                    );
-
-                    // Convert the canvas to Blob
-                    const blob = await new Promise((resolve) =>
+                    const musicTasteBlob = await new Promise((resolve) =>
                         canvas.toBlob(resolve, "image/png")
                     );
-
-                    // Upload the image file to Firebase Storage
-                    await uploadBytes(imageRef, blob);
-
-                    // Get the download URL of the uploaded image
-                    const downloadURL = await getDownloadURL(imageRef);
+                    const musicTasteUrl = await uploadImage(musicTasteBlob);
+                    const personalityImageUrl =
+                        await uploadImage(resultImageUrl); // Assuming this is already a blob
+                    const graphImageUrl = await uploadImage(statisticsImageUrl); // Assuming this is already a blob
 
                     // Get a reference to the Firebase Realtime Database
                     const database = getDatabase();
@@ -168,7 +165,11 @@ const RecommendationImage = ({
                     // Construct the record object to be stored in the database
                     const record = {
                         datetime: dateTimeString,
-                        url: downloadURL,
+                        urls: {
+                            musicTasteUrl: musicTasteUrl,
+                            personalityImageUrl: personalityImageUrl,
+                            graphImageUrl: graphImageUrl,
+                        },
                         personality: personality, // Add personality to the record
                     };
 
@@ -176,7 +177,7 @@ const RecommendationImage = ({
                     set(newRecordRef, record);
 
                     // Pass the captured image URL to the callback
-                    onCapture(downloadURL);
+                    onCapture(musicTasteUrl);
                 } catch (error) {
                     console.error("Error uploading image:", error);
                 }
@@ -188,7 +189,9 @@ const RecommendationImage = ({
         recommendationTrackIds,
         onCapture,
         user.id,
-        personality, // Include personality as a dependency
+        personality,
+        resultImageUrl,
+        statisticsImageUrl,
     ]);
 
     return (

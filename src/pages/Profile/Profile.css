@@ -169,6 +169,24 @@
     margin-top: 1rem;
 }
 
+.profile__selectSort {
+    font-size: var(--size-sm);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    width: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: var(--clr-secondary);
+    border: none;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.profile__selectSort:hover {
+    filter: brightness(75%);
+}
+
 /* xs */
 @media (min-width: 475px) {
     .profile__editUsername {
@@ -218,6 +236,11 @@
     }
     .profile__removeButton {
         font-size: var(--size-base);
+    }
+
+    .profile__selectSort {
+        font-size: var(--size-base);
+        width: 10.5rem;
     }
 }
 
@@ -283,6 +306,11 @@
     .profile__removeButton {
         font-size: var(--size-lg);
     }
+
+    .profile__selectSort {
+        font-size: var(--size-lg);
+        width: 11rem;
+    }
 }
 
 /* xl */
@@ -322,6 +350,11 @@
     }
     .profile__removeButton {
         font-size: var(--size-xl);
+    }
+
+    .profile__selectSort {
+        font-size: var(--size-xl);
+        width: 11.5rem;
     }
 }
 

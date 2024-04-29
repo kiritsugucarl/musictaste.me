@@ -69,6 +69,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--clr-main);
 }
 
 .personality__radialBar-container {

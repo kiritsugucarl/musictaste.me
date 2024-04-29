@@ -12,6 +12,7 @@ import {
     fetchDataFromFirebase,
     calculatePercentage,
 } from "../../../../config/firebaseServices/fetchDataFromFirebase";
+import html2canvas from "html2canvas";
 import CustomLegend from "./components/CustomLegend/CustomLegend";
 import personalityDescription from "./data/personalityDescription.json";
 import featuresDescription from "./data/featuresDescription.json";
@@ -119,10 +120,41 @@ const determineMusicPersonality = (averageFeatures) => {
     }
 };
 
-const Personality = ({ audioFeatures, onUpdatePersonality }) => {
+const Personality = ({
+    audioFeatures,
+    onUpdatePersonality,
+    onPassResultImage,
+    onPassStatisticsImage,
+}) => {
     const [overallAverageFeatures, setOverallAverageFeatures] = useState(null);
     const [showGuides, setShowGuides] = useState(false);
     const [percentages, setPercentages] = useState({});
+
+    const captureElement = async (elementId) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            try {
+                const canvas = await html2canvas(element, {
+                    scale: 1,
+                    allowTaint: true,
+                    useCORS: true,
+                });
+                return new Promise((resolve, reject) => {
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            // Optionally create an object URL for the blob
+                            resolve(blob);
+                        } else {
+                            reject("Failed to create blob");
+                        }
+                    }, "image/png");
+                });
+            } catch (error) {
+                console.error("Error capturing element: ", error);
+                return "";
+            }
+        }
+    };
 
     useEffect(() => {
         // Fetch data from Firebase and calculate percentages
@@ -176,10 +208,21 @@ const Personality = ({ audioFeatures, onUpdatePersonality }) => {
         : null;
 
     useEffect(() => {
+        const captureImages = async () => {
+            const resultImageUrl = await captureElement("personality__wrapper");
+            onPassResultImage(resultImageUrl);
+            const statisticsImageUrl = await captureElement(
+                "personality__graph-wrapper"
+            );
+            onPassStatisticsImage(statisticsImageUrl);
+        };
+
         if (musicPersonality) {
             updatePersonalityCount(musicPersonality);
             // Update the personality using the callback function
             onUpdatePersonality(musicPersonality);
+
+            captureImages();
         }
     }, [musicPersonality]);
 
@@ -264,6 +307,7 @@ const Personality = ({ audioFeatures, onUpdatePersonality }) => {
                 {overallAverageFeatures ? (
                     <div
                         className="personality__result-wrapper"
+                        id="personality__wrapper"
                         style={{
                             backgroundColor:
                                 personalityDescription[musicPersonality]
@@ -319,7 +363,10 @@ const Personality = ({ audioFeatures, onUpdatePersonality }) => {
                 ) : (
                     <p>No data available</p>
                 )}
-                <div className="personality__graph-wrapper">
+                <div
+                    className="personality__graph-wrapper"
+                    id="personality__graph-wrapper"
+                >
                     <div className="personality__radialBar-container">
                         <ResponsiveContainer>
                             <RadialBarChart
